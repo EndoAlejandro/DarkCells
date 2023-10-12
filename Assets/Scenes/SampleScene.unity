@@ -1629,9 +1629,9 @@ GameObject:
   - component: {fileID: 407432910}
   - component: {fileID: 407432912}
   - component: {fileID: 407432911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visuals
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2000,9 +2000,9 @@ GameObject:
   - component: {fileID: 1376353289}
   - component: {fileID: 1376353288}
   - component: {fileID: 1376353285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player_New
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2059,7 +2059,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1376353284}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03c90fe533e8d2949bf0a47b94c6f294, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2082,8 +2082,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 0.75}
+  m_Size: {x: 0.6, y: 1.5}
   m_Direction: 0
 --- !u!114 &1376353289
 MonoBehaviour:
