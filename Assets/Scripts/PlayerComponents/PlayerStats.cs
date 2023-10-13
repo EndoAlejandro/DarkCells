@@ -5,6 +5,27 @@ namespace PlayerComponents
     [CreateAssetMenu(menuName = "Custom/PlayerStats", fileName = "NewPlayerStats")]
     public class PlayerStats : ScriptableObject
     {
-        [SerializeField] private float speed;
+        [Header("Movement")]
+        [SerializeField] private float maxSpeed;
+
+        [SerializeField] private float acceleration;
+        [SerializeField] private float groundDeceleration = 60f;
+        [SerializeField] private float airDeceleration = 30f;
+
+        [Header("Jump")]
+        [SerializeField] private float jumpForce;
+
+        [SerializeField] private float downGravity;
+        [SerializeField] private float upGravity;
+        [SerializeField] private float maxFallSpeed;
+
+        public float MaxSpeed => maxSpeed;
+        public float GroundDeceleration => groundDeceleration;
+        public float AirDeceleration => airDeceleration;
+        public float Acceleration => acceleration;
+        public float DownGravity => downGravity;
+        public float UpGravity => upGravity;
+        public float MaxFallSpeed => maxFallSpeed;
+        public float JumpForce => jumpForce;
     }
 }
