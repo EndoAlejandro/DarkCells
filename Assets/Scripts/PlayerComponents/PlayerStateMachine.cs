@@ -19,13 +19,13 @@ namespace PlayerComponents
 
         protected override void StateMachine()
         {
-            var idleState = new IdleState(_player, _rigidbody, _input);
-            var jumpState = new JumpState(_player, _rigidbody, _input);
+            var groundState = new GroundState(_player, _rigidbody, _input);
+            var airState = new AirState(_player, _rigidbody, _input);
 
-            stateMachine.SetState(idleState);
+            stateMachine.SetState(groundState);
 
-            stateMachine.AddTransition(idleState, jumpState, () => _input.Jump);
-            stateMachine.AddTransition(jumpState, idleState, () => _input.Movement.y > 0.5f);
+            stateMachine.AddTransition(groundState, airState, () => _player.IsGrounded && _input.Jump);
+            stateMachine.AddTransition(airState, groundState, () => _player.IsGrounded);
         }
     }
 }

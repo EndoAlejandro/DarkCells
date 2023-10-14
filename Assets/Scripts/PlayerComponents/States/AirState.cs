@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace PlayerComponents.States
 {
-    public class JumpState : IState
+    public class AirState : IState
     {
-        public override string ToString() => "Jump";
+        public override string ToString() => "Air";
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
@@ -13,7 +13,7 @@ namespace PlayerComponents.States
 
         private Vector2 _targetVelocity;
 
-        public JumpState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public AirState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

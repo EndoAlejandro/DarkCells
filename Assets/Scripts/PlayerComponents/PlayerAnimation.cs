@@ -33,7 +33,7 @@ namespace PlayerComponents
         {
             switch (_playerStateMachine.CurrentStateType)
             {
-                case IdleState idle:
+                case GroundState idle:
                     FlipCheck();
                     HorizontalFloat();
                     break;
@@ -52,7 +52,7 @@ namespace PlayerComponents
         {
             switch (state)
             {
-                case IdleState idle:
+                case GroundState idle:
                     break;
             }
         }

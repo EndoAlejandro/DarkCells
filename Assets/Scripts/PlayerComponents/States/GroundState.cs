@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace PlayerComponents.States
 {
-    public class IdleState : IState
+    public class GroundState : IState
     {
-        public override string ToString() => "Idle";
+        public override string ToString() => "Ground";
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
@@ -13,7 +13,7 @@ namespace PlayerComponents.States
 
         private Vector2 _targetVelocity;
 
-        public IdleState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public GroundState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;
