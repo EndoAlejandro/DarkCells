@@ -1,3 +1,4 @@
+using System;
 using PlayerComponents.States;
 using StateMachineComponents;
 using UnityEngine;
@@ -8,34 +9,42 @@ namespace PlayerComponents
     public class PlayerAnimation : MonoBehaviour
     {
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int Vertical = Animator.StringToHash("Vertical");
 
         private Animator _animator;
         private SpriteRenderer _renderer;
 
         private InputReader _inputReader;
         private PlayerStateMachine _playerStateMachine;
+        private Player _player;
+
+        private IState _previousState;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
 
+            _player = GetComponentInParent<Player>();
             _inputReader = GetComponentInParent<InputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
         }
 
-        private void Start()
-        {
-            _playerStateMachine.OnEntityStateChanged += PlayerStateMachineOnEntityStateChanged;
-        }
+        private void OnEnable() => _playerStateMachine.OnEntityStateChanged += PlayerStateMachineOnEntityStateChanged;
+        private void OnDisable() => _playerStateMachine.OnEntityStateChanged -= PlayerStateMachineOnEntityStateChanged;
 
         private void Update()
         {
             switch (_playerStateMachine.CurrentStateType)
             {
-                case GroundState idle:
+                case GroundState idleState:
                     FlipCheck();
                     HorizontalFloat();
+                    break;
+                case AirState airState:
+                    FlipCheck();
+                    HorizontalFloat();
+                    VerticalFloat();
                     break;
             }
         }
@@ -46,15 +55,18 @@ namespace PlayerComponents
             _renderer.flipX = _inputReader.Movement.x < 0;
         }
 
-        private void HorizontalFloat() => _animator.SetFloat(Horizontal, Mathf.Abs(_inputReader.Movement.x));
+        private void HorizontalFloat() =>
+            _animator.SetFloat(Horizontal, Mathf.Abs(_player.GetNormalizedHorizontal()));
+
+        private void VerticalFloat() =>
+            _animator.SetFloat(Vertical, Mathf.Clamp(_player.GetNormalizedVertical(), -1, 1));
 
         private void PlayerStateMachineOnEntityStateChanged(IState state)
         {
-            switch (state)
-            {
-                case GroundState idle:
-                    break;
-            }
+            if (_previousState != null) _animator.ResetTrigger(_previousState.ToString());
+
+            _animator.SetTrigger(state.ToString());
+            _previousState = state;
         }
     }
 }

@@ -8,11 +8,12 @@ namespace StateMachineComponents
     /// </summary>
     public abstract class FiniteStateBehaviour : MonoBehaviour
     {
+        [SerializeField] private bool printStateTransition;
         protected StateMachine stateMachine;
-        
+
         // Each time the state change, this event is called.
         public event Action<IState> OnEntityStateChanged;
-        
+
         // To read the current state from another scripts.
         public IState CurrentStateType => stateMachine.CurrentState;
 
@@ -20,11 +21,15 @@ namespace StateMachineComponents
         {
             // Usually all the references are necessary to inject references in the states.
             References();
-            
+
             // New State machine is created.
             stateMachine = new StateMachine();
-            stateMachine.OnStateChanged += state => OnEntityStateChanged?.Invoke(state);
-            
+            stateMachine.OnStateChanged += state =>
+            {
+                if (printStateTransition) Debug.Log(state.ToString());
+                OnEntityStateChanged?.Invoke(state);
+            };
+
             // This is where all the states and transition are created.
             StateMachine();
         }

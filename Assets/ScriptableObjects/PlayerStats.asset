@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e37ec38e35f4edab3f4370c9fac8910, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
   maxSpeed: 5
   acceleration: 30
   groundDeceleration: 60
   airDeceleration: 30
-  jumpForce: 10
+  grounderDistance: 0.01
+  jumpForce: 16.59
   downGravity: 40
   upGravity: 20
   maxFallSpeed: 10

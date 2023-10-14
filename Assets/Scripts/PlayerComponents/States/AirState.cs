@@ -5,13 +5,14 @@ namespace PlayerComponents.States
 {
     public class AirState : IState
     {
-        public override string ToString() => "Air";
+        public override string ToString() => AnimationState.Air.ToString();
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _input;
 
         private Vector2 _targetVelocity;
+        private bool _canJump;
 
         public AirState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
@@ -22,21 +23,27 @@ namespace PlayerComponents.States
 
         public void Tick()
         {
+            if (_canJump && _input.Jump)
+            {
+                _canJump = false;
+                _player.Jump(ref _targetVelocity);
+            }
+
+            _player.Move(ref _targetVelocity, _input.Movement.x);
         }
 
         public void FixedTick()
         {
-            _targetVelocity = _rigidbody.velocity;
-            _player.Move(ref _targetVelocity, _input.Movement.x);
+            _player.CheckCollisions(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
+
             _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()
         {
+            _canJump = true;
             _targetVelocity = _rigidbody.velocity;
-            _player.Jump(ref _targetVelocity);
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnExit()

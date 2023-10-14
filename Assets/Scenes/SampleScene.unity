@@ -1679,7 +1679,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 358447311}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03c90fe533e8d2949bf0a47b94c6f294, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2202,7 +2202,7 @@ GameObject:
   m_Layer: 3
   m_Name: Player_New
   m_TagString: Player
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2310,6 +2310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112aaa1324959584fa55c8f11e1af09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  printStateTransition: 1
 --- !u!114 &1376353291
 MonoBehaviour:
   m_ObjectHideFlags: 0

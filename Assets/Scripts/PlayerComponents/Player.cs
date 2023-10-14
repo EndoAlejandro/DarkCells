@@ -11,7 +11,7 @@ namespace PlayerComponents
 
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider;
-        
+
         public bool IsGrounded { get; private set; }
         public bool EndedJumpEarly { get; private set; }
         public bool IsBufferedJumpAvailable { get; private set; }
@@ -27,12 +27,12 @@ namespace PlayerComponents
         {
             if (IsGrounded && targetVelocity.y <= 0)
             {
-                targetVelocity.y = stats.DownGravity;
+                targetVelocity.y = -stats.DownGravity;
             }
             else
             {
                 var upGravity = stats.UpGravity;
-                // if(upGravity > 0) upGravity *= early jump cancel.
+                if (upGravity > 0f) upGravity *= 2f;
                 targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed, upGravity * Time.deltaTime);
             }
         }
@@ -61,7 +61,7 @@ namespace PlayerComponents
 
         public void CheckCollisions(ref Vector2 targetVelocity)
         {
-            Physics2D.queriesStartInColliders = false;
+            // Physics2D.queriesStartInColliders = false;
 
             bool groundHit = CheckCollisionCustomDirection(Vector2.down);
             bool ceilingHit = CheckCollisionCustomDirection(Vector2.up);
@@ -74,17 +74,20 @@ namespace PlayerComponents
                 IsCoyoteAvailable = true;
                 IsBufferedJumpAvailable = true;
                 EndedJumpEarly = false;
-            } else if (IsGrounded && !groundHit)
+            }
+            else if (IsGrounded && !groundHit)
             {
                 IsGrounded = false;
             }
 
-            Physics2D.queriesStartInColliders = true;
+            // Physics2D.queriesStartInColliders = true;
         }
 
         private bool CheckCollisionCustomDirection(Vector2 direction) => Physics2D.CapsuleCast(_collider.bounds.center,
             _collider.size, _collider.direction, 0f, direction, stats.GrounderDistance, ~stats.Layer);
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
+        public float GetNormalizedHorizontal()=>Mathf.Abs(_rigidbody.velocity.x) / (stats == null ? 1 : stats.MaxSpeed);
+        public float GetNormalizedVertical() => _rigidbody.velocity.y;
     }
 }

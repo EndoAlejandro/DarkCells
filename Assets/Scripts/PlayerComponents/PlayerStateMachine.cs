@@ -24,7 +24,7 @@ namespace PlayerComponents
 
             stateMachine.SetState(groundState);
 
-            stateMachine.AddTransition(groundState, airState, () => _player.IsGrounded && _input.Jump);
+            stateMachine.AddTransition(groundState, airState, () => !_player.IsGrounded);
             stateMachine.AddTransition(airState, groundState, () => _player.IsGrounded);
         }
     }
