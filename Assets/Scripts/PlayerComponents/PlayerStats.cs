@@ -22,6 +22,13 @@ namespace PlayerComponents
         [SerializeField] private float upGravity;
         [SerializeField] private float maxFallSpeed;
 
+        [Header("Roll")]
+        [SerializeField] private float rollMaxSpeed;
+
+        [SerializeField] private float rollAcceleration;
+        [Range(0f, 1f)] [SerializeField] private float rollSpeedConservation;
+        [SerializeField] private float rollTime;
+
         public LayerMask Layer => layer;
         public float MaxSpeed => maxSpeed;
         public float GroundDeceleration => groundDeceleration;
@@ -32,5 +39,9 @@ namespace PlayerComponents
         public float MaxFallSpeed => maxFallSpeed;
         public float JumpForce => jumpForce;
         public float GrounderDistance => grounderDistance;
+        public float RollMaxSpeed => rollMaxSpeed;
+        public float RollAcceleration => rollAcceleration;
+        public float RollSpeedConservation => rollSpeedConservation;
+        public float RollTime => rollTime;
     }
 }

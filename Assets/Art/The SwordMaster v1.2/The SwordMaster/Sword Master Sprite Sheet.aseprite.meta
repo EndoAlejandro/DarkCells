@@ -996,8 +996,8 @@ ScriptedImporter:
     uvTransform: {x: 158, y: 46}
   - name: Sword Master Sprite Sheet_Frame_36
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.52380955, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -1016,8 +1016,8 @@ ScriptedImporter:
     uvTransform: {x: 390, y: 245}
   - name: Sword Master Sprite Sheet_Frame_37
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5714286, y: -0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -1076,8 +1076,8 @@ ScriptedImporter:
     uvTransform: {x: 360, y: 279}
   - name: Sword Master Sprite Sheet_Frame_40
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.4117647, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -1096,8 +1096,8 @@ ScriptedImporter:
     uvTransform: {x: 31, y: 245}
   - name: Sword Master Sprite Sheet_Frame_41
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.42105263, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -1156,8 +1156,8 @@ ScriptedImporter:
     uvTransform: {x: 189, y: 46}
   - name: Sword Master Sprite Sheet_Frame_44
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.52380955, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -1176,8 +1176,8 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 245}
   - name: Sword Master Sprite Sheet_Frame_45
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5714286, y: -0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

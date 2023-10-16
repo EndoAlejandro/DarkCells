@@ -19,13 +19,20 @@ namespace PlayerComponents
 
         protected override void StateMachine()
         {
-            var groundState = new GroundState(_player, _rigidbody, _input);
-            var airState = new AirState(_player, _rigidbody, _input);
+            var ground = new GroundState(_player, _rigidbody, _input);
+            var air = new AirState(_player, _rigidbody, _input);
+            var roll = new RollState(_player, _rigidbody, _input);
 
-            stateMachine.SetState(groundState);
+            stateMachine.SetState(ground);
 
-            stateMachine.AddTransition(groundState, airState, () => !_player.IsGrounded);
-            stateMachine.AddTransition(airState, groundState, () => _player.IsGrounded);
+            // Locomotion
+            stateMachine.AddTransition(ground, air, () => !_player.IsGrounded);
+            stateMachine.AddTransition(air, ground, () => _player.IsGrounded);
+
+            // Roll.
+            stateMachine.AddTransition(ground, roll, () => _input.Roll);
+            stateMachine.AddTransition(air, roll, () => _input.Roll);
+            stateMachine.AddTransition(roll, ground, () => roll.Ended);
         }
     }
 }

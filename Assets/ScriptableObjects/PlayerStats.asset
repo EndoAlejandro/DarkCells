@@ -16,7 +16,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxSpeed: 5
-  acceleration: 30
+  acceleration: 1
   groundDeceleration: 60
   airDeceleration: 30
   grounderDistance: 0.01
@@ -24,3 +24,7 @@ MonoBehaviour:
   downGravity: 40
   upGravity: 20
   maxFallSpeed: 10
+  rollMaxSpeed: 50
+  rollAcceleration: 20
+  rollSpeedConservation: 0.5
+  rollTime: 0.5

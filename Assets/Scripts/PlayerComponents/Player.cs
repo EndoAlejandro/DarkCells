@@ -12,6 +12,9 @@ namespace PlayerComponents
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider;
 
+        public PlayerStats Stats => stats;
+
+        public bool FacingLeft { get; private set; }
         public bool IsGrounded { get; private set; }
         public bool EndedJumpEarly { get; private set; }
         public bool IsBufferedJumpAvailable { get; private set; }
@@ -51,6 +54,13 @@ namespace PlayerComponents
             }
         }
 
+        public void Roll(ref Vector2 targetVelocity)
+        {
+            var direction = FacingLeft ? -1 : 1;
+            targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * stats.RollMaxSpeed,
+                stats.RollAcceleration * Time.fixedDeltaTime);
+        }
+
         public void Jump(ref Vector2 targetVelocity)
         {
             EndedJumpEarly = false;
@@ -87,7 +97,12 @@ namespace PlayerComponents
             _collider.size, _collider.direction, 0f, direction, stats.GrounderDistance, ~stats.Layer);
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
-        public float GetNormalizedHorizontal()=>Mathf.Abs(_rigidbody.velocity.x) / (stats == null ? 1 : stats.MaxSpeed);
+
+        public void SetFacingLeft(bool value) => FacingLeft = value;
+
+        public float GetNormalizedHorizontal() =>
+            Mathf.Abs(_rigidbody.velocity.x) / (stats == null ? 1 : stats.MaxSpeed);
+
         public float GetNormalizedVertical() => _rigidbody.velocity.y;
     }
 }

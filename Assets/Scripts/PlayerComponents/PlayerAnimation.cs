@@ -1,7 +1,8 @@
 using System;
 using PlayerComponents.States;
-using StateMachineComponents;
+using Unity.VisualScripting;
 using UnityEngine;
+using IState = StateMachineComponents.IState;
 
 namespace PlayerComponents
 {
@@ -46,13 +47,17 @@ namespace PlayerComponents
                     HorizontalFloat();
                     VerticalFloat();
                     break;
+                case RollState rollState:
+                    break;
             }
+
+            _renderer.flipX = _player.FacingLeft;
         }
 
         private void FlipCheck()
         {
             if (_inputReader.Movement.x == 0) return;
-            _renderer.flipX = _inputReader.Movement.x < 0;
+            _player.SetFacingLeft(_inputReader.Movement.x < 0);
         }
 
         private void HorizontalFloat() =>
