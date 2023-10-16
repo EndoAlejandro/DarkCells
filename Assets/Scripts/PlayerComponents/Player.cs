@@ -1,4 +1,5 @@
 using System;
+using AttackComponents;
 using CustomUtils;
 using UnityEngine;
 
@@ -7,14 +8,16 @@ namespace PlayerComponents
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerStateMachine))]
     [RequireComponent(typeof(CapsuleCollider2D))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDoDamage
     {
         [SerializeField] private PlayerStats stats;
+        [SerializeField] private Transform attackOffset;
         [SerializeField] private CapsuleCollider2D defaultCollider;
         [SerializeField] private CapsuleCollider2D rollCollider;
 
         public PlayerStats Stats => stats;
 
+        public int Damage => Stats != null ? Stats.Damage : 0;
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
         public bool EndedJumpEarly { get; private set; }
@@ -86,8 +89,18 @@ namespace PlayerComponents
 
             _attackInputDown = false;
             _isBufferedAttackAvailable = false;
-            
-            // TODO: Attack hit box.
+
+            // Attack Logic.
+            var centerOffset = attackOffset.localPosition;
+            centerOffset.x *= 0.5f;
+            var origin = transform.position + centerOffset;
+            var size = new Vector2(attackOffset.position.x, attackOffset.localPosition.y * 2);
+            var result = Physics2D.BoxCast(origin, size, 0f, FacingLeft ? Vector2.left : Vector2.right, 3,
+                ~Stats.Layer);
+
+            if (result &&
+                result.transform.TryGetComponent(out ITakeDamage takeDamage))
+                takeDamage.TakeDamage(Damage);
         }
 
         public void Move(ref Vector2 targetVelocity, float input)
@@ -184,8 +197,14 @@ namespace PlayerComponents
             Gizmos.color = Color.magenta;
             if (stats == null) return;
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
+
             Gizmos.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.down * stats.GrounderDistance);
             Gizmos.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.up * stats.GrounderDistance);
+        }
+
+        public void DoDamage()
+        {
+            throw new NotImplementedException();
         }
     }
 }

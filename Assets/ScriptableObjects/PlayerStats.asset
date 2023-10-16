@@ -19,7 +19,7 @@ MonoBehaviour:
   acceleration: 2
   groundDeceleration: 70
   airDeceleration: 10
-  grounderDistance: 0.25
+  grounderDistance: 0.025
   jumpForce: 17
   downGravity: 50
   upGravity: 30
@@ -29,7 +29,8 @@ MonoBehaviour:
   rollAcceleration: 15
   rollSpeedConservation: 0.2
   rollTime: 0.5
-  attackSpeedConservation: 0.1
+  attackSpeedConservation: 0
+  damage: 1
   lightAttackTime: 0.5
   lightAttackBuffer: 0.2
   lightComboTime: 0.3

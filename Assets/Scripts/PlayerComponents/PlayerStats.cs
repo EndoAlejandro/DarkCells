@@ -33,6 +33,8 @@ namespace PlayerComponents
         [Header("Attack")]
         [Range(0f, 1f)] [SerializeField] private float attackSpeedConservation = .1f;
 
+        [SerializeField] private int damage;
+
         [Space] [SerializeField] private float lightAttackTime = .5f;
         [SerializeField] private float lightAttackBuffer = .2f;
         [SerializeField] private float lightComboTime = .3f;
@@ -74,6 +76,7 @@ namespace PlayerComponents
         #region Attack
 
         public float AttackSpeedConservation => attackSpeedConservation;
+        public int Damage => damage;
         public float LightAttackBuffer => lightAttackBuffer;
         public float HeavyAttackBuffer => heavyAttackBuffer;
         public float LightAttackTime => lightAttackTime;
