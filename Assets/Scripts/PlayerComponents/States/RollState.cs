@@ -1,5 +1,4 @@
-﻿using CustomUtils;
-using StateMachineComponents;
+﻿using StateMachineComponents;
 using UnityEngine;
 
 namespace PlayerComponents.States
@@ -16,6 +15,7 @@ namespace PlayerComponents.States
         private float _timer;
 
         public bool Ended { get; private set; }
+        public bool CanTransitionToSelf => false;
 
         public RollState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
@@ -37,6 +37,12 @@ namespace PlayerComponents.States
                     break;
             }
 
+            if (_player.HasBufferedJump)
+            {
+                _player.Jump(ref _targetVelocity);
+                Ended = true;
+            }
+
             if (_timer <= 0f) Ended = true;
         }
 
@@ -55,6 +61,7 @@ namespace PlayerComponents.States
             Ended = false;
             _targetVelocity = _rigidbody.velocity;
             _timer = _player.Stats.RollTime;
+            _player.SetPlayerCollider(false);
         }
 
         public void OnExit()
@@ -62,6 +69,7 @@ namespace PlayerComponents.States
             _targetVelocity.x *= _player.Stats.RollSpeedConservation;
             _player.ApplyVelocity(_targetVelocity);
             Ended = false;
+            _player.SetPlayerCollider(true);
         }
     }
 }

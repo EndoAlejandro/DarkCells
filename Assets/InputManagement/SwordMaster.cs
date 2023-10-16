@@ -53,6 +53,24 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""8dd1b019-5d20-4bef-a9d5-5c0ecd920dd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba0051b2-95f8-4b10-a9ca-ef9b839420a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +183,50 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70891b60-f404-490a-a375-267af57cad08"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c04c489f-b6aa-45f1-9405-42c433bf9d62"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c36f2384-2902-4aa6-a8f3-236cb2c9055b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0446ba10-8fde-41fd-840a-1c35354040ba"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +266,8 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
         m_Main_Movement = m_Main.FindAction("Movement", throwIfNotFound: true);
         m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
         m_Main_Roll = m_Main.FindAction("Roll", throwIfNotFound: true);
+        m_Main_LightAttack = m_Main.FindAction("LightAttack", throwIfNotFound: true);
+        m_Main_HeavyAttack = m_Main.FindAction("HeavyAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +332,8 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Movement;
     private readonly InputAction m_Main_Jump;
     private readonly InputAction m_Main_Roll;
+    private readonly InputAction m_Main_LightAttack;
+    private readonly InputAction m_Main_HeavyAttack;
     public struct MainActions
     {
         private @SwordMaster m_Wrapper;
@@ -275,6 +341,8 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Main_Movement;
         public InputAction @Jump => m_Wrapper.m_Main_Jump;
         public InputAction @Roll => m_Wrapper.m_Main_Roll;
+        public InputAction @LightAttack => m_Wrapper.m_Main_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_Main_HeavyAttack;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +361,12 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -306,6 +380,12 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -346,5 +426,7 @@ public partial class @SwordMaster: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
+        void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
     }
 }

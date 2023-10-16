@@ -14,6 +14,8 @@ namespace PlayerComponents.States
         private Vector2 _targetVelocity;
         private bool _canJump;
 
+        public bool CanTransitionToSelf => false;
+
         public AirState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
@@ -21,9 +23,10 @@ namespace PlayerComponents.States
             _input = input;
         }
 
+
         public void Tick()
         {
-            if (_canJump && _input.Jump)
+            if (_input.Jump && _canJump)
             {
                 _canJump = false;
                 _player.Jump(ref _targetVelocity);

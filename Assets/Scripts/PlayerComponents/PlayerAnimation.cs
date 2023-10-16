@@ -49,6 +49,8 @@ namespace PlayerComponents
                     break;
                 case RollState rollState:
                     break;
+                case LightAttackState lightAttackState:
+                    break;
             }
 
             _renderer.flipX = _player.FacingLeft;

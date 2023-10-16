@@ -12,7 +12,8 @@ namespace PlayerComponents.States
         private readonly InputReader _input;
 
         private Vector2 _targetVelocity;
-        private bool _canJump;
+        
+        public bool CanTransitionToSelf => false;
 
         public GroundState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
@@ -23,11 +24,8 @@ namespace PlayerComponents.States
 
         public void Tick()
         {
-            if (_canJump && _input.Jump)
-            {
-                _canJump = false;
+            if (_player.HasBufferedJump)
                 _player.Jump(ref _targetVelocity);
-            }
 
             _player.Move(ref _targetVelocity, _input.Movement.x);
         }
@@ -36,15 +34,11 @@ namespace PlayerComponents.States
         {
             _player.CheckCollisions(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
-            
+
             _player.ApplyVelocity(_targetVelocity);
         }
 
-        public void OnEnter()
-        {
-            _canJump = true;
-            _targetVelocity = _rigidbody.velocity;
-        }
+        public void OnEnter() => _targetVelocity = _rigidbody.velocity;
 
         public void OnExit()
         {

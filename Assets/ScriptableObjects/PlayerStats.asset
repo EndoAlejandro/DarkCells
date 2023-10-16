@@ -15,16 +15,23 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
-  maxSpeed: 5
-  acceleration: 1
-  groundDeceleration: 60
-  airDeceleration: 30
-  grounderDistance: 0.01
-  jumpForce: 16.59
-  downGravity: 40
-  upGravity: 20
+  maxSpeed: 6
+  acceleration: 2
+  groundDeceleration: 70
+  airDeceleration: 10
+  grounderDistance: 0.25
+  jumpForce: 17
+  downGravity: 50
+  upGravity: 30
+  jumpBuffer: 0.2
   maxFallSpeed: 10
-  rollMaxSpeed: 50
-  rollAcceleration: 20
-  rollSpeedConservation: 0.5
+  rollMaxSpeed: 40
+  rollAcceleration: 15
+  rollSpeedConservation: 0.2
   rollTime: 0.5
+  attackSpeedConservation: 0.1
+  lightAttackTime: 0.5
+  lightAttackBuffer: 0.2
+  lightComboTime: 0.3
+  heavyAttackTime: 0.5
+  heavyAttackBuffer: 0.2

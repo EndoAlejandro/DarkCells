@@ -8,6 +8,7 @@ namespace StateMachineComponents
         private float _timer;
 
         public bool TransitionEnded => _timer <= 0f;
+        public bool CanTransitionToSelf => false;
 
         public SampleState(float transitionTime) => _transitionTime = transitionTime;
 

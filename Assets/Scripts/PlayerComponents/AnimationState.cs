@@ -5,5 +5,7 @@
         Ground,
         Air,
         Roll,
+        LightAttack,
+        HeavyAttack,
     }
 }

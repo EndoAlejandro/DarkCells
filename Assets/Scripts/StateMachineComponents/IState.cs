@@ -4,6 +4,7 @@ namespace StateMachineComponents
 {
     public interface IState
     {
+        bool CanTransitionToSelf { get; }
         /// <summary>
         /// Called each Update.
         /// </summary>

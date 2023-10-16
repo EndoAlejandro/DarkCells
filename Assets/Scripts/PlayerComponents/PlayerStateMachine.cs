@@ -22,17 +22,26 @@ namespace PlayerComponents
             var ground = new GroundState(_player, _rigidbody, _input);
             var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input);
+            var lightAttack = new LightAttackState(_player, _rigidbody);
 
             stateMachine.SetState(ground);
 
             // Locomotion
-            stateMachine.AddTransition(ground, air, () => !_player.IsGrounded);
-            stateMachine.AddTransition(air, ground, () => _player.IsGrounded);
+            stateMachine.AddTransition(ground, air, () => !_player.Grounded);
+            stateMachine.AddTransition(air, ground, () => _player.Grounded);
 
             // Roll.
             stateMachine.AddTransition(ground, roll, () => _input.Roll);
             stateMachine.AddTransition(air, roll, () => _input.Roll);
-            stateMachine.AddTransition(roll, ground, () => roll.Ended);
+            stateMachine.AddTransition(roll, ground, () => roll.Ended && _player.Grounded);
+            stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
+
+            // Attack
+            stateMachine.AddTransition(ground, lightAttack, () => _player.HasBufferedLightAttack);
+            stateMachine.AddTransition(lightAttack, lightAttack,
+                () => _player.HasBufferedLightAttack && lightAttack.CanCombo);
+
+            stateMachine.AddTransition(lightAttack, ground, () => lightAttack.Ended);
         }
     }
 }

@@ -4,6 +4,8 @@
     {
         public override string ToString() => "Idle";
 
+        public bool CanTransitionToSelf => false;
+
         public void Tick()
         {
         }
