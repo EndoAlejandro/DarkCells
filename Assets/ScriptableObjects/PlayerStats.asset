@@ -20,11 +20,12 @@ MonoBehaviour:
   groundDeceleration: 70
   airDeceleration: 10
   grounderDistance: 0.05
-  jumpForce: 17
-  downGravity: 50
-  upGravity: 30
+  jumpForce: 12
+  groundingForce: 5
+  fallAcceleration: 30
   jumpBuffer: 0.2
   maxFallSpeed: 10
+  jumpEndEarlyGravityModifier: 3
   rollMaxSpeed: 7
   rollAcceleration: 100
   rollSpeedConservation: 0.2

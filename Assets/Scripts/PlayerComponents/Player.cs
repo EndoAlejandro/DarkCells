@@ -48,7 +48,7 @@ namespace PlayerComponents
         private void Actions()
         {
             _attackAction = new AttackAction(this, _rigidbody, attackOffset, _inputReader);
-            _jumpAction = new JumpAction(this, _inputReader);
+            _jumpAction = new JumpAction(this, _rigidbody, _inputReader);
             _rollAction = new RollAction(this, _inputReader);
         }
 
@@ -67,13 +67,14 @@ namespace PlayerComponents
         {
             if (Grounded && targetVelocity.y <= 0)
             {
-                targetVelocity.y = -stats.DownGravity;
+                targetVelocity.y = -stats.GroundingForce;
             }
             else
             {
-                var upGravity = stats.UpGravity;
-                if (upGravity > 0f) upGravity *= 2f;
-                targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed, upGravity * Time.deltaTime);
+                var inAirGravity = stats.FallAcceleration;
+                if (_jumpAction.EndedJumpEarly && inAirGravity > 0f) inAirGravity *= Stats.JumpEndEarlyGravityModifier;
+                targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed,
+                    inAirGravity * Time.fixedDeltaTime);
             }
         }
 

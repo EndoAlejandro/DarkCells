@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PlayerComponents
 {
@@ -18,10 +19,11 @@ namespace PlayerComponents
         [Header("Jump")]
         [SerializeField] private float jumpForce;
 
-        [SerializeField] private float downGravity;
-        [SerializeField] private float upGravity;
+        [SerializeField] private float groundingForce;
+        [SerializeField] private float fallAcceleration;
         [SerializeField] private float jumpBuffer = 0.2f;
         [SerializeField] private float maxFallSpeed;
+        [SerializeField] private float jumpEndEarlyGravityModifier = 3f;
 
         [Header("Roll")]
         [SerializeField] private float rollMaxSpeed;
@@ -57,10 +59,11 @@ namespace PlayerComponents
         #region Jump
 
         public float JumpForce => jumpForce;
-        public float DownGravity => downGravity;
-        public float UpGravity => upGravity;
+        public float GroundingForce => groundingForce;
+        public float FallAcceleration => fallAcceleration;
         public float MaxFallSpeed => maxFallSpeed;
         public float JumpBuffer => jumpBuffer;
+        public float JumpEndEarlyGravityModifier => jumpEndEarlyGravityModifier;
 
         #endregion
 

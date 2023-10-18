@@ -22,7 +22,7 @@ namespace PlayerComponents.PlayerActions
             InputReader = inputReader;
         }
 
-        public void Tick()
+        public virtual void Tick()
         {
             _timer += Time.deltaTime;
             

@@ -12,7 +12,7 @@ namespace PlayerComponents.States
         private readonly InputReader _input;
 
         private Vector2 _targetVelocity;
-        
+
         public bool CanTransitionToSelf => false;
 
         public GroundState(Player player, Rigidbody2D rigidbody, InputReader input)
@@ -36,6 +36,7 @@ namespace PlayerComponents.States
             _player.CustomGravity(ref _targetVelocity);
 
             _player.ApplyVelocity(_targetVelocity);
+            _targetVelocity = _rigidbody.velocity;
         }
 
         public void OnEnter() => _targetVelocity = _rigidbody.velocity;

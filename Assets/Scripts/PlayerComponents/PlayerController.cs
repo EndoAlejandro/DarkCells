@@ -133,7 +133,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void HandleJump()
     {
-        if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true;
+        if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) 
+            _endedJumpEarly = true;
 
         if (!_jumpToConsume && !HasBufferedJump) return;
 
@@ -184,8 +185,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             var inAirGravity = _stats.FallAcceleration;
             if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
-            _frameVelocity.y =
-                Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+            _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed,
+                inAirGravity * Time.fixedDeltaTime);
         }
     }
 
