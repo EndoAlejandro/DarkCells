@@ -1,6 +1,7 @@
 using System;
 using AttackComponents;
 using CustomUtils;
+using PlayerComponents.PlayerActions;
 using UnityEngine;
 
 namespace PlayerComponents
@@ -10,63 +11,57 @@ namespace PlayerComponents
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class Player : MonoBehaviour, IDoDamage
     {
+        public event Action<bool> OnGroundedChanged;
+
         [SerializeField] private PlayerStats stats;
+
         [SerializeField] private Transform attackOffset;
+
         [SerializeField] private CapsuleCollider2D defaultCollider;
         [SerializeField] private CapsuleCollider2D rollCollider;
 
-        public PlayerStats Stats => stats;
-
-        public int Damage => Stats != null ? Stats.Damage : 0;
-        public bool FacingLeft { get; private set; }
-        public bool Grounded { get; private set; }
-        public bool EndedJumpEarly { get; private set; }
-        public bool IsCoyoteAvailable { get; private set; }
-
-        public bool HasBufferedJump => _isBufferedJumpAvailable && _time < _timeJumpWasPressed + stats.JumpBuffer;
-
-        public bool HasBufferedLightAttack =>
-            _isBufferedAttackAvailable && _time < _timeAttackWasPressed + stats.LightAttackBuffer;
-
-        private InputReader _input;
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider;
 
-        private bool _jumpInputDown;
-        private bool _isBufferedJumpAvailable;
-        private bool _canAirJump;
-        private float _timeJumpWasPressed;
+        private InputReader _inputReader;
+        private AttackAction _attackAction;
+        private JumpAction _jumpAction;
+        private RollAction _rollAction;
 
-        private bool _attackInputDown;
-        private bool _isBufferedAttackAvailable = true;
-        private float _timeAttackWasPressed;
+        public PlayerStats Stats => stats;
 
-        private float _time;
+        public bool HasBufferedJump => _jumpAction != null && _jumpAction.IsAvailable;
+        public bool HasBufferedLightAttack => _attackAction != null && _attackAction.IsAvailable;
+
+        public bool FacingLeft { get; private set; }
+        public bool Grounded { get; private set; }
+        public int Damage => Stats != null ? Stats.Damage : 0;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _input = GetComponent<InputReader>();
+            _inputReader = GetComponent<InputReader>();
+            Actions();
             SetPlayerCollider(true);
+        }
+
+        private void Actions()
+        {
+            _attackAction = new AttackAction(this, _rigidbody, attackOffset, _inputReader);
+            _jumpAction = new JumpAction(this, _inputReader);
+            _rollAction = new RollAction(this, _inputReader);
         }
 
         private void Update()
         {
-            _time += Time.deltaTime;
-
-            if (_input.Jump)
-            {
-                _jumpInputDown = true;
-                _timeJumpWasPressed = _time;
-            }
-
-            if (_input.LightAttack)
-            {
-                _attackInputDown = true;
-                _isBufferedAttackAvailable = true;
-                _timeAttackWasPressed = _time;
-            }
+            _jumpAction.Tick();
+            _rollAction.Tick();
+            _attackAction.Tick();
         }
+
+        public void Attack(ref Vector2 targetVelocity) => _attackAction.UseAction(ref targetVelocity);
+        public void Jump(ref Vector2 targetVelocity) => _jumpAction.UseAction(ref targetVelocity);
+        public void Roll(ref Vector2 targetVelocity) => _rollAction.UseAction(ref targetVelocity);
 
         public void CustomGravity(ref Vector2 targetVelocity)
         {
@@ -80,27 +75,6 @@ namespace PlayerComponents
                 if (upGravity > 0f) upGravity *= 2f;
                 targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed, upGravity * Time.deltaTime);
             }
-        }
-
-        public void Attack()
-        {
-            var horizontalSpeed = _rigidbody.velocity.x * Stats.AttackSpeedConservation;
-            ApplyVelocity(_rigidbody.velocity.With(x: horizontalSpeed));
-
-            _attackInputDown = false;
-            _isBufferedAttackAvailable = false;
-
-            // Attack Logic.
-            var centerOffset = attackOffset.localPosition;
-            centerOffset.x *= 0.5f;
-            var origin = transform.position + centerOffset;
-            var size = new Vector2(attackOffset.position.x, attackOffset.localPosition.y * 2);
-            var result = Physics2D.BoxCast(origin, size, 0f, FacingLeft ? Vector2.left : Vector2.right, 3,
-                ~Stats.Layer);
-
-            if (result &&
-                result.transform.TryGetComponent(out ITakeDamage takeDamage))
-                takeDamage.TakeDamage(Damage);
         }
 
         public void Move(ref Vector2 targetVelocity, float input)
@@ -117,29 +91,6 @@ namespace PlayerComponents
             }
         }
 
-        public void Roll(ref Vector2 targetVelocity)
-        {
-            var direction = FacingLeft ? -1 : 1;
-            targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * stats.RollMaxSpeed,
-                stats.RollAcceleration * Time.fixedDeltaTime);
-        }
-
-        public void Jump(ref Vector2 targetVelocity)
-        {
-            if (!Grounded)
-            {
-                if (_canAirJump) _canAirJump = false;
-                else return;
-            }
-
-            _jumpInputDown = false;
-            EndedJumpEarly = false;
-            _isBufferedJumpAvailable = false;
-            IsCoyoteAvailable = false;
-
-            targetVelocity.y = stats.JumpForce;
-        }
-
         public void CheckCollisions(ref Vector2 targetVelocity)
         {
             // Physics2D.queriesStartInColliders = false;
@@ -152,14 +103,12 @@ namespace PlayerComponents
             if (!Grounded && groundHit)
             {
                 Grounded = true;
-                _canAirJump = true;
-                IsCoyoteAvailable = true;
-                _isBufferedJumpAvailable = true;
-                EndedJumpEarly = false;
+                OnGroundedChanged?.Invoke(Grounded);
             }
             else if (Grounded && !groundHit)
             {
                 Grounded = false;
+                OnGroundedChanged?.Invoke(Grounded);
             }
 
             // Physics2D.queriesStartInColliders = true;

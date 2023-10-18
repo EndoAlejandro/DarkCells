@@ -48,6 +48,7 @@ namespace PlayerComponents.States
 
         public void FixedTick()
         {
+            _targetVelocity = _rigidbody.velocity;
             _player.CheckCollisions(ref _targetVelocity);
 
             _player.Roll(ref _targetVelocity);

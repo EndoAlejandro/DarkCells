@@ -60,7 +60,7 @@ namespace PlayerComponents
         public float DownGravity => downGravity;
         public float UpGravity => upGravity;
         public float MaxFallSpeed => maxFallSpeed;
-        public double JumpBuffer => jumpBuffer;
+        public float JumpBuffer => jumpBuffer;
 
         #endregion
 

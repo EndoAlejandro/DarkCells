@@ -1,4 +1,6 @@
-﻿using StateMachineComponents;
+﻿using CustomUtils;
+using StateMachineComponents;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 namespace PlayerComponents.States
@@ -23,7 +25,6 @@ namespace PlayerComponents.States
             _player = player;
             _rigidbody = rigidbody;
         }
-
 
         public void Tick()
         {
@@ -51,7 +52,9 @@ namespace PlayerComponents.States
             _timer = _player.Stats.LightAttackTime;
             _comboTimer = _player.Stats.LightComboTime;
 
-            _player.Attack();
+            var targetVelocity = Vector2.zero;
+            _player.Attack(ref targetVelocity);
+            _player.ApplyVelocity(targetVelocity);
         }
 
         public void OnExit()

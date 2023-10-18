@@ -14,25 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   maxSpeed: 6
   acceleration: 2
   groundDeceleration: 70
   airDeceleration: 10
-  grounderDistance: 0.025
+  grounderDistance: 0.05
   jumpForce: 17
   downGravity: 50
   upGravity: 30
   jumpBuffer: 0.2
   maxFallSpeed: 10
-  rollMaxSpeed: 40
-  rollAcceleration: 15
+  rollMaxSpeed: 7
+  rollAcceleration: 100
   rollSpeedConservation: 0.2
   rollTime: 0.5
   attackSpeedConservation: 0
   damage: 1
   lightAttackTime: 0.5
-  lightAttackBuffer: 0.2
+  lightAttackBuffer: 0.15
   lightComboTime: 0.3
   heavyAttackTime: 0.5
   heavyAttackBuffer: 0.2

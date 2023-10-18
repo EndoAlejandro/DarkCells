@@ -16,6 +16,9 @@ namespace Enemies
 
             Health -= damage;
             Debug.Log($"Damage:{damage} || Health:{Health}");
+            if (Health <= 0f) Death();
         }
+
+        public void Death() => Health = maxHealth;
     }
 }
