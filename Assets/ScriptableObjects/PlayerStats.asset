@@ -16,16 +16,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   maxSpeed: 6
-  acceleration: 2
+  acceleration: 3
   groundDeceleration: 70
   airDeceleration: 10
   grounderDistance: 0.05
   jumpForce: 12
-  groundingForce: 5
+  groundingForce: 3
   fallAcceleration: 30
   jumpBuffer: 0.2
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 3
+  coyoteTime: 0.2
   rollMaxSpeed: 7
   rollAcceleration: 100
   rollSpeedConservation: 0.2

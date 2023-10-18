@@ -36,8 +36,9 @@ namespace PlayerComponents
             stateMachine.AddTransition(roll, ground, () => roll.Ended && _player.Grounded);
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
 
-            // Attack
-            stateMachine.AddTransition(ground, lightAttack, () => _player.HasBufferedLightAttack);
+            // To Attack
+            var toAttackStates = new IState[] { ground, roll, air };
+            stateMachine.AddManyTransitions(toAttackStates, lightAttack, () => _player.HasBufferedLightAttack);
             stateMachine.AddTransition(lightAttack, lightAttack,
                 () => _player.HasBufferedLightAttack && lightAttack.CanCombo);
 

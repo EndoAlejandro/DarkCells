@@ -26,6 +26,11 @@ namespace StateMachineComponents
             _stateTransitions.Add(stateTransition);
         }
 
+        public void AddManyTransitions(IState[] fromMany, IState to, Func<bool> condition)
+        {
+            foreach (var from in fromMany) AddTransition(from, to, condition);
+        }
+
         /// <summary>
         /// Add a any to state transition. The current state is not required.
         /// </summary>

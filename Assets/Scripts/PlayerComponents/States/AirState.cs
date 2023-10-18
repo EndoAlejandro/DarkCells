@@ -26,11 +26,12 @@ namespace PlayerComponents.States
 
         public void Tick()
         {
-            if (_input.Jump && _canJump)
+            /*if (_input.Jump && _canJump)
             {
                 _canJump = false;
                 _player.Jump(ref _targetVelocity);
-            }
+            }*/
+            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
 
             _player.Move(ref _targetVelocity, _input.Movement.x);
         }

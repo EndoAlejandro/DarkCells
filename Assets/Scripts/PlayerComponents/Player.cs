@@ -1,6 +1,5 @@
 using System;
 using AttackComponents;
-using CustomUtils;
 using PlayerComponents.PlayerActions;
 using UnityEngine;
 
@@ -30,8 +29,8 @@ namespace PlayerComponents
 
         public PlayerStats Stats => stats;
 
-        public bool HasBufferedJump => _jumpAction != null && _jumpAction.IsAvailable;
-        public bool HasBufferedLightAttack => _attackAction != null && _attackAction.IsAvailable;
+        public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
+        public bool HasBufferedLightAttack => _attackAction is { IsAvailable: true };
 
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }

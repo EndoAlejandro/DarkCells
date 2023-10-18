@@ -24,6 +24,7 @@ namespace PlayerComponents
         [SerializeField] private float jumpBuffer = 0.2f;
         [SerializeField] private float maxFallSpeed;
         [SerializeField] private float jumpEndEarlyGravityModifier = 3f;
+        [SerializeField] private float coyoteTime = 0.2f;
 
         [Header("Roll")]
         [SerializeField] private float rollMaxSpeed;
@@ -64,6 +65,7 @@ namespace PlayerComponents
         public float MaxFallSpeed => maxFallSpeed;
         public float JumpBuffer => jumpBuffer;
         public float JumpEndEarlyGravityModifier => jumpEndEarlyGravityModifier;
+        public float CoyoteTime => coyoteTime;
 
         #endregion
 

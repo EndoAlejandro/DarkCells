@@ -1,8 +1,10 @@
-﻿using AttackComponents;
+﻿using System;
+using AttackComponents;
 using UnityEngine;
 
 namespace PlayerComponents.PlayerActions
 {
+    [Serializable]
     public class AttackAction : BufferedAction
     {
         private readonly Transform _attackOffset;

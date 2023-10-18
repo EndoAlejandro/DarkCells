@@ -1,14 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PlayerComponents.PlayerActions
 {
+    [Serializable]
     public class JumpAction : BufferedAction
     {
         private readonly Rigidbody2D _rigidbody;
 
+        private float _timeLeftGrounded;
         private bool _airJumpAvailable;
         private bool _canAirJump;
         private bool _coyoteTimeAvailable;
+
+        private bool CanUseCoyote => _coyoteTimeAvailable && !Player.Grounded &&
+                                     Timer < _timeLeftGrounded + Player.Stats.CoyoteTime;
 
         public bool EndedJumpEarly { get; private set; }
         protected override bool InputTrigger => InputReader.Jump;
@@ -22,7 +28,15 @@ namespace PlayerComponents.PlayerActions
 
         private void PlayerOnGroundedChanged(bool grounded)
         {
-            if (grounded) _canAirJump = true;
+            if (grounded)
+            {
+                _coyoteTimeAvailable = true;
+                _canAirJump = true;
+            }
+            else
+            {
+                _timeLeftGrounded = Timer;
+            }
         }
 
         public override void Tick()
@@ -33,12 +47,13 @@ namespace PlayerComponents.PlayerActions
 
         protected override void UseBuffer(ref Vector2 targetVelocity)
         {
-            if (!Player.Grounded)
+            if (!Player.Grounded && !CanUseCoyote)
             {
                 if (_canAirJump) _canAirJump = false;
                 else return;
             }
 
+            _coyoteTimeAvailable = false;
             EndedJumpEarly = false;
             targetVelocity.y = Player.Stats.JumpForce;
         }

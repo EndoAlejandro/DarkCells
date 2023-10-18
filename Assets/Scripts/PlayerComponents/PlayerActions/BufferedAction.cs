@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PlayerComponents.PlayerActions
 {
+    [Serializable]
     public abstract class BufferedAction
     {
-        protected abstract bool InputTrigger { get; }
-        protected abstract float BufferTime { get; }
-
+        private float _timeSinceActionPressed;
+        private bool _wasActionPressed;
+        
+        protected float Timer;
         protected readonly Player Player;
         protected readonly InputReader InputReader;
         
-        private float _timeSinceActionPressed;
-        private float _timer;
-        private bool _wasActionPressed;
+        protected abstract bool InputTrigger { get; }
+        protected abstract float BufferTime { get; }
         
-        public bool IsAvailable => _wasActionPressed && _timeSinceActionPressed > _timer;
+        public bool IsAvailable => _wasActionPressed && _timeSinceActionPressed > Timer;
 
         protected BufferedAction(Player player, InputReader inputReader)
         {
@@ -24,10 +26,10 @@ namespace PlayerComponents.PlayerActions
 
         public virtual void Tick()
         {
-            _timer += Time.deltaTime;
+            Timer += Time.deltaTime;
             
             if(!InputTrigger) return;
-            _timeSinceActionPressed = _timer + BufferTime;
+            _timeSinceActionPressed = Timer + BufferTime;
             _wasActionPressed = true;
         }
 
