@@ -1,11 +1,9 @@
-﻿using CustomUtils;
-using StateMachineComponents;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+﻿using StateMachineComponents;
 using UnityEngine;
 
 namespace PlayerComponents.States
 {
-    public class LightAttackState : IState
+    public class AttackState : IState
     {
         public override string ToString() => AnimationState.LightAttack.ToString();
 
@@ -21,7 +19,7 @@ namespace PlayerComponents.States
         public bool CanCombo => _comboTimer <= 0f;
         public bool CanTransitionToSelf => true;
 
-        public LightAttackState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public AttackState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

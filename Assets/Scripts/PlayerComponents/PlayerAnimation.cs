@@ -49,7 +49,7 @@ namespace PlayerComponents
                     break;
                 case RollState rollState:
                     break;
-                case LightAttackState lightAttackState:
+                case AttackState lightAttackState:
                     break;
             }
 

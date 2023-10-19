@@ -18,4 +18,18 @@ namespace PlayerComponents.PlayerActions
                 Player.Stats.RollAcceleration * Time.fixedDeltaTime);
         }
     }
+
+    public class BlockAction : BufferedAction
+    {
+        protected override bool InputTrigger => InputReader.Block;
+        protected override float BufferTime => Player.Stats.LightAttackBuffer;
+        
+        public BlockAction(Player player, InputReader inputReader) : base(player, inputReader)
+        {
+        }
+
+        protected override void UseBuffer(ref Vector2 targetVelocity)
+        {
+        }
+    }
 }

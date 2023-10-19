@@ -7,5 +7,7 @@
         Roll,
         LightAttack,
         HeavyAttack,
+        Block,
+        Parry,
     }
 }

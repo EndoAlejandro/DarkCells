@@ -18,7 +18,7 @@ namespace PlayerComponents.PlayerActions
             _attackOffset = attackOffset;
         }
 
-        protected override bool InputTrigger => InputReader.LightAttack;
+        protected override bool InputTrigger => InputReader.Attack;
         protected override float BufferTime => Player.Stats.LightAttackBuffer;
 
         protected override void UseBuffer(ref Vector2 targetVelocity)

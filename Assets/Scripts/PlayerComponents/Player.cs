@@ -10,6 +10,7 @@ namespace PlayerComponents
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class Player : MonoBehaviour, IDoDamage
     {
+        public event Action OnAttackBlocked;
         public event Action<bool> OnGroundedChanged;
 
         [SerializeField] private PlayerStats stats;
@@ -23,14 +24,17 @@ namespace PlayerComponents
         private CapsuleCollider2D _collider;
 
         private InputReader _inputReader;
+
         private AttackAction _attackAction;
         private JumpAction _jumpAction;
         private RollAction _rollAction;
+        private BlockAction _blockAction;
 
         public PlayerStats Stats => stats;
 
         public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
         public bool HasBufferedLightAttack => _attackAction is { IsAvailable: true };
+        public bool HasBufferedBlock => _blockAction is { IsAvailable: true };
 
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
@@ -49,6 +53,7 @@ namespace PlayerComponents
             _attackAction = new AttackAction(this, _rigidbody, attackOffset, _inputReader);
             _jumpAction = new JumpAction(this, _rigidbody, _inputReader);
             _rollAction = new RollAction(this, _inputReader);
+            _blockAction = new BlockAction(this, _inputReader);
         }
 
         private void Update()
@@ -56,11 +61,13 @@ namespace PlayerComponents
             _jumpAction.Tick();
             _rollAction.Tick();
             _attackAction.Tick();
+            _blockAction.Tick();
         }
 
         public void Attack(ref Vector2 targetVelocity) => _attackAction.UseAction(ref targetVelocity);
         public void Jump(ref Vector2 targetVelocity) => _jumpAction.UseAction(ref targetVelocity);
         public void Roll(ref Vector2 targetVelocity) => _rollAction.UseAction(ref targetVelocity);
+        public void Block(ref Vector2 targetVelocity) => _blockAction.UseAction(ref targetVelocity);
 
         public void CustomGravity(ref Vector2 targetVelocity)
         {

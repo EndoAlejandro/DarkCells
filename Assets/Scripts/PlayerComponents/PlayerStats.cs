@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace PlayerComponents
 {
@@ -41,9 +40,8 @@ namespace PlayerComponents
         [Space] [SerializeField] private float lightAttackTime = .5f;
         [SerializeField] private float lightAttackBuffer = .2f;
         [SerializeField] private float lightComboTime = .3f;
-
         [Space] [SerializeField] private float heavyAttackTime;
-        [SerializeField] private float heavyAttackBuffer = .2f;
+        [Space] [SerializeField] private float blockTime = 1f;
 
 
         #region Movement
@@ -83,10 +81,10 @@ namespace PlayerComponents
         public float AttackSpeedConservation => attackSpeedConservation;
         public int Damage => damage;
         public float LightAttackBuffer => lightAttackBuffer;
-        public float HeavyAttackBuffer => heavyAttackBuffer;
         public float LightAttackTime => lightAttackTime;
         public float LightComboTime => lightComboTime;
         public float HeavyAttackTime => heavyAttackTime;
+        public float BlockTime => blockTime;
 
         #endregion
     }
