@@ -22,7 +22,7 @@ namespace PlayerComponents
             var ground = new GroundState(_player, _rigidbody, _input);
             var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input);
-            var lightAttack = new LightAttackState(_player, _rigidbody);
+            var lightAttack = new LightAttackState(_player, _rigidbody, _input);
 
             stateMachine.SetState(ground);
 

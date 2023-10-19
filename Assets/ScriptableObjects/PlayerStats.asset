@@ -31,7 +31,7 @@ MonoBehaviour:
   rollAcceleration: 100
   rollSpeedConservation: 0.2
   rollTime: 0.5
-  attackSpeedConservation: 0
+  attackSpeedConservation: 0.2
   damage: 1
   lightAttackTime: 0.5
   lightAttackBuffer: 0.15

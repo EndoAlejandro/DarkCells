@@ -12,7 +12,6 @@ namespace PlayerComponents.States
         private readonly InputReader _input;
 
         private Vector2 _targetVelocity;
-        private bool _canJump;
 
         public bool CanTransitionToSelf => false;
 
@@ -26,14 +25,9 @@ namespace PlayerComponents.States
 
         public void Tick()
         {
-            /*if (_input.Jump && _canJump)
-            {
-                _canJump = false;
-                _player.Jump(ref _targetVelocity);
-            }*/
-            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
-
             _player.Move(ref _targetVelocity, _input.Movement.x);
+            
+            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
         }
 
         public void FixedTick()
@@ -44,11 +38,7 @@ namespace PlayerComponents.States
             _player.ApplyVelocity(_targetVelocity);
         }
 
-        public void OnEnter()
-        {
-            _canJump = true;
-            _targetVelocity = _rigidbody.velocity;
-        }
+        public void OnEnter() => _targetVelocity = _rigidbody.velocity;
 
         public void OnExit()
         {
