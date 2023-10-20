@@ -22,6 +22,7 @@ namespace PlayerComponents
             var ground = new GroundState(_player, _rigidbody, _input);
             var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input);
+            var crouch = new CrouchState(_player, _rigidbody);
             var attack = new AttackState(_player, _rigidbody, _input);
             var block = new BlockState(_player, _rigidbody, _input);
             // TODO: Heavy attack maybe from combo.
@@ -33,10 +34,15 @@ namespace PlayerComponents
             stateMachine.AddTransition(air, ground, () => _player.Grounded);
 
             // Roll.
-            stateMachine.AddTransition(ground, roll, () => _input.Roll);
-            stateMachine.AddTransition(air, roll, () => _input.Roll);
-            stateMachine.AddTransition(roll, ground, () => roll.Ended && _player.Grounded);
+            var toRollStates = new IState[] { ground, air, crouch };
+            stateMachine.AddManyTransitions(toRollStates, roll, () => _input.Roll);
+            stateMachine.AddTransition(roll, ground,
+                () => roll.Ended && _player.Grounded && !_player.CheckCeilingCollision());
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
+            stateMachine.AddTransition(roll, crouch,
+                () => roll.Ended && _player.Grounded && _player.CheckCeilingCollision());
+            stateMachine.AddTransition(crouch, ground, () => !_player.CheckCeilingCollision());
+
 
             // To Attack
             var toAttackStates = new IState[] { ground, air, roll };

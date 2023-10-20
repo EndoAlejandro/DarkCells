@@ -25,16 +25,17 @@ MonoBehaviour:
   fallAcceleration: 30
   jumpBuffer: 0.2
   maxFallSpeed: 10
-  jumpEndEarlyGravityModifier: 3
+  jumpEndEarlyGravityModifier: 2
   coyoteTime: 0.2
   rollMaxSpeed: 7
   rollAcceleration: 100
   rollSpeedConservation: 0.2
   rollTime: 0.5
+  ceilingDistance: 0.3
   attackSpeedConservation: 0.2
   damage: 1
   lightAttackTime: 0.5
   lightAttackBuffer: 0.15
   lightComboTime: 0.3
   heavyAttackTime: 0.5
-  heavyAttackBuffer: 0.2
+  blockTime: 0.3

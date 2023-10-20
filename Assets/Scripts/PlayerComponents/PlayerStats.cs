@@ -31,6 +31,7 @@ namespace PlayerComponents
         [SerializeField] private float rollAcceleration;
         [Range(0f, 1f)] [SerializeField] private float rollSpeedConservation;
         [SerializeField] private float rollTime;
+        [SerializeField] private float ceilingDistance;
 
         [Header("Attack")]
         [Range(0f, 1f)] [SerializeField] private float attackSpeedConservation = .1f;
@@ -73,6 +74,7 @@ namespace PlayerComponents
         public float RollAcceleration => rollAcceleration;
         public float RollSpeedConservation => rollSpeedConservation;
         public float RollTime => rollTime;
+        public float CeilingDistance => ceilingDistance;
 
         #endregion
 

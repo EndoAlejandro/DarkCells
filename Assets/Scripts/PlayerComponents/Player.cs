@@ -98,12 +98,14 @@ namespace PlayerComponents
             }
         }
 
+        public bool CheckCeilingCollision() => CheckCollisionCustomDirection(Vector2.up, Stats.CeilingDistance);
+
         public void CheckCollisions(ref Vector2 targetVelocity)
         {
             // Physics2D.queriesStartInColliders = false;
 
-            bool groundHit = CheckCollisionCustomDirection(Vector2.down);
-            bool ceilingHit = CheckCollisionCustomDirection(Vector2.up);
+            bool groundHit = CheckCollisionCustomDirection(Vector2.down,stats.GrounderDistance);
+            bool ceilingHit = CheckCollisionCustomDirection(Vector2.up,stats.GrounderDistance);
 
             if (ceilingHit) targetVelocity.y = Mathf.Min(0, targetVelocity.y);
 
@@ -121,8 +123,8 @@ namespace PlayerComponents
             // Physics2D.queriesStartInColliders = true;
         }
 
-        private bool CheckCollisionCustomDirection(Vector2 direction) => Physics2D.CapsuleCast(_collider.bounds.center,
-            _collider.size, _collider.direction, 0f, direction, stats.GrounderDistance, ~stats.Layer);
+        private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(_collider.bounds.center,
+            _collider.size, _collider.direction, 0f, direction, distance, ~stats.Layer);
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
 
@@ -154,13 +156,13 @@ namespace PlayerComponents
             if (stats == null) return;
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
 
-            Gizmos.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.down * stats.GrounderDistance);
-            Gizmos.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.up * stats.GrounderDistance);
+            Gizmos.DrawLine(_collider.bounds.max, _collider.bounds.max + Vector3.up * stats.GrounderDistance);
+            Gizmos.DrawLine(_collider.bounds.min, _collider.bounds.min + Vector3.down * stats.GrounderDistance);
         }
 
         public void DoDamage()
         {
-            throw new NotImplementedException();
+            Debug.Log("Player do damage.");
         }
     }
 }

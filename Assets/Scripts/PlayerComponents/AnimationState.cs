@@ -9,5 +9,6 @@
         HeavyAttack,
         Block,
         Parry,
+        Crouch,
     }
 }

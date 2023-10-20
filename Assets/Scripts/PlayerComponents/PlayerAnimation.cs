@@ -47,6 +47,9 @@ namespace PlayerComponents
                     HorizontalFloat();
                     VerticalFloat();
                     break;
+                case CrouchState crouchState:
+                    FlipCheck();
+                    break;
                 case RollState rollState:
                     break;
                 case AttackState lightAttackState:

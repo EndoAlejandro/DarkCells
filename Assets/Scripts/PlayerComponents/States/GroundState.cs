@@ -24,6 +24,8 @@ namespace PlayerComponents.States
 
         public void Tick()
         {
+            if (_player.CheckCeilingCollision()) return;
+
             if (_player.HasBufferedJump)
                 _player.Jump(ref _targetVelocity);
 
