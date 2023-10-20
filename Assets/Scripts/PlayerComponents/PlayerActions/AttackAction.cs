@@ -24,17 +24,17 @@ namespace PlayerComponents.PlayerActions
         protected override void UseBuffer(ref Vector2 targetVelocity)
         {
             var velocity = _rigidbody.velocity;
-            targetVelocity = new Vector2(velocity.x * Player.Stats.AttackSpeedConservation, velocity.y);
+            // targetVelocity = new Vector2(velocity.x * Player.Stats.AttackMoveVelocity, velocity.y);
 
             var centerOffset = _attackOffset.localPosition;
-            centerOffset.x *= 0.5f;
-            var origin = Player.transform.position + centerOffset;
-            var size = new Vector2(_attackOffset.position.x, _attackOffset.localPosition.y * 2);
-            var result = Physics2D.BoxCast(origin, size, 0f, Player.FacingLeft ? Vector2.left : Vector2.right, 3,
-                ~Player.Stats.Layer);
+            var direction = Player.FacingLeft ? -1 : 1;
+            centerOffset.x *= 0.5f * direction;
+            var boxSize = new Vector2(_attackOffset.localPosition.x, _attackOffset.localPosition.y * 1.9f);
 
-            if (result &&
-                result.transform.TryGetComponent(out ITakeDamage takeDamage))
+            var result = Physics2D.OverlapBox(Player.transform.position + centerOffset,
+                boxSize, 0f, ~Player.Stats.Layer);
+
+            if (result && result.transform.TryGetComponent(out ITakeDamage takeDamage))
                 takeDamage.TakeDamage(Player.Damage);
         }
     }

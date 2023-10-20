@@ -35,7 +35,7 @@ namespace PlayerComponents.States
         {
             _timer -= Time.deltaTime;
 
-            var moveMultiplier = !_player.Grounded ? _player.Stats.AttackSpeedConservation : 0f;
+            var moveMultiplier = !_player.Grounded ? _player.Stats.AttackMoveVelocity : 0f;
             _player.Move(ref _targetVelocity, _input.Movement.x * moveMultiplier);
             
             if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);

@@ -31,8 +31,8 @@ namespace PlayerComponents.States
             _timer -= Time.deltaTime;
             _comboTimer -= Time.deltaTime;
 
-            var moveMultiplier = _player.Grounded ? _player.Stats.AttackSpeedConservation : 1;
-            _player.Move(ref _targetVelocity, _input.Movement.x * moveMultiplier);
+            var moveMultiplier = _player.Grounded ? _player.Stats.AttackMoveVelocity : _player.Stats.AttackMoveVelocity;
+            _player.Move(ref _targetVelocity, (_player.FacingLeft ? -1 : 1) * moveMultiplier);
 
             if (_player.HasBufferedJump)
             {
@@ -56,6 +56,7 @@ namespace PlayerComponents.States
 
             _targetVelocity = _rigidbody.velocity;
             _player.Attack(ref _targetVelocity);
+            // _player.Move(ref _targetVelocity, *_player.Stats.AttackSpeedConservation);
         }
 
         public void OnExit()

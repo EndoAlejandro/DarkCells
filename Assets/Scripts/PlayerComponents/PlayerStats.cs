@@ -34,7 +34,7 @@ namespace PlayerComponents
         [SerializeField] private float ceilingDistance;
 
         [Header("Attack")]
-        [Range(0f, 1f)] [SerializeField] private float attackSpeedConservation = .1f;
+        [SerializeField] private float attackMoveVelocity = 0.5f;
 
         [SerializeField] private int damage;
 
@@ -80,7 +80,7 @@ namespace PlayerComponents
 
         #region Attack
 
-        public float AttackSpeedConservation => attackSpeedConservation;
+        public float AttackMoveVelocity => attackMoveVelocity;
         public int Damage => damage;
         public float LightAttackBuffer => lightAttackBuffer;
         public float LightAttackTime => lightAttackTime;

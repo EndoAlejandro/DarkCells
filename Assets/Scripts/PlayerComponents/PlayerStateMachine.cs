@@ -29,7 +29,7 @@ namespace PlayerComponents
 
             stateMachine.SetState(ground);
 
-            // Locomotion
+            // Locomotion.
             stateMachine.AddTransition(ground, air, () => !_player.Grounded);
             stateMachine.AddTransition(air, ground, () => _player.Grounded);
 
@@ -41,21 +41,24 @@ namespace PlayerComponents
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
             stateMachine.AddTransition(roll, crouch,
                 () => roll.Ended && _player.Grounded && _player.CheckCeilingCollision());
+
+            // Crouch.
             stateMachine.AddTransition(crouch, ground, () => !_player.CheckCeilingCollision());
 
-
-            // To Attack
+            // Attack.
             var toAttackStates = new IState[] { ground, air, roll };
             stateMachine.AddManyTransitions(toAttackStates, attack, () => _player.HasBufferedLightAttack);
             stateMachine.AddTransition(attack, attack,
                 () => _player.HasBufferedLightAttack && attack.CanCombo);
             stateMachine.AddTransition(attack, ground, () => attack.Ended);
+            stateMachine.AddTransition(attack, air, () => attack.Ended && !_player.Grounded);
 
             // Block.
             var toBlockStates = new IState[] { ground, air, roll };
             stateMachine.AddManyTransitions(toBlockStates, block, () => _input.BlockHold);
             stateMachine.AddTransition(block, ground, () => !_input.BlockHold && block.Ended);
             stateMachine.AddTransition(block, air, () => _player.HasBufferedJump && block.Ended);
+            stateMachine.AddTransition(block, attack, () => _player.HasBufferedLightAttack);
         }
     }
 }
