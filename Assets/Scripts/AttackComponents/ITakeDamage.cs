@@ -4,7 +4,7 @@
     {
         int Health { get; }
         bool IsAlive => Health > 0f;
-        void TakeDamage(int damage);
+        void TakeDamage(IDoDamage damageDealer);
         void Death();
     }
 }

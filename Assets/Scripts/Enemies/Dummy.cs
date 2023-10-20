@@ -1,3 +1,4 @@
+using System;
 using AttackComponents;
 using UnityEngine;
 
@@ -6,16 +7,28 @@ namespace Enemies
     public class Dummy : MonoBehaviour, ITakeDamage
     {
         [SerializeField] private int maxHealth;
+        [SerializeField] private float knockBackForce = 2f;
+
+        public event Action<IDoDamage> OnTakeDamage;
+        
+        private Rigidbody2D _rigidbody;
+
         public int Health { get; private set; }
 
-        private void Awake() => Health = maxHealth;
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            Health = maxHealth;
+        }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(IDoDamage damageDealer)
         {
             if (Health < 0) return;
 
-            Health -= damage;
-            Debug.Log($"Damage:{damage} || Health:{Health}");
+            Health -= damageDealer.Damage;
+            var dif = Mathf.Sign(transform.position.x - damageDealer.transform.position.x);
+            _rigidbody.AddForce(new Vector2(dif * knockBackForce, 1f), ForceMode2D.Force);
+            Debug.Log($"Damage:{damageDealer.Damage} || Health:{Health}");
             if (Health <= 0f) Death();
         }
 

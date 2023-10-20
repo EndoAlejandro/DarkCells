@@ -405,10 +405,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDrag: 0
+  m_Mass: 50
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4e10a663634ba6949a099d617fc9eb37, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
+  knockBackForce: 2
 --- !u!1 &358447311
 GameObject:
   m_ObjectHideFlags: 0

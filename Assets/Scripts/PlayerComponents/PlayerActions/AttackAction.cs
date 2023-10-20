@@ -35,7 +35,7 @@ namespace PlayerComponents.PlayerActions
                 boxSize, 0f, ~Player.Stats.Layer);
 
             if (result && result.transform.TryGetComponent(out ITakeDamage takeDamage))
-                takeDamage.TakeDamage(Player.Damage);
+                takeDamage.TakeDamage(Player);
         }
     }
 }
