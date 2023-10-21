@@ -27,6 +27,7 @@ namespace PlayerComponents
             var block = new BlockState(_player, _rigidbody, _input);
             // TODO: Heavy attack maybe from combo.
 
+            // Initial State.
             stateMachine.SetState(ground);
 
             // Locomotion.
