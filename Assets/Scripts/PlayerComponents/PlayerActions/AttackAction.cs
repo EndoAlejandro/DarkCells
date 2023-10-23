@@ -8,8 +8,9 @@ namespace PlayerComponents.PlayerActions
     public class AttackAction : BufferedAction
     {
         private readonly Transform _attackOffset;
-
         private readonly Rigidbody2D _rigidbody;
+        protected override bool InputTrigger => InputReader.Attack;
+        protected override float BufferTime => Player.Stats.LightAttackBuffer;
 
         public AttackAction(Player player, Rigidbody2D rigidbody, Transform attackOffset, InputReader inputReader) :
             base(player, inputReader)
@@ -17,9 +18,6 @@ namespace PlayerComponents.PlayerActions
             _rigidbody = rigidbody;
             _attackOffset = attackOffset;
         }
-
-        protected override bool InputTrigger => InputReader.Attack;
-        protected override float BufferTime => Player.Stats.LightAttackBuffer;
 
         protected override void UseBuffer(ref Vector2 targetVelocity)
         {

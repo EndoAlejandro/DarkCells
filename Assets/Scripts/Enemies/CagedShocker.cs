@@ -8,6 +8,7 @@ namespace Enemies
     [RequireComponent(typeof(Rigidbody2D))]
     public class CagedShocker : MonoBehaviour, IDoDamage, ITakeDamage
     {
+        [SerializeField] private float idleTime = 1f;
         [SerializeField] private int damage = 1;
         [SerializeField] private int maxHealth = 10;
         [SerializeField] private float gravity;
@@ -15,16 +16,20 @@ namespace Enemies
         [SerializeField] private float maxFallSpeed;
         [SerializeField] private float maxSpeed;
 
+        [SerializeField] private Vector2 offset;
         [SerializeField] private float groundOffset;
         [SerializeField] private float groundCheckDistance;
+        [SerializeField] private float wallDistanceCheck;
         [SerializeField] private LayerMask groundLayerMask;
 
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
 
+        public float IdleTime => idleTime;
         public int Damage => damage;
         public int Health { get; private set; }
         public bool Grounded { get; private set; }
+        public bool FacingLeft { get; private set; }
 
         private void Awake()
         {
@@ -36,15 +41,23 @@ namespace Enemies
 
         public void CheckGrounded(out bool leftFoot, out bool rightFoot)
         {
-            var leftFootPosition = new Vector2(transform.position.x + _collider.bounds.min.x, transform.position.y);
-            leftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * groundOffset, Vector2.down,
+            var leftFootPosition = new Vector2(_collider.bounds.min.x - offset.x, transform.position.y);
+            leftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * offset.y, Vector2.down,
                 groundOffset + groundCheckDistance, groundLayerMask);
 
-            var rightFootPosition = new Vector2(transform.position.x + _collider.bounds.max.x, transform.position.y);
-            rightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * groundOffset, Vector2.down,
+            var rightFootPosition = new Vector2(_collider.bounds.max.x + offset.x, transform.position.y);
+            rightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * offset.y, Vector2.down,
                 groundOffset + groundCheckDistance, groundLayerMask);
 
             Grounded = leftFoot || rightFoot;
+        }
+
+        public void CheckWallCollisions(out bool facingWall)
+        {
+            var origin = new Vector2(FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x,
+                _collider.bounds.center.y);
+            var direction = FacingLeft ? Vector2.left : Vector2.right;
+            facingWall = Physics2D.Raycast(origin, direction, wallDistanceCheck, groundLayerMask);
         }
 
         public void Move(ref Vector2 targetVelocity, int direction)
@@ -83,18 +96,28 @@ namespace Enemies
         {
         }
 
+        public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / maxSpeed;
+        public void SetFacingLeft(bool value) => FacingLeft = value;
+
         private void OnDrawGizmos()
         {
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
 
             Gizmos.color = Color.magenta;
-            
-            var offset = Vector3.up * groundOffset;
+
+            // Ground Rays
+            var offset = Vector3.up * this.offset.y;
             var distance = Vector3.down * (groundOffset + groundCheckDistance);
-            var leftFootPosition = new Vector3(_collider.bounds.min.x, transform.position.y);
+            var leftFootPosition = new Vector3(_collider.bounds.min.x - this.offset.x, transform.position.y);
             Gizmos.DrawLine(leftFootPosition + offset, leftFootPosition + offset + distance);
-            var rightFootPosition = new Vector3(_collider.bounds.max.x, transform.position.y);
+            var rightFootPosition = new Vector3(_collider.bounds.max.x + this.offset.x, transform.position.y);
             Gizmos.DrawLine(rightFootPosition + offset, rightFootPosition + offset + distance);
+
+            // Wall Rays
+            var origin = new Vector2(FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x,
+                _collider.bounds.center.y);
+            var direction = FacingLeft ? Vector2.left : Vector2.right;
+            Gizmos.DrawLine(origin, origin + (direction * wallDistanceCheck));
         }
     }
 }

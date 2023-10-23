@@ -1,15 +1,21 @@
-﻿using StateMachineComponents;
+﻿using CustomUtils;
+using StateMachineComponents;
 using UnityEngine;
+using AnimationState = PlayerComponents.AnimationState;
 
 namespace Enemies.CagedShockerStates
 {
     public class IdleState : IState
     {
+        public override string ToString() => AnimationState.Ground.ToString();
+
         private readonly CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
-        public bool CanTransitionToSelf => false;
-
+        private float _timer;
         private Vector2 _targetVelocity;
+
+        public bool CanTransitionToSelf => false;
+        public bool Ended => _timer <= 0f;
 
         public IdleState(CagedShocker cagedShocker, Rigidbody2D rigidbody)
         {
@@ -17,12 +23,11 @@ namespace Enemies.CagedShockerStates
             _rigidbody = rigidbody;
         }
 
-        public void Tick()
-        {
-        }
+        public void Tick() => _timer -= Time.deltaTime;
 
         public void FixedTick()
         {
+            _cagedShocker.Move(ref _targetVelocity, 0);
             _cagedShocker.CheckGrounded(out bool leftFoot, out bool rightFoot);
 
             _cagedShocker.CustomGravity(ref _targetVelocity);
@@ -31,11 +36,10 @@ namespace Enemies.CagedShockerStates
 
         public void OnEnter()
         {
-            _targetVelocity = Vector2.zero;
+            _targetVelocity = _rigidbody.velocity.With(x: _rigidbody.velocity.x * 0.2f);
+            _timer = _cagedShocker.IdleTime;
         }
 
-        public void OnExit()
-        {
-        }
+        public void OnExit() => _timer = 0f;
     }
 }
