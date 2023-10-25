@@ -55,6 +55,7 @@ namespace Enemies
 
         public void CheckWallCollisions(out bool facingWall)
         {
+            Physics2D.queriesStartInColliders = false;
             facingWall = false;
 
             float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;

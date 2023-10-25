@@ -102,7 +102,7 @@ namespace PlayerComponents
 
         public void CheckCollisions(ref Vector2 targetVelocity)
         {
-            // Physics2D.queriesStartInColliders = false;
+            Physics2D.queriesStartInColliders = false;
 
             bool groundHit = CheckCollisionCustomDirection(Vector2.down,stats.GrounderDistance);
             bool ceilingHit = CheckCollisionCustomDirection(Vector2.up,stats.GrounderDistance);
