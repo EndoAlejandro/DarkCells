@@ -1,10 +1,9 @@
-using System;
 using AttackComponents;
 using UnityEngine;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(CapsuleCollider2D))]
+    [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class CagedShocker : MonoBehaviour, IDoDamage, ITakeDamage
     {
@@ -20,6 +19,8 @@ namespace Enemies
         [SerializeField] private float groundOffset;
         [SerializeField] private float groundCheckDistance;
         [SerializeField] private float wallDistanceCheck;
+        [SerializeField] private float wallCheckTopOffset;
+        [SerializeField] private float wallCheckBottomOffset;
         [SerializeField] private LayerMask groundLayerMask;
 
         private Collider2D _collider;
@@ -54,11 +55,28 @@ namespace Enemies
 
         public void CheckWallCollisions(out bool facingWall)
         {
-            var origin = new Vector2(FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x,
-                _collider.bounds.center.y);
+            facingWall = false;
+
+            float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
-            facingWall = Physics2D.Raycast(origin, direction, wallDistanceCheck, groundLayerMask);
+
+            // Center Check.
+            var origin = new Vector2(horizontal, _collider.bounds.center.y);
+            facingWall = WallRayCast(origin, direction);
+            if (facingWall) return;
+
+            // Top Check.
+            origin.y = _collider.bounds.max.y - wallCheckTopOffset;
+            facingWall = WallRayCast(origin, direction);
+            if (facingWall) return;
+
+            // Bottom Check.
+            origin.y = _collider.bounds.min.y + wallCheckBottomOffset;
+            facingWall = WallRayCast(origin, direction);
         }
+
+        private bool WallRayCast(Vector2 origin, Vector2 direction) =>
+            Physics2D.Raycast(origin, direction, wallDistanceCheck, groundLayerMask);
 
         public void Move(ref Vector2 targetVelocity, int direction)
         {
@@ -105,19 +123,28 @@ namespace Enemies
 
             Gizmos.color = Color.magenta;
 
-            // Ground Rays
+            // Ground Rays.
             var offset = Vector3.up * this.offset.y;
             var distance = Vector3.down * (groundOffset + groundCheckDistance);
+            // Left Foot.
             var leftFootPosition = new Vector3(_collider.bounds.min.x - this.offset.x, transform.position.y);
             Gizmos.DrawLine(leftFootPosition + offset, leftFootPosition + offset + distance);
+            // Right Foot.
             var rightFootPosition = new Vector3(_collider.bounds.max.x + this.offset.x, transform.position.y);
             Gizmos.DrawLine(rightFootPosition + offset, rightFootPosition + offset + distance);
 
-            // Wall Rays
-            var origin = new Vector2(FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x,
-                _collider.bounds.center.y);
+            // Wall Rays.
+            float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
-            Gizmos.DrawLine(origin, origin + (direction * wallDistanceCheck));
+            // Top Ray.
+            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y - wallCheckTopOffset);
+            Gizmos.DrawLine(topOrigin, topOrigin + (direction * wallDistanceCheck));
+            // Middle Ray.
+            var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y);
+            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * wallDistanceCheck));
+            // Bottom Ray.
+            Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + wallCheckBottomOffset);
+            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * wallDistanceCheck));
         }
     }
 }
