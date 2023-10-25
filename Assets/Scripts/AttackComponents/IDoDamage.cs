@@ -6,6 +6,6 @@ namespace AttackComponents
     {
         Transform transform { get; }
         int Damage { get; }
-        void DoDamage();
+        void DoDamage(ITakeDamage takeDamage);
     }
 }

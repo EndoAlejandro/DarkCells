@@ -101,15 +101,8 @@ namespace Enemies
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
 
-        public void DoDamage()
-        {
-            // TODO: Do damage.
-        }
-
-        public void TakeDamage(IDoDamage damageDealer)
-        {
-            Health -= damageDealer.Damage;
-        }
+        public void DoDamage(ITakeDamage takeDamage) => Debug.Log($"Enemy do damage to {takeDamage.transform.name}");
+        public void TakeDamage(int damage, Vector2 damageSource) => Health -= damage;
 
         public void Death()
         {

@@ -21,14 +21,14 @@ namespace Enemies
             Health = maxHealth;
         }
 
-        public void TakeDamage(IDoDamage damageDealer)
+        public void TakeDamage(int damage, Vector2 damageSource)
         {
             if (Health < 0) return;
 
-            Health -= damageDealer.Damage;
-            var dif = Mathf.Sign(transform.position.x - damageDealer.transform.position.x);
+            Health -= damage;
+            var dif = Mathf.Sign(transform.position.x - damageSource.x);
             _rigidbody.AddForce(new Vector2(dif * knockBackForce, 1f), ForceMode2D.Force);
-            Debug.Log($"Damage:{damageDealer.Damage} || Health:{Health}");
+            Debug.Log($"Damage:{damage} || Health:{Health}");
             if (Health <= 0f) Death();
         }
 

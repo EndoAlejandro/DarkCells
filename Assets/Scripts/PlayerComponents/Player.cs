@@ -160,9 +160,9 @@ namespace PlayerComponents
             Gizmos.DrawLine(_collider.bounds.min, _collider.bounds.min + Vector3.down * stats.GrounderDistance);
         }
 
-        public void DoDamage()
+        public void DoDamage(ITakeDamage takeDamage)
         {
-            Debug.Log("Player do damage.");
+            Debug.Log($"Player do damage to {takeDamage.transform.name}");
         }
     }
 }
