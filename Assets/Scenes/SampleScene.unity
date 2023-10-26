@@ -3691,7 +3691,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 372129beb35272e4caf6b839e80e0ed7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4416,6 +4416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca859410c07fd4ebbc595c65383ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAnimationDuration: 0.5
 --- !u!95 &814651789
 Animator:
   serializedVersion: 5
@@ -4530,6 +4531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f5a4094f242eb4d86d878600337fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: d456e8f68824cff4ca6a19a58d914b15, type: 2}
   idleTime: 1
   damage: 1
   maxHealth: 10

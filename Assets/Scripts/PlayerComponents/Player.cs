@@ -162,6 +162,7 @@ namespace PlayerComponents
 
         public void DoDamage(ITakeDamage takeDamage)
         {
+            takeDamage.TakeDamage(Damage, transform.position);
             Debug.Log($"Player do damage to {takeDamage.transform.name}");
         }
     }

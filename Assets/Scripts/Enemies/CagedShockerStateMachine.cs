@@ -19,6 +19,7 @@ namespace Enemies
         {
             var idle = new IdleState(_cagedShocker, _rigidbody);
             var patrol = new PatrolState(_cagedShocker, _rigidbody);
+            var chase = new ChaseState(_cagedShocker, _rigidbody);
 
             // Initial State.
             stateMachine.SetState(idle);

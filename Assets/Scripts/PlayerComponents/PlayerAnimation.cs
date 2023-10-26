@@ -1,8 +1,7 @@
 using System;
 using PlayerComponents.States;
-using Unity.VisualScripting;
+using StateMachineComponents;
 using UnityEngine;
-using IState = StateMachineComponents.IState;
 
 namespace PlayerComponents
 {
@@ -20,6 +19,8 @@ namespace PlayerComponents
         private Player _player;
 
         private IState _previousState;
+
+        public event Action OnAttackPerformed; 
 
         private void Awake()
         {
@@ -65,6 +66,8 @@ namespace PlayerComponents
             if (_inputReader.Movement.x == 0) return;
             _player.SetFacingLeft(_inputReader.Movement.x < 0);
         }
+
+        private void PerformAttack() => OnAttackPerformed?.Invoke();
 
         private void HorizontalFloat() =>
             _animator.SetFloat(Horizontal, Mathf.Abs(_player.GetNormalizedHorizontal()));

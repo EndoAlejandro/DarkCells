@@ -31,13 +31,12 @@ namespace Enemies.CagedShockerStates
 
         public void Tick()
         {
-            _timer -= Time.deltaTime;
             _direction = _cagedShocker.FacingLeft ? -1 : 1;
 
             if (!_leftFoot && _rightFoot) Ended = _cagedShocker.FacingLeft;
             else if (_leftFoot && !_rightFoot) Ended = !_cagedShocker.FacingLeft;
 
-            if (_timer <= 0f || _facingWall) Ended = true;
+            if (_facingWall) Ended = true;
         }
 
         public void FixedTick()

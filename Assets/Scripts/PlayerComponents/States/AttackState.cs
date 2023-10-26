@@ -10,6 +10,7 @@ namespace PlayerComponents.States
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _input;
+        private readonly PlayerAnimation _animation;
 
         private float _timer;
         private float _comboTimer;
@@ -19,12 +20,15 @@ namespace PlayerComponents.States
         public bool CanCombo => _comboTimer <= 0f;
         public bool CanTransitionToSelf => true;
 
-        public AttackState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public AttackState(Player player, Rigidbody2D rigidbody, InputReader input, PlayerAnimation animation)
         {
             _player = player;
             _rigidbody = rigidbody;
             _input = input;
+            _animation = animation;
         }
+
+        private void AnimationOnAttackPerformed() => _player.Attack(ref _targetVelocity);
 
         public void Tick()
         {
@@ -51,16 +55,13 @@ namespace PlayerComponents.States
 
         public void OnEnter()
         {
+            _animation.OnAttackPerformed += AnimationOnAttackPerformed;
+            
             _timer = _player.Stats.LightAttackTime;
             _comboTimer = _player.Stats.LightComboTime;
-
             _targetVelocity = _rigidbody.velocity;
-            _player.Attack(ref _targetVelocity);
-            // _player.Move(ref _targetVelocity, *_player.Stats.AttackSpeedConservation);
         }
 
-        public void OnExit()
-        {
-        }
+        public void OnExit() => _animation.OnAttackPerformed -= AnimationOnAttackPerformed;
     }
 }

@@ -7,11 +7,13 @@ namespace PlayerComponents
     public class PlayerStateMachine : FiniteStateBehaviour
     {
         private Player _player;
+        private PlayerAnimation _animation;
         private Rigidbody2D _rigidbody;
         private InputReader _input;
 
         protected override void References()
         {
+            _animation = GetComponentInChildren<PlayerAnimation>();
             _player = GetComponent<Player>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _input = GetComponent<InputReader>();
@@ -23,7 +25,7 @@ namespace PlayerComponents
             var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input);
             var crouch = new CrouchState(_player, _rigidbody);
-            var attack = new AttackState(_player, _rigidbody, _input);
+            var attack = new AttackState(_player, _rigidbody, _input, _animation);
             var block = new BlockState(_player, _rigidbody, _input);
             // TODO: Heavy attack maybe from combo.
 
