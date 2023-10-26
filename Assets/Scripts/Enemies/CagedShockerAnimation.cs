@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using StateMachineComponents;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace Enemies
+namespace DarkHavoc.Enemies
 {
     public class CagedShockerAnimation : MonoBehaviour
     {
@@ -18,6 +18,9 @@ namespace Enemies
 
         private MaterialPropertyBlock _materialPb;
         private IEnumerator _hitAnimation;
+        private IState _previousState;
+
+        public event Action OnAttackPerformed;
 
         private void Awake()
         {
@@ -41,8 +44,15 @@ namespace Enemies
             _cagedShocker.OnTakeDamage += CagedShockerOnTakeDamage;
         }
 
-        private void CagedShockerStateMachineOnEntityStateChanged(IState state) =>
-            _animator.SetTrigger(state.ToString());
+        private void CagedShockerStateMachineOnEntityStateChanged(IState state)
+        {
+            if (_previousState != null) _animator.ResetTrigger(_previousState.Animation.ToString());
+
+            _animator.SetTrigger(state.Animation.ToString());
+            _previousState = state;
+        }
+
+        private void PerformAttack() => OnAttackPerformed?.Invoke();
 
         private void CagedShockerOnTakeDamage()
         {

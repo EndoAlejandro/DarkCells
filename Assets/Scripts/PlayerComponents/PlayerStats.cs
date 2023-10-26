@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerComponents
+namespace DarkHavoc.PlayerComponents
 {
     [CreateAssetMenu(menuName = "Custom/PlayerStats", fileName = "NewPlayerStats")]
     public class PlayerStats : ScriptableObject

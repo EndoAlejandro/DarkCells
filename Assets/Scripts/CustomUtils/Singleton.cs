@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CustomUtils
+namespace DarkHavoc.CustomUtils
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {

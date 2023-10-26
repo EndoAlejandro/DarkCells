@@ -1,7 +1,10 @@
-namespace StateMachineComponents
+using DarkHavoc.PlayerComponents;
+
+namespace DarkHavoc.StateMachineComponents
 {
     public interface IState
     {
+        AnimationState Animation { get; }
         bool CanTransitionToSelf { get; }
         /// <summary>
         /// Called each Update.

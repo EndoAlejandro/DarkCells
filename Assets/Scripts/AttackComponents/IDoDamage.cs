@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AttackComponents
+namespace DarkHavoc.AttackComponents
 {
     public interface IDoDamage
     {

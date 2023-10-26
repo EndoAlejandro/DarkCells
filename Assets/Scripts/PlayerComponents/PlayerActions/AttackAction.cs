@@ -1,8 +1,8 @@
 ﻿using System;
-using AttackComponents;
+using DarkHavoc.AttackComponents;
 using UnityEngine;
 
-namespace PlayerComponents.PlayerActions
+namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     [Serializable]
     public class AttackAction : BufferedAction

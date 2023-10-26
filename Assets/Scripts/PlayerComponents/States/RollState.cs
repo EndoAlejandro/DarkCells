@@ -1,11 +1,12 @@
-﻿using StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents.States
+namespace DarkHavoc.PlayerComponents.States
 {
     public class RollState : IState
     {
-        public override string ToString() => AnimationState.Roll.ToString();
+        public override string ToString() => "Roll";
+        public AnimationState Animation  => AnimationState.Roll;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

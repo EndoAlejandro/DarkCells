@@ -1,20 +1,19 @@
-﻿using Unity.VisualScripting;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = PlayerComponents.AnimationState;
-using IState = StateMachineComponents.IState;
+using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShockerStates
 {
     public class PatrolState : IState
     {
-        public override string ToString() => AnimationState.Ground.ToString();
+        public override string ToString() => "Patrol";
+        public AnimationState Animation  => AnimationState.Ground;
 
         private readonly CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
 
         private Vector2 _targetVelocity;
         private int _direction;
-        private float _timer;
 
         private bool _facingWall;
         private bool _rightFoot;
@@ -31,6 +30,8 @@ namespace Enemies.CagedShockerStates
 
         public void Tick()
         {
+            _cagedShocker.SeekPlayer();
+
             _direction = _cagedShocker.FacingLeft ? -1 : 1;
 
             if (!_leftFoot && _rightFoot) Ended = _cagedShocker.FacingLeft;
@@ -61,13 +62,9 @@ namespace Enemies.CagedShockerStates
             _facingWall = false;
 
             Ended = false;
-            _timer = 5f;
             _targetVelocity = Vector2.zero;
         }
 
-        public void OnExit()
-        {
-            _timer = 0f;
-        }
+        public void OnExit() => Ended = false;
     }
 }

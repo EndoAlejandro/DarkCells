@@ -1,8 +1,8 @@
 using System;
-using AttackComponents;
+using DarkHavoc.AttackComponents;
 using UnityEngine;
 
-namespace Enemies
+namespace DarkHavoc.Enemies
 {
     public class Dummy : MonoBehaviour, ITakeDamage
     {

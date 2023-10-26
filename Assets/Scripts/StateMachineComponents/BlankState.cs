@@ -1,9 +1,12 @@
-﻿namespace StateMachineComponents
+﻿using DarkHavoc.PlayerComponents;
+
+namespace DarkHavoc.StateMachineComponents
 {
     public class BlankState : IState
     {
         public override string ToString() => "Idle";
 
+        public AnimationState Animation  => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
 
         public void Tick()

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CustomUtils
+namespace DarkHavoc.CustomUtils
 {
     public static class ListExtensions
     {

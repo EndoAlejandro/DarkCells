@@ -1,11 +1,12 @@
-﻿using StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents.States
+namespace DarkHavoc.PlayerComponents.States
 {
     public class CrouchState : IState
     {
-        public override string ToString() => AnimationState.Crouch.ToString();
+        public override string ToString() => "Crouch";
+        public AnimationState Animation  => AnimationState.Crouch;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

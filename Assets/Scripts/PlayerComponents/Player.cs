@@ -1,14 +1,14 @@
 using System;
-using AttackComponents;
-using PlayerComponents.PlayerActions;
+using DarkHavoc.AttackComponents;
+using DarkHavoc.PlayerComponents.PlayerActions;
 using UnityEngine;
 
-namespace PlayerComponents
+namespace DarkHavoc.PlayerComponents
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerStateMachine))]
     [RequireComponent(typeof(CapsuleCollider2D))]
-    public class Player : MonoBehaviour, IDoDamage
+    public class Player : MonoBehaviour, IDoDamage, IEntity
     {
         public event Action OnAttackBlocked;
         public event Action<bool> OnGroundedChanged;
@@ -16,6 +16,7 @@ namespace PlayerComponents
         [SerializeField] private PlayerStats stats;
 
         [SerializeField] private Transform attackOffset;
+        [SerializeField] private Transform midPoint;
 
         [SerializeField] private CapsuleCollider2D defaultCollider;
         [SerializeField] private CapsuleCollider2D rollCollider;
@@ -38,6 +39,7 @@ namespace PlayerComponents
 
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
+        public Vector3 MidPoint => midPoint.position;
         public int Damage => Stats != null ? Stats.Damage : 0;
 
         private void Awake()

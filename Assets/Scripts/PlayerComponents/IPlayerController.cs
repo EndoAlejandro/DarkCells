@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-public interface IPlayerController
+namespace DarkHavoc.PlayerComponents
 {
-    public event Action<bool, float> GroundedChanged;
+    public interface IPlayerController
+    {
+        public event Action<bool, float> GroundedChanged;
 
-    public event Action Jumped;
-    public Vector2 FrameInput { get; }
+        public event Action Jumped;
+        public Vector2 FrameInput { get; }
+    }
 }

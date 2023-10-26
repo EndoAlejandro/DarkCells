@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     public class StateTransition {
         public readonly IState from;

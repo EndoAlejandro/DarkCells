@@ -18,6 +18,7 @@ MonoBehaviour:
   acceleration: 10
   maxFallSpeed: 5
   maxSpeed: 1.5
+  chaseStoppingDistance: 0.5
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 393
@@ -28,3 +29,12 @@ MonoBehaviour:
   wallCheckTopOffset: 0.3
   wallCheckBottomOffset: 0.3
   damage: 1
+  firstAttackTime: 1.5
+  secondAttackTime: 0.5
+  detectionDistance: 7
+  scapeDistance: 10
+  comboTime: 1
+  restTime: 0.75
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 0

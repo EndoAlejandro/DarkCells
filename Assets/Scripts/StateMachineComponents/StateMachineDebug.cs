@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     public class StateMachineDebug : MonoBehaviour
     {

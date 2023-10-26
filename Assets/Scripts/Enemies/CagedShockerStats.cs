@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace DarkHavoc.Enemies
 {
     [CreateAssetMenu(menuName = "Custom/CagedShockerStats", fileName = "NewCagedShockerStats")]
     public class CagedShockerStats : ScriptableObject
@@ -15,6 +15,7 @@ namespace Enemies
         [SerializeField] private float acceleration = 10f;
         [SerializeField] private float maxFallSpeed = 5f;
         [SerializeField] private float maxSpeed = 1.5f;
+        [SerializeField] private float chaseStoppingDistance = .35f;
 
         [Header("Environment Check")]
         [SerializeField] private LayerMask groundLayerMask;
@@ -28,6 +29,14 @@ namespace Enemies
 
         [Header("Attack")]
         [SerializeField] private int damage = 1;
+
+        [SerializeField] private float firstAttackTime = .11f;
+        [SerializeField] private float secondAttackTime = .05f;
+        [SerializeField] private float detectionDistance = 7f;
+        [SerializeField] private float scapeDistance = 10f;
+        [SerializeField] private float comboTime = 0.05f;
+        [SerializeField] private float restTime = 1f;
+        [SerializeField] private LayerMask attackLayer;
 
         #region Stats
 
@@ -46,6 +55,7 @@ namespace Enemies
         public float MaxFallSpeed => maxFallSpeed;
 
         public float MaxSpeed => maxSpeed;
+        public float ChaseStoppingDistance => chaseStoppingDistance;
 
         #endregion
 
@@ -70,6 +80,13 @@ namespace Enemies
         #region Attack
 
         public int Damage => damage;
+        public float FirstAttackTime => firstAttackTime;
+        public float SecondAttackTime => secondAttackTime;
+        public float DetectionDistance => detectionDistance;
+        public float ScapeDistance => scapeDistance;
+        public LayerMask AttackLayer => attackLayer;
+        public float ComboTime => comboTime;
+        public float RestTime => restTime;
 
         #endregion
     }

@@ -1,11 +1,12 @@
-﻿using StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents.States
+namespace DarkHavoc.PlayerComponents.States
 {
     public class AirState : IState
     {
-        public override string ToString() => AnimationState.Air.ToString();
+        public override string ToString() => "Air";
+        public AnimationState Animation  => AnimationState.Air;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

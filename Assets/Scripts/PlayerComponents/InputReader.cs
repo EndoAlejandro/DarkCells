@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerComponents
+namespace DarkHavoc.PlayerComponents
 {
     public class InputReader : MonoBehaviour
     {

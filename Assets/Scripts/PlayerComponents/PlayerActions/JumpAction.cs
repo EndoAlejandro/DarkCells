@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace PlayerComponents.PlayerActions
+namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     [Serializable]
     public class JumpAction : BufferedAction

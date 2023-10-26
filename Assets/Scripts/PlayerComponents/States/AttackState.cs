@@ -1,11 +1,12 @@
-﻿using StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents.States
+namespace DarkHavoc.PlayerComponents.States
 {
     public class AttackState : IState
     {
-        public override string ToString() => AnimationState.LightAttack.ToString();
+        public override string ToString() => "Attack";
+        public AnimationState Animation  => AnimationState.LightAttack;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

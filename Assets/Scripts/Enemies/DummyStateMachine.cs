@@ -1,7 +1,8 @@
-﻿using AttackComponents;
-using StateMachineComponents;
+﻿using DarkHavoc.AttackComponents;
+using DarkHavoc.PlayerComponents;
+using DarkHavoc.StateMachineComponents;
 
-namespace Enemies
+namespace DarkHavoc.Enemies
 {
     public class DummyStateMachine : FiniteStateBehaviour
     {
@@ -32,6 +33,7 @@ namespace Enemies
             
         }
 
+        public AnimationState Animation  => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
 
         public void Tick()

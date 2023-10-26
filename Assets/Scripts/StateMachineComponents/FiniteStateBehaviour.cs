@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     /// <summary>
     /// Base for using the basic configuration to work with a state machine.

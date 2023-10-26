@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
-public struct FrameInput
+namespace DarkHavoc.PlayerComponents
 {
-    public bool JumpDown;
-    public bool JumpHeld;
-    public Vector2 Move;
+    public struct FrameInput
+    {
+        public bool JumpDown;
+        public bool JumpHeld;
+        public Vector2 Move;
+    }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     public abstract class StateTimer
     {

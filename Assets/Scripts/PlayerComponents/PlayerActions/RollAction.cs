@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerComponents.PlayerActions
+namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     public class RollAction : BufferedAction
     {

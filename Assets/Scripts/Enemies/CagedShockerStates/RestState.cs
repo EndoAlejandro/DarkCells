@@ -1,27 +1,28 @@
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.StateMachineComponents
+namespace DarkHavoc.Enemies.CagedShockerStates
 {
-    public class SampleState : IState
+    public class RestState : IState
     {
+        public override string ToString() => "Rest";
         public AnimationState Animation => AnimationState.Ground;
-        private readonly float _transitionTime;
+
+        private readonly float _restTime;
         private float _timer;
 
-        public bool TransitionEnded => _timer <= 0f;
         public bool CanTransitionToSelf => false;
+        public bool Ended => _timer <= 0f;
 
-        public SampleState(float transitionTime) => _transitionTime = transitionTime;
-
+        public RestState(float restTime) => _restTime = restTime;
         public void Tick() => _timer -= Time.deltaTime;
 
         public void FixedTick()
         {
         }
 
-        public void OnEnter() => _timer = _transitionTime;
-
+        public void OnEnter() => _timer = _restTime;
         public void OnExit() => _timer = 0f;
     }
 }

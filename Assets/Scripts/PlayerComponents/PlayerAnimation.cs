@@ -1,9 +1,9 @@
 using System;
-using PlayerComponents.States;
-using StateMachineComponents;
+using DarkHavoc.PlayerComponents.States;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents
+namespace DarkHavoc.PlayerComponents
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
@@ -20,7 +20,7 @@ namespace PlayerComponents
 
         private IState _previousState;
 
-        public event Action OnAttackPerformed; 
+        public event Action OnAttackPerformed;
 
         private void Awake()
         {
@@ -77,9 +77,9 @@ namespace PlayerComponents
 
         private void PlayerStateMachineOnEntityStateChanged(IState state)
         {
-            if (_previousState != null) _animator.ResetTrigger(_previousState.ToString());
+            if (_previousState != null) _animator.ResetTrigger(_previousState.Animation.ToString());
 
-            _animator.SetTrigger(state.ToString());
+            _animator.SetTrigger(state.Animation.ToString());
             _previousState = state;
         }
     }

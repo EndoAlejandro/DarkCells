@@ -1,14 +1,15 @@
-﻿using CustomUtils;
-using StateMachineComponents;
+﻿using DarkHavoc.CustomUtils;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = PlayerComponents.AnimationState;
+using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShockerStates
 {
     public class IdleState : IState
     {
-        public override string ToString() => AnimationState.Ground.ToString();
-
+        public override string ToString() => "Grounded";
+        public AnimationState Animation  => AnimationState.Ground;
+        
         private readonly CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
         private float _timer;
@@ -23,7 +24,13 @@ namespace Enemies.CagedShockerStates
             _rigidbody = rigidbody;
         }
 
-        public void Tick() => _timer -= Time.deltaTime;
+        public void Tick()
+        {
+            _timer -= Time.deltaTime;
+
+            var result = _cagedShocker.SeekPlayer();
+            Debug.Log(result);
+        }
 
         public void FixedTick()
         {

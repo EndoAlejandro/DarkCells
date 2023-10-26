@@ -1,11 +1,12 @@
-﻿using StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents.States
+namespace DarkHavoc.PlayerComponents.States
 {
     public class GroundState : IState
     {
-        public override string ToString() => AnimationState.Ground.ToString();
+        public override string ToString() => "Grounded";
+        public AnimationState Animation  => AnimationState.Ground;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

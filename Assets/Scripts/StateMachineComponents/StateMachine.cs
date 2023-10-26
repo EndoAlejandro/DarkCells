@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     public class StateMachine
     {

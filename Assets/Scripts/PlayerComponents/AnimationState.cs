@@ -1,4 +1,4 @@
-﻿namespace PlayerComponents
+﻿namespace DarkHavoc.PlayerComponents
 {
     public enum AnimationState
     {

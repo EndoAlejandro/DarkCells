@@ -1,8 +1,8 @@
-using PlayerComponents.States;
-using StateMachineComponents;
+using DarkHavoc.PlayerComponents.States;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace PlayerComponents
+namespace DarkHavoc.PlayerComponents
 {
     public class PlayerStateMachine : FiniteStateBehaviour
     {

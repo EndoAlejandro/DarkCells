@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StateMachineComponents
+namespace DarkHavoc.StateMachineComponents
 {
     [RequireComponent(typeof(Rigidbody))]
     public class StateMachineExample : FiniteStateBehaviour
