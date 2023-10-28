@@ -19,6 +19,7 @@ namespace DarkHavoc.Enemies
         private MaterialPropertyBlock _materialPb;
         private IEnumerator _hitAnimation;
         private IState _previousState;
+        private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         public event Action OnAttackPerformed;
 
@@ -41,7 +42,7 @@ namespace DarkHavoc.Enemies
         private void OnEnable()
         {
             _cagedShockerStateMachine.OnEntityStateChanged += CagedShockerStateMachineOnEntityStateChanged;
-            _cagedShocker.OnTakeDamage += CagedShockerOnTakeDamage;
+            _cagedShocker.OnDamageTaken += CagedShockerOnDamageTaken;
         }
 
         private void CagedShockerStateMachineOnEntityStateChanged(IState state)
@@ -54,7 +55,7 @@ namespace DarkHavoc.Enemies
 
         private void PerformAttack() => OnAttackPerformed?.Invoke();
 
-        private void CagedShockerOnTakeDamage()
+        private void CagedShockerOnDamageTaken()
         {
             if (_hitAnimation != null) StopCoroutine(_hitAnimation);
             _hitAnimation = HitAnimation();
@@ -70,20 +71,20 @@ namespace DarkHavoc.Enemies
             {
                 timer += Time.deltaTime;
                 float hitThreshold = 1 - (timer / hitAnimationDuration);
-                _materialPb.SetFloat("_HitValue", hitThreshold);
+                _materialPb.SetFloat(HitValue, hitThreshold);
                 _renderer.SetPropertyBlock(_materialPb);
                 yield return null;
             }
 
             yield return null;
-            _materialPb.SetFloat("_HitValue", 0f);
+            _materialPb.SetFloat(HitValue, 0f);
             _renderer.SetPropertyBlock(_materialPb);
         }
 
         private void OnDisable()
         {
             _cagedShockerStateMachine.OnEntityStateChanged -= CagedShockerStateMachineOnEntityStateChanged;
-            _cagedShocker.OnTakeDamage -= CagedShockerOnTakeDamage;
+            _cagedShocker.OnDamageTaken -= CagedShockerOnDamageTaken;
         }
     }
 }

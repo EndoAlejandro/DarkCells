@@ -18,11 +18,12 @@ namespace DarkHavoc.Enemies
         private Rigidbody2D _rigidbody;
         private Collider2D[] _results;
 
-        public event Action OnTakeDamage;
+        public event Action OnDamageTaken;
         public float IdleTime => stats != null ? stats.IdleTime : 0f;
         public int Damage => stats != null ? stats.Damage : 0;
         public Vector3 MidPoint => midPoint.position;
         public int Health { get; private set; }
+        public bool IsAlive => Health > 0f;
         public Transform AttackOffset => attackOffset;
         public bool Grounded { get; private set; }
         public bool FacingLeft { get; private set; }
@@ -61,6 +62,7 @@ namespace DarkHavoc.Enemies
         public void CheckWallCollisions(out bool facingWall)
         {
             Physics2D.queriesStartInColliders = false;
+
             facingWall = false;
             var wallCheckTopOffset = stats != null ? stats.WallCheckTopOffset : 0f;
             var wallCheckBottomOffset = stats != null ? stats.WallCheckBottomOffset : 0f;
@@ -131,12 +133,16 @@ namespace DarkHavoc.Enemies
             if (distance > stats.ScapeDistance) Player = null;
         }
 
-        public void DoDamage(ITakeDamage takeDamage) => Debug.Log($"Enemy do damage to {takeDamage.transform.name}");
+        public void DoDamage(ITakeDamage takeDamage)
+        {
+            takeDamage.TakeDamage(Damage, transform.position);
+            Debug.Log($"Enemy do damage to {takeDamage.transform.name}");
+        }
 
         public void TakeDamage(int damage, Vector2 damageSource)
         {
             Health -= damage;
-            OnTakeDamage?.Invoke();
+            OnDamageTaken?.Invoke();
         }
 
         public void Death()

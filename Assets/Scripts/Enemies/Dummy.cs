@@ -14,6 +14,7 @@ namespace DarkHavoc.Enemies
         private Rigidbody2D _rigidbody;
 
         public int Health { get; private set; }
+        public bool IsAlive => true;
 
         private void Awake()
         {

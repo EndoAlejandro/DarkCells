@@ -3855,6 +3855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7a5f53f67e2c44cb3546454f410e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAnimationDuration: 0.2
 --- !u!1 &469979508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,7 +4568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca859410c07fd4ebbc595c65383ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAnimationDuration: 0.5
+  hitAnimationDuration: 0.2
 --- !u!95 &814651789
 Animator:
   serializedVersion: 5
@@ -4671,7 +4672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23f43fe65064b74e80235b0a7641d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  printStateTransition: 1
+  printStateTransition: 0
 --- !u!114 &1056211551
 MonoBehaviour:
   m_ObjectHideFlags: 0

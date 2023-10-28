@@ -6,7 +6,7 @@ namespace DarkHavoc.AttackComponents
     {
         Transform transform { get; }
         int Health { get; }
-        bool IsAlive => Health > 0f;
+        bool IsAlive { get; }
         void TakeDamage(int damage, Vector2 damageSource);
         void Death();
     }

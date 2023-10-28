@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DarkHavoc.PlayerComponents.States;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
@@ -10,7 +11,10 @@ namespace DarkHavoc.PlayerComponents
     {
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
+        private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
+        [SerializeField] private float hitAnimationDuration = 1f;
+        
         private Animator _animator;
         private SpriteRenderer _renderer;
 
@@ -18,7 +22,9 @@ namespace DarkHavoc.PlayerComponents
         private PlayerStateMachine _playerStateMachine;
         private Player _player;
 
+        private IEnumerator _hitAnimation;
         private IState _previousState;
+        private MaterialPropertyBlock _materialPb;
 
         public event Action OnAttackPerformed;
 
@@ -30,10 +36,48 @@ namespace DarkHavoc.PlayerComponents
             _player = GetComponentInParent<Player>();
             _inputReader = GetComponentInParent<InputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
+            
+            _materialPb = new MaterialPropertyBlock();
         }
 
-        private void OnEnable() => _playerStateMachine.OnEntityStateChanged += PlayerStateMachineOnEntityStateChanged;
-        private void OnDisable() => _playerStateMachine.OnEntityStateChanged -= PlayerStateMachineOnEntityStateChanged;
+        private void OnEnable()
+        {
+            _player.OnDamageTaken += PlayerOnDamageTaken;
+            _playerStateMachine.OnEntityStateChanged += PlayerStateMachineOnEntityStateChanged;
+        }
+
+        private void OnDisable()
+        {
+            _player.OnDamageTaken -= PlayerOnDamageTaken;
+            _playerStateMachine.OnEntityStateChanged -= PlayerStateMachineOnEntityStateChanged;
+        }
+
+        private void PlayerOnDamageTaken()
+        {
+            if (_hitAnimation != null) StopCoroutine(_hitAnimation);
+            _hitAnimation = HitAnimation();
+            StartCoroutine(_hitAnimation);
+        }
+
+        private IEnumerator HitAnimation()
+        {
+            _renderer.GetPropertyBlock(_materialPb);
+
+            float timer = 0f;
+            while (timer < hitAnimationDuration)
+            {
+                timer += Time.deltaTime;
+                float hitThreshold = 1 - (timer / hitAnimationDuration);
+                _materialPb.SetFloat(HitValue, hitThreshold);
+                _renderer.SetPropertyBlock(_materialPb);
+                yield return null;
+            }
+
+            yield return null;
+            _materialPb.SetFloat(HitValue, 0f);
+            _renderer.SetPropertyBlock(_materialPb);
+        }
+
 
         private void Update()
         {

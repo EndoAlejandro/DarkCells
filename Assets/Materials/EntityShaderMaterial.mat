@@ -57,5 +57,5 @@ Material:
     - _AlphaClip: 0
     - _HitValue: 0
     m_Colors:
-    - _HitColor: {r: 0.5377358, g: 0, b: 0, a: 1}
+    - _HitColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -5,6 +5,9 @@ namespace DarkHavoc.PlayerComponents
     [CreateAssetMenu(menuName = "Custom/PlayerStats", fileName = "NewPlayerStats")]
     public class PlayerStats : ScriptableObject
     {
+        [Header("Stats")]
+        [SerializeField] private int maxHealth = 10;
+
         [Header("Movement")]
         [SerializeField] private LayerMask layer;
 
@@ -44,6 +47,11 @@ namespace DarkHavoc.PlayerComponents
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
 
+        #region Stats
+
+        public int MaxHealth => maxHealth;
+
+        #endregion
 
         #region Movement
 

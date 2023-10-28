@@ -34,7 +34,7 @@ MonoBehaviour:
   detectionDistance: 7
   scapeDistance: 10
   comboTime: 1
-  restTime: 0.75
+  restTime: 1.25
   attackLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 503
