@@ -3,60 +3,50 @@ using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
 {
-    public class BlockState : IState
+    public class ParryState : IState
     {
-        public override string ToString() => "Block";
-        public AnimationState Animation => AnimationState.Block;
-
-        private readonly Player _player;
-        private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
-
-        private Vector2 _targetVelocity;
-
-        private float _parryTime;
-        private float _timer;
-
+        public AnimationState Animation => AnimationState.Parry;
+        public override string ToString() => "Parry";
+        public bool CanTransitionToSelf => true;
         public bool Ended => _timer <= 0f;
         public bool ParryAvailable { get; private set; }
-        public bool CanTransitionToSelf => false;
 
-        public BlockState(Player player, Rigidbody2D rigidbody, InputReader input)
+        private readonly Player _player;
+
+        private Vector2 _targetVelocity;
+        private float _timer;
+
+        public ParryState(Player player)
         {
             _player = player;
-            _rigidbody = rigidbody;
-            _input = input;
-
             _player.OnAttackBlocked += PlayerOnAttackBlocked;
         }
-
-        private void PlayerOnAttackBlocked() => ParryAvailable = true;
 
         public void Tick()
         {
             _timer -= Time.deltaTime;
 
-            var moveMultiplier = !_player.Grounded ? _player.Stats.AttackMoveVelocity : 0f;
-            _player.Move(ref _targetVelocity, _input.Movement.x * moveMultiplier);
-
-            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
+            _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, 0f, Time.deltaTime * 5f);
         }
 
         public void FixedTick()
         {
+            // _player.Move(ref _targetVelocity, 0f);
             _player.CheckCollisions(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
 
             _player.ApplyVelocity(_targetVelocity);
         }
 
+        private void PlayerOnAttackBlocked() => ParryAvailable = true;
+
         public void OnEnter()
         {
-            _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
+            _player.Parry(ref _targetVelocity);
 
             ParryAvailable = false;
-            _timer = _player.Stats.BlockTime;
-            _targetVelocity = _rigidbody.velocity;
+            _timer = _player.Stats.ParryTime;
+            _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
         }
 
         private bool PlayerOnTryToBlockDamage(Vector2 damageSource)
@@ -68,8 +58,9 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void OnExit()
         {
-            _player.TryToBlockDamage -= PlayerOnTryToBlockDamage;
             ParryAvailable = false;
+            _player.TryToBlockDamage -= PlayerOnTryToBlockDamage;
+            _timer = 0f;
         }
     }
 }

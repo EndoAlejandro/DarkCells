@@ -110,16 +110,15 @@ namespace DarkHavoc.Enemies
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
 
-        public bool SeekPlayer()
+        public void SeekPlayer()
         {
             var tempPlayer = EntityVision.CircularCheck<Player>(MidPoint, stats.DetectionDistance, ref _results);
-            if (tempPlayer == null) return false;
+            if (tempPlayer == null) return;
 
             if (!IsPlayerVisible(tempPlayer))
-                return false;
+                return;
 
             Player = tempPlayer;
-            return true;
         }
 
         public bool IsPlayerVisible(Player player) =>
@@ -136,7 +135,6 @@ namespace DarkHavoc.Enemies
         public void DoDamage(ITakeDamage takeDamage)
         {
             takeDamage.TakeDamage(Damage, transform.position);
-            Debug.Log($"Enemy do damage to {takeDamage.transform.name}");
         }
 
         public void TakeDamage(int damage, Vector2 damageSource)

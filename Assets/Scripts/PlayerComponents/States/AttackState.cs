@@ -6,11 +6,10 @@ namespace DarkHavoc.PlayerComponents.States
     public class AttackState : IState
     {
         public override string ToString() => "Attack";
-        public AnimationState Animation  => AnimationState.LightAttack;
+        public AnimationState Animation { get; }
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
         private readonly PlayerAnimation _animation;
 
         private float _timer;
@@ -21,12 +20,13 @@ namespace DarkHavoc.PlayerComponents.States
         public bool CanCombo => _comboTimer <= 0f;
         public bool CanTransitionToSelf => true;
 
-        public AttackState(Player player, Rigidbody2D rigidbody, InputReader input, PlayerAnimation animation)
+        public AttackState(Player player, Rigidbody2D rigidbody, PlayerAnimation animation,
+            AnimationState animationState)
         {
             _player = player;
             _rigidbody = rigidbody;
-            _input = input;
             _animation = animation;
+            Animation = animationState;
         }
 
         private void AnimationOnAttackPerformed() => _player.Attack(ref _targetVelocity);
@@ -57,7 +57,7 @@ namespace DarkHavoc.PlayerComponents.States
         public void OnEnter()
         {
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
-            
+
             _timer = _player.Stats.LightAttackTime;
             _comboTimer = _player.Stats.LightComboTime;
             _targetVelocity = _rigidbody.velocity;

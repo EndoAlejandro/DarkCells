@@ -8,6 +8,8 @@ namespace DarkHavoc.PlayerComponents
         [Header("Stats")]
         [SerializeField] private int maxHealth = 10;
 
+        [SerializeField] private float takeDamageTime;
+
         [Header("Movement")]
         [SerializeField] private LayerMask layer;
 
@@ -46,10 +48,13 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float lightComboTime = .3f;
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
+        [SerializeField] private float parryTime = 1f;
+        [SerializeField] private float parryForce = 5f;
 
         #region Stats
 
         public int MaxHealth => maxHealth;
+        public float TakeDamageTime => takeDamageTime;
 
         #endregion
 
@@ -95,6 +100,8 @@ namespace DarkHavoc.PlayerComponents
         public float LightComboTime => lightComboTime;
         public float HeavyAttackTime => heavyAttackTime;
         public float BlockTime => blockTime;
+        public float ParryTime => parryTime;
+        public float ParryForce => parryForce;
 
         #endregion
     }

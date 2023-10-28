@@ -10,5 +10,6 @@
         Block,
         Parry,
         Crouch,
+        ParryAttack
     }
 }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e37ec38e35f4edab3f4370c9fac8910, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  maxHealth: 10
+  takeDamageTime: 5
   layer:
     serializedVersion: 2
     m_Bits: 72
@@ -39,3 +41,5 @@ MonoBehaviour:
   lightComboTime: 0.3
   heavyAttackTime: 0.5
   blockTime: 0.3
+  parryTime: 0.7
+  parryForce: 3

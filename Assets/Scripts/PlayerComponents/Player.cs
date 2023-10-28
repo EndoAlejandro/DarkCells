@@ -10,6 +10,7 @@ namespace DarkHavoc.PlayerComponents
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
+        public event Func<Vector2, bool> TryToBlockDamage;
         public event Action OnAttackBlocked;
         public event Action<bool> OnGroundedChanged;
         public event Action OnDamageTaken;
@@ -171,12 +172,12 @@ namespace DarkHavoc.PlayerComponents
         public void DoDamage(ITakeDamage takeDamage)
         {
             takeDamage.TakeDamage(Damage, transform.position);
-            Debug.Log($"Player do damage to {takeDamage.transform.name}");
         }
 
         public void TakeDamage(int damage, Vector2 damageSource)
         {
-            if (!IsAlive) return;
+            var result = TryToBlockDamage?.Invoke(damageSource) ?? false;
+            if (!result || !IsAlive) return;
 
             Health -= damage;
             OnDamageTaken?.Invoke();
@@ -185,5 +186,7 @@ namespace DarkHavoc.PlayerComponents
         public void Death()
         {
         }
+
+        public void Parry(ref Vector2 targetVelocity) => targetVelocity.x = Stats.ParryForce * (FacingLeft ? 1 : -1);
     }
 }

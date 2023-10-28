@@ -27,9 +27,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public void Tick()
         {
             _timer -= Time.deltaTime;
-
-            var result = _cagedShocker.SeekPlayer();
-            Debug.Log(result);
+            _cagedShocker.SeekPlayer();
         }
 
         public void FixedTick()

@@ -25,8 +25,10 @@ namespace DarkHavoc.PlayerComponents
             var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input);
             var crouch = new CrouchState(_player, _rigidbody);
-            var attack = new AttackState(_player, _rigidbody, _input, _animation);
+            var attack = new AttackState(_player, _rigidbody, _animation, AnimationState.LightAttack);
             var block = new BlockState(_player, _rigidbody, _input);
+            var parry = new ParryState(_player);
+            var parryAttack = new AttackState(_player, _rigidbody, _animation, AnimationState.ParryAttack);
             // TODO: Heavy attack maybe from combo.
 
             // Initial State.
@@ -37,7 +39,7 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(air, ground, () => _player.Grounded);
 
             // Roll.
-            var toRollStates = new IState[] { ground, air, crouch };
+            var toRollStates = new IState[] { ground, air, crouch, parry };
             stateMachine.AddManyTransitions(toRollStates, roll, () => _input.Roll);
             stateMachine.AddTransition(roll, ground,
                 () => roll.Ended && _player.Grounded && !_player.CheckCeilingCollision());
@@ -59,9 +61,19 @@ namespace DarkHavoc.PlayerComponents
             // Block.
             var toBlockStates = new IState[] { ground, air, roll };
             stateMachine.AddManyTransitions(toBlockStates, block, () => _input.BlockHold);
+
             stateMachine.AddTransition(block, ground, () => !_input.BlockHold && block.Ended);
             stateMachine.AddTransition(block, air, () => _player.HasBufferedJump && block.Ended);
-            stateMachine.AddTransition(block, attack, () => _player.HasBufferedLightAttack);
+            stateMachine.AddTransition(block, parry, () => block.ParryAvailable);
+
+            // Parry.
+            stateMachine.AddTransition(parry, parry, () => parry.ParryAvailable);
+
+            stateMachine.AddTransition(parry, parryAttack, () => _player.HasBufferedLightAttack);
+            stateMachine.AddTransition(parry, block, () => parry.Ended && _input.BlockHold);
+            stateMachine.AddTransition(parry, ground, () => parry.Ended && !_input.BlockHold);
+
+            stateMachine.AddTransition(parryAttack, ground, () => parryAttack.Ended);
         }
     }
 }

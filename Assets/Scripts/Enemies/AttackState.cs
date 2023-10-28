@@ -51,9 +51,8 @@ namespace DarkHavoc.Enemies
 
         public void OnEnter()
         {
-            if (!_canCombo)
-                Debug.Log("Ping");
             // TODO: Perform telegraph.
+            
             _timer = _attackDuration;
             _comboTimer = _cagedShocker.Stats.ComboTime;
             _player = _cagedShocker.Player;
