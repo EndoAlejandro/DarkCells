@@ -25,7 +25,6 @@ namespace DarkHavoc.Enemies
         public EnemyIdle(Dummy dummy)
         {
             _dummy = dummy;
-            _dummy.OnTakeDamage += DummyOnTakeDamage;
         }
 
         private void DummyOnTakeDamage(IDoDamage damageDealer)

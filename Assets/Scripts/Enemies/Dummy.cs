@@ -9,7 +9,7 @@ namespace DarkHavoc.Enemies
         [SerializeField] private int maxHealth;
         [SerializeField] private float knockBackForce = 2f;
 
-        public event Action<IDoDamage> OnTakeDamage;
+        public event Action OnDamageTaken;
 
         private Rigidbody2D _rigidbody;
 
