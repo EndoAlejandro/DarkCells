@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using DarkHavoc.CustomUtils;
+using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -48,8 +50,8 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float lightComboTime = .3f;
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
-        [SerializeField] private float parryTime = 1f;
-        [SerializeField] private float parryForce = 5f;
+        [SerializeField] private ImpulseAction attackAction;
+        [SerializeField] private ImpulseAction parryAction;
 
         #region Stats
 
@@ -100,9 +102,22 @@ namespace DarkHavoc.PlayerComponents
         public float LightComboTime => lightComboTime;
         public float HeavyAttackTime => heavyAttackTime;
         public float BlockTime => blockTime;
-        public float ParryTime => parryTime;
-        public float ParryForce => parryForce;
+        public ImpulseAction AttackAction => attackAction;
+        public ImpulseAction ParryAction => parryAction;
 
         #endregion
+    }
+
+    [Serializable]
+    public struct ImpulseAction
+    {
+        [SerializeField] private float time;
+        [SerializeField] private float force;
+        [SerializeField] private float deceleration;
+        [SerializeField] private ImpulseActionExtensions.ImpulseDirection direction;
+        public float Time => time;
+        public float Force => force;
+        public float Deceleration => deceleration;
+        public int Direction => direction == ImpulseActionExtensions.ImpulseDirection.Forward ? 1 : -1;
     }
 }

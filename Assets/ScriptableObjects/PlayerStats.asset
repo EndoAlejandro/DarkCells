@@ -41,5 +41,13 @@ MonoBehaviour:
   lightComboTime: 0.3
   heavyAttackTime: 0.5
   blockTime: 0.3
-  parryTime: 0.7
-  parryForce: 3
+  attackAction:
+    time: 0.5
+    force: 1.5
+    deceleration: 5
+    direction: 0
+  parryAction:
+    time: 0.7
+    force: 3
+    deceleration: 5
+    direction: 1

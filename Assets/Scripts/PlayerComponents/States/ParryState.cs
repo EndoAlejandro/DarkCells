@@ -1,4 +1,6 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using System;
+using DarkHavoc.CustomUtils;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
@@ -12,26 +14,26 @@ namespace DarkHavoc.PlayerComponents.States
         public bool ParryAvailable { get; private set; }
 
         private readonly Player _player;
+        private readonly ImpulseAction _parryAction;
 
         private Vector2 _targetVelocity;
         private float _timer;
 
-        public ParryState(Player player)
+        public ParryState(Player player, ImpulseAction parryAction)
         {
             _player = player;
+            _parryAction = parryAction;
             _player.OnAttackBlocked += PlayerOnAttackBlocked;
         }
 
         public void Tick()
         {
             _timer -= Time.deltaTime;
-
-            _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, 0f, Time.deltaTime * 5f);
+            _targetVelocity.x = _parryAction.Decelerate(_targetVelocity.x, Time.deltaTime);
         }
 
         public void FixedTick()
         {
-            // _player.Move(ref _targetVelocity, 0f);
             _player.CheckCollisions(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
 
@@ -42,10 +44,10 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void OnEnter()
         {
-            _player.Parry(ref _targetVelocity);
+            _targetVelocity.x = _parryAction.GetTargetVelocity(_player.Direction);
 
             ParryAvailable = false;
-            _timer = _player.Stats.ParryTime;
+            _timer = _parryAction.Time;
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
         }
 

@@ -42,6 +42,7 @@ namespace DarkHavoc.PlayerComponents
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
         public Vector3 MidPoint => midPoint.position;
+        public int Direction => FacingLeft ? -1 : 1;
         public int Damage => Stats != null ? Stats.Damage : 0;
         public int Health { get; private set; }
         public bool IsAlive => Health > 0f;
@@ -186,7 +187,5 @@ namespace DarkHavoc.PlayerComponents
         public void Death()
         {
         }
-
-        public void Parry(ref Vector2 targetVelocity) => targetVelocity.x = Stats.ParryForce * (FacingLeft ? 1 : -1);
     }
 }

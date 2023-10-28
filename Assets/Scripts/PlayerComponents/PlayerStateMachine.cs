@@ -27,7 +27,7 @@ namespace DarkHavoc.PlayerComponents
             var crouch = new CrouchState(_player, _rigidbody);
             var attack = new AttackState(_player, _rigidbody, _animation, AnimationState.LightAttack);
             var block = new BlockState(_player, _rigidbody, _input);
-            var parry = new ParryState(_player);
+            var parry = new ParryState(_player, _player.Stats.ParryAction);
             var parryAttack = new AttackState(_player, _rigidbody, _animation, AnimationState.ParryAttack);
             // TODO: Heavy attack maybe from combo.
 
