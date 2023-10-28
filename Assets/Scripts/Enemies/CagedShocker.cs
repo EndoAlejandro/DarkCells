@@ -138,13 +138,15 @@ namespace DarkHavoc.Enemies
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
-            
+
             Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
 
         public void Death()
         {
+            _collider.enabled = false;
+            _rigidbody.simulated = false;
         }
 
         public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / stats.MaxSpeed;

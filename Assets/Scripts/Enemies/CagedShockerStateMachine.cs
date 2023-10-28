@@ -25,6 +25,7 @@ namespace DarkHavoc.Enemies
             var firstAttack = new AttackState(_cagedShocker, _animation, true, _cagedShocker.Stats.FirstAttackTime);
             var secondAttack = new AttackState(_cagedShocker, _animation, false, _cagedShocker.Stats.SecondAttackTime);
             var rest = new RestState(_cagedShocker.Stats.RestTime);
+            var dead = new DeadState(_cagedShocker);
 
             // Initial State.
             stateMachine.SetState(idle);
@@ -42,6 +43,8 @@ namespace DarkHavoc.Enemies
             stateMachine.AddTransition(firstAttack, rest, () => firstAttack.Ended);
             stateMachine.AddTransition(secondAttack, rest, () => secondAttack.Ended);
             stateMachine.AddTransition(rest, idle, () => rest.Ended);
+
+            stateMachine.AddAnyTransition(dead, () => !_cagedShocker.IsAlive);
         }
     }
 }

@@ -10,6 +10,7 @@
         Block,
         Parry,
         Crouch,
-        ParryAttack
+        ParryAttack,
+        Death
     }
 }
