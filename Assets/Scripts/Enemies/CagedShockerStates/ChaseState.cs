@@ -1,4 +1,5 @@
 ﻿using DarkHavoc.PlayerComponents;
+using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
@@ -12,24 +13,29 @@ namespace DarkHavoc.Enemies
 
         private readonly CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
+        private readonly Collider2D _collider;
 
         private Player _player;
 
         private Vector2 _targetVelocity;
+
         private int _targetDirection;
-        private bool _facingWall;
+
+        // private bool _facingWall;
         private bool _leftFoot;
         private bool _rightFoot;
+        private WallResult _wallResult;
 
         private bool CanWalk => (_leftFoot && _cagedShocker.FacingLeft) || (_rightFoot && !_cagedShocker.FacingLeft);
 
         public bool CanTransitionToSelf => false;
         public bool AttackAvailable { get; private set; }
 
-        public ChaseState(CagedShocker cagedShocker, Rigidbody2D rigidbody)
+        public ChaseState(CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
             _rigidbody = rigidbody;
+            _collider = collider;
         }
 
         public void Tick()
@@ -61,10 +67,12 @@ namespace DarkHavoc.Enemies
 
         public void FixedTick()
         {
-            _cagedShocker.CheckWallCollisions(out _facingWall);
+            _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
+                _cagedShocker.FacingLeft);
+            // _cagedShocker.CheckWallCollisions(out _facingWall);
             _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
 
-            if (!_facingWall)
+            if (!_wallResult.FacingWall)
                 _cagedShocker.Move(ref _targetVelocity, CanWalk ? _targetDirection : 0);
 
             _cagedShocker.CustomGravity(ref _targetVelocity);

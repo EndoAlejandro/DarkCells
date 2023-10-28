@@ -28,7 +28,6 @@ namespace DarkHavoc.PlayerComponents.States
             _input = input;
         }
 
-
         public void Tick()
         {
             _timer -= Time.deltaTime;
@@ -36,11 +35,13 @@ namespace DarkHavoc.PlayerComponents.States
             if (_player.HasBufferedJump)
             {
                 _player.Jump(ref _targetVelocity);
+                _player.ApplyVelocity(_targetVelocity);
             }
         }
 
         public void FixedTick()
         {
+            _player.Move(ref _targetVelocity, 0);
             _player.CheckCollisions(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
 

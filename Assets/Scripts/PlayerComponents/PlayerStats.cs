@@ -19,6 +19,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float groundDeceleration = 60f;
         [SerializeField] private float airDeceleration = 30f;
         [SerializeField] private float grounderDistance;
+        [SerializeField] private WallDetection wallDetection;
 
         [Header("Jump")]
         [SerializeField] private float jumpForce;
@@ -32,6 +33,7 @@ namespace DarkHavoc.PlayerComponents
 
         [Header("Roll")]
         [SerializeField] private float ceilingDistance;
+
         [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
@@ -59,6 +61,7 @@ namespace DarkHavoc.PlayerComponents
         public float GroundDeceleration => groundDeceleration;
         public float AirDeceleration => airDeceleration;
         public float GrounderDistance => grounderDistance;
+        public WallDetection WallDetection => wallDetection;
 
         #endregion
 

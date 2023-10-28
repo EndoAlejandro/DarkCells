@@ -26,20 +26,13 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
+            _player.Move(ref _targetVelocity, 0);
+            _player.CustomGravity(ref _targetVelocity);
             _player.ApplyVelocity(_targetVelocity);
         }
 
-        public void OnEnter()
-        {
-            _targetVelocity = _rigidbody.velocity;
-            _targetVelocity.x *= 0.25f;
+        public void OnEnter() => _player.SetPlayerCollider(false);
 
-            _player.SetPlayerCollider(false);
-        }
-
-        public void OnExit()
-        {
-            _player.SetPlayerCollider(true);
-        }
+        public void OnExit() => _player.SetPlayerCollider(true);
     }
 }

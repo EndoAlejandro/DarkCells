@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.PlayerComponents;
+using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
@@ -23,9 +24,8 @@ namespace DarkHavoc.Enemies
         [SerializeField] private Vector2 footPositionOffset;
         [SerializeField] private float groundOffset = .35f;
         [SerializeField] private float groundCheckDistance = .05f;
-        [SerializeField] private float wallDistanceCheck = .35f;
-        [SerializeField] private float wallCheckTopOffset = .3f;
-        [SerializeField] private float wallCheckBottomOffset = .3f;
+
+        [SerializeField] private WallDetection wallDetection;
 
         [Header("Attack")]
         [SerializeField] private int damage = 1;
@@ -68,12 +68,7 @@ namespace DarkHavoc.Enemies
         public float GroundOffset => groundOffset;
 
         public float GroundCheckDistance => groundCheckDistance;
-
-        public float WallDistanceCheck => wallDistanceCheck;
-
-        public float WallCheckTopOffset => wallCheckTopOffset;
-
-        public float WallCheckBottomOffset => wallCheckBottomOffset;
+        public WallDetection WallDetection => wallDetection;
 
         #endregion
 

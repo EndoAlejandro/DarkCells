@@ -25,9 +25,13 @@ MonoBehaviour:
   footPositionOffset: {x: 0.15, y: 0.35}
   groundOffset: 0.35
   groundCheckDistance: 0.05
-  wallDistanceCheck: 0.35
-  wallCheckTopOffset: 0.3
-  wallCheckBottomOffset: 0.3
+  wallDetection:
+    distanceCheck: 0.35
+    topOffset: 0.3
+    bottomOffset: 0.3
+    wallLayerMask:
+      serializedVersion: 2
+      m_Bits: 265
   damage: 1
   firstAttackTime: 1.5
   secondAttackTime: 0.5

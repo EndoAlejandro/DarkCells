@@ -127,8 +127,6 @@ namespace DarkHavoc.PlayerComponents
                 Grounded = false;
                 OnGroundedChanged?.Invoke(Grounded);
             }
-
-            // Physics2D.queriesStartInColliders = true;
         }
 
         private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(

@@ -29,14 +29,10 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 1.75
   coyoteTime: 0.2
-  rollMaxSpeed: 7
-  rollAcceleration: 100
-  rollSpeedConservation: 0.2
-  rollTime: 0.5
   ceilingDistance: 0.3
   rollAction:
     time: 0.4
-    force: 8
+    force: 10
     deceleration: 1
     direction: 0
   damage: 1

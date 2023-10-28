@@ -59,35 +59,6 @@ namespace DarkHavoc.Enemies
             Grounded = leftFoot || rightFoot;
         }
 
-        public void CheckWallCollisions(out bool facingWall)
-        {
-            Physics2D.queriesStartInColliders = false;
-
-            facingWall = false;
-            var wallCheckTopOffset = stats != null ? stats.WallCheckTopOffset : 0f;
-            var wallCheckBottomOffset = stats != null ? stats.WallCheckBottomOffset : 0f;
-
-            float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;
-            var direction = FacingLeft ? Vector2.left : Vector2.right;
-
-            // Center Check.
-            var origin = new Vector2(horizontal, _collider.bounds.center.y);
-            facingWall = WallRayCast(origin, direction);
-            if (facingWall) return;
-
-            // Top Check.
-            origin.y = _collider.bounds.max.y - wallCheckTopOffset;
-            facingWall = WallRayCast(origin, direction);
-            if (facingWall) return;
-
-            // Bottom Check.
-            origin.y = _collider.bounds.min.y + wallCheckBottomOffset;
-            facingWall = WallRayCast(origin, direction);
-        }
-
-        private bool WallRayCast(Vector2 origin, Vector2 direction) =>
-            Physics2D.Raycast(origin, direction, stats.WallDistanceCheck, stats.GroundLayerMask);
-
         public void Move(ref Vector2 targetVelocity, int direction)
         {
             if (direction == 0)
@@ -138,7 +109,8 @@ namespace DarkHavoc.Enemies
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
-
+            
+            
             Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
@@ -190,14 +162,14 @@ namespace DarkHavoc.Enemies
             float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
             // Top Ray.
-            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y - stats.WallCheckTopOffset);
-            Gizmos.DrawLine(topOrigin, topOrigin + (direction * stats.WallDistanceCheck));
+            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y - stats.WallDetection.TopOffset);
+            Gizmos.DrawLine(topOrigin, topOrigin + (direction * stats.WallDetection.DistanceCheck));
             // Middle Ray.
             var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y);
-            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * stats.WallDistanceCheck));
+            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * stats.WallDetection.DistanceCheck));
             // Bottom Ray.
-            Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + stats.WallCheckBottomOffset);
-            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * stats.WallDistanceCheck));
+            Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + stats.WallDetection.BottomOffset);
+            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * stats.WallDetection.DistanceCheck));
         }
     }
 }

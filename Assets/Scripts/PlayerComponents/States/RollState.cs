@@ -32,20 +32,12 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _timer -= Time.deltaTime;
 
-            /*switch (_input.Movement.x)
-            {
-                case > 0 when _player.FacingLeft:
-                case < 0 when !_player.FacingLeft:
-                    _targetVelocity.x = _rigidbody.velocity.x;
-                    Ended = true;
-                    break;
-            }*/
-
             _targetVelocity.x = _rollAction.Decelerate(_targetVelocity.x, Time.deltaTime);
 
             if (_player.HasBufferedJump)
             {
                 _player.Jump(ref _targetVelocity);
+                _player.ApplyVelocity(_targetVelocity);
                 Ended = true;
             }
 
@@ -55,7 +47,6 @@ namespace DarkHavoc.PlayerComponents.States
         public void FixedTick()
         {
             _player.CheckCollisions(ref _targetVelocity);
-            // _player.Roll(ref _targetVelocity);
             _player.CustomGravity(ref _targetVelocity);
 
             _player.ApplyVelocity(_targetVelocity);
@@ -64,11 +55,11 @@ namespace DarkHavoc.PlayerComponents.States
         public void OnEnter()
         {
             Ended = false;
-            
+
             float y = _rigidbody.velocity.y > 0 ? _rigidbody.velocity.y : 0f;
             float x = _rollAction.GetTargetVelocity(_player.Direction);
             _targetVelocity = new Vector2(x, y);
-            
+
             _timer = _rollAction.Time;
             _player.SetPlayerCollider(false);
         }

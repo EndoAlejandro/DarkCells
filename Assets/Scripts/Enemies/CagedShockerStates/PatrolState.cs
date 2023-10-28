@@ -1,4 +1,5 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.Senses;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
@@ -11,21 +12,24 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
         private readonly CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
+        private readonly Collider2D _collider;
 
         private Vector2 _targetVelocity;
         private int _direction;
 
-        private bool _facingWall;
+        // private bool _facingWall;
+        private WallResult _wallResult;
         private bool _rightFoot;
         private bool _leftFoot;
 
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
 
-        public PatrolState(CagedShocker cagedShocker, Rigidbody2D rigidbody)
+        public PatrolState(CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
             _rigidbody = rigidbody;
+            _collider = collider;
         }
 
         public void Tick()
@@ -37,12 +41,14 @@ namespace DarkHavoc.Enemies.CagedShockerStates
             if (!_leftFoot && _rightFoot) Ended = _cagedShocker.FacingLeft;
             else if (_leftFoot && !_rightFoot) Ended = !_cagedShocker.FacingLeft;
 
-            if (_facingWall) Ended = true;
+            if (_wallResult.FacingWall) Ended = true;
         }
 
         public void FixedTick()
         {
-            _cagedShocker.CheckWallCollisions(out _facingWall);
+            _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
+                _cagedShocker.FacingLeft);
+            // _cagedShocker.CheckWallCollisions(out _facingWall);
             _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
             _cagedShocker.Move(ref _targetVelocity, _direction);
 
@@ -52,14 +58,16 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
         public void OnEnter()
         {
-            _cagedShocker.CheckWallCollisions(out _facingWall);
+            _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
+                _cagedShocker.FacingLeft);
+            // _cagedShocker.CheckWallCollisions(out _facingWall);
             _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
 
-            if (_facingWall) _cagedShocker.SetFacingLeft(!_cagedShocker.FacingLeft);
+            if (_wallResult.FacingWall) _cagedShocker.SetFacingLeft(!_cagedShocker.FacingLeft);
             else if (!_leftFoot && _rightFoot) _cagedShocker.SetFacingLeft(false);
             else if (_leftFoot && !_rightFoot) _cagedShocker.SetFacingLeft(true);
 
-            _facingWall = false;
+            // _facingWall = false;
 
             Ended = false;
             _targetVelocity = Vector2.zero;

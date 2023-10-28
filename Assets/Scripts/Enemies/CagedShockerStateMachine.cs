@@ -9,19 +9,21 @@ namespace DarkHavoc.Enemies
         private CagedShockerAnimation _animation;
         private CagedShocker _cagedShocker;
         private Rigidbody2D _rigidbody;
+        private Collider2D _collider;
 
         protected override void References()
         {
             _animation = GetComponentInChildren<CagedShockerAnimation>();
             _cagedShocker = GetComponent<CagedShocker>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<Collider2D>();
         }
 
         protected override void StateMachine()
         {
             var idle = new IdleState(_cagedShocker, _rigidbody);
-            var patrol = new PatrolState(_cagedShocker, _rigidbody);
-            var chase = new ChaseState(_cagedShocker, _rigidbody);
+            var patrol = new PatrolState(_cagedShocker, _rigidbody, _collider);
+            var chase = new ChaseState(_cagedShocker, _rigidbody, _collider);
             var firstAttack = new AttackState(_cagedShocker, _animation, true, _cagedShocker.Stats.FirstAttackTime);
             var secondAttack = new AttackState(_cagedShocker, _animation, false, _cagedShocker.Stats.SecondAttackTime);
             var rest = new RestState(_cagedShocker.Stats.RestTime);
