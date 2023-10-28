@@ -26,20 +26,17 @@ namespace DarkHavoc.PlayerComponents.States
             _player = player;
             _rigidbody = rigidbody;
             _input = input;
-
-            _player.OnAttackBlocked += PlayerOnAttackBlocked;
         }
 
-        private void PlayerOnAttackBlocked() => ParryAvailable = true;
 
         public void Tick()
         {
             _timer -= Time.deltaTime;
 
-            var moveMultiplier = !_player.Grounded ? _player.Stats.AttackMoveVelocity : 0f;
-            _player.Move(ref _targetVelocity, _input.Movement.x * moveMultiplier);
-
-            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
+            if (_player.HasBufferedJump)
+            {
+                _player.Jump(ref _targetVelocity);
+            }
         }
 
         public void FixedTick()

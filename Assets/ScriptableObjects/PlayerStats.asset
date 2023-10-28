@@ -34,14 +34,17 @@ MonoBehaviour:
   rollSpeedConservation: 0.2
   rollTime: 0.5
   ceilingDistance: 0.3
-  attackMoveVelocity: 0.25
+  rollAction:
+    time: 0.4
+    force: 8
+    deceleration: 1
+    direction: 0
   damage: 1
-  lightAttackTime: 0.5
   lightAttackBuffer: 0.15
   lightComboTime: 0.3
   heavyAttackTime: 0.5
   blockTime: 0.3
-  attackAction:
+  lightAttackAction:
     time: 0.5
     force: 1.5
     deceleration: 5

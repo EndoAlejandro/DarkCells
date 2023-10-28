@@ -23,7 +23,6 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _player = player;
             _parryAction = parryAction;
-            _player.OnAttackBlocked += PlayerOnAttackBlocked;
         }
 
         public void Tick()
@@ -40,8 +39,6 @@ namespace DarkHavoc.PlayerComponents.States
             _player.ApplyVelocity(_targetVelocity);
         }
 
-        private void PlayerOnAttackBlocked() => ParryAvailable = true;
-
         public void OnEnter()
         {
             _targetVelocity.x = _parryAction.GetTargetVelocity(_player.Direction);
@@ -50,7 +47,7 @@ namespace DarkHavoc.PlayerComponents.States
             _timer = _parryAction.Time;
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
         }
-
+ 
         private bool PlayerOnTryToBlockDamage(Vector2 damageSource)
         {
             float difference = damageSource.x - _player.transform.position.x;
@@ -62,7 +59,6 @@ namespace DarkHavoc.PlayerComponents.States
         {
             ParryAvailable = false;
             _player.TryToBlockDamage -= PlayerOnTryToBlockDamage;
-            _timer = 0f;
         }
     }
 }

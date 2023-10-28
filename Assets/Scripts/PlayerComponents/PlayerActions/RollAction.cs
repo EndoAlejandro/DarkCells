@@ -13,9 +13,9 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         protected override void UseBuffer(ref Vector2 targetVelocity)
         {
-            var direction = Player.FacingLeft ? -1 : 1;
+            /*var direction = Player.FacingLeft ? -1 : 1;
             targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * Player.Stats.RollMaxSpeed,
-                Player.Stats.RollAcceleration * Time.fixedDeltaTime);
+                Player.Stats.RollAcceleration * Time.fixedDeltaTime);*/
         }
     }
 

@@ -11,7 +11,6 @@ namespace DarkHavoc.PlayerComponents
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
         public event Func<Vector2, bool> TryToBlockDamage;
-        public event Action OnAttackBlocked;
         public event Action<bool> OnGroundedChanged;
         public event Action OnDamageTaken;
 
@@ -170,17 +169,14 @@ namespace DarkHavoc.PlayerComponents
             Gizmos.DrawLine(_collider.bounds.min, _collider.bounds.min + Vector3.down * stats.GrounderDistance);
         }
 
-        public void DoDamage(ITakeDamage takeDamage)
-        {
-            takeDamage.TakeDamage(Damage, transform.position);
-        }
+        public void DoDamage(ITakeDamage takeDamage) => takeDamage.TakeDamage(this);
 
-        public void TakeDamage(int damage, Vector2 damageSource)
+        public void TakeDamage(IDoDamage damageDealer)
         {
-            var result = TryToBlockDamage?.Invoke(damageSource) ?? false;
-            if (!result || !IsAlive) return;
+            var result = TryToBlockDamage?.Invoke(damageDealer.transform.position) ?? false;
+            if (result || !IsAlive) return;
 
-            Health -= damage;
+            Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
 

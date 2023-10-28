@@ -1,4 +1,5 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.CustomUtils;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
@@ -11,6 +12,7 @@ namespace DarkHavoc.PlayerComponents.States
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
         private readonly PlayerAnimation _animation;
+        private readonly ImpulseAction _attackAction;
 
         private float _timer;
         private float _comboTimer;
@@ -21,11 +23,12 @@ namespace DarkHavoc.PlayerComponents.States
         public bool CanTransitionToSelf => true;
 
         public AttackState(Player player, Rigidbody2D rigidbody, PlayerAnimation animation,
-            AnimationState animationState)
+            AnimationState animationState, ImpulseAction attackAction)
         {
             _player = player;
             _rigidbody = rigidbody;
             _animation = animation;
+            _attackAction = attackAction;
             Animation = animationState;
         }
 
@@ -36,8 +39,10 @@ namespace DarkHavoc.PlayerComponents.States
             _timer -= Time.deltaTime;
             _comboTimer -= Time.deltaTime;
 
-            var moveMultiplier = _player.Grounded ? _player.Stats.AttackMoveVelocity : _player.Stats.AttackMoveVelocity;
-            _player.Move(ref _targetVelocity, (_player.FacingLeft ? -1 : 1) * moveMultiplier);
+            /*var moveMultiplier = _player.Grounded ? _player.Stats.AttackMoveVelocity : _player.Stats.AttackMoveVelocity;
+            _player.Move(ref _targetVelocity, (_player.FacingLeft ? -1 : 1) * moveMultiplier);*/
+
+            _targetVelocity.x = _attackAction.Decelerate(_targetVelocity.x, Time.deltaTime);
 
             if (_player.HasBufferedJump)
             {
@@ -58,9 +63,11 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
 
-            _timer = _player.Stats.LightAttackTime;
+            _timer = _attackAction.Time;
+            _targetVelocity.x = _attackAction.GetTargetVelocity(_player.Direction);
+            _targetVelocity.y = _rigidbody.velocity.y;
             _comboTimer = _player.Stats.LightComboTime;
-            _targetVelocity = _rigidbody.velocity;
+            // _targetVelocity = _rigidbody.velocity;
         }
 
         public void OnExit() => _animation.OnAttackPerformed -= AnimationOnAttackPerformed;

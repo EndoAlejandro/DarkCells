@@ -23,12 +23,14 @@ namespace DarkHavoc.PlayerComponents
         {
             var ground = new GroundState(_player, _rigidbody, _input);
             var air = new AirState(_player, _rigidbody, _input);
-            var roll = new RollState(_player, _rigidbody, _input);
+            var roll = new RollState(_player, _rigidbody, _input, _player.Stats.RollAction);
             var crouch = new CrouchState(_player, _rigidbody);
-            var attack = new AttackState(_player, _rigidbody, _animation, AnimationState.LightAttack);
+            var attack = new AttackState(_player, _rigidbody, _animation, AnimationState.LightAttack,
+                _player.Stats.LightAttackAction);
             var block = new BlockState(_player, _rigidbody, _input);
             var parry = new ParryState(_player, _player.Stats.ParryAction);
-            var parryAttack = new AttackState(_player, _rigidbody, _animation, AnimationState.ParryAttack);
+            var parryAttack = new AttackState(_player, _rigidbody, _animation, AnimationState.ParryAttack,
+                _player.Stats.LightAttackAction);
             // TODO: Heavy attack maybe from combo.
 
             // Initial State.

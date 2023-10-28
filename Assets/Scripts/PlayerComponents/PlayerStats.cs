@@ -1,6 +1,4 @@
-﻿using System;
-using DarkHavoc.CustomUtils;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -33,24 +31,17 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float coyoteTime = 0.2f;
 
         [Header("Roll")]
-        [SerializeField] private float rollMaxSpeed;
-
-        [SerializeField] private float rollAcceleration;
-        [Range(0f, 1f)] [SerializeField] private float rollSpeedConservation;
-        [SerializeField] private float rollTime;
         [SerializeField] private float ceilingDistance;
+        [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
-        [SerializeField] private float attackMoveVelocity = 0.5f;
-
         [SerializeField] private int damage;
 
-        [Space] [SerializeField] private float lightAttackTime = .5f;
         [SerializeField] private float lightAttackBuffer = .2f;
         [SerializeField] private float lightComboTime = .3f;
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
-        [SerializeField] private ImpulseAction attackAction;
+        [SerializeField] private ImpulseAction lightAttackAction;
         [SerializeField] private ImpulseAction parryAction;
 
         #region Stats
@@ -85,39 +76,21 @@ namespace DarkHavoc.PlayerComponents
 
         #region Roll
 
-        public float RollMaxSpeed => rollMaxSpeed;
-        public float RollAcceleration => rollAcceleration;
-        public float RollSpeedConservation => rollSpeedConservation;
-        public float RollTime => rollTime;
         public float CeilingDistance => ceilingDistance;
+        public ImpulseAction RollAction => rollAction;
 
         #endregion
 
         #region Attack
 
-        public float AttackMoveVelocity => attackMoveVelocity;
         public int Damage => damage;
         public float LightAttackBuffer => lightAttackBuffer;
-        public float LightAttackTime => lightAttackTime;
         public float LightComboTime => lightComboTime;
         public float HeavyAttackTime => heavyAttackTime;
         public float BlockTime => blockTime;
-        public ImpulseAction AttackAction => attackAction;
+        public ImpulseAction LightAttackAction => lightAttackAction;
         public ImpulseAction ParryAction => parryAction;
 
         #endregion
-    }
-
-    [Serializable]
-    public struct ImpulseAction
-    {
-        [SerializeField] private float time;
-        [SerializeField] private float force;
-        [SerializeField] private float deceleration;
-        [SerializeField] private ImpulseActionExtensions.ImpulseDirection direction;
-        public float Time => time;
-        public float Force => force;
-        public float Deceleration => deceleration;
-        public int Direction => direction == ImpulseActionExtensions.ImpulseDirection.Forward ? 1 : -1;
     }
 }

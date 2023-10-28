@@ -132,14 +132,14 @@ namespace DarkHavoc.Enemies
             if (distance > stats.ScapeDistance) Player = null;
         }
 
-        public void DoDamage(ITakeDamage takeDamage)
-        {
-            takeDamage.TakeDamage(Damage, transform.position);
-        }
+        public void DoDamage(ITakeDamage takeDamage) => takeDamage.TakeDamage(this);
 
-        public void TakeDamage(int damage, Vector2 damageSource)
+        public void TakeDamage(IDoDamage damageDealer)
         {
-            Health -= damage;
+            if (damageDealer.transform.TryGetComponent(out Player player))
+                Player = player;
+            
+            Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
 
