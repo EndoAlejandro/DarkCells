@@ -1,5 +1,6 @@
 ﻿using System;
 using DarkHavoc.AttackComponents;
+using DarkHavoc.ImpulseComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.PlayerActions
@@ -8,32 +9,47 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     public class AttackAction : BufferedAction
     {
         private readonly Transform _attackOffset;
-        private readonly Rigidbody2D _rigidbody;
-        protected override bool InputTrigger => InputReader.Attack;
-        protected override float BufferTime => Player.Stats.LightAttackBuffer;
+        private Collider2D[] _results;
 
-        public AttackAction(Player player, Rigidbody2D rigidbody, Transform attackOffset, InputReader inputReader) :
-            base(player, inputReader)
+        private float _cooldown;
+
+        public AttackAction(Transform attackOffset, Player player, float bufferTime,
+            Func<bool> inputTrigger) : base(player, bufferTime, inputTrigger)
         {
-            _rigidbody = rigidbody;
             _attackOffset = attackOffset;
+
+            _results = new Collider2D[50];
         }
 
-        protected override void UseBuffer(ref Vector2 targetVelocity)
+        protected override bool CanBuffer() => _cooldown <= 0f && base.CanBuffer();
+
+        public override void Tick()
         {
-            var velocity = _rigidbody.velocity;
-            // targetVelocity = new Vector2(velocity.x * Player.Stats.AttackMoveVelocity, velocity.y);
+            if (_cooldown > 0f) _cooldown -= Time.deltaTime;
+            base.Tick();
+        }
 
-            var centerOffset = _attackOffset.localPosition;
-            var direction = Player.FacingLeft ? -1 : 1;
+        public void UseAction(AttackImpulseAction attackImpulse)
+        {
+            base.UseAction();
+
+            _cooldown = attackImpulse.CoolDownTime;
+
+            Vector3 centerOffset = _attackOffset.localPosition;
+            int direction = Player.FacingLeft ? -1 : 1;
             centerOffset.x *= 0.5f * direction;
-            var boxSize = new Vector2(_attackOffset.localPosition.x, _attackOffset.localPosition.y * 1.9f);
+            
+            Vector2 boxSize = new Vector2(_attackOffset.localPosition.x, _attackOffset.localPosition.y * 1.9f);
 
-            var result = Physics2D.OverlapBox(Player.transform.position + centerOffset,
-                boxSize, 0f, ~Player.Stats.Layer);
+            int size = Physics2D.OverlapBoxNonAlloc(Player.transform.position + centerOffset,
+                boxSize, 0f, _results, ~Player.Stats.AttackLayerMask);
 
-            if (result && result.transform.TryGetComponent(out ITakeDamage takeDamage))
-                Player.DoDamage(takeDamage);
+            for (int i = 0; i < size; i++)
+            {
+                var result = _results[i];
+                if (result.transform.TryGetComponent(out ITakeDamage takeDamage))
+                    Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
+            }
         }
     }
 }

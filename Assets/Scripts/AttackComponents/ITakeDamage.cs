@@ -7,9 +7,9 @@ namespace DarkHavoc.AttackComponents
     {
         event Action OnDamageTaken;
         Transform transform { get; }
-        int Health { get; }
+        float Health { get; }
         bool IsAlive { get; }
-        void TakeDamage(IDoDamage damageDealer);
+        void TakeDamage(IDoDamage damageDealer, float damageMultiplier);
         void Death();
     }
 }

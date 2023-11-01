@@ -1,5 +1,6 @@
 ﻿using System;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.ImpulseComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 

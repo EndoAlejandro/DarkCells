@@ -12,16 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e37ec38e35f4edab3f4370c9fac8910, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 50
   takeDamageTime: 5
   layer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 584
   maxSpeed: 6
   acceleration: 3
   groundDeceleration: 70
   airDeceleration: 10
   grounderDistance: 0.05
+  wallDetection:
+    distanceCheck: 0
+    topOffset: 0
+    bottomOffset: 0
+    wallLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
   jumpForce: 12
   groundingForce: 3
   fallAcceleration: 30
@@ -35,18 +42,38 @@ MonoBehaviour:
     force: 10
     deceleration: 1
     direction: 0
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 620
   damage: 1
+  movementReduction: 0.5
   lightAttackBuffer: 0.15
   lightComboTime: 0.3
   heavyAttackTime: 0.5
   blockTime: 0.3
   lightAttackAction:
     time: 0.5
-    force: 1.5
+    force: 2
     deceleration: 5
     direction: 0
+    damageMultiplier: 0
+    cooldownTime: 0
+    canStun: 0
+  heavyAttackAction:
+    time: 0.5
+    force: 3
+    deceleration: 5
+    direction: 0
+    damageMultiplier: 2
+    cooldownTime: 0.5
+    canStun: 1
   parryAction:
     time: 0.7
     force: 3
     deceleration: 5
+    direction: 1
+  takeDamageAction:
+    time: 0.3
+    force: 5
+    deceleration: 20
     direction: 1

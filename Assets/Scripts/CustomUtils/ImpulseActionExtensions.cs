@@ -1,4 +1,5 @@
-﻿using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.ImpulseComponents;
+using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
 namespace DarkHavoc.CustomUtils

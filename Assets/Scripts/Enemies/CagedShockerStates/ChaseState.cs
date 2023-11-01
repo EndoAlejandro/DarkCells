@@ -4,7 +4,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Enemies.CagedShockerStates
 {
     public class ChaseState : IState
     {

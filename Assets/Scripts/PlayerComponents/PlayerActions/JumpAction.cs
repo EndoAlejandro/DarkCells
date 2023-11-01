@@ -7,9 +7,9 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     public class JumpAction : BufferedAction
     {
         private readonly Rigidbody2D _rigidbody;
+        private readonly InputReader _inputReader;
 
         private float _timeLeftGrounded;
-        private bool _airJumpAvailable;
         private bool _canAirJump;
         private bool _coyoteTimeAvailable;
 
@@ -17,12 +17,13 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
                                      Timer < _timeLeftGrounded + Player.Stats.CoyoteTime;
 
         public bool EndedJumpEarly { get; private set; }
-        protected override bool InputTrigger => InputReader.Jump;
-        protected override float BufferTime => Player.Stats.JumpBuffer;
 
-        public JumpAction(Player player, Rigidbody2D rigidbody, InputReader inputReader) : base(player, inputReader)
+        public JumpAction(Player player, Rigidbody2D rigidbody, InputReader inputReader, float bufferTime,
+            Func<bool> inputTrigger) : base(
+            player, bufferTime, inputTrigger)
         {
             _rigidbody = rigidbody;
+            _inputReader = inputReader;
             player.OnGroundedChanged += PlayerOnGroundedChanged;
         }
 
@@ -45,8 +46,9 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             EndedUpEarlyCheck();
         }
 
-        protected override void UseBuffer(ref Vector2 targetVelocity)
+        public void UseAction(ref Vector2 targetVelocity)
         {
+            base.UseAction();
             if (!Player.Grounded && !CanUseCoyote)
             {
                 if (_canAirJump) _canAirJump = false;
@@ -60,7 +62,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         private void EndedUpEarlyCheck()
         {
-            if (!EndedJumpEarly && !Player.Grounded && !InputReader.JumpHold && _rigidbody.velocity.y > 0f)
+            if (!EndedJumpEarly && !Player.Grounded && !_inputReader.JumpHold && _rigidbody.velocity.y > 0f)
                 EndedJumpEarly = true;
         }
     }

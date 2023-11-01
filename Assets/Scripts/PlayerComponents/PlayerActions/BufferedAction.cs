@@ -4,41 +4,37 @@ using UnityEngine;
 namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     [Serializable]
-    public abstract class BufferedAction
+    public class BufferedAction
     {
-        private float _timeSinceActionPressed;
-        private bool _wasActionPressed;
-        
-        protected float Timer;
-        protected readonly Player Player;
-        protected readonly InputReader InputReader;
-        
-        protected abstract bool InputTrigger { get; }
-        protected abstract float BufferTime { get; }
-        
         public bool IsAvailable => _wasActionPressed && _timeSinceActionPressed > Timer;
 
-        protected BufferedAction(Player player, InputReader inputReader)
+        protected readonly Player Player;
+        private event Func<bool> InputTrigger;
+
+        protected float Timer;
+        private float _bufferTime;
+        private float _timeSinceActionPressed;
+
+        private bool _wasActionPressed;
+
+        public BufferedAction(Player player, float bufferTime, Func<bool> inputTrigger)
         {
             Player = player;
-            InputReader = inputReader;
+            _bufferTime = bufferTime;
+            InputTrigger = inputTrigger;
         }
+
+        protected virtual bool CanBuffer() => InputTrigger?.Invoke() == true;
 
         public virtual void Tick()
         {
             Timer += Time.deltaTime;
-            
-            if(!InputTrigger) return;
-            _timeSinceActionPressed = Timer + BufferTime;
+
+            if (!CanBuffer()) return;
+            _timeSinceActionPressed = Timer + _bufferTime;
             _wasActionPressed = true;
         }
 
-        public void UseAction(ref Vector2 targetVelocity)
-        {
-            _wasActionPressed = false;
-            UseBuffer(ref targetVelocity);
-        }
-
-        protected abstract void UseBuffer(ref Vector2 targetVelocity);
+        public virtual void UseAction() => _wasActionPressed = false;
     }
 }

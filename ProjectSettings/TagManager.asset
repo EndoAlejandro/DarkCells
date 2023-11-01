@@ -14,7 +14,7 @@ TagManager:
   - PlayerRoll
   - Enemy
   - Ground
-  - 
+  - IgnoreAll
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 1245454165
+    locked: 0
+  - name: Level
+    uniqueID: 1937645561
     locked: 0

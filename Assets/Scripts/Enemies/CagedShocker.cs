@@ -19,10 +19,11 @@ namespace DarkHavoc.Enemies
         private Collider2D[] _results;
 
         public event Action OnDamageTaken;
+        public event Action<float> OnTelegraph;
         public float IdleTime => stats != null ? stats.IdleTime : 0f;
-        public int Damage => stats != null ? stats.Damage : 0;
+        public float Damage => stats != null ? stats.Damage : 0;
         public Vector3 MidPoint => midPoint.position;
-        public int Health { get; private set; }
+        public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
         public Transform AttackOffset => attackOffset;
         public bool Grounded { get; private set; }
@@ -81,6 +82,8 @@ namespace DarkHavoc.Enemies
 
         public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
 
+        public void TelegraphAttack(float time) => OnTelegraph?.Invoke(time);
+
         public void SeekPlayer()
         {
             var tempPlayer = EntityVision.CircularCheck<Player>(MidPoint, stats.DetectionDistance, ref _results);
@@ -103,14 +106,15 @@ namespace DarkHavoc.Enemies
             if (distance > stats.ScapeDistance) Player = null;
         }
 
-        public void DoDamage(ITakeDamage takeDamage) => takeDamage.TakeDamage(this);
+        public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1f) =>
+            takeDamage.TakeDamage(this, damageMultiplier);
 
-        public void TakeDamage(IDoDamage damageDealer)
+        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier)
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
-            
-            
+
+
             Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }

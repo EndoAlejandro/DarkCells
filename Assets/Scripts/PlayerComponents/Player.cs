@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
 using DarkHavoc.AttackComponents;
+using DarkHavoc.CustomUtils;
+using DarkHavoc.ImpulseComponents;
 using DarkHavoc.PlayerComponents.PlayerActions;
 using UnityEngine;
 
@@ -29,21 +32,24 @@ namespace DarkHavoc.PlayerComponents
 
         private AttackAction _attackAction;
         private JumpAction _jumpAction;
-        private RollAction _rollAction;
-        private BlockAction _blockAction;
+        private BufferedAction _rollAction;
+        // private BlockAction _blockAction;
+
+        private IEnumerator _currentImpulse;
 
         public PlayerStats Stats => stats;
 
         public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
-        public bool HasBufferedLightAttack => _attackAction is { IsAvailable: true };
-        public bool HasBufferedBlock => _blockAction is { IsAvailable: true };
+        public bool HasBufferedAttack => _attackAction is { IsAvailable: true };
+        public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
+        // public bool HasBufferedBlock => _blockAction is { IsAvailable: true };
 
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
         public Vector3 MidPoint => midPoint.position;
         public int Direction => FacingLeft ? -1 : 1;
-        public int Damage => Stats != null ? Stats.Damage : 0;
-        public int Health { get; private set; }
+        public float Damage => Stats != null ? Stats.Damage : 0f;
+        public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
 
         private void Awake()
@@ -58,24 +64,21 @@ namespace DarkHavoc.PlayerComponents
 
         private void Actions()
         {
-            _attackAction = new AttackAction(this, _rigidbody, attackOffset, _inputReader);
-            _jumpAction = new JumpAction(this, _rigidbody, _inputReader);
-            _rollAction = new RollAction(this, _inputReader);
-            _blockAction = new BlockAction(this, _inputReader);
+            _attackAction = new AttackAction(attackOffset, this, Stats.LightAttackBuffer, () => _inputReader.Attack);
+            _jumpAction = new JumpAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
+            _rollAction = new BufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
         }
 
         private void Update()
         {
+            _attackAction.Tick();
             _jumpAction.Tick();
             _rollAction.Tick();
-            _attackAction.Tick();
-            _blockAction.Tick();
         }
 
-        public void Attack(ref Vector2 targetVelocity) => _attackAction.UseAction(ref targetVelocity);
+        public void Roll() => _rollAction.UseAction();
+        public void Attack(AttackImpulseAction attackImpulse) => _attackAction.UseAction(attackImpulse);
         public void Jump(ref Vector2 targetVelocity) => _jumpAction.UseAction(ref targetVelocity);
-        public void Roll(ref Vector2 targetVelocity) => _rollAction.UseAction(ref targetVelocity);
-        public void Block(ref Vector2 targetVelocity) => _blockAction.UseAction(ref targetVelocity);
 
         public void CustomGravity(ref Vector2 targetVelocity)
         {
@@ -133,7 +136,13 @@ namespace DarkHavoc.PlayerComponents
             _collider.bounds.center,
             _collider.size, _collider.direction, 0f, direction, distance, ~stats.Layer);
 
-        public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
+        public void ApplyVelocity(Vector2 targetVelocity)
+        {
+            Vector2 finalVelocity =
+                new Vector2(Mathf.Abs(_horizontalOverride) > 0.02f ? _horizontalOverride : targetVelocity.x,
+                    targetVelocity.y);
+            _rigidbody.velocity = finalVelocity;
+        }
 
         public void SetFacingLeft(bool value) => FacingLeft = value;
 
@@ -157,6 +166,41 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
+        public void DoDamage(ITakeDamage takeDamage, float damageMultiplier) =>
+            takeDamage.TakeDamage(this, damageMultiplier);
+
+        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f)
+        {
+            var result = TryToBlockDamage?.Invoke(damageDealer.transform.position) ?? false;
+            if (result || !IsAlive) return;
+
+            Health -= damageDealer.Damage * damageMultiplier;
+
+            if (_currentImpulse != null) StopCoroutine(_currentImpulse);
+            _currentImpulse = ImpulseActionAsync(Stats.TakeDamageAction);
+            StartCoroutine(_currentImpulse);
+
+            OnDamageTaken?.Invoke();
+        }
+
+        private float _horizontalOverride = 0f;
+
+        private IEnumerator ImpulseActionAsync(ImpulseAction action)
+        {
+            float x = action.GetTargetVelocity(Direction);
+            while (Mathf.Abs(x) > 0.02f)
+            {
+                x = action.Decelerate(x, Time.deltaTime);
+                _horizontalOverride = x;
+                yield return null;
+            }
+        }
+
+        public void Death()
+        {
+            Debug.Log("Player Dead.");
+        }
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.magenta;
@@ -165,21 +209,6 @@ namespace DarkHavoc.PlayerComponents
 
             Gizmos.DrawLine(_collider.bounds.max, _collider.bounds.max + Vector3.up * stats.GrounderDistance);
             Gizmos.DrawLine(_collider.bounds.min, _collider.bounds.min + Vector3.down * stats.GrounderDistance);
-        }
-
-        public void DoDamage(ITakeDamage takeDamage) => takeDamage.TakeDamage(this);
-
-        public void TakeDamage(IDoDamage damageDealer)
-        {
-            var result = TryToBlockDamage?.Invoke(damageDealer.transform.position) ?? false;
-            if (result || !IsAlive) return;
-
-            Health -= damageDealer.Damage;
-            OnDamageTaken?.Invoke();
-        }
-
-        public void Death()
-        {
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.ImpulseComponents;
+using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
@@ -36,7 +37,11 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float scapeDistance = 10f;
         [SerializeField] private float comboTime = 0.05f;
         [SerializeField] private float restTime = 1f;
+        [SerializeField] private float telegraphTime = 1f;
         [SerializeField] private LayerMask attackLayer;
+        [SerializeField] private ImpulseAction firstAttackAction;
+        [SerializeField] private ImpulseAction secondAttackAction;
+        [SerializeField] private ImpulseAction takeDamageAction;
 
         #region Stats
 
@@ -80,8 +85,12 @@ namespace DarkHavoc.Enemies
         public float DetectionDistance => detectionDistance;
         public float ScapeDistance => scapeDistance;
         public LayerMask AttackLayer => attackLayer;
+        public float TelegraphTime => telegraphTime;
         public float ComboTime => comboTime;
         public float RestTime => restTime;
+        public ImpulseAction FirstAttackAction => firstAttackAction;
+        public ImpulseAction SecondAttackAction => secondAttackAction;
+        public ImpulseAction TakeDamageAction => takeDamageAction;
 
         #endregion
     }

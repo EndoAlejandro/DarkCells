@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a624429f41f4434a6705c91af13ab1c, type: 3}
   m_Name: CagedShockerStats
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   idleTime: 1
   gravity: 3
   acceleration: 10
@@ -32,13 +32,13 @@ MonoBehaviour:
     wallLayerMask:
       serializedVersion: 2
       m_Bits: 265
-  damage: 1
-  firstAttackTime: 1.5
-  secondAttackTime: 0.5
+  damage: 3
+  firstAttackTime: 2
+  secondAttackTime: 1
   detectionDistance: 7
   scapeDistance: 10
   comboTime: 1
-  restTime: 1.25
+  restTime: 3
   attackLayer:
     serializedVersion: 2
     m_Bits: 503

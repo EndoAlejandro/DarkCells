@@ -2,10 +2,10 @@
 using DarkHavoc.CustomUtils;
 using UnityEngine;
 
-namespace DarkHavoc.PlayerComponents
+namespace DarkHavoc.ImpulseComponents
 {
     [Serializable]
-    public struct ImpulseAction
+    public class ImpulseAction
     {
         [SerializeField] private float time;
         [SerializeField] private float force;
@@ -15,5 +15,16 @@ namespace DarkHavoc.PlayerComponents
         public float Force => force;
         public float Deceleration => deceleration;
         public int Direction => direction == ImpulseActionExtensions.ImpulseDirection.Forward ? 1 : -1;
+    }
+
+    [Serializable]
+    public class AttackImpulseAction : ImpulseAction
+    {
+        [Range(1f, 2f)] [SerializeField] private float damageMultiplier;
+        [SerializeField] private float cooldownTime;
+        [SerializeField] private bool canStun;
+        public float DamageMultiplier => damageMultiplier;
+        public float CoolDownTime => cooldownTime;
+        public bool CanStun => canStun;
     }
 }

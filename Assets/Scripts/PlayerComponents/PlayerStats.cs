@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.ImpulseComponents;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -37,14 +39,18 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
-        [SerializeField] private int damage;
+        [SerializeField] private LayerMask attackLayerMask;
 
+        [SerializeField] private int damage;
+        [Range(0f, 1f)] [SerializeField] private float movementReduction;
         [SerializeField] private float lightAttackBuffer = .2f;
         [SerializeField] private float lightComboTime = .3f;
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
-        [SerializeField] private ImpulseAction lightAttackAction;
+        [SerializeField] private AttackImpulseAction lightAttackAction;
+        [SerializeField] private AttackImpulseAction heavyAttackAction;
         [SerializeField] private ImpulseAction parryAction;
+        [SerializeField] private ImpulseAction takeDamageAction;
 
         #region Stats
 
@@ -86,13 +92,16 @@ namespace DarkHavoc.PlayerComponents
 
         #region Attack
 
+        public LayerMask AttackLayerMask => attackLayerMask;
         public int Damage => damage;
+        public float MovementReduction => movementReduction;
         public float LightAttackBuffer => lightAttackBuffer;
         public float LightComboTime => lightComboTime;
-        public float HeavyAttackTime => heavyAttackTime;
         public float BlockTime => blockTime;
-        public ImpulseAction LightAttackAction => lightAttackAction;
+        public AttackImpulseAction LightAttackAction => lightAttackAction;
+        public AttackImpulseAction HeavyAttackAction => heavyAttackAction;
         public ImpulseAction ParryAction => parryAction;
+        public ImpulseAction TakeDamageAction => takeDamageAction;
 
         #endregion
     }

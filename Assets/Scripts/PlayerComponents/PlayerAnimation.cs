@@ -14,7 +14,7 @@ namespace DarkHavoc.PlayerComponents
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         [SerializeField] private float hitAnimationDuration = 1f;
-        
+
         private Animator _animator;
         private SpriteRenderer _renderer;
 
@@ -27,6 +27,7 @@ namespace DarkHavoc.PlayerComponents
         private MaterialPropertyBlock _materialPb;
 
         public event Action OnAttackPerformed;
+        public event Action OnComboAvailable;
 
         private void Awake()
         {
@@ -36,7 +37,7 @@ namespace DarkHavoc.PlayerComponents
             _player = GetComponentInParent<Player>();
             _inputReader = GetComponentInParent<InputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
-            
+
             _materialPb = new MaterialPropertyBlock();
         }
 
@@ -112,6 +113,7 @@ namespace DarkHavoc.PlayerComponents
         }
 
         private void PerformAttack() => OnAttackPerformed?.Invoke();
+        private void ComboAvailable() => OnComboAvailable?.Invoke();
 
         private void HorizontalFloat() =>
             _animator.SetFloat(Horizontal, Mathf.Abs(_player.GetNormalizedHorizontal()));

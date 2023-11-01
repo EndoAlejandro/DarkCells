@@ -13,7 +13,8 @@ namespace DarkHavoc.Enemies
 
         private Rigidbody2D _rigidbody;
 
-        public int Health { get; private set; }
+        public float Health { get; private set; }
+        float ITakeDamage.Health { get; }
         public bool IsAlive => true;
 
         private void Awake()
@@ -22,11 +23,11 @@ namespace DarkHavoc.Enemies
             Health = maxHealth;
         }
 
-        public void TakeDamage(IDoDamage damageDealer)
+        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier)
         {
             if (Health < 0) return;
 
-            Health -= damageDealer.Damage;
+            Health -= damageDealer.Damage * damageMultiplier;
             var dif = Mathf.Sign(transform.position.x - damageDealer.transform.position.x);
             _rigidbody.AddForce(new Vector2(dif * knockBackForce, 1f), ForceMode2D.Force);
             Debug.Log($"Damage:{damageDealer.Damage} || Health:{Health}");

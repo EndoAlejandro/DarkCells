@@ -4,7 +4,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Enemies.CagedShockerStates
 {
     public class AttackState : IState
     {
@@ -52,7 +52,7 @@ namespace DarkHavoc.Enemies
         public void OnEnter()
         {
             // TODO: Perform telegraph.
-            
+
             _timer = _attackDuration;
             _comboTimer = _cagedShocker.Stats.ComboTime;
             _player = _cagedShocker.Player;

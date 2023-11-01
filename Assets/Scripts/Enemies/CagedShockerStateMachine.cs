@@ -24,6 +24,7 @@ namespace DarkHavoc.Enemies
             var idle = new IdleState(_cagedShocker, _rigidbody);
             var patrol = new PatrolState(_cagedShocker, _rigidbody, _collider);
             var chase = new ChaseState(_cagedShocker, _rigidbody, _collider);
+            var telegraph = new TelegraphState(_cagedShocker, _cagedShocker.Stats.TelegraphTime);
             var firstAttack = new AttackState(_cagedShocker, _animation, true, _cagedShocker.Stats.FirstAttackTime);
             var secondAttack = new AttackState(_cagedShocker, _animation, false, _cagedShocker.Stats.SecondAttackTime);
             var rest = new RestState(_cagedShocker.Stats.RestTime);
@@ -39,7 +40,8 @@ namespace DarkHavoc.Enemies
             stateMachine.AddManyTransitions(toChaseStates, chase, () => _cagedShocker.Player != null);
             stateMachine.AddTransition(chase, idle, () => _cagedShocker.Player == null);
 
-            stateMachine.AddTransition(chase, firstAttack, () => chase.AttackAvailable && _cagedShocker != null);
+            stateMachine.AddTransition(chase, telegraph, () => chase.AttackAvailable);
+            stateMachine.AddTransition(telegraph, firstAttack, () => telegraph.Ended);
             stateMachine.AddTransition(firstAttack, secondAttack, () => firstAttack.CanCombo);
 
             stateMachine.AddTransition(firstAttack, rest, () => firstAttack.Ended);
