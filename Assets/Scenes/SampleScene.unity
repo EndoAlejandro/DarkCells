@@ -9569,23 +9569,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9260b4f2492e491db1cd8764b64e8530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1867874425 stripped
+--- !u!1 &1808062707
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2396822095196863707, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-  m_PrefabInstance: {fileID: 2974608718351643725}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1867874427
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808062709}
+  - component: {fileID: 1808062708}
+  m_Layer: 0
+  m_Name: FxProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1808062708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867874425}
+  m_GameObject: {fileID: 1808062707}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 887fda057f2bb06488f6c006172e2db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  telegraphAttackPrefab: {fileID: 9143803946635656790, guid: 57cd509bddfda4b4ab212dc6a1a7f23f, type: 3}
+--- !u!4 &1808062709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808062707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1889902100
 GameObject:
   m_ObjectHideFlags: 0
@@ -9679,6 +9707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CagedShocker_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3369190096021534427, guid: 51e966a069fe40c478fef9239b745996, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369190096021534427, guid: 51e966a069fe40c478fef9239b745996, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5650531338765162565, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_Camera
       value: 
@@ -9686,10 +9722,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2396822095196863707, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1867874427}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
 --- !u!1001 &8268528133519651764
 PrefabInstance:
@@ -9810,3 +9843,4 @@ SceneRoots:
   - {fileID: 320282826}
   - {fileID: 1212972409}
   - {fileID: 1889902101}
+  - {fileID: 1808062709}

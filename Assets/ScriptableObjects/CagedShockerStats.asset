@@ -39,6 +39,22 @@ MonoBehaviour:
   scapeDistance: 10
   comboTime: 1
   restTime: 3
+  telegraphTime: 0.5
   attackLayer:
     serializedVersion: 2
     m_Bits: 503
+  firstAttackAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    direction: 0
+  secondAttackAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    direction: 0
+  takeDamageAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    direction: 0
