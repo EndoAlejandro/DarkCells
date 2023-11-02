@@ -6,7 +6,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class GroundState : IState
     {
         public override string ToString() => "Grounded";
-        public AnimationState Animation  => AnimationState.Ground;
+        public AnimationState Animation => AnimationState.Ground;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
@@ -27,18 +27,16 @@ namespace DarkHavoc.PlayerComponents.States
         {
             if (_player.CheckCeilingCollision()) return;
 
+            _player.Move(_input.Movement.x);
             if (_player.HasBufferedJump)
-                _player.Jump(ref _targetVelocity);
-
-            _player.Move(ref _targetVelocity, _input.Movement.x);
+            {
+                _player.Jump();
+                _player.ApplyVelocity();
+            }
         }
 
         public void FixedTick()
         {
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
             _targetVelocity = _rigidbody.velocity;
         }
 

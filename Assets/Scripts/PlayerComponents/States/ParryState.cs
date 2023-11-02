@@ -17,7 +17,6 @@ namespace DarkHavoc.PlayerComponents.States
         private readonly Player _player;
         private readonly ImpulseAction _parryAction;
 
-        private Vector2 _targetVelocity;
         private float _timer;
 
         public ParryState(Player player, ImpulseAction parryAction)
@@ -26,26 +25,18 @@ namespace DarkHavoc.PlayerComponents.States
             _parryAction = parryAction;
         }
 
-        public void Tick()
-        {
-            _timer -= Time.deltaTime;
-            _targetVelocity.x = _parryAction.Decelerate(_targetVelocity.x, Time.deltaTime);
-        }
+        public void Tick() => _timer -= Time.deltaTime;
 
         public void FixedTick()
         {
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()
         {
-            _targetVelocity.x = _parryAction.GetTargetVelocity(_player.Direction);
-
             ParryAvailable = false;
             _timer = _parryAction.Time;
+            _player.AddImpulse(_parryAction);
+            
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
         }
  

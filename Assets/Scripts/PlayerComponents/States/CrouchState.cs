@@ -6,7 +6,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class CrouchState : IState
     {
         public override string ToString() => "Crouch";
-        public AnimationState Animation  => AnimationState.Crouch;
+        public AnimationState Animation => AnimationState.Crouch;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
@@ -20,15 +20,10 @@ namespace DarkHavoc.PlayerComponents.States
             _rigidbody = rigidbody;
         }
 
-        public void Tick()
-        {
-        }
+        public void Tick() => _player.Move(0);
 
         public void FixedTick()
         {
-            _player.Move(ref _targetVelocity, 0);
-            _player.CustomGravity(ref _targetVelocity);
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter() => _player.SetPlayerCollider(false);

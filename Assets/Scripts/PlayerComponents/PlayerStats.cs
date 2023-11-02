@@ -1,6 +1,5 @@
 ﻿using DarkHavoc.ImpulseComponents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -36,6 +35,7 @@ namespace DarkHavoc.PlayerComponents
         [Header("Roll")]
         [SerializeField] private float ceilingDistance;
 
+        [SerializeField] private float rollCooldown;
         [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
@@ -86,6 +86,7 @@ namespace DarkHavoc.PlayerComponents
         #region Roll
 
         public float CeilingDistance => ceilingDistance;
+        public float RollCooldown => rollCooldown;
         public ImpulseAction RollAction => rollAction;
 
         #endregion

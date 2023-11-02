@@ -31,21 +31,17 @@ namespace DarkHavoc.PlayerComponents.States
         public void Tick()
         {
             _timer -= Time.deltaTime;
-
+            _player.Move(0);
+            
             if (_player.HasBufferedJump)
             {
-                _player.Jump(ref _targetVelocity);
-                _player.ApplyVelocity(_targetVelocity);
+                _player.Jump();
+                _player.ApplyVelocity();
             }
         }
 
         public void FixedTick()
         {
-            _player.Move(ref _targetVelocity, 0);
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()

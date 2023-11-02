@@ -11,21 +11,16 @@ namespace DarkHavoc.PlayerComponents.States
         public AnimationState Animation { get; }
 
         private readonly Player _player;
-        private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _input;
         private readonly PlayerAnimation _animation;
         private readonly AttackImpulseAction _attackAction;
 
         private float _timer;
 
-        // private float _comboTimer;
-        private Vector2 _targetVelocity;
-
         public bool Ended => _timer <= 0f;
 
         public bool CanCombo { get; private set; }
 
-        // public bool CanCombo => _comboTimer <= 0f;
         public bool CanTransitionToSelf => true;
         public bool CanHeavyAttack { get; private set; }
 
@@ -33,7 +28,6 @@ namespace DarkHavoc.PlayerComponents.States
             AnimationState animationState, AttackImpulseAction attackAction)
         {
             _player = player;
-            _rigidbody = rigidbody;
             _input = input;
             _animation = animation;
             _attackAction = attackAction;
@@ -45,26 +39,18 @@ namespace DarkHavoc.PlayerComponents.States
         public void Tick()
         {
             _timer -= Time.deltaTime;
-            // _comboTimer -= Time.deltaTime;
-
-            _targetVelocity.x = _attackAction.Decelerate(_targetVelocity.x, Time.deltaTime);
-            _player.Move(ref _targetVelocity, _input.Movement.x * _player.Stats.MovementReduction);
-            // _targetVelocity.x
+            _player.Move(_input.Movement.x * _player.Stats.MovementReduction);
 
             if (_player.HasBufferedJump)
             {
                 _timer = 0f;
-                _player.Jump(ref _targetVelocity);
-                _player.ApplyVelocity(_targetVelocity);
+                _player.Jump();
+                _player.ApplyVelocity();
             }
         }
 
         public void FixedTick()
         {
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()
@@ -74,11 +60,8 @@ namespace DarkHavoc.PlayerComponents.States
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
             _animation.OnComboAvailable += AnimationOnComboAvailable;
 
-            _targetVelocity.x = _attackAction.GetTargetVelocity(_player.Direction);
-
             _timer = _attackAction.Time;
-            _targetVelocity.y = _rigidbody.velocity.y;
-            // _comboTimer = _player.Stats.LightComboTime;
+            _player.AddImpulse(_attackAction);
         }
 
         private void AnimationOnAttackPerformed() => _player.Attack(_attackAction);

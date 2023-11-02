@@ -26,17 +26,17 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void Tick()
         {
-            _player.Move(ref _targetVelocity, _input.Movement.x);
-            
-            if (_player.HasBufferedJump) _player.Jump(ref _targetVelocity);
+            _player.Move(_input.Movement.x);
+
+            if (_player.HasBufferedJump)
+            {
+                _player.Jump();
+                _player.ApplyVelocity();
+            }
         }
 
         public void FixedTick()
         {
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter() => _targetVelocity = _rigidbody.velocity;

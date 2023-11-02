@@ -22,9 +22,7 @@ namespace DarkHavoc.ImpulseComponents
     {
         [Range(1f, 2f)] [SerializeField] private float damageMultiplier;
         [SerializeField] private float cooldownTime;
-        [SerializeField] private bool canStun;
         public float DamageMultiplier => damageMultiplier;
         public float CoolDownTime => cooldownTime;
-        public bool CanStun => canStun;
     }
 }

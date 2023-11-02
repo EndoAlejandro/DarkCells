@@ -6,14 +6,14 @@ using UnityEngine;
 namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     [Serializable]
-    public class AttackAction : BufferedAction
+    public class AttackBufferedAction : BufferedAction
     {
         private readonly Transform _attackOffset;
         private Collider2D[] _results;
 
         private float _cooldown;
 
-        public AttackAction(Transform attackOffset, Player player, float bufferTime,
+        public AttackBufferedAction(Transform attackOffset, Player player, float bufferTime,
             Func<bool> inputTrigger) : base(player, bufferTime, inputTrigger)
         {
             _attackOffset = attackOffset;

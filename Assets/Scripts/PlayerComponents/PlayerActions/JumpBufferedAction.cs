@@ -4,8 +4,9 @@ using UnityEngine;
 namespace DarkHavoc.PlayerComponents.PlayerActions
 {
     [Serializable]
-    public class JumpAction : BufferedAction
+    public class JumpBufferedAction : BufferedAction
     {
+
         private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _inputReader;
 
@@ -18,7 +19,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         public bool EndedJumpEarly { get; private set; }
 
-        public JumpAction(Player player, Rigidbody2D rigidbody, InputReader inputReader, float bufferTime,
+        public JumpBufferedAction(Player player, Rigidbody2D rigidbody, InputReader inputReader, float bufferTime,
             Func<bool> inputTrigger) : base(
             player, bufferTime, inputTrigger)
         {
@@ -48,13 +49,13 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         public void UseAction(ref Vector2 targetVelocity)
         {
-            base.UseAction();
             if (!Player.Grounded && !CanUseCoyote)
             {
                 if (_canAirJump) _canAirJump = false;
                 else return;
             }
 
+            base.UseAction();
             _coyoteTimeAvailable = false;
             EndedJumpEarly = false;
             targetVelocity.y = Player.Stats.JumpForce;

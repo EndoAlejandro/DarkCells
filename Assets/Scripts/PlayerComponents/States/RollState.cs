@@ -12,10 +12,8 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
         private readonly ImpulseAction _rollAction;
 
-        private Vector2 _targetVelocity;
         private float _timer;
 
         public bool Ended { get; private set; }
@@ -25,7 +23,6 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _player = player;
             _rigidbody = rigidbody;
-            _input = input;
             _rollAction = rollAction;
         }
 
@@ -33,12 +30,10 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _timer -= Time.deltaTime;
 
-            _targetVelocity.x = _rollAction.Decelerate(_targetVelocity.x, Time.deltaTime);
-
-            if (_player.HasBufferedJump)
+            if (_player.HasBufferedJump && !_player.CheckCeilingCollision())
             {
-                _player.Jump(ref _targetVelocity);
-                _player.ApplyVelocity(_targetVelocity);
+                _player.Jump();
+                _player.ApplyVelocity();
                 Ended = true;
             }
 
@@ -47,21 +42,14 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
-            _player.CheckCollisions(ref _targetVelocity);
-            _player.CustomGravity(ref _targetVelocity);
-
-            _player.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()
         {
             Ended = false;
-
-            float y = _rigidbody.velocity.y > 0 ? _rigidbody.velocity.y : 0f;
-            float x = _rollAction.GetTargetVelocity(_player.Direction);
-            _targetVelocity = new Vector2(x, y);
-
             _timer = _rollAction.Time;
+            _player.Roll();
+            _player.AddImpulse(_rollAction);
             _player.SetPlayerCollider(false);
         }
 

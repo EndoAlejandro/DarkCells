@@ -18,7 +18,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 584
   maxSpeed: 6
-  acceleration: 3
+  acceleration: 4
   groundDeceleration: 70
   airDeceleration: 10
   grounderDistance: 0.05
@@ -37,10 +37,11 @@ MonoBehaviour:
   jumpEndEarlyGravityModifier: 1.75
   coyoteTime: 0.2
   ceilingDistance: 0.3
+  rollCooldown: 0.25
   rollAction:
     time: 0.4
-    force: 10
-    deceleration: 1
+    force: 8
+    deceleration: 2
     direction: 0
   attackLayerMask:
     serializedVersion: 2
@@ -53,27 +54,25 @@ MonoBehaviour:
   blockTime: 0.3
   lightAttackAction:
     time: 0.5
-    force: 2
+    force: 1
     deceleration: 5
     direction: 0
     damageMultiplier: 0
     cooldownTime: 0
-    canStun: 0
   heavyAttackAction:
     time: 0.5
-    force: 3
+    force: 2
     deceleration: 5
     direction: 0
     damageMultiplier: 2
     cooldownTime: 0.5
-    canStun: 1
   parryAction:
     time: 0.7
     force: 3
     deceleration: 5
     direction: 1
   takeDamageAction:
-    time: 0.3
-    force: 5
+    time: 0.5
+    force: 7
     deceleration: 20
     direction: 1

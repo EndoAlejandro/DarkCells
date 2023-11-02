@@ -16,10 +16,10 @@ namespace DarkHavoc.PlayerComponents
         public event Func<Vector2, bool> TryToBlockDamage;
         public event Action<bool> OnGroundedChanged;
         public event Action OnDamageTaken;
-        public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
-        public bool HasBufferedAttack => _attackAction is { IsAvailable: true };
+        public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
+        public bool HasBufferedAttack => _attackBufferedAction is { IsAvailable: true };
         public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
-
+        public PlayerStats Stats => stats;
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
         public Vector3 MidPoint => midPoint.position;
@@ -37,20 +37,21 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private CapsuleCollider2D rollCollider;
 
         private Vector2 _targetVelocity;
-        
+
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider;
 
         private InputReader _inputReader;
 
-        private AttackAction _attackAction;
-        private JumpAction _jumpAction;
-        private BufferedAction _rollAction;
+        private AttackBufferedAction _attackBufferedAction;
+        private JumpBufferedAction _jumpBufferedAction;
+        private RollBufferedAction _rollAction;
 
         private IEnumerator _currentImpulse;
+        private Vector2 _extraForce;
 
-        public PlayerStats Stats => stats;
-        
+        private float _impulseTimer;
+        private ImpulseAction _currentImpulseAction;
 
         private void Awake()
         {
@@ -64,61 +65,83 @@ namespace DarkHavoc.PlayerComponents
 
         private void Actions()
         {
-            _attackAction = new AttackAction(attackOffset, this, Stats.LightAttackBuffer, () => _inputReader.Attack);
-            _jumpAction = new JumpAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
-            _rollAction = new BufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
+            _attackBufferedAction =
+                new AttackBufferedAction(attackOffset, this, Stats.LightAttackBuffer, () => _inputReader.Attack);
+            _jumpBufferedAction =
+                new JumpBufferedAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
+            _rollAction = new RollBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
         }
 
         private void Update()
         {
-            _attackAction.Tick();
-            _jumpAction.Tick();
+            if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
+
+            _attackBufferedAction.Tick();
+            _jumpBufferedAction.Tick();
             _rollAction.Tick();
         }
 
-        public void Roll() => _rollAction.UseAction();
-        public void Attack(AttackImpulseAction attackImpulse) => _attackAction.UseAction(attackImpulse);
-        public void Jump(ref Vector2 targetVelocity) => _jumpAction.UseAction(ref targetVelocity);
-
-        public void CustomGravity(ref Vector2 targetVelocity)
+        private void FixedUpdate()
         {
-            if (Grounded && targetVelocity.y <= 0)
+            CheckCollisions();
+            CustomGravity();
+
+            _extraForce.x = _currentImpulseAction?.Decelerate(_extraForce.x, Time.fixedDeltaTime) ?? 0f;
+
+            ApplyVelocity();
+        }
+
+        public void AddImpulse(ImpulseAction impulse)
+        {
+            _currentImpulseAction = impulse;
+            _impulseTimer = impulse.Time;
+            _extraForce.x = _currentImpulseAction.GetTargetVelocity(Direction);
+        }
+
+        public void Roll() => _rollAction.UseAction();
+        public void Attack(AttackImpulseAction attackImpulse) => _attackBufferedAction.UseAction(attackImpulse);
+        public void Jump() => _jumpBufferedAction.UseAction(ref _targetVelocity);
+
+        private void CustomGravity()
+        {
+            if (Grounded && _targetVelocity.y <= 0)
             {
-                targetVelocity.y = -stats.GroundingForce;
+                _targetVelocity.y = -stats.GroundingForce;
             }
             else
             {
                 var inAirGravity = stats.FallAcceleration;
-                if (_jumpAction.EndedJumpEarly && inAirGravity > 0f) inAirGravity *= Stats.JumpEndEarlyGravityModifier;
-                targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed,
+                if (_jumpBufferedAction.EndedJumpEarly && inAirGravity > 0f)
+                    inAirGravity *= Stats.JumpEndEarlyGravityModifier;
+                _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -stats.MaxFallSpeed,
                     inAirGravity * Time.fixedDeltaTime);
             }
         }
 
-        public void Move(ref Vector2 targetVelocity, float input)
+        public void Move(float input)
         {
             if (input == 0)
             {
                 var deceleration = Grounded ? stats.GroundDeceleration : stats.AirDeceleration;
-                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
             }
             else
             {
-                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, input * stats.MaxSpeed,
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, input * stats.MaxSpeed,
                     stats.Acceleration * Time.fixedDeltaTime);
             }
         }
 
         public bool CheckCeilingCollision() => CheckCollisionCustomDirection(Vector2.up, Stats.CeilingDistance);
 
-        public void CheckCollisions(ref Vector2 targetVelocity)
+        private void CheckCollisions()
         {
             Physics2D.queriesStartInColliders = false;
 
             bool groundHit = CheckCollisionCustomDirection(Vector2.down, stats.GrounderDistance);
             bool ceilingHit = CheckCollisionCustomDirection(Vector2.up, stats.GrounderDistance);
 
-            if (ceilingHit) targetVelocity.y = Mathf.Min(0, targetVelocity.y);
+            if (ceilingHit) _targetVelocity.y = Mathf.Min(0, _targetVelocity.y);
 
             if (!Grounded && groundHit)
             {
@@ -136,12 +159,10 @@ namespace DarkHavoc.PlayerComponents
             _collider.bounds.center,
             _collider.size, _collider.direction, 0f, direction, distance, ~stats.Layer);
 
-        public void ApplyVelocity(Vector2 targetVelocity)
+        public void ApplyVelocity()
         {
-            Vector2 finalVelocity =
-                new Vector2(Mathf.Abs(_horizontalOverride) > 0.02f ? _horizontalOverride : targetVelocity.x,
-                    targetVelocity.y);
-            _rigidbody.velocity = finalVelocity;
+            var target = new Vector2(_impulseTimer <= 0f ? _targetVelocity.x : _extraForce.x, _targetVelocity.y);
+            _rigidbody.velocity = target;
         }
 
         public void SetFacingLeft(bool value) => FacingLeft = value;
@@ -176,31 +197,13 @@ namespace DarkHavoc.PlayerComponents
 
             Health -= damageDealer.Damage * damageMultiplier;
 
-            if (_currentImpulse != null) StopCoroutine(_currentImpulse);
-            _currentImpulse = ImpulseActionAsync(Stats.TakeDamageAction);
-            StartCoroutine(_currentImpulse);
+            AddImpulse(Stats.TakeDamageAction);
 
             OnDamageTaken?.Invoke();
         }
 
-        private float _horizontalOverride = 0f;
+        public void Death() => Debug.Log("Player Dead.");
 
-        private IEnumerator ImpulseActionAsync(ImpulseAction action)
-        {
-            float x = action.GetTargetVelocity(Direction);
-            while (Mathf.Abs(x) > 0.02f)
-            {
-                x = action.Decelerate(x, Time.deltaTime);
-                _horizontalOverride = x;
-                yield return null;
-            }
-        }
-
-        public void Death()
-        {
-            Debug.Log("Player Dead.");
-        }
-        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.magenta;

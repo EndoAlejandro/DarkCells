@@ -45,18 +45,20 @@ namespace DarkHavoc.PlayerComponents
 
             // Roll.
             var toRollStates = new IState[] { ground, air, crouch, parry };
-            stateMachine.AddManyTransitions(toRollStates, roll, () => _input.Roll);
+            stateMachine.AddManyTransitions(toRollStates, roll, () => _player.HasBufferedRoll);
             stateMachine.AddTransition(roll, ground,
                 () => roll.Ended && _player.Grounded && !_player.CheckCeilingCollision());
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
             stateMachine.AddTransition(roll, crouch,
                 () => roll.Ended && _player.Grounded && _player.CheckCeilingCollision());
+            stateMachine.AddTransition(roll, lightAttack,
+                () => _player.HasBufferedAttack && !_player.CheckCeilingCollision());
 
             // Crouch.
             stateMachine.AddTransition(crouch, ground, () => !_player.CheckCeilingCollision());
 
             // Attack.
-            var toAttackStates = new IState[] { ground, air, roll };
+            var toAttackStates = new IState[] { ground, air };
             stateMachine.AddManyTransitions(toAttackStates, lightAttack, () => _player.HasBufferedAttack);
 
             stateMachine.AddTransition(lightAttack, lightAttack,
