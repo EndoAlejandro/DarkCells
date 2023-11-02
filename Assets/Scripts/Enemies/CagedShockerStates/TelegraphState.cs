@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public void Tick()
         {
             _timer -= Time.deltaTime;
-            if (!_telegraphed && _timer <= _telegraphTime)
+            if (!_telegraphed && _timer <= _telegraphTime/2)
             {
                 _telegraphed = true;
                 FxProvider.Instance.GetFx(FxType.Telegraph, _cagedShocker.transform.position + Vector3.up * 1.25f);

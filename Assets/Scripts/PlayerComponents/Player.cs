@@ -16,6 +16,17 @@ namespace DarkHavoc.PlayerComponents
         public event Func<Vector2, bool> TryToBlockDamage;
         public event Action<bool> OnGroundedChanged;
         public event Action OnDamageTaken;
+        public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
+        public bool HasBufferedAttack => _attackAction is { IsAvailable: true };
+        public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
+
+        public bool FacingLeft { get; private set; }
+        public bool Grounded { get; private set; }
+        public Vector3 MidPoint => midPoint.position;
+        public int Direction => FacingLeft ? -1 : 1;
+        public float Damage => Stats != null ? Stats.Damage : 0f;
+        public float Health { get; private set; }
+        public bool IsAlive => Health > 0f;
 
         [SerializeField] private PlayerStats stats;
 
@@ -25,6 +36,8 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private CapsuleCollider2D defaultCollider;
         [SerializeField] private CapsuleCollider2D rollCollider;
 
+        private Vector2 _targetVelocity;
+        
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider;
 
@@ -33,24 +46,11 @@ namespace DarkHavoc.PlayerComponents
         private AttackAction _attackAction;
         private JumpAction _jumpAction;
         private BufferedAction _rollAction;
-        // private BlockAction _blockAction;
 
         private IEnumerator _currentImpulse;
 
         public PlayerStats Stats => stats;
-
-        public bool HasBufferedJump => _jumpAction is { IsAvailable: true };
-        public bool HasBufferedAttack => _attackAction is { IsAvailable: true };
-        public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
-        // public bool HasBufferedBlock => _blockAction is { IsAvailable: true };
-
-        public bool FacingLeft { get; private set; }
-        public bool Grounded { get; private set; }
-        public Vector3 MidPoint => midPoint.position;
-        public int Direction => FacingLeft ? -1 : 1;
-        public float Damage => Stats != null ? Stats.Damage : 0f;
-        public float Health { get; private set; }
-        public bool IsAlive => Health > 0f;
+        
 
         private void Awake()
         {
