@@ -27,6 +27,7 @@ namespace DarkHavoc.PlayerComponents
             var crouch = new CrouchState(_player, _rigidbody);
             var block = new BlockState(_player, _rigidbody, _input);
             var parry = new ParryState(_player, _player.Stats.ParryAction);
+            var ledgeGrab = new LedgeGrabState(_player);
 
             var lightAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.LightAttack,
                 _player.Stats.LightAttackAction);
@@ -87,6 +88,39 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(parry, ground, () => parry.Ended && !_input.BlockHold);
 
             stateMachine.AddTransition(parryAttack, ground, () => parryAttack.Ended);
+        }
+    }
+
+    public class LedgeGrabState : IState
+    {
+        public AnimationState Animation { get; }
+        public bool CanTransitionToSelf { get; }
+
+        private readonly Player _player;
+
+        public LedgeGrabState(Player player) => _player = player;
+
+        public void Tick()
+        {
+            if (_player.HasBufferedJump)
+            {
+                _player.Jump();
+                _player.ApplyVelocity();
+            }
+        }
+
+        public void FixedTick()
+        {
+        }
+
+        public void OnEnter()
+        {
+            _player.SetGravityState(false);
+        }
+
+        public void OnExit()
+        {
+            _player.SetGravityState(true);
         }
     }
 }

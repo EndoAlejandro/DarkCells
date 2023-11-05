@@ -23,12 +23,15 @@ MonoBehaviour:
   airDeceleration: 10
   grounderDistance: 0.05
   wallDetection:
-    distanceCheck: 0
-    topOffset: 0
-    bottomOffset: 0
-    wallLayerMask:
+    bottomOffset: 0.1
+    horizontalOffset: -0.24
+    distanceCheck: 0.4
+    wallLayer:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 257
+    topOffset: 0
+    ledgeDetectorOffset: {x: 0.25, y: 0}
+    ledgeDetectorRadius: 0.25
   jumpForce: 12
   groundingForce: 3
   fallAcceleration: 30

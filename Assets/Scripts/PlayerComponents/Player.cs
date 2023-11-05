@@ -39,7 +39,7 @@ namespace DarkHavoc.PlayerComponents
         private Vector2 _targetVelocity;
 
         private Rigidbody2D _rigidbody;
-        private CapsuleCollider2D _collider;
+        public CapsuleCollider2D Collider { get; private set; }
 
         private InputReader _inputReader;
 
@@ -156,8 +156,8 @@ namespace DarkHavoc.PlayerComponents
         }
 
         private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(
-            _collider.bounds.center,
-            _collider.size, _collider.direction, 0f, direction, distance, ~stats.Layer);
+            Collider.bounds.center,
+            Collider.size, Collider.direction, 0f, direction, distance, ~stats.Layer);
 
         public void ApplyVelocity()
         {
@@ -174,7 +174,7 @@ namespace DarkHavoc.PlayerComponents
 
         public void SetPlayerCollider(bool setToDefault)
         {
-            _collider = setToDefault ? defaultCollider : rollCollider;
+            Collider = setToDefault ? defaultCollider : rollCollider;
             if (setToDefault)
             {
                 defaultCollider.enabled = true;
@@ -208,10 +208,33 @@ namespace DarkHavoc.PlayerComponents
         {
             Gizmos.color = Color.magenta;
             if (stats == null) return;
-            if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
+            if (Collider == null) Collider = GetComponent<CapsuleCollider2D>();
 
-            Gizmos.DrawLine(_collider.bounds.max, _collider.bounds.max + Vector3.up * stats.GrounderDistance);
-            Gizmos.DrawLine(_collider.bounds.min, _collider.bounds.min + Vector3.down * stats.GrounderDistance);
+            Gizmos.DrawLine(Collider.bounds.max, Collider.bounds.max + Vector3.up * stats.GrounderDistance);
+            Gizmos.DrawLine(Collider.bounds.min, Collider.bounds.min + Vector3.down * stats.GrounderDistance);
+
+            WallDetection wallDetection = Stats.WallDetection;
+            float horizontal = FacingLeft ? Collider.bounds.min.x : Collider.bounds.max.x;
+            horizontal += wallDetection.HorizontalOffset;
+            var direction = FacingLeft ? Vector2.left : Vector2.right;
+            // Top Ray.
+            Vector2 topOrigin = new Vector2(horizontal, Collider.bounds.max.y - wallDetection.TopOffset);
+            Gizmos.DrawLine(topOrigin, topOrigin + (direction * wallDetection.DistanceCheck));
+            // Middle Ray.
+            var centerOrigin = new Vector2(horizontal, Collider.bounds.center.y);
+            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * wallDetection.DistanceCheck));
+            // Bottom Ray.
+            Vector2 bottomOrigin = new Vector2(horizontal, Collider.bounds.min.y + wallDetection.BottomOffset);
+            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * wallDetection.DistanceCheck));
+
+            Gizmos.color = Color.cyan;
+            var spherePosition = new Vector2(wallDetection.LedgeDetectorOffset.x + horizontal, Collider.bounds.max.y - wallDetection.TopOffset + wallDetection.LedgeDetectorOffset.y);
+
+            Gizmos.DrawWireSphere(spherePosition, wallDetection.LedgeDetectorRadius);
+        }
+
+        public void SetGravityState(bool value)
+        {
         }
     }
 }

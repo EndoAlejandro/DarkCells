@@ -164,6 +164,7 @@ namespace DarkHavoc.Enemies
         private void WallRays()
         {
             float horizontal = FacingLeft ? _collider.bounds.min.x : _collider.bounds.max.x;
+            horizontal += Stats.WallDetection.HorizontalOffset;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
             // Top Ray.
             Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y - stats.WallDetection.TopOffset);

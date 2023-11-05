@@ -7847,7 +7847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &461979390
 Transform:
   m_ObjectHideFlags: 0
@@ -7926,67 +7926,7 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 461979393}
-    m_ColliderPaths:
-    - - X: 597672256
-        Y: 37128716
-      - X: 521364064
-        Y: 37128716
-      - X: 521364064
-        Y: -4999995
-      - X: 597672256
-        Y: -4999995
-  - m_Collider: {fileID: 461979394}
-    m_ColliderPaths:
-    - - X: 598355840
-        Y: 11835899
-      - X: 250662544
-        Y: 11835899
-      - X: 250662544
-        Y: -65839480
-      - X: 598355840
-        Y: -65839480
-  - m_Collider: {fileID: 461979395}
-    m_ColliderPaths:
-    - - X: 253826640
-        Y: 30292816
-      - X: 105741768
-        Y: 30292816
-      - X: 105741768
-        Y: -61737948
-      - X: 253826640
-        Y: -61737948
-  - m_Collider: {fileID: 461979396}
-    m_ColliderPaths:
-    - - X: 597672320
-        Y: 136932816
-      - X: 111893848
-        Y: 136932816
-      - X: 111893848
-        Y: 20292826
-      - X: 597672320
-        Y: 20292826
-  - m_Collider: {fileID: 461979397}
-    m_ColliderPaths:
-    - - X: 114374336
-        Y: 138299984
-      - X: 81132408
-        Y: 138299984
-      - X: 81132408
-        Y: -20038976
-      - X: 114374336
-        Y: -20038976
-  - m_Collider: {fileID: 461979398}
-    m_ColliderPaths:
-    - - X: 87030776
-        Y: 138299984
-      - X: -197772288
-        Y: 138299984
-      - X: -197772288
-        Y: -78144104
-      - X: 87030776
-        Y: -78144104
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 8.703048, y: -7.8144107}
@@ -8530,7 +8470,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.3621306, y: -1.4484245, z: -9.392119}
+  m_LocalPosition: {x: -7.3622727, y: -0.6984244, z: -9.392119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9263,7 +9203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1270783648
 Transform:
   m_ObjectHideFlags: 0
@@ -9401,7 +9341,7 @@ Transform:
   m_GameObject: {fileID: 1342738572}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.945856, y: -1.4488044, z: -9.392119}
+  m_LocalPosition: {x: -14.145855, y: -0.6988044, z: -9.392119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9480,7 +9420,7 @@ Transform:
   m_GameObject: {fileID: 1376353284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.01, y: -0.78, z: 0}
+  m_LocalPosition: {x: -17.21, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

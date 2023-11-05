@@ -26,12 +26,15 @@ MonoBehaviour:
   groundOffset: 0.35
   groundCheckDistance: 0.05
   wallDetection:
-    distanceCheck: 0.35
-    topOffset: 0.3
     bottomOffset: 0.3
-    wallLayerMask:
+    horizontalOffset: -0.1
+    distanceCheck: 0.35
+    wallLayer:
       serializedVersion: 2
       m_Bits: 265
+    topOffset: 0.3
+    ledgeDetectorOffset: {x: 0, y: 0}
+    ledgeDetectorRadius: 0
   damage: 3
   firstAttackTime: 2
   secondAttackTime: 1

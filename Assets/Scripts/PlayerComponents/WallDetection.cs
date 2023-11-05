@@ -1,18 +1,34 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DarkHavoc.PlayerComponents
 {
     [Serializable]
     public struct WallDetection
     {
-        [SerializeField] private float distanceCheck;
-        [SerializeField] private float topOffset;
+        [Header("Wall")]
         [SerializeField] private float bottomOffset;
-        [SerializeField] private LayerMask wallLayerMask;
+
+        [SerializeField] private float horizontalOffset;
+        [SerializeField] private float distanceCheck;
+
+        [FormerlySerializedAs("wallLayerMask")] [SerializeField]
+        private LayerMask wallLayer;
+
+        [Header("Ledge")]
+        [SerializeField] private float topOffset;
+
+        [SerializeField] private Vector2 ledgeDetectorOffset;
+        [SerializeField] private float ledgeDetectorRadius;
+
+
         public float DistanceCheck => distanceCheck;
         public float TopOffset => topOffset;
         public float BottomOffset => bottomOffset;
-        public LayerMask WallLayerMask => wallLayerMask;
+        public float HorizontalOffset => horizontalOffset;
+        public Vector2 LedgeDetectorOffset => ledgeDetectorOffset;
+        public float LedgeDetectorRadius => ledgeDetectorRadius;
+        public LayerMask WallLayer => wallLayer;
     }
 }
