@@ -51,12 +51,14 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(ground, air, () => !_player.Grounded);
             stateMachine.AddTransition(air, ground, () => _player.Grounded);
 
-            // Walls
-            stateMachine.AddTransition(air, wallSlide, () => air.FacingWall);
-            // stateMachine.AddTransition(air, ledgeGrab, () => air.FacingLedge);
+            // Wall Slide.
+            stateMachine.AddTransition(air, ledgeGrab, () => air.FacingLedge);
             stateMachine.AddTransition(wallSlide, ground, () => _player.Grounded);
-            stateMachine.AddTransition(wallSlide, air, ()=> wallSlide.Ended);
-            stateMachine.AddTransition(ledgeGrab, ground, () => ledgeGrab.Ended);
+            stateMachine.AddTransition(wallSlide, air, () => wallSlide.Ended);
+            
+            // Ledge Grab.
+            stateMachine.AddTransition(air, wallSlide, () => air.FacingWall);
+            stateMachine.AddTransition(ledgeGrab, air, () => ledgeGrab.Ended);
 
             // Roll.
             var toRollStates = new IState[] { ground, air, crouch, parry };

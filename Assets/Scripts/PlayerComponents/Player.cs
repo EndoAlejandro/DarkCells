@@ -33,6 +33,7 @@ namespace DarkHavoc.PlayerComponents
         public int Direction => FacingLeft ? -1 : 1;
         public float Damage => Stats != null ? Stats.Damage : 0f;
         public float Health { get; private set; }
+        public bool CanMove { get; private set; }
         public bool IsAlive => Health > 0f;
 
         [SerializeField] private PlayerStats stats;
@@ -61,7 +62,7 @@ namespace DarkHavoc.PlayerComponents
 
         private float _impulseTimer;
         private bool _useGravity;
-        public bool CanMove { get; private set; }
+        private bool _wallSliding;
 
         private void Awake()
         {
@@ -126,7 +127,7 @@ namespace DarkHavoc.PlayerComponents
         private void CustomGravity()
         {
             if (!_useGravity) return;
-            if (WallSliding)
+            if (_wallSliding)
             {
                 var gravity = stats.WallSlideAcceleration;
 
@@ -147,9 +148,7 @@ namespace DarkHavoc.PlayerComponents
                     inAirGravity * Time.fixedDeltaTime);
             }
         }
-
-        public bool WallSliding { get; private set; }
-
+        
         public void Move(float input)
         {
             if (input == 0)
@@ -289,7 +288,7 @@ namespace DarkHavoc.PlayerComponents
 
         public void SetWallSliding(bool value)
         {
-            WallSliding = value;
+            _wallSliding = value;
             OnWallSlideChanged?.Invoke(value);
         }
 

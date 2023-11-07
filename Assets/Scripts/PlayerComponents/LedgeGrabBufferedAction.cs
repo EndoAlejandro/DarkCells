@@ -33,9 +33,6 @@ namespace DarkHavoc.PlayerComponents
             base.Tick();
         }
 
-        public override void UseAction()
-        {
-            _canGrabLedge = true;
-        }
+        public override void UseAction() => _canGrabLedge = true;
     }
 }

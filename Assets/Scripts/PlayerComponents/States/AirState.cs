@@ -58,7 +58,7 @@ namespace DarkHavoc.PlayerComponents.States
                     EntityVision.CheckLedge(_player.Collider, _player.Stats.WallDetection, _player.FacingLeft);
                 if (ledgeResult != Vector2.zero)
                 {
-                    _player.transform.position = (Vector3)ledgeResult - dif;
+                    // _player.transform.position = (Vector3)ledgeResult - dif;
                     FacingLedge = true;
                 }
             }

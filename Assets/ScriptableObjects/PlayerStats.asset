@@ -31,8 +31,8 @@ MonoBehaviour:
     wallLayer:
       serializedVersion: 2
       m_Bits: 257
-    ledgeDetectorOffset: {x: 0.24, y: 0}
-    ledgeDetectorRadius: 0.3
+    ledgeDetectorOffset: {x: 0.3, y: 0.03}
+    ledgeDetectorRadius: 0.2
   jumpForce: 12
   groundingForce: 3
   fallAcceleration: 30

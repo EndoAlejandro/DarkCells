@@ -4,6 +4,7 @@ namespace DarkHavoc.PlayerComponents
 {
     public class LedgeGrabState : IState
     {
+        public override string ToString() => "LedgeGrab";
         public AnimationState Animation => AnimationState.LedgeGrab;
         public bool CanTransitionToSelf => false;
 

@@ -5,14 +5,15 @@ namespace DarkHavoc.PlayerComponents
 {
     public class WallSlideState : IState
     {
-        private readonly Player _player;
-        private readonly InputReader _input;
-
-        private WallResult _wallResult;
+        public override string ToString() => "Wall Slide";
         public AnimationState Animation => AnimationState.WallSlide;
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
-
+        
+        private readonly Player _player;
+        private readonly InputReader _input;
+        
+        private WallResult _wallResult;
         public WallSlideState(Player player, InputReader input)
         {
             _player = player;
