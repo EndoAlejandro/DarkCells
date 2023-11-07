@@ -11,6 +11,8 @@
         Parry,
         Crouch,
         ParryAttack,
-        Death
+        Death,
+        LedgeGrab,
+        WallSlide
     }
 }

@@ -6,16 +6,16 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     [Serializable]
     public class BufferedAction
     {
-        public bool IsAvailable => _wasActionPressed && _timeSinceActionPressed > Timer;
+        public virtual bool IsAvailable => WasActionPressed && _timeSinceActionPressed > Timer;
 
         protected readonly Player Player;
         private event Func<bool> InputTrigger;
 
         protected float Timer;
+        protected bool WasActionPressed;
+        
         private float _bufferTime;
         private float _timeSinceActionPressed;
-
-        private bool _wasActionPressed;
 
         public BufferedAction(Player player, float bufferTime, Func<bool> inputTrigger)
         {
@@ -32,9 +32,9 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
             if (!CanBuffer()) return;
             _timeSinceActionPressed = Timer + _bufferTime;
-            _wasActionPressed = true;
+            WasActionPressed = true;
         }
 
-        public virtual void UseAction() => _wasActionPressed = false;
+        public virtual void UseAction() => WasActionPressed = false;
     }
 }

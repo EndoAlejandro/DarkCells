@@ -5,7 +5,7 @@
         public bool TopCheck { get; }
         public bool MidCheck { get; }
         public bool BottomCheck { get; }
-        public bool FacingWall => TopCheck || MidCheck || BottomCheck;
+        public bool FacingWall => TopCheck || MidCheck;
 
         public WallResult(bool topCheck, bool midCheck, bool bottomCheck)
         {

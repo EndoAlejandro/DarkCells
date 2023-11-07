@@ -10,16 +10,23 @@ namespace DarkHavoc.PlayerComponents
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerStateMachine))]
-    [RequireComponent(typeof(CapsuleCollider2D))]
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
+        // Events
         public event Func<Vector2, bool> TryToBlockDamage;
         public event Action<bool> OnGroundedChanged;
+        public event Action<bool> OnLedgeGrabChanged;
+        public event Action<bool> OnWallSlideChanged;
         public event Action OnDamageTaken;
+
+        // Buffered Actions
         public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
         public bool HasBufferedAttack => _attackBufferedAction is { IsAvailable: true };
         public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
+        public bool HasBufferedLedgeGrab => _ledgeGrabAction is { IsAvailable: true };
+        public bool HasBufferedWallJump => _wallJumpAction is { IsAvailable: true };
         public PlayerStats Stats => stats;
+        public Collider2D Collider { get; private set; }
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
         public Vector3 MidPoint => midPoint.position;
@@ -33,25 +40,28 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private Transform attackOffset;
         [SerializeField] private Transform midPoint;
 
-        [SerializeField] private CapsuleCollider2D defaultCollider;
-        [SerializeField] private CapsuleCollider2D rollCollider;
+        [SerializeField] private Collider2D defaultCollider;
+        [SerializeField] private Collider2D rollCollider;
 
         private Vector2 _targetVelocity;
 
         private Rigidbody2D _rigidbody;
-        public CapsuleCollider2D Collider { get; private set; }
-
         private InputReader _inputReader;
+        private ImpulseAction _currentImpulseAction;
 
         private AttackBufferedAction _attackBufferedAction;
         private JumpBufferedAction _jumpBufferedAction;
         private RollBufferedAction _rollAction;
+        private LedgeGrabBufferedAction _ledgeGrabAction;
+        private WallJumpBufferedAction _wallJumpAction;
 
         private IEnumerator _currentImpulse;
+        private IEnumerator _stopMovement;
         private Vector2 _extraForce;
 
         private float _impulseTimer;
-        private ImpulseAction _currentImpulseAction;
+        private bool _useGravity;
+        public bool CanMove { get; private set; }
 
         private void Awake()
         {
@@ -63,6 +73,12 @@ namespace DarkHavoc.PlayerComponents
             SetPlayerCollider(true);
         }
 
+        private void OnEnable()
+        {
+            _useGravity = true;
+            CanMove = true;
+        }
+
         private void Actions()
         {
             _attackBufferedAction =
@@ -70,6 +86,8 @@ namespace DarkHavoc.PlayerComponents
             _jumpBufferedAction =
                 new JumpBufferedAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
             _rollAction = new RollBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
+            _ledgeGrabAction = new LedgeGrabBufferedAction(this, Stats.JumpBuffer, () => true);
+            _wallJumpAction = new WallJumpBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Jump);
         }
 
         private void Update()
@@ -79,6 +97,8 @@ namespace DarkHavoc.PlayerComponents
             _attackBufferedAction.Tick();
             _jumpBufferedAction.Tick();
             _rollAction.Tick();
+            _ledgeGrabAction.Tick();
+            _wallJumpAction.Tick();
         }
 
         private void FixedUpdate()
@@ -101,22 +121,34 @@ namespace DarkHavoc.PlayerComponents
         public void Roll() => _rollAction.UseAction();
         public void Attack(AttackImpulseAction attackImpulse) => _attackBufferedAction.UseAction(attackImpulse);
         public void Jump() => _jumpBufferedAction.UseAction(ref _targetVelocity);
+        public void WallJump() => _jumpBufferedAction.UseWallAction(ref _targetVelocity);
 
         private void CustomGravity()
         {
-            if (Grounded && _targetVelocity.y <= 0)
+            if (!_useGravity) return;
+            if (WallSliding)
+            {
+                var gravity = stats.WallSlideAcceleration;
+
+                _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -stats.MaxWallSlideSpeed,
+                    gravity * Time.fixedDeltaTime);
+            }
+            else if (Grounded && _targetVelocity.y <= 0)
             {
                 _targetVelocity.y = -stats.GroundingForce;
             }
             else
             {
                 var inAirGravity = stats.FallAcceleration;
+
                 if (_jumpBufferedAction.EndedJumpEarly && inAirGravity > 0f)
                     inAirGravity *= Stats.JumpEndEarlyGravityModifier;
                 _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -stats.MaxFallSpeed,
                     inAirGravity * Time.fixedDeltaTime);
             }
         }
+
+        public bool WallSliding { get; private set; }
 
         public void Move(float input)
         {
@@ -157,7 +189,8 @@ namespace DarkHavoc.PlayerComponents
 
         private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(
             Collider.bounds.center,
-            Collider.size, Collider.direction, 0f, direction, distance, ~stats.Layer);
+            Collider.bounds.size, CapsuleDirection2D.Vertical /*Collider.direction*/, 0f, direction, distance,
+            ~stats.Layer);
 
         public void ApplyVelocity()
         {
@@ -208,33 +241,70 @@ namespace DarkHavoc.PlayerComponents
         {
             Gizmos.color = Color.magenta;
             if (stats == null) return;
-            if (Collider == null) Collider = GetComponent<CapsuleCollider2D>();
+            if (Collider == null) Collider = GetComponent<Collider2D>();
 
             Gizmos.DrawLine(Collider.bounds.max, Collider.bounds.max + Vector3.up * stats.GrounderDistance);
             Gizmos.DrawLine(Collider.bounds.min, Collider.bounds.min + Vector3.down * stats.GrounderDistance);
 
             WallDetection wallDetection = Stats.WallDetection;
+
             float horizontal = FacingLeft ? Collider.bounds.min.x : Collider.bounds.max.x;
-            horizontal += wallDetection.HorizontalOffset;
-            var direction = FacingLeft ? Vector2.left : Vector2.right;
+            float horizontalOffset =
+                FacingLeft ? -Stats.WallDetection.HorizontalOffset : Stats.WallDetection.HorizontalOffset;
+            horizontal += horizontalOffset;
+            Vector2 direction = FacingLeft ? Vector2.left : Vector2.right;
+
             // Top Ray.
-            Vector2 topOrigin = new Vector2(horizontal, Collider.bounds.max.y - wallDetection.TopOffset);
+            Vector2 topOrigin = new Vector2(horizontal, Collider.bounds.max.y + wallDetection.TopOffset);
             Gizmos.DrawLine(topOrigin, topOrigin + (direction * wallDetection.DistanceCheck));
             // Middle Ray.
-            var centerOrigin = new Vector2(horizontal, Collider.bounds.center.y);
+            var centerOrigin = new Vector2(horizontal, Collider.bounds.center.y + wallDetection.MidOffset);
             Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * wallDetection.DistanceCheck));
             // Bottom Ray.
             Vector2 bottomOrigin = new Vector2(horizontal, Collider.bounds.min.y + wallDetection.BottomOffset);
             Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * wallDetection.DistanceCheck));
 
             Gizmos.color = Color.cyan;
-            var spherePosition = new Vector2(wallDetection.LedgeDetectorOffset.x + horizontal, Collider.bounds.max.y - wallDetection.TopOffset + wallDetection.LedgeDetectorOffset.y);
+
+            float sphereOffset =
+                FacingLeft ? -wallDetection.LedgeDetectorOffset.x : wallDetection.LedgeDetectorOffset.x;
+            var spherePosition = new Vector2(sphereOffset + horizontal,
+                Collider.bounds.max.y + wallDetection.LedgeDetectorOffset.y);
 
             Gizmos.DrawWireSphere(spherePosition, wallDetection.LedgeDetectorRadius);
         }
 
-        public void SetGravityState(bool value)
+        public void LedgeGrab(bool value)
         {
+            if (value)
+                ResetVelocity();
+            else
+                _ledgeGrabAction.UseAction();
+
+            _useGravity = !value;
+            OnLedgeGrabChanged?.Invoke(value);
+        }
+
+        public void ResetVelocity() => _targetVelocity = Vector2.zero;
+
+        public void SetWallSliding(bool value)
+        {
+            WallSliding = value;
+            OnWallSlideChanged?.Invoke(value);
+        }
+
+        public void StopMovementForSeconds(float time)
+        {
+            if (_stopMovement != null) StopCoroutine(_stopMovement);
+            _stopMovement = StopMovementAsync(time);
+            StartCoroutine(_stopMovement);
+        }
+
+        private IEnumerator StopMovementAsync(float time)
+        {
+            CanMove = false;
+            yield return new WaitForSeconds(time);
+            CanMove = true;
         }
     }
 }

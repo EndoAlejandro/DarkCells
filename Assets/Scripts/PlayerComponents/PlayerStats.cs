@@ -32,6 +32,13 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float jumpEndEarlyGravityModifier = 3f;
         [SerializeField] private float coyoteTime = 0.2f;
 
+        [Header("Wall")]
+        [SerializeField] private Vector2 wallJumpForce;
+
+        [SerializeField] private float wallSlideAcceleration = 1f;
+        [SerializeField] private float maxWallSlideSpeed = 1f;
+        [Range(0f, 1f)] [SerializeField] private float wallJumpStopMovement = 0.2f;
+
         [Header("Roll")]
         [SerializeField] private float ceilingDistance;
 
@@ -80,6 +87,15 @@ namespace DarkHavoc.PlayerComponents
         public float JumpBuffer => jumpBuffer;
         public float JumpEndEarlyGravityModifier => jumpEndEarlyGravityModifier;
         public float CoyoteTime => coyoteTime;
+
+        #endregion
+
+        #region Wall Slide
+
+        public Vector2 WallJumpForce => wallJumpForce;
+        public float WallSlideAcceleration => wallSlideAcceleration;
+        public float MaxWallSlideSpeed => maxWallSlideSpeed;
+        public float WallJumpStopMovement => wallJumpStopMovement;
 
         #endregion
 

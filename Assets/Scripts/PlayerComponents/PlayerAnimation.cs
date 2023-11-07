@@ -84,22 +84,27 @@ namespace DarkHavoc.PlayerComponents
         {
             switch (_playerStateMachine.CurrentStateType)
             {
-                case GroundState idleState:
+                case GroundState:
                     FlipCheck();
                     HorizontalFloat();
                     break;
-                case AirState airState:
+                case AirState:
                     FlipCheck();
                     HorizontalFloat();
                     VerticalFloat();
                     break;
-                case CrouchState crouchState:
-                case BlockState blockState:
+                case WallSlideState:
+                    FlipCheck();
+                    HorizontalFloat();
+                    VerticalFloat();
+                    break;
+                case CrouchState:
+                case BlockState:
                     FlipCheck();
                     break;
-                case RollState rollState:
+                case RollState:
                     break;
-                case AttackState lightAttackState:
+                case AttackState:
                     break;
             }
 
@@ -108,7 +113,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void FlipCheck()
         {
-            if (_inputReader.Movement.x == 0) return;
+            if (_inputReader.Movement.x == 0 || !_player.CanMove) return;
             _player.SetFacingLeft(_inputReader.Movement.x < 0);
         }
 

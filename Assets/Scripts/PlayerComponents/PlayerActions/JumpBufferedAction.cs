@@ -6,13 +6,13 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     [Serializable]
     public class JumpBufferedAction : BufferedAction
     {
-
         private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _inputReader;
 
         private float _timeLeftGrounded;
         private bool _canAirJump;
         private bool _coyoteTimeAvailable;
+        private bool _canWallJump;
 
         private bool CanUseCoyote => _coyoteTimeAvailable && !Player.Grounded &&
                                      Timer < _timeLeftGrounded + Player.Stats.CoyoteTime;
@@ -26,6 +26,21 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             _rigidbody = rigidbody;
             _inputReader = inputReader;
             player.OnGroundedChanged += PlayerOnGroundedChanged;
+            player.OnLedgeGrabChanged += PlayerOnLedgeGrabChanged;
+            player.OnWallSlideChanged += PlayerOnWallSlideChanged;
+        }
+
+        private void PlayerOnWallSlideChanged(bool value)
+        {
+            _coyoteTimeAvailable = true;
+            // _canAirJump = true;
+            _canWallJump = true;
+        }
+
+        private void PlayerOnLedgeGrabChanged(bool value)
+        {
+            _coyoteTimeAvailable = true;
+            _canAirJump = true;
         }
 
         private void PlayerOnGroundedChanged(bool grounded)
@@ -49,6 +64,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         public void UseAction(ref Vector2 targetVelocity)
         {
+            // if (!Player.CanMove) return;
+
             if (!Player.Grounded && !CanUseCoyote)
             {
                 if (_canAirJump) _canAirJump = false;
@@ -59,6 +76,18 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             _coyoteTimeAvailable = false;
             EndedJumpEarly = false;
             targetVelocity.y = Player.Stats.JumpForce;
+        }
+
+        public void UseWallAction(ref Vector2 targetVelocity)
+        {
+            if (!_canWallJump) return;
+
+            _canWallJump = false;
+            Player.SetFacingLeft(!Player.FacingLeft);
+            targetVelocity = new Vector2(Player.Direction * Player.Stats.WallJumpForce.x,
+                Player.Stats.WallJumpForce.y);
+            Player.StopMovementForSeconds(Player.Stats.WallJumpStopMovement);
+            base.UseAction();
         }
 
         private void EndedUpEarlyCheck()

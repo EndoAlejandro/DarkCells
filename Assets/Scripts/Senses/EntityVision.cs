@@ -33,84 +33,67 @@ namespace DarkHavoc.Senses
         {
             Physics2D.queriesStartInColliders = false;
 
-            // facingWall = false;
-            float wallCheckTopOffset = wallDetection.TopOffset;
-            float wallCheckBottomOffset = wallDetection.BottomOffset;
-
             float horizontal = facingLeft ? collider.bounds.min.x : collider.bounds.max.x;
+            horizontal += facingLeft ? -wallDetection.HorizontalOffset : wallDetection.HorizontalOffset;
             Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
 
             // Top Check.
-            Vector2 origin = new Vector2(horizontal, collider.bounds.max.y - wallCheckTopOffset);
+            Vector2 origin = new Vector2(horizontal, collider.bounds.max.y + wallDetection.TopOffset);
             bool topCheck = WallRayCast(origin, direction, wallDetection, out _);
 
             // Center Check.
-            origin.y = collider.bounds.center.y;
+            origin.y = collider.bounds.center.y + wallDetection.MidOffset;
             bool midCheck = WallRayCast(origin, direction, wallDetection, out _);
 
             // Bottom Check.
-            origin.y = collider.bounds.min.y + wallCheckBottomOffset;
+            origin.y = collider.bounds.min.y + wallDetection.BottomOffset;
             bool bottomCheck = WallRayCast(origin, direction, wallDetection, out _);
 
             return new WallResult(topCheck, midCheck, bottomCheck);
         }
 
-        private static bool WallRayCast(Vector2 origin, Vector2 direction, WallDetection wallDetection,
-            out RaycastHit2D result)
-        {
-            result = Physics2D.Raycast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer);
-            return result;
-        }
-
-        public static Vector2 CheckLedge(CapsuleCollider2D collider, WallDetection wallDetection, bool facingLeft)
+        public static Vector2 CheckLedge(Collider2D collider, WallDetection wallDetection, bool facingLeft)
         {
             Physics2D.queriesStartInColliders = false;
 
-            float wallCheckTopOffset = wallDetection.TopOffset;
             float horizontal = facingLeft ? collider.bounds.min.x : collider.bounds.max.x;
+            float horizontalOffset =
+                facingLeft ? -wallDetection.HorizontalOffset : wallDetection.HorizontalOffset;
+            horizontal += horizontalOffset;
+
             Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
 
             // Top Check.
-            Vector2 origin = new Vector2(horizontal, collider.bounds.max.y - wallCheckTopOffset);
+            Vector2 origin = new Vector2(horizontal, collider.bounds.max.y + wallDetection.TopOffset);
             bool topCheck = WallRayCast(origin, direction, wallDetection, out _);
 
             // Center Check.
-            origin.y = collider.bounds.center.y;
+            origin.y = collider.bounds.center.y + wallDetection.MidOffset;
             bool midCheck = WallRayCast(origin, direction, wallDetection, out RaycastHit2D hit);
 
             if (!topCheck && midCheck)
             {
-                Vector2 spherePosition =
-                    new Vector2(collider.bounds.center.x, collider.bounds.max.y - wallDetection.TopOffset) +
-                    wallDetection.LedgeDetectorOffset;
-                var result = Physics2D.OverlapCircle(spherePosition, wallDetection.LedgeDetectorRadius,
+                float sphereOffset =
+                    facingLeft ? -wallDetection.LedgeDetectorOffset.x : wallDetection.LedgeDetectorOffset.x;
+                Vector2 spherePosition = new Vector2(sphereOffset + horizontal, collider.bounds.max.y + wallDetection.LedgeDetectorOffset.y);
+                Collider2D result = Physics2D.OverlapCircle(spherePosition, wallDetection.LedgeDetectorRadius,
                     hit.transform.gameObject.layer);
 
-                var results = new ContactPoint2D[50];
-                var filer = new ContactFilter2D();
-                filer.layerMask = hit.transform.gameObject.layer;
-                
-                var amount = result.GetContacts(filer, results);
-                var corner = results[0].point;
+                if (result == null) return Vector2.zero;
 
-                /*for (int i = 0; i < amount; i++)
+                var results = new ContactPoint2D[50];
+                var filer = new ContactFilter2D
                 {
-                    var point = results[i].point;
-                    if (facingLeft)
-                    {
-                        if (point.x > corner.x && point.y > corner.y)
-                            corner = point;
-                    }
-                    else
-                    {
-                        if (point.x < corner.x && point.y > corner.y)
-                            corner = point;
-                    }
-                }*/
+                    layerMask = hit.transform.gameObject.layer
+                };
+
+                int amount = result.GetContacts(filer, results);
+                if (amount == 0) return Vector2.zero;
+                Vector2 corner = results[0].point;
 
                 for (int i = 0; i < amount; i++)
                 {
-                    var point = results[i].point;
+                    Vector2 point = results[i].point;
                     if (facingLeft && point.x > corner.x) corner.x = point.x;
                     else if (!facingLeft && point.x < corner.x) corner.x = point.x;
 
@@ -121,6 +104,13 @@ namespace DarkHavoc.Senses
             }
 
             return Vector2.zero;
+        }
+
+        private static bool WallRayCast(Vector2 origin, Vector2 direction, WallDetection wallDetection,
+            out RaycastHit2D result)
+        {
+            result = Physics2D.Raycast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer);
+            return result;
         }
     }
 }

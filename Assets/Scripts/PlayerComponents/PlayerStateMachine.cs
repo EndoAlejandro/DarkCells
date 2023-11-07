@@ -21,14 +21,21 @@ namespace DarkHavoc.PlayerComponents
 
         protected override void StateMachine()
         {
+            // Grounded States
             var ground = new GroundState(_player, _rigidbody, _input);
-            var air = new AirState(_player, _rigidbody, _input);
             var roll = new RollState(_player, _rigidbody, _input, _player.Stats.RollAction);
             var crouch = new CrouchState(_player, _rigidbody);
+
+            // Air States
+            var air = new AirState(_player, _rigidbody, _input);
+            var ledgeGrab = new LedgeGrabState(_player, _input);
+            var wallSlide = new WallSlideState(_player, _input);
+
+            // Defend States
             var block = new BlockState(_player, _rigidbody, _input);
             var parry = new ParryState(_player, _player.Stats.ParryAction);
-            var ledgeGrab = new LedgeGrabState(_player);
 
+            // Attack States
             var lightAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.LightAttack,
                 _player.Stats.LightAttackAction);
             var parryAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.ParryAttack,
@@ -43,6 +50,13 @@ namespace DarkHavoc.PlayerComponents
             // Locomotion.
             stateMachine.AddTransition(ground, air, () => !_player.Grounded);
             stateMachine.AddTransition(air, ground, () => _player.Grounded);
+
+            // Walls
+            stateMachine.AddTransition(air, wallSlide, () => air.FacingWall);
+            // stateMachine.AddTransition(air, ledgeGrab, () => air.FacingLedge);
+            stateMachine.AddTransition(wallSlide, ground, () => _player.Grounded);
+            stateMachine.AddTransition(wallSlide, air, ()=> wallSlide.Ended);
+            stateMachine.AddTransition(ledgeGrab, ground, () => ledgeGrab.Ended);
 
             // Roll.
             var toRollStates = new IState[] { ground, air, crouch, parry };
@@ -69,7 +83,6 @@ namespace DarkHavoc.PlayerComponents
 
             stateMachine.AddTransition(lightAttack, ground, () => lightAttack.Ended);
             stateMachine.AddTransition(heavyAttack, ground, () => heavyAttack.Ended);
-            //stateMachine.AddTransition(lightAttack, air, () => lightAttack.Ended && !_player.Grounded);
 
 
             // Block.
@@ -88,39 +101,6 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(parry, ground, () => parry.Ended && !_input.BlockHold);
 
             stateMachine.AddTransition(parryAttack, ground, () => parryAttack.Ended);
-        }
-    }
-
-    public class LedgeGrabState : IState
-    {
-        public AnimationState Animation { get; }
-        public bool CanTransitionToSelf { get; }
-
-        private readonly Player _player;
-
-        public LedgeGrabState(Player player) => _player = player;
-
-        public void Tick()
-        {
-            if (_player.HasBufferedJump)
-            {
-                _player.Jump();
-                _player.ApplyVelocity();
-            }
-        }
-
-        public void FixedTick()
-        {
-        }
-
-        public void OnEnter()
-        {
-            _player.SetGravityState(false);
-        }
-
-        public void OnExit()
-        {
-            _player.SetGravityState(true);
         }
     }
 }

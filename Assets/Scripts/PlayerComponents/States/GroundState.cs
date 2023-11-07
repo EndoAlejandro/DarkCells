@@ -27,7 +27,6 @@ namespace DarkHavoc.PlayerComponents.States
         {
             if (_player.CheckCeilingCollision()) return;
 
-            _player.Move(_input.Movement.x);
             if (_player.HasBufferedJump)
             {
                 _player.Jump();
@@ -37,7 +36,8 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
-            _targetVelocity = _rigidbody.velocity;
+            _player.Move(_input.Movement.x);
+            // _targetVelocity = _rigidbody.velocity;
         }
 
         public void OnEnter() => _targetVelocity = _rigidbody.velocity;
