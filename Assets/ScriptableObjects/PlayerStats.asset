@@ -40,10 +40,14 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 1.25
   coyoteTime: 0.2
-  wallJumpForce: {x: 10, y: 10}
+  wallJumpForce: 10
+  wallJumpImpulse:
+    time: 0.2
+    force: 12
+    deceleration: 50
+    direction: 1
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
-  wallJumpStopMovement: 0.2
   ceilingDistance: 0.3
   rollCooldown: 0.25
   rollAction:
@@ -57,9 +61,9 @@ MonoBehaviour:
   damage: 1
   movementReduction: 0.5
   lightAttackBuffer: 0.15
-  lightComboTime: 0.3
+  comboTime: 0.5
   heavyAttackTime: 0.5
-  blockTime: 0.3
+  blockTime: 0.5
   lightAttackAction:
     time: 0.5
     force: 1

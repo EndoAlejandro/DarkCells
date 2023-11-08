@@ -1,4 +1,5 @@
-﻿using DarkHavoc.Senses;
+﻿using DarkHavoc.CustomUtils;
+using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -46,21 +47,11 @@ namespace DarkHavoc.PlayerComponents.States
 
             if (_wallResult.FacingWall) FacingWall = true;
 
-            float horizontal = _player.FacingLeft ? _player.Collider.bounds.min.x : _player.Collider.bounds.max.x;
-            var spherePosition = new Vector3(_player.Stats.WallDetection.LedgeDetectorOffset.x + horizontal,
-                _player.Collider.bounds.max.y + _player.Stats.WallDetection.LedgeDetectorOffset.y);
-
-            var dif = spherePosition - (_player.transform.position);
-
             if (_player.HasBufferedLedgeGrab && _wallResult is { MidCheck: true, TopCheck: false })
             {
                 var ledgeResult =
                     EntityVision.CheckLedge(_player.Collider, _player.Stats.WallDetection, _player.FacingLeft);
-                if (ledgeResult != Vector2.zero)
-                {
-                    // _player.transform.position = (Vector3)ledgeResult - dif;
-                    FacingLedge = true;
-                }
+                if (!ledgeResult.IsDefault()) FacingLedge = true;
             }
         }
 

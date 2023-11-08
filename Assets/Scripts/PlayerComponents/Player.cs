@@ -21,10 +21,9 @@ namespace DarkHavoc.PlayerComponents
 
         // Buffered Actions
         public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
-        public bool HasBufferedAttack => _attackBufferedAction is { IsAvailable: true };
+        public bool HasBufferedAttack => AttackBufferedAction is { IsAvailable: true };
         public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
         public bool HasBufferedLedgeGrab => _ledgeGrabAction is { IsAvailable: true };
-        public bool HasBufferedWallJump => _wallJumpAction is { IsAvailable: true };
         public PlayerStats Stats => stats;
         public Collider2D Collider { get; private set; }
         public bool FacingLeft { get; private set; }
@@ -50,11 +49,10 @@ namespace DarkHavoc.PlayerComponents
         private InputReader _inputReader;
         private ImpulseAction _currentImpulseAction;
 
-        private AttackBufferedAction _attackBufferedAction;
+        public AttackBufferedAction AttackBufferedAction { get; private set; }
         private JumpBufferedAction _jumpBufferedAction;
         private RollBufferedAction _rollAction;
         private LedgeGrabBufferedAction _ledgeGrabAction;
-        private WallJumpBufferedAction _wallJumpAction;
 
         private IEnumerator _currentImpulse;
         private IEnumerator _stopMovement;
@@ -82,24 +80,22 @@ namespace DarkHavoc.PlayerComponents
 
         private void Actions()
         {
-            _attackBufferedAction =
+            AttackBufferedAction =
                 new AttackBufferedAction(attackOffset, this, Stats.LightAttackBuffer, () => _inputReader.Attack);
             _jumpBufferedAction =
                 new JumpBufferedAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
             _rollAction = new RollBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
             _ledgeGrabAction = new LedgeGrabBufferedAction(this, Stats.JumpBuffer, () => true);
-            _wallJumpAction = new WallJumpBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Jump);
         }
 
         private void Update()
         {
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
 
-            _attackBufferedAction.Tick();
+            AttackBufferedAction.Tick();
             _jumpBufferedAction.Tick();
             _rollAction.Tick();
             _ledgeGrabAction.Tick();
-            _wallJumpAction.Tick();
         }
 
         private void FixedUpdate()
@@ -120,7 +116,7 @@ namespace DarkHavoc.PlayerComponents
         }
 
         public void Roll() => _rollAction.UseAction();
-        public void Attack(AttackImpulseAction attackImpulse) => _attackBufferedAction.UseAction(attackImpulse);
+        public void Attack(AttackImpulseAction attackImpulse) => AttackBufferedAction.UseAction(attackImpulse);
         public void Jump() => _jumpBufferedAction.UseAction(ref _targetVelocity);
         public void WallJump() => _jumpBufferedAction.UseWallAction(ref _targetVelocity);
 
@@ -148,7 +144,7 @@ namespace DarkHavoc.PlayerComponents
                     inAirGravity * Time.fixedDeltaTime);
             }
         }
-        
+
         public void Move(float input)
         {
             if (input == 0)
@@ -188,7 +184,7 @@ namespace DarkHavoc.PlayerComponents
 
         private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(
             Collider.bounds.center,
-            Collider.bounds.size, CapsuleDirection2D.Vertical /*Collider.direction*/, 0f, direction, distance,
+            Collider.bounds.size, CapsuleDirection2D.Vertical, 0f, direction, distance,
             ~stats.Layer);
 
         public void ApplyVelocity()
@@ -224,7 +220,9 @@ namespace DarkHavoc.PlayerComponents
 
         public void TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f)
         {
-            var result = TryToBlockDamage?.Invoke(damageDealer.transform.position) ?? false;
+            Vector2 source = damageDealer.transform.position;
+            bool result = TryToBlockDamage?.Invoke(source) ?? false;
+
             if (result || !IsAlive) return;
 
             Health -= damageDealer.Damage * damageMultiplier;
@@ -294,9 +292,9 @@ namespace DarkHavoc.PlayerComponents
 
         public void StopMovementForSeconds(float time)
         {
-            if (_stopMovement != null) StopCoroutine(_stopMovement);
+            /*if (_stopMovement != null) StopCoroutine(_stopMovement);
             _stopMovement = StopMovementAsync(time);
-            StartCoroutine(_stopMovement);
+            StartCoroutine(_stopMovement);*/
         }
 
         private IEnumerator StopMovementAsync(float time)

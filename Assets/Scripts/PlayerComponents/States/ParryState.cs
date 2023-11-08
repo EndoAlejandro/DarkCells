@@ -35,16 +35,19 @@ namespace DarkHavoc.PlayerComponents.States
         {
             ParryAvailable = false;
             _timer = _parryAction.Time;
-            _player.AddImpulse(_parryAction);
-            
+            // _player.AddImpulse(_parryAction);
+
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
         }
- 
+
         private bool PlayerOnTryToBlockDamage(Vector2 damageSource)
         {
             float difference = damageSource.x - _player.transform.position.x;
-            ParryAvailable = (difference < 0 && _player.FacingLeft) || (difference > 0 && !_player.FacingLeft);
-            return ParryAvailable;
+            bool result = (difference < 0 && _player.FacingLeft) || (difference > 0 && !_player.FacingLeft);
+
+            // if (result) ParryAvailable = true;
+            
+            return result;
         }
 
         public void OnExit()

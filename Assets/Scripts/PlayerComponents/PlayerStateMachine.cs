@@ -38,7 +38,7 @@ namespace DarkHavoc.PlayerComponents
             // Attack States
             var lightAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.LightAttack,
                 _player.Stats.LightAttackAction);
-            var parryAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.ParryAttack,
+            var airAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.ParryAttack,
                 _player.Stats.LightAttackAction);
             var heavyAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.HeavyAttack,
                 _player.Stats.HeavyAttackAction);
@@ -55,7 +55,7 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(air, ledgeGrab, () => air.FacingLedge);
             stateMachine.AddTransition(wallSlide, ground, () => _player.Grounded);
             stateMachine.AddTransition(wallSlide, air, () => wallSlide.Ended);
-            
+
             // Ledge Grab.
             stateMachine.AddTransition(air, wallSlide, () => air.FacingWall);
             stateMachine.AddTransition(ledgeGrab, air, () => ledgeGrab.Ended);
@@ -74,18 +74,28 @@ namespace DarkHavoc.PlayerComponents
             // Crouch.
             stateMachine.AddTransition(crouch, ground, () => !_player.CheckCeilingCollision());
 
-            // Attack.
-            var toAttackStates = new IState[] { ground, air };
-            stateMachine.AddManyTransitions(toAttackStates, lightAttack, () => _player.HasBufferedAttack);
+            // Air Attack.
+            var toAirAttack = new IState[] { air, lightAttack };
+            stateMachine.AddManyTransitions(toAirAttack, airAttack,
+                () => _player.HasBufferedAttack && !_player.Grounded);
+            stateMachine.AddTransition(airAttack, air, () => airAttack.Ended);
 
-            stateMachine.AddTransition(lightAttack, lightAttack,
-                () => _player.HasBufferedAttack && lightAttack.CanCombo && !lightAttack.CanHeavyAttack);
+            // Heavy Attack
+            stateMachine.AddTransition(ground, heavyAttack,
+                () => _player.HasBufferedAttack && _player.AttackBufferedAction.CanPerformHeavyAttack());
+            
             stateMachine.AddTransition(lightAttack, heavyAttack,
-                () => _player.HasBufferedAttack && lightAttack.CanCombo && lightAttack.CanHeavyAttack);
-
-            stateMachine.AddTransition(lightAttack, ground, () => lightAttack.Ended);
+                () => _player.HasBufferedAttack && lightAttack.CanCombo &&
+                      _player.AttackBufferedAction.CanPerformHeavyAttack());
+            
             stateMachine.AddTransition(heavyAttack, ground, () => heavyAttack.Ended);
 
+            // Light Attack.
+            stateMachine.AddTransition(ground, lightAttack, () => _player.HasBufferedAttack);
+            stateMachine.AddTransition(lightAttack, lightAttack,
+                () => _player.HasBufferedAttack && lightAttack.CanCombo);
+
+            stateMachine.AddTransition(lightAttack, ground, () => lightAttack.Ended);
 
             // Block.
             var toBlockStates = new IState[] { ground, air, roll };
@@ -98,11 +108,9 @@ namespace DarkHavoc.PlayerComponents
             // Parry.
             stateMachine.AddTransition(parry, parry, () => parry.ParryAvailable);
 
-            stateMachine.AddTransition(parry, parryAttack, () => _player.HasBufferedAttack);
+            // stateMachine.AddTransition(parry, airAttack, () => _player.HasBufferedAttack);
             stateMachine.AddTransition(parry, block, () => parry.Ended && _input.BlockHold);
             stateMachine.AddTransition(parry, ground, () => parry.Ended && !_input.BlockHold);
-
-            stateMachine.AddTransition(parryAttack, ground, () => parryAttack.Ended);
         }
     }
 }

@@ -22,7 +22,6 @@ namespace DarkHavoc.PlayerComponents.States
         public bool CanCombo { get; private set; }
 
         public bool CanTransitionToSelf => true;
-        public bool CanHeavyAttack { get; private set; }
 
         public AttackState(Player player, Rigidbody2D rigidbody, InputReader input, PlayerAnimation animation,
             AnimationState animationState, AttackImpulseAction attackAction)
@@ -32,14 +31,11 @@ namespace DarkHavoc.PlayerComponents.States
             _animation = animation;
             _attackAction = attackAction;
             Animation = animationState;
-
-            CanHeavyAttack = true;
         }
 
         public void Tick()
         {
             _timer -= Time.deltaTime;
-            _player.Move(_input.Movement.x * _player.Stats.MovementReduction);
 
             if (_player.HasBufferedJump)
             {
@@ -51,17 +47,18 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
+            var reduction = _player.Grounded ? _player.Stats.MovementReduction : 1;
+            _player.Move(_input.Movement.x * reduction);
         }
 
         public void OnEnter()
         {
-            CanHeavyAttack = !CanHeavyAttack;
-
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
             _animation.OnComboAvailable += AnimationOnComboAvailable;
 
             _timer = _attackAction.Time;
-            _player.AddImpulse(_attackAction);
+            if (_player.Grounded)
+                _player.AddImpulse(_attackAction);
         }
 
         private void AnimationOnAttackPerformed() => _player.Attack(_attackAction);

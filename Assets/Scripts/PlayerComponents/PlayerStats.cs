@@ -33,11 +33,10 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float coyoteTime = 0.2f;
 
         [Header("Wall")]
-        [SerializeField] private Vector2 wallJumpForce;
-
+        [SerializeField] private float wallJumpForce = 10f;
+        [SerializeField] private ImpulseAction wallJumpImpulse;
         [SerializeField] private float wallSlideAcceleration = 1f;
         [SerializeField] private float maxWallSlideSpeed = 1f;
-        [Range(0f, 1f)] [SerializeField] private float wallJumpStopMovement = 0.2f;
 
         [Header("Roll")]
         [SerializeField] private float ceilingDistance;
@@ -51,7 +50,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private int damage;
         [Range(0f, 1f)] [SerializeField] private float movementReduction;
         [SerializeField] private float lightAttackBuffer = .2f;
-        [SerializeField] private float lightComboTime = .3f;
+        [SerializeField] private float comboTime = 1f;
         [Space] [SerializeField] private float heavyAttackTime;
         [Space] [SerializeField] private float blockTime = 1f;
         [SerializeField] private AttackImpulseAction lightAttackAction;
@@ -92,10 +91,10 @@ namespace DarkHavoc.PlayerComponents
 
         #region Wall Slide
 
-        public Vector2 WallJumpForce => wallJumpForce;
+        public float WallJumpForce => wallJumpForce;
+        public ImpulseAction WallJumpImpulse => wallJumpImpulse;
         public float WallSlideAcceleration => wallSlideAcceleration;
         public float MaxWallSlideSpeed => maxWallSlideSpeed;
-        public float WallJumpStopMovement => wallJumpStopMovement;
 
         #endregion
 
@@ -113,7 +112,7 @@ namespace DarkHavoc.PlayerComponents
         public int Damage => damage;
         public float MovementReduction => movementReduction;
         public float LightAttackBuffer => lightAttackBuffer;
-        public float LightComboTime => lightComboTime;
+        public float ComboTime => comboTime;
         public float BlockTime => blockTime;
         public AttackImpulseAction LightAttackAction => lightAttackAction;
         public AttackImpulseAction HeavyAttackAction => heavyAttackAction;

@@ -1,4 +1,5 @@
-﻿using DarkHavoc.Senses;
+﻿using DarkHavoc.ImpulseComponents;
+using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.PlayerComponents
@@ -9,11 +10,12 @@ namespace DarkHavoc.PlayerComponents
         public AnimationState Animation => AnimationState.WallSlide;
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
-        
+
         private readonly Player _player;
         private readonly InputReader _input;
-        
+
         private WallResult _wallResult;
+
         public WallSlideState(Player player, InputReader input)
         {
             _player = player;
@@ -24,28 +26,21 @@ namespace DarkHavoc.PlayerComponents
         {
             if (Ended) return;
 
-            _player.Move(_input.Movement.x);
-
             _wallResult =
                 EntityVision.CheckWallCollision(_player.Collider, _player.Stats.WallDetection, _player.FacingLeft);
 
-            if (!_wallResult.FacingWall)
-                Ended = true;
-
-            if (_input.Movement.y > 0)
-                Ended = true;
+            if (!_wallResult.FacingWall) Ended = true;
 
             if (_player.HasBufferedJump)
             {
+                _player.AddImpulse(_player.Stats.WallJumpImpulse);
                 _player.WallJump();
                 _player.ApplyVelocity();
                 Ended = true;
             }
         }
 
-        public void FixedTick()
-        {
-        }
+        public void FixedTick() => _player.Move(_input.Movement.x);
 
         public void OnEnter()
         {

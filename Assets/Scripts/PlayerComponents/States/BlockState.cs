@@ -16,9 +16,10 @@ namespace DarkHavoc.PlayerComponents.States
 
         private float _parryTime;
         private float _timer;
+        private bool _parryAvailable;
 
         public bool Ended => _timer <= 0f;
-        public bool ParryAvailable { get; private set; }
+        public bool ParryAvailable => _parryTime > 0f && _parryAvailable;
         public bool CanTransitionToSelf => false;
 
         public BlockState(Player player, Rigidbody2D rigidbody, InputReader input)
@@ -31,39 +32,38 @@ namespace DarkHavoc.PlayerComponents.States
         public void Tick()
         {
             _timer -= Time.deltaTime;
-            _player.Move(0);
-            
-            if (_player.HasBufferedJump)
+            _parryTime -= Time.deltaTime;
+
+            if (_player.HasBufferedJump && Ended)
             {
                 _player.Jump();
                 _player.ApplyVelocity();
             }
         }
 
-        public void FixedTick()
-        {
-        }
+        public void FixedTick() => _player.Move(0);
 
         public void OnEnter()
         {
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
 
-            ParryAvailable = false;
             _timer = _player.Stats.BlockTime;
+            _parryTime = _player.Stats.BlockTime * .5f;
             _targetVelocity = _rigidbody.velocity;
+            _parryAvailable = false;
         }
 
         private bool PlayerOnTryToBlockDamage(Vector2 damageSource)
         {
             float difference = damageSource.x - _player.transform.position.x;
-            ParryAvailable = (difference < 0 && _player.FacingLeft) || (difference > 0 && !_player.FacingLeft);
-            return ParryAvailable;
+            var result = (difference < 0 && _player.FacingLeft) || (difference > 0 && !_player.FacingLeft);
+
+            if (result) _parryAvailable = true;
+            if (!ParryAvailable) _player.AddImpulse(_player.Stats.ParryAction);
+            
+            return result;
         }
 
-        public void OnExit()
-        {
-            _player.TryToBlockDamage -= PlayerOnTryToBlockDamage;
-            ParryAvailable = false;
-        }
+        public void OnExit() => _player.TryToBlockDamage -= PlayerOnTryToBlockDamage;
     }
 }

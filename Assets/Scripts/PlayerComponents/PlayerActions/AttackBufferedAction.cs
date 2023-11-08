@@ -12,6 +12,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         private Collider2D[] _results;
 
         private float _cooldown;
+        private float _comboTimer;
+        private int _attackCount;
 
         public AttackBufferedAction(Transform attackOffset, Player player, float bufferTime,
             Func<bool> inputTrigger) : base(player, bufferTime, inputTrigger)
@@ -26,6 +28,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         public override void Tick()
         {
             if (_cooldown > 0f) _cooldown -= Time.deltaTime;
+            if (_comboTimer > 0f) _comboTimer -= Time.deltaTime;
+            else _attackCount = 0;
             base.Tick();
         }
 
@@ -33,12 +37,15 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         {
             base.UseAction();
 
+            _attackCount++;
+
+            _comboTimer = Player.Stats.ComboTime;
             _cooldown = attackImpulse.CoolDownTime;
 
             Vector3 centerOffset = _attackOffset.localPosition;
             int direction = Player.FacingLeft ? -1 : 1;
             centerOffset.x *= 0.5f * direction;
-            
+
             Vector2 boxSize = new Vector2(_attackOffset.localPosition.x, _attackOffset.localPosition.y * 1.9f);
 
             int size = Physics2D.OverlapBoxNonAlloc(Player.transform.position + centerOffset,
@@ -50,6 +57,13 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
                 if (result.transform.TryGetComponent(out ITakeDamage takeDamage))
                     Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
             }
+        }
+
+        public bool CanPerformHeavyAttack()
+        {
+            if (_attackCount <= 1) return false;
+            _attackCount = 0;
+            return true;
         }
     }
 }

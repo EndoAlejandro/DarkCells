@@ -57,5 +57,8 @@ namespace DarkHavoc.CustomUtils
         {
             return Mathf.Lerp(original.x, original.y, normalizedValue);
         }
+
+        public static bool IsDefault(this Vector2 original) => original == Vector2.zero;
+        public static bool IsDefault(this Vector2Int original) => original == Vector2Int.zero;
     }
 }

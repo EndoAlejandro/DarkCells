@@ -87,6 +87,7 @@ namespace DarkHavoc.PlayerComponents
                 case GroundState:
                     FlipCheck();
                     HorizontalFloat();
+                    VerticalFloat();
                     break;
                 case AirState:
                     FlipCheck();

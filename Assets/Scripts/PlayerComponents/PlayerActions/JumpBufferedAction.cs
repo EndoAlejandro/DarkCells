@@ -33,7 +33,6 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         private void PlayerOnWallSlideChanged(bool value)
         {
             _coyoteTimeAvailable = true;
-            // _canAirJump = true;
             _canWallJump = true;
         }
 
@@ -64,8 +63,6 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         public void UseAction(ref Vector2 targetVelocity)
         {
-            // if (!Player.CanMove) return;
-
             if (!Player.Grounded && !CanUseCoyote)
             {
                 if (_canAirJump) _canAirJump = false;
@@ -84,9 +81,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
             _canWallJump = false;
             Player.SetFacingLeft(!Player.FacingLeft);
-            targetVelocity = new Vector2(Player.Direction * Player.Stats.WallJumpForce.x,
-                Player.Stats.WallJumpForce.y);
-            Player.StopMovementForSeconds(Player.Stats.WallJumpStopMovement);
+            targetVelocity.y = Player.Stats.WallJumpForce;
             base.UseAction();
         }
 
