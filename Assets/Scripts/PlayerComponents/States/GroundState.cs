@@ -3,6 +3,38 @@ using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
 {
+    public class DeathState : IState
+    {
+        public override string ToString() => "Death";
+        public AnimationState Animation => AnimationState.Death;
+        public bool CanTransitionToSelf => false;
+
+        private readonly Player _player;
+        private readonly Rigidbody2D _rigidbody;
+        
+        public DeathState(Player player ,Rigidbody2D rigidbody)
+        {
+            _player = player;
+            _rigidbody = rigidbody;
+        }
+
+        public void Tick()
+        {
+        }
+
+        public void FixedTick()
+        {
+        }
+
+        public void OnEnter()
+        {
+            _player.ResetVelocity();
+            _rigidbody.isKinematic = true;
+        }
+
+        public void OnExit() => _rigidbody.isKinematic = false;
+    }
+    
     public class GroundState : IState
     {
         public override string ToString() => "Grounded";

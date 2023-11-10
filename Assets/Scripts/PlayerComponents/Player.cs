@@ -104,6 +104,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void Update()
         {
+            if (!IsAlive) return;
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
 
             _attackBufferedAction.Tick();
@@ -115,6 +116,8 @@ namespace DarkHavoc.PlayerComponents
 
         private void FixedUpdate()
         {
+            if (!IsAlive) return;
+            
             CheckCollisions();
             CustomGravity();
 

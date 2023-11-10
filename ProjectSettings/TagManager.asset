@@ -44,9 +44,15 @@ TagManager:
   - name: Enemy
     uniqueID: 1245454165
     locked: 0
-  - name: Level
-    uniqueID: 1937645561
+  - name: BackDecoration
+    uniqueID: 1697072577
     locked: 0
   - name: Player
     uniqueID: 563718115
+    locked: 0
+  - name: Level
+    uniqueID: 1937645561
+    locked: 0
+  - name: FrontDecoration
+    uniqueID: 3857581211
     locked: 0
