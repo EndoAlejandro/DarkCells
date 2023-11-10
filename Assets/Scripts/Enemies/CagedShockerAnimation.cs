@@ -7,7 +7,11 @@ namespace DarkHavoc.Enemies
 {
     public class CagedShockerAnimation : MonoBehaviour
     {
+        public event Action OnAttackPerformed;
+        public event Action OnAttackInterruptionAvailable;
+
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         [SerializeField] private float hitAnimationDuration = 1f;
 
@@ -19,9 +23,6 @@ namespace DarkHavoc.Enemies
         private MaterialPropertyBlock _materialPb;
         private IEnumerator _hitAnimation;
         private IState _previousState;
-        private static readonly int HitValue = Shader.PropertyToID("_HitValue");
-
-        public event Action OnAttackPerformed;
 
         private void Awake()
         {
@@ -54,6 +55,7 @@ namespace DarkHavoc.Enemies
         }
 
         private void PerformAttack() => OnAttackPerformed?.Invoke();
+        private void AttackInterruptionAvailable() => OnAttackInterruptionAvailable?.Invoke();
 
         private void CagedShockerOnDamageTaken()
         {

@@ -18,6 +18,7 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float maxFallSpeed = 5f;
         [SerializeField] private float maxSpeed = 1.5f;
         [SerializeField] private float chaseStoppingDistance = .35f;
+        [SerializeField] private float stunTime = 3f;
 
         [Header("Environment Check")]
         [SerializeField] private LayerMask groundLayerMask;
@@ -52,26 +53,20 @@ namespace DarkHavoc.Enemies
         #region Movement
 
         public float IdleTime => idleTime;
-
         public float Gravity => gravity;
-
         public float Acceleration => acceleration;
-
         public float MaxFallSpeed => maxFallSpeed;
-
         public float MaxSpeed => maxSpeed;
         public float ChaseStoppingDistance => chaseStoppingDistance;
+        public float StunTime => stunTime;
 
         #endregion
 
         #region Environment Check
 
         public LayerMask GroundLayerMask => groundLayerMask;
-
         public Vector2 FootPositionOffset => footPositionOffset;
-
         public float GroundOffset => groundOffset;
-
         public float GroundCheckDistance => groundCheckDistance;
         public WallDetection WallDetection => wallDetection;
 

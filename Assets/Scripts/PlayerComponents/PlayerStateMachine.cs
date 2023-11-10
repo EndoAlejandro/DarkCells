@@ -82,12 +82,9 @@ namespace DarkHavoc.PlayerComponents
 
             // Heavy Attack
             stateMachine.AddTransition(ground, heavyAttack,
-                () => _player.HasBufferedAttack && _player.AttackBufferedAction.CanPerformHeavyAttack());
-            
+                () => _player.HasBufferedAttack && _player.CanPerformHeavyAttack);
             stateMachine.AddTransition(lightAttack, heavyAttack,
-                () => _player.HasBufferedAttack && lightAttack.CanCombo &&
-                      _player.AttackBufferedAction.CanPerformHeavyAttack());
-            
+                () => _player.HasBufferedAttack && lightAttack.CanCombo && _player.CanPerformHeavyAttack);
             stateMachine.AddTransition(heavyAttack, ground, () => heavyAttack.Ended);
 
             // Light Attack.
@@ -99,10 +96,10 @@ namespace DarkHavoc.PlayerComponents
 
             // Block.
             var toBlockStates = new IState[] { ground, air, roll };
-            stateMachine.AddManyTransitions(toBlockStates, block, () => _input.BlockHold);
+            stateMachine.AddManyTransitions(toBlockStates, block, () => _player.HasBufferedBlock);
 
-            stateMachine.AddTransition(block, ground, () => !_input.BlockHold && block.Ended);
-            stateMachine.AddTransition(block, air, () => _player.HasBufferedJump && block.Ended);
+            stateMachine.AddTransition(block, ground, () => block.Ended);
+            // stateMachine.AddTransition(block, air, () => block.Ended);
             stateMachine.AddTransition(block, parry, () => block.ParryAvailable);
 
             // Parry.

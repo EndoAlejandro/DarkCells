@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DarkHavoc.AttackComponents
+namespace DarkHavoc.EntitiesInterfaces
 {
     public interface ITakeDamage
     {

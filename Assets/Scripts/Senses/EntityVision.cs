@@ -1,4 +1,5 @@
-﻿using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Senses

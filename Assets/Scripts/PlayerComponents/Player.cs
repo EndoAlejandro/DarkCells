@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using DarkHavoc.AttackComponents;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.PlayerComponents.PlayerActions;
 using UnityEngine;
@@ -21,9 +21,14 @@ namespace DarkHavoc.PlayerComponents
 
         // Buffered Actions
         public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
-        public bool HasBufferedAttack => AttackBufferedAction is { IsAvailable: true };
+        public bool HasBufferedAttack => _attackBufferedAction is { IsAvailable: true };
         public bool HasBufferedRoll => _rollAction is { IsAvailable: true };
         public bool HasBufferedLedgeGrab => _ledgeGrabAction is { IsAvailable: true };
+        public bool HasBufferedBlock => _blockBufferedAction is { IsAvailable: true };
+
+        public bool CanPerformHeavyAttack =>
+            _attackBufferedAction != null && _attackBufferedAction.CanPerformHeavyAttack();
+
         public PlayerStats Stats => stats;
         public Collider2D Collider { get; private set; }
         public bool FacingLeft { get; private set; }
@@ -49,7 +54,8 @@ namespace DarkHavoc.PlayerComponents
         private InputReader _inputReader;
         private ImpulseAction _currentImpulseAction;
 
-        public AttackBufferedAction AttackBufferedAction { get; private set; }
+        private BufferedAction _blockBufferedAction;
+        private AttackBufferedAction _attackBufferedAction;
         private JumpBufferedAction _jumpBufferedAction;
         private RollBufferedAction _rollAction;
         private LedgeGrabBufferedAction _ledgeGrabAction;
@@ -80,22 +86,31 @@ namespace DarkHavoc.PlayerComponents
 
         private void Actions()
         {
-            AttackBufferedAction =
-                new AttackBufferedAction(attackOffset, this, Stats.LightAttackBuffer, () => _inputReader.Attack);
-            _jumpBufferedAction =
-                new JumpBufferedAction(this, _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
-            _rollAction = new RollBufferedAction(this, Stats.JumpBuffer, () => _inputReader.Roll);
-            _ledgeGrabAction = new LedgeGrabBufferedAction(this, Stats.JumpBuffer, () => true);
+            _blockBufferedAction = new BufferedAction(this,
+                0.25f, () => _inputReader.Block);
+
+            _attackBufferedAction = new AttackBufferedAction(attackOffset, this,
+                Stats.LightAttackBuffer, () => _inputReader.Attack);
+
+            _jumpBufferedAction = new JumpBufferedAction(this,
+                _rigidbody, _inputReader, Stats.JumpBuffer, () => _inputReader.Jump);
+
+            _rollAction = new RollBufferedAction(this,
+                Stats.JumpBuffer, () => _inputReader.Roll);
+
+            _ledgeGrabAction = new LedgeGrabBufferedAction(this,
+                Stats.JumpBuffer, () => true);
         }
 
         private void Update()
         {
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
 
-            AttackBufferedAction.Tick();
+            _attackBufferedAction.Tick();
             _jumpBufferedAction.Tick();
             _rollAction.Tick();
             _ledgeGrabAction.Tick();
+            _blockBufferedAction.Tick();
         }
 
         private void FixedUpdate()
@@ -116,9 +131,10 @@ namespace DarkHavoc.PlayerComponents
         }
 
         public void Roll() => _rollAction.UseAction();
-        public void Attack(AttackImpulseAction attackImpulse) => AttackBufferedAction.UseAction(attackImpulse);
+        public void Attack(AttackImpulseAction attackImpulse) => _attackBufferedAction.UseAction(attackImpulse);
         public void Jump() => _jumpBufferedAction.UseAction(ref _targetVelocity);
         public void WallJump() => _jumpBufferedAction.UseWallAction(ref _targetVelocity);
+        public void Block() => _blockBufferedAction.UseAction();
 
         private void CustomGravity()
         {
@@ -223,6 +239,7 @@ namespace DarkHavoc.PlayerComponents
             Vector2 source = damageDealer.transform.position;
             bool result = TryToBlockDamage?.Invoke(source) ?? false;
 
+            if (result) TryToStunEnemy(damageDealer);
             if (result || !IsAlive) return;
 
             Health -= damageDealer.Damage * damageMultiplier;
@@ -232,7 +249,31 @@ namespace DarkHavoc.PlayerComponents
             OnDamageTaken?.Invoke();
         }
 
+        private void TryToStunEnemy(IDoDamage damageDealer)
+        {
+            if (damageDealer.transform.TryGetComponent(out IStunnable stunnable)) stunnable.Stun();
+        }
+
         public void Death() => Debug.Log("Player Dead.");
+
+        public void LedgeGrab(bool value)
+        {
+            if (value)
+                ResetVelocity();
+            else
+                _ledgeGrabAction.UseAction();
+
+            _useGravity = !value;
+            OnLedgeGrabChanged?.Invoke(value);
+        }
+
+        public void ResetVelocity() => _targetVelocity = Vector2.zero;
+
+        public void SetWallSliding(bool value)
+        {
+            _wallSliding = value;
+            OnWallSlideChanged?.Invoke(value);
+        }
 
         private void OnDrawGizmos()
         {
@@ -269,39 +310,6 @@ namespace DarkHavoc.PlayerComponents
                 Collider.bounds.max.y + wallDetection.LedgeDetectorOffset.y);
 
             Gizmos.DrawWireSphere(spherePosition, wallDetection.LedgeDetectorRadius);
-        }
-
-        public void LedgeGrab(bool value)
-        {
-            if (value)
-                ResetVelocity();
-            else
-                _ledgeGrabAction.UseAction();
-
-            _useGravity = !value;
-            OnLedgeGrabChanged?.Invoke(value);
-        }
-
-        public void ResetVelocity() => _targetVelocity = Vector2.zero;
-
-        public void SetWallSliding(bool value)
-        {
-            _wallSliding = value;
-            OnWallSlideChanged?.Invoke(value);
-        }
-
-        public void StopMovementForSeconds(float time)
-        {
-            /*if (_stopMovement != null) StopCoroutine(_stopMovement);
-            _stopMovement = StopMovementAsync(time);
-            StartCoroutine(_stopMovement);*/
-        }
-
-        private IEnumerator StopMovementAsync(float time)
-        {
-            CanMove = false;
-            yield return new WaitForSeconds(time);
-            CanMove = true;
         }
     }
 }

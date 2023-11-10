@@ -1,5 +1,5 @@
 ﻿using System;
-using DarkHavoc.AttackComponents;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
 using UnityEngine;
 

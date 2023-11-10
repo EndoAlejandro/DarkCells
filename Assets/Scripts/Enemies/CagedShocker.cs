@@ -1,5 +1,5 @@
 using System;
-using DarkHavoc.AttackComponents;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.Senses;
 using UnityEngine;
@@ -8,7 +8,7 @@ namespace DarkHavoc.Enemies
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CagedShocker : MonoBehaviour, IDoDamage, ITakeDamage, IEntity
+    public class CagedShocker : MonoBehaviour, IDoDamage, ITakeDamage, IEntity, IStunnable
     {
         [SerializeField] private CagedShockerStats stats;
         [SerializeField] private Transform attackOffset;
@@ -18,6 +18,7 @@ namespace DarkHavoc.Enemies
         private Rigidbody2D _rigidbody;
         private Collider2D[] _results;
 
+        public event Action OnStunned;
         public event Action OnDamageTaken;
         public event Action<float> OnTelegraph;
         public float IdleTime => stats != null ? stats.IdleTime : 0f;
@@ -28,6 +29,7 @@ namespace DarkHavoc.Enemies
         public Transform AttackOffset => attackOffset;
         public bool Grounded { get; private set; }
         public bool FacingLeft { get; private set; }
+        public float StunTime { get; private set; }
         public Player Player { get; private set; }
         public CagedShockerStats Stats => stats;
 
@@ -113,8 +115,7 @@ namespace DarkHavoc.Enemies
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
-
-
+            
             Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
@@ -127,6 +128,7 @@ namespace DarkHavoc.Enemies
 
         public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / stats.MaxSpeed;
         public void SetFacingLeft(bool value) => FacingLeft = value;
+        public void Stun() => OnStunned?.Invoke();
 
         private void OnDrawGizmos()
         {

@@ -7,6 +7,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 {
     public class TelegraphState : IState
     {
+        public override string ToString() => "Telegraph";
         public AnimationState Animation => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;

@@ -1,4 +1,4 @@
-﻿using DarkHavoc.AttackComponents;
+﻿using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
@@ -17,6 +17,8 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         private readonly float _attackDuration;
 
         private Vector2 _targetVelocity;
+        private bool _attackInterruptionAvailable;
+        private bool _stunned;
         private float _timer;
         private float _comboTimer;
         private Player _player;
@@ -25,6 +27,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool Ended => _timer <= 0f;
         public bool CanCombo => _canCombo && _comboTimer <= 0f;
         public bool TargetOnRange { get; private set; }
+        public bool Stunned => _stunned && _attackInterruptionAvailable;
 
         public AttackState(CagedShocker cagedShocker, CagedShockerAnimation animation, bool canCombo,
             float attackDuration)
@@ -52,12 +55,20 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public void OnEnter()
         {
             // TODO: Perform telegraph.
+            _stunned = false;
+            _attackInterruptionAvailable = false;
 
             _timer = _attackDuration;
             _comboTimer = _cagedShocker.Stats.ComboTime;
             _player = _cagedShocker.Player;
+
+            _cagedShocker.OnStunned += CagedShockerOnStunned;
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
+            _animation.OnAttackInterruptionAvailable += AnimationOnAttackInterruptionAvailable;
         }
+
+        private void AnimationOnAttackInterruptionAvailable() => _attackInterruptionAvailable = true;
+        private void CagedShockerOnStunned() => _stunned = true;
 
         private void AnimationOnAttackPerformed()
         {
@@ -76,7 +87,9 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public void OnExit()
         {
             _player = null;
+            _cagedShocker.OnStunned -= CagedShockerOnStunned;
             _animation.OnAttackPerformed -= AnimationOnAttackPerformed;
+            _animation.OnAttackInterruptionAvailable -= AnimationOnAttackInterruptionAvailable;
         }
     }
 }

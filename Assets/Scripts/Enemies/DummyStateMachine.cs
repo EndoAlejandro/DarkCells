@@ -1,4 +1,4 @@
-﻿using DarkHavoc.AttackComponents;
+﻿using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 

@@ -42,9 +42,9 @@ MonoBehaviour:
   coyoteTime: 0.2
   wallJumpForce: 10
   wallJumpImpulse:
-    time: 0.2
+    time: 0.3
     force: 12
-    deceleration: 50
+    deceleration: 20
     direction: 1
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3

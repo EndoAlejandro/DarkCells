@@ -1,5 +1,5 @@
 using System;
-using DarkHavoc.AttackComponents;
+using DarkHavoc.EntitiesInterfaces;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
