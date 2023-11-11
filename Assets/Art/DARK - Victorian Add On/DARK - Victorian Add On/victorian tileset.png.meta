@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: victorian tileset_0
+      name: sword_sit_1
       rect:
         serializedVersion: 2
         x: 147
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: victorian tileset_1
+      name: sword_sit_0
       rect:
         serializedVersion: 2
         x: 122
@@ -1103,8 +1103,8 @@ TextureImporter:
       roof_light_2: 221461859
       roof_light_3: 329261655
       small_sign: -233580661
-      victorian tileset_0: -1386786174
-      victorian tileset_1: 27688428
+      sword_sit_0: 27688428
+      sword_sit_1: -1386786174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
