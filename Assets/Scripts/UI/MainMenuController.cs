@@ -32,9 +32,8 @@ namespace DarkHavoc.UI
 
         private void StartButtonPressed()
         {
-            StartCoroutine(StartButtonPressedAsync());
-            /*_animator.SetTrigger(HidePanel);
-            GameManager.Instance.StartGame();*/
+            _animator.SetTrigger(HidePanel);
+            GameManager.Instance.EnablePlayerMovement();
         }
 
         private void SettingsButtonPressed()
@@ -47,13 +46,6 @@ namespace DarkHavoc.UI
 
         private void ExitButtonPressed()
         {
-        }
-
-        private IEnumerator StartButtonPressedAsync()
-        {
-            _animator.SetTrigger(HidePanel);
-            yield return new WaitForSeconds(2);
-            GameManager.Instance.StartGame();
         }
     }
 }

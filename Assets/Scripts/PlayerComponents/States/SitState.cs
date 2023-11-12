@@ -21,7 +21,7 @@ namespace DarkHavoc.PlayerComponents.States
         {
         }
 
-        public void OnEnter() => _timer = 1f;
+        public void OnEnter() => _timer = 0.25f;
 
         public void OnExit()
         {

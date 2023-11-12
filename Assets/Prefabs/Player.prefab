@@ -166,7 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetVelocity: 6
   dampingVelocity: 2
-  virtualCamera: {fileID: 0}
 --- !u!1 &2482317635766354944
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +406,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

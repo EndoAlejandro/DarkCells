@@ -8,9 +8,7 @@ namespace DarkHavoc.PlayerComponents
     {
         [SerializeField] private float offsetVelocity = 6f;
         [SerializeField] private float dampingVelocity = 2f;
-        [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
-        private CinemachineFramingTransposer _transposer;
         private Player _player;
 
         private float _distance;
@@ -21,21 +19,18 @@ namespace DarkHavoc.PlayerComponents
         private float _maxDamping;
         private float _targetDamping;
 
-        private void Awake()
-        {
-            _player = GetComponentInParent<Player>();
-            _transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-        }
+        private void Awake() => _player = GetComponentInParent<Player>();
 
         private void Start()
         {
             FallingDampingSetup();
             CameraFollowSetup();
+            CameraManager.Instance.SetTarget(transform);
         }
 
         private void FallingDampingSetup()
         {
-            _maxDamping = _transposer.m_YDamping;
+            _maxDamping = CameraManager.Instance.Transposer.m_YDamping;
         }
 
         private void CameraFollowSetup()
@@ -53,9 +48,9 @@ namespace DarkHavoc.PlayerComponents
         private void FallingDampingController()
         {
             _targetDamping = _player.Grounded ? _maxDamping : 0f;
-            float distance = Mathf.Abs(_transposer.m_YDamping - _targetDamping);
+            float distance = Mathf.Abs(CameraManager.Instance.Transposer.m_YDamping - _targetDamping);
             if (distance < 0.02f) return;
-            _transposer.m_YDamping = Mathf.MoveTowards(_transposer.m_YDamping, _targetDamping,
+            CameraManager.Instance.Transposer.m_YDamping = Mathf.MoveTowards(CameraManager.Instance.Transposer.m_YDamping, _targetDamping,
                 Time.deltaTime * distance * dampingVelocity);
         }
 
