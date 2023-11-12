@@ -44,6 +44,9 @@ namespace DarkHavoc.PlayerComponents
             var heavyAttack = new AttackState(_player, _rigidbody, _input, _animation, AnimationState.HeavyAttack,
                 _player.Stats.HeavyAttackAction);
 
+            var sitDown = new SitState(true);
+            var sitUp = new SitState(false);
+
             // Initial State.
             stateMachine.SetState(ground);
 
@@ -104,6 +107,11 @@ namespace DarkHavoc.PlayerComponents
             // Parry.
             stateMachine.AddTransition(parry, ground, () => parry.Ended);
 
+            // Sit.
+            stateMachine.AddAnyTransition(sitDown, ()=> !_input.IsActive);
+            stateMachine.AddTransition(sitDown, sitUp, ()=> _input.IsActive);
+            stateMachine.AddTransition(sitUp, ground, ()=> sitUp.Ended);
+            
             stateMachine.AddAnyTransition(death, () => !_player.IsAlive);
         }
     }

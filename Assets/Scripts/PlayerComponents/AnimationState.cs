@@ -13,6 +13,8 @@
         ParryAttack,
         Death,
         LedgeGrab,
-        WallSlide
+        WallSlide,
+        SitUp,
+        SitDown
     }
 }

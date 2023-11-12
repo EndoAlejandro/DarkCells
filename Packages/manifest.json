@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.csaratakij.sceneselector": "https://github.com/CSaratakij/SceneSelector.git#upm",
     "com.unity.cinemachine": "2.9.7",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.26",

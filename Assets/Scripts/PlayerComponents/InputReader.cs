@@ -6,6 +6,8 @@ namespace DarkHavoc.PlayerComponents
     {
         private SwordMaster _input;
 
+        public bool IsActive { get; private set; }
+        
         // Input Pressed.
         public Vector2 Movement => _input != null ? _input.Main.Movement.ReadValue<Vector2>() : Vector2.zero;
         public bool JumpHold => _input != null && _input.Main.Jump.IsPressed();
@@ -20,14 +22,26 @@ namespace DarkHavoc.PlayerComponents
         private void Awake()
         {
             _input = new SwordMaster();
-            // _input.Enable();
+            _input.Enable();
             GameManager.OnSetInputEnabled += GameManagerOnSetInputEnabled;
         }
 
         private void GameManagerOnSetInputEnabled(bool value)
         {
-            if (value) _input.Enable();
-            else _input.Disable();
+            if (value) EnableInput();
+            else DisableInput();
+        }
+
+        private void EnableInput()
+        {
+            IsActive = true;
+            _input.Enable();
+        }
+
+        private void DisableInput()
+        {
+            IsActive = false;
+            _input.Disable();
         }
     }
 }
