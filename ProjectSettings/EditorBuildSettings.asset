@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheInfectionVessel.unity
     guid: d0cfe10c60523214394bcb0c0afff422
+  - enabled: 1
+    path: Assets/Scenes/TransitionScreen.unity
+    guid: 2843c910f50c43348a1515c2a657c60d
   m_configObjects: {}

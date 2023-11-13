@@ -13,6 +13,7 @@ namespace DarkHavoc.PlayerComponents
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
         // Events
+        public static event Action<Player> OnPlayerSpawned;
         public event Func<Vector2, bool> TryToBlockDamage;
         public event Action<bool> OnGroundedChanged;
         public event Action<bool> OnLedgeGrabChanged;
@@ -37,6 +38,7 @@ namespace DarkHavoc.PlayerComponents
         public int Direction => FacingLeft ? -1 : 1;
         public float Damage => Stats != null ? Stats.Damage : 0f;
         public float Health { get; private set; }
+        public float MaxHealth { get; private set; }
         public bool CanMove { get; private set; }
         public bool IsAlive => Health > 0f;
 
@@ -74,8 +76,10 @@ namespace DarkHavoc.PlayerComponents
             _inputReader = GetComponent<InputReader>();
 
             Health = Stats.MaxHealth;
+            MaxHealth = Stats.MaxHealth;
             Actions();
             SetPlayerCollider(true);
+            OnPlayerSpawned?.Invoke(this);
         }
 
         private void OnEnable()
@@ -117,7 +121,7 @@ namespace DarkHavoc.PlayerComponents
         private void FixedUpdate()
         {
             if (!IsAlive) return;
-            
+
             CheckCollisions();
             CustomGravity();
 

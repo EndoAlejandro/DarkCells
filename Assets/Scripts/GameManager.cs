@@ -10,10 +10,15 @@ namespace DarkHavoc
     public class GameManager : Singleton<GameManager>
     {
         public static event Action<bool> OnSetInputEnabled;
+        public static event Action OnTransitionStarted;
+        public static event Action OnTransitionEnded;
+
+        public Player PlayerPrefab => playerPrefab;
 
         [SerializeField] private Player playerPrefab;
 
-        public Player PlayerPrefab => playerPrefab;
+        private const string TransitionScreen = "TransitionScreen";
+        private IEnumerator _currentTransition;
 
         private void ActivateInput() => OnSetInputEnabled?.Invoke(true);
         private void DeactivateInput() => OnSetInputEnabled?.Invoke(false);
@@ -27,7 +32,10 @@ namespace DarkHavoc
 
         public void EnablePlayerMovement() => ActivateInput();
 
-        public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
+        public void LoadLobbyScene()
+        {
+            StartCoroutine(LoadLobbySceneAsync());
+        }
 
         private IEnumerator LoadLobbySceneAsync()
         {
@@ -42,8 +50,11 @@ namespace DarkHavoc
         {
             DeactivateInput();
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
+            OnTransitionStarted?.Invoke();
+            yield return new WaitForSeconds(1f);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(1f);
+            OnTransitionEnded?.Invoke();
             ActivateInput();
         }
     }
