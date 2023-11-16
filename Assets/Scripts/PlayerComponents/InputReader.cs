@@ -22,7 +22,7 @@ namespace DarkHavoc.PlayerComponents
         private void Awake()
         {
             _input = new SwordMaster();
-            _input.Enable();
+            EnableInput();
             GameManager.OnSetInputEnabled += GameManagerOnSetInputEnabled;
         }
 
