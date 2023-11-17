@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using Random = UnityEngine.Random;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
@@ -12,21 +9,30 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         [SerializeField] private Vector2Int levelSize;
         [SerializeField] private GridRoom[] rooms;
 
-        [SerializeField] private Tilemap globalTileMap;
+        [SerializeField] private Tilemap platformsTileMap;
+        [SerializeField] private Tilemap visualsTileMap;
+        [SerializeField] private Tilemap cameraColliderTileMap;
 
         private GridRoomData[,] _roomDataMatrix;
 
-        private void Awake()
-        {
-            _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y];
-        }
+        public GridRoomData InitialRoom { get; private set; }
 
-        private void Start()
+        private void Awake() => _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y];
+
+        [ContextMenu("Generate Level")]
+        public void GenerateLevel()
         {
-            GenerateLevel();
+            SetRoomsPrefabsState(true);
+
+            CalculatePath();
             InstantiateTiles();
 
-            foreach (var room in rooms) room.gameObject.SetActive(false);
+            SetRoomsPrefabsState(false);
+        }
+
+        private void SetRoomsPrefabsState(bool state)
+        {
+            foreach (var room in rooms) room.gameObject.SetActive(state);
         }
 
         private void InstantiateTiles()
@@ -45,32 +51,63 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                     break;
                 }
 
-                CopyTile(selectedGridRoom, i, j);
+                CopyPlatformTiles(selectedGridRoom, i, j);
+                CopyVisualTiles(selectedGridRoom, i, j);
+                CopyCameraColliderTiles(selectedGridRoom, i, j);
             }
         }
 
-        private void CopyTile(GridRoom room, int x, int y)
+        private void CopyPlatformTiles(GridRoom room, int x, int y)
         {
-            Tilemap roomTilemap = room.Tilemap;
+            Tilemap roomTilemap = room.PlatformsTileMap;
 
             foreach (Vector3Int position in roomTilemap.cellBounds.allPositionsWithin)
             {
                 Vector3Int offsetPosition = new Vector3Int(position.x + roomSize.x * x,
                     position.y - roomSize.y * y, position.z);
-                TileBase tile = room.Tilemap.GetTile(position);
+                TileBase tile = room.PlatformsTileMap.GetTile(position);
 
-                if (tile != null) globalTileMap.SetTile(offsetPosition, tile);
+                if (tile != null) platformsTileMap.SetTile(offsetPosition, tile);
             }
         }
 
-        private void GenerateLevel()
+        private void CopyVisualTiles(GridRoom room, int x, int y)
+        {
+            Tilemap roomTilemap = room.VisualsTileMap;
+
+            foreach (Vector3Int position in roomTilemap.cellBounds.allPositionsWithin)
+            {
+                Vector3Int offsetPosition = new Vector3Int(position.x + roomSize.x * x,
+                    position.y - roomSize.y * y, position.z);
+                TileBase tile = room.VisualsTileMap.GetTile(position);
+
+                if (tile != null) visualsTileMap.SetTile(offsetPosition, tile);
+            }
+        }
+
+        private void CopyCameraColliderTiles(GridRoom room, int x, int y)
+        {
+            Tilemap roomTilemap = room.CameraColliderTileMap;
+
+            foreach (Vector3Int position in roomTilemap.cellBounds.allPositionsWithin)
+            {
+                Vector3Int offsetPosition = new Vector3Int(position.x + roomSize.x * x,
+                    position.y - roomSize.y * y, position.z);
+                TileBase tile = room.CameraColliderTileMap.GetTile(position);
+
+                if (tile != null) cameraColliderTileMap.SetTile(offsetPosition, tile);
+            }
+        }
+
+        private void CalculatePath()
         {
             var initialX = Random.Range(0, _roomDataMatrix.GetLength(0));
-            var initialRoom = new GridRoomData(new Vector2Int(initialX, 0));
-            initialRoom.SetDirection(Vector2Int.down);
-            _roomDataMatrix[initialX, 0] = initialRoom;
+            InitialRoom = new GridRoomData(new Vector2Int(initialX, 0));
+            InitialRoom.SetDirection(Vector2Int.down);
+            _roomDataMatrix[initialX, 0] = InitialRoom;
 
-            Vector2Int currentPosition = initialRoom.Position;
+            Vector2Int currentPosition = InitialRoom.Position;
+
             int safeExit = 100;
             while (safeExit > 0)
             {
@@ -83,6 +120,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                     currentRoom.SetDirection(Vector2Int.up);
                     break;
                 }
+
                 currentRoom.SetDirection(direction);
 
                 var customPosition = currentRoom.Position;
@@ -125,5 +163,10 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
             return Vector2Int.zero;
         }
+
+        public Vector2 GetWorldPosition(GridRoomData data) =>
+            new(roomSize.x * data.Position.x, roomSize.y * data.Position.y);
+
+        public CompositeCollider2D GetLevelBounds() => cameraColliderTileMap.GetComponent<CompositeCollider2D>();
     }
 }

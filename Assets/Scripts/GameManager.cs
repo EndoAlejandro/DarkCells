@@ -14,6 +14,7 @@ namespace DarkHavoc
         public static event Action OnTransitionEnded;
 
         public Player PlayerPrefab => playerPrefab;
+        public Player Player { get; private set; }
 
         [SerializeField] private Player playerPrefab;
 
@@ -27,7 +28,6 @@ namespace DarkHavoc
         {
             base.SingletonAwake();
             DontDestroyOnLoad(gameObject);
-            // DeactivateInput();
         }
 
         public void EnablePlayerMovement() => ActivateInput();
@@ -57,5 +57,7 @@ namespace DarkHavoc
             OnTransitionEnded?.Invoke();
             ActivateInput();
         }
+
+        public void RegisterPlayer(Player player) => Player = player;
     }
 }

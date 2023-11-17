@@ -7,9 +7,13 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     public class GridRoom : MonoBehaviour
     {
         [SerializeField] private Vector4 directions;
-        public Tilemap Tilemap { get; private set; }
+        [SerializeField] private Tilemap platformsTileMap;
+        [SerializeField] private Tilemap visualsTileMap;
+        [SerializeField] private Tilemap cameraColliderTileMap;
         public Vector4 Directions => directions;
-        private void Awake() => Tilemap = GetComponentInChildren<Tilemap>();
+        public Tilemap PlatformsTileMap => platformsTileMap;
+        public Tilemap VisualsTileMap => visualsTileMap;
+        public Tilemap CameraColliderTileMap => cameraColliderTileMap;
     }
 
     [Serializable]
@@ -29,7 +33,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 case var _ when direction == Vector2Int.down:
                     _directions.x = 1;
                     break;
-                
+
                 case var _ when direction == Vector2Int.right:
                     _directions.y = 1;
                     break;
