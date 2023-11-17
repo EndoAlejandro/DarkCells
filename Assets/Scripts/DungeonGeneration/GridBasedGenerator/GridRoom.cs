@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,6 +12,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private void Awake() => Tilemap = GetComponentInChildren<Tilemap>();
     }
 
+    [Serializable]
     public class GridRoomData
     {
         private Vector4 _directions;

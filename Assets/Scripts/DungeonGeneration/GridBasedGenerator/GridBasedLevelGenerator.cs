@@ -78,9 +78,13 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
                 var currentRoom = _roomDataMatrix[currentPosition.x, currentPosition.y];
                 var direction = GetNextDirection(currentRoom);
-                if (direction == Vector2Int.zero) break;
-
+                if (direction == Vector2Int.zero)
+                {
+                    currentRoom.SetDirection(Vector2Int.up);
+                    break;
+                }
                 currentRoom.SetDirection(direction);
+
                 var customPosition = currentRoom.Position;
                 var room = new GridRoomData(customPosition + direction);
 
