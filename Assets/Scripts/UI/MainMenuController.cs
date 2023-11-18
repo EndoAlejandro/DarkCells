@@ -6,8 +6,6 @@ namespace DarkHavoc.UI
 {
     public class MainMenuController : MonoBehaviour
     {
-        private static readonly int HidePanel = Animator.StringToHash("HidePanel");
-
         [SerializeField] private GameObject container;
 
         [SerializeField] private Button startGameButton;
@@ -15,24 +13,32 @@ namespace DarkHavoc.UI
         [SerializeField] private Button creditsButton;
         [SerializeField] private Button exitButton;
 
-        private Animator _animator;
-
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            container.SetActive(false);
         }
 
         private void Start()
         {
-            startGameButton?.onClick.AddListener(StartButtonPressed);
+            startGameButton?.onClick.AddListener(() => StartCoroutine(StartButtonPressedAsync()));
             settingsButton?.onClick.AddListener(SettingsButtonPressed);
             creditsButton?.onClick.AddListener(CreditsButtonPressed);
             exitButton?.onClick.AddListener(ExitButtonPressed);
+
+            StartCoroutine(StartMenuAsync());
         }
 
-        private void StartButtonPressed()
+        private IEnumerator StartMenuAsync()
         {
-            _animator.SetTrigger(HidePanel);
+            yield return null;
+            yield return TransitionManager.Instance.SetMenuPanel(true);
+            container.SetActive(true);
+        }
+
+        private IEnumerator StartButtonPressedAsync()
+        {
+            container.SetActive(false);
+            yield return TransitionManager.Instance.SetMenuPanel(false);
             GameManager.Instance.EnablePlayerMovement();
         }
 

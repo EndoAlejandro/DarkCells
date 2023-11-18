@@ -10,8 +10,7 @@ namespace DarkHavoc
     public class GameManager : Singleton<GameManager>
     {
         public static event Action<bool> OnSetInputEnabled;
-        public static event Action OnTransitionStarted;
-        public static event Action OnTransitionEnded;
+        public static event Action<bool> OnGamePauseChanged; 
 
         public Player PlayerPrefab => playerPrefab;
         public Player Player { get; private set; }
@@ -23,6 +22,8 @@ namespace DarkHavoc
 
         private void ActivateInput() => OnSetInputEnabled?.Invoke(true);
         private void DeactivateInput() => OnSetInputEnabled?.Invoke(false);
+        private void PauseGame() => OnGamePauseChanged?.Invoke(true);
+        private void UnpauseGame() => OnGamePauseChanged?.Invoke(false);
 
         protected override void SingletonAwake()
         {
@@ -32,16 +33,15 @@ namespace DarkHavoc
 
         public void EnablePlayerMovement() => ActivateInput();
 
-        public void LoadLobbyScene()
-        {
-            StartCoroutine(LoadLobbySceneAsync());
-        }
+        public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
 
         private IEnumerator LoadLobbySceneAsync()
         {
+            yield return TransitionManager.Instance.SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
             DeactivateInput();
+            yield return TransitionManager.Instance.SetTransitionPanel(false);
         }
 
         public void LoadBiomeScene(Biome biome) => StartCoroutine(LoadBiomeSceneAsync(biome));
@@ -49,12 +49,10 @@ namespace DarkHavoc
         private IEnumerator LoadBiomeSceneAsync(Biome biome)
         {
             DeactivateInput();
+            yield return TransitionManager.Instance.SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
-            OnTransitionStarted?.Invoke();
-            yield return new WaitForSeconds(1f);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
-            yield return new WaitForSeconds(1f);
-            OnTransitionEnded?.Invoke();
+            yield return TransitionManager.Instance.SetTransitionPanel(false);
             ActivateInput();
         }
 

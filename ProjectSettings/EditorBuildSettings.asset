@@ -6,27 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro.unity
+    path: Assets/_Scenes/Intro.unity
     guid: 9cbf2e9a01293cb4a9f0d51b4ca0d1ae
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/_Scenes/MainMenu.unity
     guid: 32c53f4d7bdb538419f7d975aeddbea8
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
+    path: Assets/_Scenes/Lobby.unity
     guid: 9fd83145826fbbd44bd26e7919aa0322
   - enabled: 1
-    path: Assets/Scenes/HUD.unity
+    path: Assets/_Scenes/HUD.unity
     guid: 19d4a0c0944e1a64d997f3a267df7ede
   - enabled: 1
-    path: Assets/Scenes/CorruptedAbyss.unity
+    path: Assets/_Scenes/CorruptedAbyss.unity
     guid: 955073449b35c094c88f94f9e88cb001
   - enabled: 1
-    path: Assets/Scenes/ForgottenCatacombs.unity
+    path: Assets/_Scenes/ForgottenCatacombs.unity
     guid: c2021c5ba1d2fc84f932e70b8a0c876b
   - enabled: 1
-    path: Assets/Scenes/TheInfectionVessel.unity
+    path: Assets/_Scenes/TheInfectionVessel.unity
     guid: d0cfe10c60523214394bcb0c0afff422
   - enabled: 1
-    path: Assets/Scenes/TransitionScreen.unity
+    path: Assets/_Scenes/TransitionScreen.unity
     guid: 2843c910f50c43348a1515c2a657c60d
   m_configObjects: {}

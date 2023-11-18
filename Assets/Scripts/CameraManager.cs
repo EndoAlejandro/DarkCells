@@ -20,11 +20,6 @@ namespace DarkHavoc
             _confiner = VirtualCamera.GetComponent<CinemachineConfiner2D>();
         }
 
-        private void Start()
-        {
-            _confiner.enabled = false;
-        }
-
         public void SetTarget(Transform target)
         {
             VirtualCamera.m_Follow = target;

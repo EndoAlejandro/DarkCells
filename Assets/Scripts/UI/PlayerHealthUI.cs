@@ -23,7 +23,6 @@ namespace DarkHavoc.UI
         private void Start()
         {
             Player.OnPlayerSpawned += PlayerOnPlayerSpawned;
-            GameManager.OnTransitionStarted += GameManagerOnTransitionStarted;
         }
 
         private void GameManagerOnTransitionStarted()
@@ -55,7 +54,6 @@ namespace DarkHavoc.UI
         private void OnDestroy()
         {
             Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
-            GameManager.OnTransitionStarted -= GameManagerOnTransitionStarted;
         }
     }
 }
