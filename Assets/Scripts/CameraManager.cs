@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Cinemachine;
 using DarkHavoc.CustomUtils;
 using UnityEngine;
@@ -14,9 +15,14 @@ namespace DarkHavoc
         protected override void SingletonAwake()
         {
             base.SingletonAwake();
-            VirtualCamera = GetComponent<CinemachineVirtualCamera>();
+            VirtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
             Transposer = VirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
             _confiner = VirtualCamera.GetComponent<CinemachineConfiner2D>();
+        }
+
+        private void Start()
+        {
+            _confiner.enabled = false;
         }
 
         public void SetTarget(Transform target)
@@ -25,17 +31,16 @@ namespace DarkHavoc
             VirtualCamera.m_LookAt = target;
         }
 
-        public void SetCameraBounds(CompositeCollider2D composite)
-        {
-            StartCoroutine(SetCameraBoundsAsync(composite));
-            
-        }
+        public void SetCameraBounds(CompositeCollider2D composite) => StartCoroutine(SetCameraBoundsAsync(composite));
 
         private IEnumerator SetCameraBoundsAsync(CompositeCollider2D composite)
         {
+            _confiner.enabled = false;
+            _confiner.InvalidateCache();
             _confiner.m_BoundingShape2D = composite;
             yield return null;
             _confiner.InvalidateCache();
+            _confiner.enabled = true;
         }
     }
 }

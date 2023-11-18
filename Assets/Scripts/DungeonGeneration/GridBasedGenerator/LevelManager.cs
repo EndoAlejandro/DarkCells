@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
@@ -10,12 +11,16 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private GridBasedLevelGenerator _levelGenerator;
 
         private void Awake() => _levelGenerator = GetComponentInChildren<GridBasedLevelGenerator>();
+        private void Start() => StartCoroutine(StartLevelAsync());
 
-        private void Start()
+        private IEnumerator StartLevelAsync()
         {
+            yield return null;
             _levelGenerator.GenerateLevel();
-            var bounds = _levelGenerator.GetLevelBounds();
+            yield return null;
+            CompositeCollider2D bounds = _levelGenerator.GetLevelBounds();
             CameraManager.Instance.SetCameraBounds(bounds);
+            yield return null;
             CreatePlayer();
         }
 
