@@ -1,5 +1,6 @@
 using Cinemachine;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
@@ -19,18 +20,22 @@ namespace DarkHavoc.PlayerComponents
         private float _maxDamping;
         private float _targetDamping;
 
+        private CameraManager _cameraManager;
+
         private void Awake() => _player = GetComponentInParent<Player>();
 
         private void Start()
         {
+            _cameraManager = ServiceLocator.Instance.GetService<CameraManager>();
+            
             FallingDampingSetup();
             CameraFollowSetup();
-            CameraManager.Instance.SetTarget(transform);
+            _cameraManager.SetTarget(transform);
         }
 
         private void FallingDampingSetup()
         {
-            _maxDamping = CameraManager.Instance.Transposer.m_YDamping;
+            _maxDamping = _cameraManager.Transposer.m_YDamping;
         }
 
         private void CameraFollowSetup()
@@ -48,9 +53,9 @@ namespace DarkHavoc.PlayerComponents
         private void FallingDampingController()
         {
             _targetDamping = _player.Grounded ? _maxDamping : 0f;
-            float distance = Mathf.Abs(CameraManager.Instance.Transposer.m_YDamping - _targetDamping);
+            float distance = Mathf.Abs(_cameraManager.Transposer.m_YDamping - _targetDamping);
             if (distance < 0.02f) return;
-            CameraManager.Instance.Transposer.m_YDamping = Mathf.MoveTowards(CameraManager.Instance.Transposer.m_YDamping, _targetDamping,
+            _cameraManager.Transposer.m_YDamping = Mathf.MoveTowards(_cameraManager.Transposer.m_YDamping, _targetDamping,
                 Time.deltaTime * distance * dampingVelocity);
         }
 

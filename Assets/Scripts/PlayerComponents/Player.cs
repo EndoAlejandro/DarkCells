@@ -209,6 +209,7 @@ namespace DarkHavoc.PlayerComponents
         public void ApplyVelocity()
         {
             var target = new Vector2(_impulseTimer <= 0f ? _targetVelocity.x : _extraForce.x, _targetVelocity.y);
+            if (!_inputReader.IsActive) target.x = 0f;
             _rigidbody.velocity = target;
         }
 

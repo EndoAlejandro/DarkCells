@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -14,12 +13,12 @@ namespace DarkHavoc
 
         public Player Player { get; set; }
         public Player PlayerPrefab => playerPrefab;
+        public bool Paused { get; private set; }
 
         [SerializeField] private Player playerPrefab;
 
         private TransitionManager _transitionManager;
         private InputReader _inputReader;
-        private bool _paused;
         private Biome _currentBiome;
 
         protected override void Awake()
@@ -34,21 +33,19 @@ namespace DarkHavoc
         {
             _currentBiome = Biome.ForgottenCatacombs;
             _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
-            
+
             _inputReader.DisableMainInput();
-            _inputReader.SetPauseEnable(true);
         }
 
-        private void Update()
+        public void GoToLobby()
         {
-            if (!_inputReader.Pause) return;
-            _paused = !_paused;
-            if (_paused) PauseGame();
-            else UnpauseGame();
+            DisableMainInput();
+            _transitionManager.LoadLobbyScene();
         }
 
-        public void GoToLobby() => _transitionManager.LoadLobbyScene();
         public void GoToNextBiome() => _transitionManager.LoadBiomeScene(_currentBiome);
+
+        public void SetPauseInput(bool state) => _inputReader.SetPauseEnable(state);
 
         public void EnableMainInput()
         {
@@ -62,16 +59,20 @@ namespace DarkHavoc
             OnSetInputEnabled?.Invoke(false);
         }
 
-        private void PauseGame()
+        public void PauseGame()
         {
+            Paused = true;
+            DisableMainInput();
+            SetPauseInput(false);
             OnGamePauseChanged?.Invoke(true);
-            // Time.timeScale = 0;
         }
 
-        private void UnpauseGame()
+        public void UnpauseGame()
         {
+            Paused = false;
+            EnableMainInput();
+            SetPauseInput(true);
             OnGamePauseChanged?.Invoke(false);
-            // Time.timeScale = 1;
         }
 
         public void RegisterPlayer(Player player) => Player = player;

@@ -18,7 +18,6 @@ namespace DarkHavoc.PlayerComponents
         public bool Roll => _input != null && _input.Main.Roll.WasPerformedThisFrame();
         public bool Attack => _input != null && _input.Main.Attack.WasPerformedThisFrame();
         public bool Block => _input != null && _input.Main.Block.WasPerformedThisFrame();
-
         public bool Pause => _input != null && _input.Pause.Pause.WasPerformedThisFrame();
 
         public void SetPauseEnable(bool state)

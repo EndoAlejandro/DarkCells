@@ -27,26 +27,31 @@ namespace DarkHavoc
         public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
         private IEnumerator LoadLobbySceneAsync()
         {
+            // ResetTriggers();
             yield return SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
+            // ResetTriggers();
         }
 
         public void LoadBiomeScene(Biome biome) => StartCoroutine(LoadBiomeSceneAsync(biome));
 
         private IEnumerator LoadBiomeSceneAsync(Biome biome)
         {
+            // ResetTriggers();
             yield return SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
+            // ResetTriggers();
         }
         
         public IEnumerator SetTransitionPanel(bool state)
         {
             yield return new WaitUntil(() => _transitionInProgress != state);
             ResetTriggers();
+            yield return null;
             _animator.SetTrigger(state ? In : Out);
             yield return new WaitForSeconds(1f);
             _transitionInProgress = state;
@@ -56,6 +61,7 @@ namespace DarkHavoc
         {
             yield return new WaitUntil(() => _transitionInProgress != state);
             ResetTriggers();
+            yield return null;
             _animator.SetTrigger(state ? Show : Hide);
             yield return new WaitForSeconds(.25f);
             callback?.Invoke();

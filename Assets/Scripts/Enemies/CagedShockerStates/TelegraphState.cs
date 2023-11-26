@@ -1,4 +1,5 @@
 ﻿using DarkHavoc.Fx;
+using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
@@ -14,6 +15,8 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
         private readonly CagedShocker _cagedShocker;
         private readonly float _telegraphTime;
+        private readonly FxProvider _fxProvider;
+        
         private float _timer;
         private bool _telegraphed;
         private Vector2 _targetVelocity;
@@ -22,6 +25,8 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         {
             _cagedShocker = cagedShocker;
             _telegraphTime = telegraphTime;
+
+            _fxProvider = ServiceLocator.Instance.GetService<FxProvider>();
         }
 
         public void Tick()
@@ -30,7 +35,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
             if (!_telegraphed && _timer <= _telegraphTime/2)
             {
                 _telegraphed = true;
-                FxProvider.Instance.GetFx(FxType.Telegraph, _cagedShocker.transform.position + Vector3.up * 1.25f);
+                _fxProvider.GetFx(FxType.Telegraph, _cagedShocker.transform.position + Vector3.up * 1.25f);
             }
 
             _cagedShocker.Move(ref _targetVelocity, 0);

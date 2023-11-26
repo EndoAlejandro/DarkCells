@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using DarkHavoc.CustomUtils;
 using DarkHavoc.Pooling;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Fx
@@ -10,15 +10,15 @@ namespace DarkHavoc.Fx
         Telegraph,
     }
 
-    public class FxProvider : Singleton<FxProvider>
+    public class FxProvider : Service<FxProvider>
     {
         [SerializeField] private AnimatedPoolAfterSecond telegraphAttackPrefab;
 
         private Dictionary<FxType, PooledMonoBehaviour> _fxDictionary;
 
-        protected override void SingletonAwake()
+        protected override void Awake()
         {
-            base.SingletonAwake();
+            base.Awake();
             _fxDictionary = new Dictionary<FxType, PooledMonoBehaviour> { { FxType.Telegraph, telegraphAttackPrefab } };
         }
 

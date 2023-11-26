@@ -26,7 +26,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _levelGenerator.GenerateLevel();
             yield return null;
             CompositeCollider2D bounds = _levelGenerator.GetLevelBounds();
-            CameraManager.Instance.SetCameraBounds(bounds);
+            ServiceLocator.Instance.GetService<CameraManager>().SetCameraBounds(bounds);
             yield return null;
             CreatePlayer();
         }
