@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e37ec38e35f4edab3f4370c9fac8910, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  takeDamageTime: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 584
+  maxSpeed: 6
+  acceleration: 80
+  groundDeceleration: 70
+  airDeceleration: 30
+  grounderDistance: 0.05
+  wallDetection:
+    distanceCheck: 0.4
+    topOffset: 0
+    midOffset: 0.28
+    bottomOffset: 0.1
+    horizontalOffset: -0.24
+    wallLayer:
+      serializedVersion: 2
+      m_Bits: 257
+    ledgeDetectorOffset: {x: 0.3, y: 0.03}
+    ledgeDetectorRadius: 0.2
+  jumpForce: 12
+  groundingForce: 3
+  fallAcceleration: 30
+  jumpBuffer: 0.2
+  maxFallSpeed: 10
+  jumpEndEarlyGravityModifier: 1.25
+  coyoteTime: 0.2
+  wallJumpForce: 10
+  wallJumpImpulse:
+    time: 0.3
+    force: 12
+    deceleration: 20
+    direction: 1
+  wallSlideAcceleration: 50
+  maxWallSlideSpeed: 3
+  ceilingDistance: 0.3
+  rollCooldown: 0.25
+  rollAction:
+    time: 0.4
+    force: 8
+    deceleration: 2
+    direction: 0
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 620
+  damage: 1
+  movementReduction: 0.5
+  lightAttackBuffer: 0.15
+  comboTime: 0.5
+  heavyAttackTime: 0.5
+  blockTime: 0.5
+  lightAttackAction:
+    time: 0.5
+    force: 1
+    deceleration: 5
+    direction: 0
+    damageMultiplier: 0
+    cooldownTime: 0
+  heavyAttackAction:
+    time: 0.5
+    force: 2
+    deceleration: 5
+    direction: 0
+    damageMultiplier: 2
+    cooldownTime: 0.5
+  parryAction:
+    time: 0.7
+    force: 3
+    deceleration: 5
+    direction: 1
+  takeDamageAction:
+    time: 0.5
+    force: 7
+    deceleration: 20
+    direction: 1

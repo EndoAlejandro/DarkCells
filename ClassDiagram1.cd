@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayerComponents.PlayerStateMachine">
+    <Position X="6.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAIAAAAAAAAACAAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerStateMachine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_player" />
+      <Field Name="_input" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerComponents.PlayerAnimation" Collapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAABAAIAEAAQBCAIAEAGAAAAIIAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.Player" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ARQEAAiQIoAIAAEgWiACIABAAIiAQYCEACIAACIgQUA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_attackAction" />
+      <Field Name="_blockAction" />
+      <Field Name="_jumpAction" />
+      <Field Name="_rollAction" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerComponents.InputReader">
+    <Position X="9" Y="7.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAEAAAAAgIAAAAABCAAAAAAAIACAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\InputReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.States.AirState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEEAAAAIAAAAEAAAACAAAAAAQAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\AirState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.States.AttackState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEGAAAAIgAAEEAAAACAAAAAASAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\AttackState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.States.BlockState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAAEEACAAIgAAEEAAAADAAAAAAQAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\BlockState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.States.CrouchState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEEAAAAAAAAAEAAAACAAAAAAQAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\CrouchState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.States.GroundState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEEAAAAIAAAAEAAAACAAAAAAQAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\GroundState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.States.RollState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEEAAAAIgAAEEAAAACAAAAAAQAAAAAIAAACAAQAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\States\RollState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerComponents.PlayerActions.AttackAction" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAABAAAAAgACAAABA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerActions\AttackAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.PlayerActions.BufferedAction" Collapsed="true">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAAAAAEAAAAAAAABACAAAAAAgAYAEQBA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerActions\BufferedAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.PlayerActions.JumpAction" Collapsed="true">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABBAAAAAAAAAAEAABAEAAAAAAgAIIAAgACAAQJA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerActions\JumpAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.PlayerActions.RollAction" Collapsed="true">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerActions\RollAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerComponents.PlayerActions.BlockAction" Collapsed="true">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\PlayerComponents\PlayerActions\RollAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineComponents.FiniteStateBehaviour">
+    <Position X="11.25" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAgCAAAAAAACAAIAAAAAQAAAAAAAAAAAAIEA=</HashCode>
+      <FileName>Assets\Scripts\StateMachineComponents\FiniteStateBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="stateMachine" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StateMachineComponents.StateMachine">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <AssociationLine Name="_stateTransitions" Type="StateMachineComponents.StateTransition" FixedToPoint="true">
+      <Path>
+        <Point X="14.438" Y="6.75" />
+        <Point X="14.438" Y="5.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="_anyStateTransitions" Type="StateMachineComponents.StateTransition" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.25" Y="8.33" />
+        <Point X="15.625" Y="8.33" />
+        <Point X="15.625" Y="4.75" />
+        <Point X="15.25" Y="4.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABEIABAAAAAABAAIAAGAAAAEAAAIAAAAAAAAAQBA=</HashCode>
+      <FileName>Assets\Scripts\StateMachineComponents\StateMachine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentState" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_stateTransitions" />
+      <Field Name="_anyStateTransitions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="StateMachineComponents.StateTransition" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIIAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\StateMachineComponents\StateTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="StateMachineComponents.IState">
+    <Position X="13.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEEAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\StateMachineComponents\IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
