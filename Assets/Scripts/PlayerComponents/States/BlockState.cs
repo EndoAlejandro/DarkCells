@@ -10,7 +10,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
+        private readonly ImputReader _input;
 
         private Vector2 _targetVelocity;
         private float _timer;
@@ -19,7 +19,7 @@ namespace DarkHavoc.PlayerComponents.States
         public bool CanTransitionToSelf => false;
         public bool ParryAvailable { get; private set; }
 
-        public BlockState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public BlockState(Player player, Rigidbody2D rigidbody, ImputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

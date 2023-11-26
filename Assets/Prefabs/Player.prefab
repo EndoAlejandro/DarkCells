@@ -274,7 +274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1259947828086528715}
   - component: {fileID: 1097820260782414158}
-  - component: {fileID: 2268659412207971729}
   - component: {fileID: 4845851283451543249}
   - component: {fileID: 2371700682813973661}
   - component: {fileID: 3805135953188120515}
@@ -323,18 +322,6 @@ MonoBehaviour:
   midPoint: {fileID: 6692083125225447997}
   defaultCollider: {fileID: 2371700682813973661}
   rollCollider: {fileID: 4649270005783372027}
---- !u!114 &2268659412207971729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824700628341567564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9260b4f2492e491db1cd8764b64e8530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4845851283451543249
 MonoBehaviour:
   m_ObjectHideFlags: 0

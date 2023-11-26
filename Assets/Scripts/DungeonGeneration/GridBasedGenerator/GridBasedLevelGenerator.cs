@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
-    public class GridBasedLevelGenerator : MonoBehaviour
+    public class GridBasedLevelGenerator : Service<GridBasedLevelGenerator>
     {
         [SerializeField] private Vector2Int roomSize;
         [SerializeField] private Vector2Int levelSize;
@@ -19,8 +20,9 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         public GridRoomData InitialRoom { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y];
 
             // Load Prefabs

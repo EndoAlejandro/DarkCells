@@ -1,4 +1,3 @@
-using System;
 using DarkHavoc.EntitiesInterfaces;
 using UnityEngine;
 using UnityEngine.UI;

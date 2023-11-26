@@ -12,7 +12,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
+        private readonly ImputReader _input;
 
         private WallResult _wallResult;
 
@@ -20,7 +20,7 @@ namespace DarkHavoc.PlayerComponents.States
         public bool FacingLedge { get; private set; }
         public bool FacingWall { get; private set; }
 
-        public AirState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public AirState(Player player, Rigidbody2D rigidbody, ImputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

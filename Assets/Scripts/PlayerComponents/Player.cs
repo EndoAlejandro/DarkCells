@@ -4,6 +4,7 @@ using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.PlayerComponents.PlayerActions;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
@@ -53,7 +54,7 @@ namespace DarkHavoc.PlayerComponents
         private Vector2 _targetVelocity;
 
         private Rigidbody2D _rigidbody;
-        private InputReader _inputReader;
+        private ImputReader _inputReader;
         private ImpulseAction _currentImpulseAction;
 
         private BufferedAction _blockBufferedAction;
@@ -73,7 +74,7 @@ namespace DarkHavoc.PlayerComponents
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _inputReader = GetComponent<InputReader>();
+            _inputReader = ServiceLocator.Instance.GetService<ImputReader>();
 
             Health = Stats.MaxHealth;
             MaxHealth = Stats.MaxHealth;

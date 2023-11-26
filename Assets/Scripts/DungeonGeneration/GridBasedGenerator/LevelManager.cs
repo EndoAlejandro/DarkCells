@@ -1,17 +1,24 @@
 using System.Collections;
+using DarkHavoc.PlayerComponents;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : Service<LevelManager>
     {
         [SerializeField] private float spawnPointOffset;
 
         private Vector3 _spawnPoint;
         private GridBasedLevelGenerator _levelGenerator;
+        private GameManager _gameManager;
 
-        private void Awake() => _levelGenerator = GetComponentInChildren<GridBasedLevelGenerator>();
-        private void Start() => StartCoroutine(StartLevelAsync());
+        private void Start()
+        {
+            _levelGenerator = ServiceLocator.Instance.GetService<GridBasedLevelGenerator>();
+            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            StartCoroutine(StartLevelAsync());
+        }
 
         private IEnumerator StartLevelAsync()
         {
@@ -28,9 +35,10 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             var playerSpawnPoint = _levelGenerator.GetWorldPosition(_levelGenerator.InitialRoom);
             playerSpawnPoint.y += spawnPointOffset;
-            var player = Instantiate(GameManager.Instance.PlayerPrefab, playerSpawnPoint, Quaternion.identity);
-            GameManager.Instance.EnablePlayerMovement();
-            GameManager.Instance.RegisterPlayer(player);
+            var playerPrefab = ServiceLocator.Instance.GetService<Player>();
+            var player = Instantiate(playerPrefab, playerSpawnPoint, Quaternion.identity);
+            _gameManager.EnablePlayerMovement();
+            _gameManager.RegisterPlayer(player);
         }
     }
 }

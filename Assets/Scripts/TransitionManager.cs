@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections;
-using DarkHavoc.CustomUtils;
+using DarkHavoc.PlayerComponents;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DarkHavoc
 {
-    public class TransitionManager : Singleton<TransitionManager>
+    public class TransitionManager : Service<TransitionManager>
     {
+        protected override bool DonDestroyOnLoad => true;
+
         private static readonly int Out = Animator.StringToHash("Out");
         private static readonly int In = Animator.StringToHash("In");
         private static readonly int Show = Animator.StringToHash("Show");
@@ -14,14 +18,38 @@ namespace DarkHavoc
 
         private bool _transitionInProgress;
         private Animator _animator;
+        private ImputReader _inputReader;
 
-        protected override void SingletonAwake()
+        protected override void Awake()
         {
-            base.SingletonAwake();
-            DontDestroyOnLoad(gameObject);
+            base.Awake();
             _animator = GetComponent<Animator>();
         }
 
+        private void Start() => _inputReader = ServiceLocator.Instance.GetService<ImputReader>();
+
+        public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
+        private IEnumerator LoadLobbySceneAsync()
+        {
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
+            _inputReader.EnableMainInput();
+            yield return SetTransitionPanel(false);
+        }
+
+        public void LoadBiomeScene(Biome biome) => StartCoroutine(LoadBiomeSceneAsync(biome));
+
+        private IEnumerator LoadBiomeSceneAsync(Biome biome)
+        {
+            _inputReader.DisableMainInput();
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
+            yield return SetTransitionPanel(false);
+            _inputReader.EnableMainInput();
+        }
+        
         public IEnumerator SetTransitionPanel(bool state)
         {
             yield return new WaitUntil(() => _transitionInProgress != state);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DarkHavoc.PlayerComponents.States;
+using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace DarkHavoc.PlayerComponents
         private Animator _animator;
         private SpriteRenderer _renderer;
 
-        private InputReader _inputReader;
+        private ImputReader _inputReader;
         private PlayerStateMachine _playerStateMachine;
         private Player _player;
 
@@ -35,7 +36,7 @@ namespace DarkHavoc.PlayerComponents
             _renderer = GetComponent<SpriteRenderer>();
 
             _player = GetComponentInParent<Player>();
-            _inputReader = GetComponentInParent<InputReader>();
+            _inputReader = ServiceLocator.Instance.GetService<ImputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
 
             _materialPb = new MaterialPropertyBlock();

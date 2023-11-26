@@ -1,4 +1,5 @@
 using System.Collections;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +13,17 @@ namespace DarkHavoc.UI
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button creditsButton;
         [SerializeField] private Button exitButton;
+        
+        private GameManager _gameManager;
+        private TransitionManager _transitionManager;
 
-        private void Awake()
-        {
-            container.SetActive(false);
-        }
+        private void Awake() => container.SetActive(false);
 
         private void Start()
         {
+            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
+            
             startGameButton?.onClick.AddListener(() => StartCoroutine(StartButtonPressedAsync()));
             settingsButton?.onClick.AddListener(SettingsButtonPressed);
             creditsButton?.onClick.AddListener(CreditsButtonPressed);
@@ -31,15 +35,15 @@ namespace DarkHavoc.UI
         private IEnumerator StartMenuAsync()
         {
             yield return null;
-            yield return TransitionManager.Instance.SetMenuPanel(true);
+            yield return _transitionManager.SetMenuPanel(true);
             container.SetActive(true);
         }
 
         private IEnumerator StartButtonPressedAsync()
         {
             container.SetActive(false);
-            yield return TransitionManager.Instance.SetMenuPanel(false);
-            GameManager.Instance.EnablePlayerMovement();
+            yield return _transitionManager.SetMenuPanel(false);
+            _gameManager.EnablePlayerMovement();
         }
 
         private void SettingsButtonPressed()

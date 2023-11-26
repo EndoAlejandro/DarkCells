@@ -8,10 +8,11 @@ namespace DarkHavoc.CameraComponents
     {
         public event Action<float> OnCameraTranslate;
         private float _oldPosition;
-        void Start() => _oldPosition = transform.position.x;
-        void Update()
+        private void Start() => _oldPosition = transform.position.x;
+
+        private void Update()
         {
-            if (Math.Abs(transform.position.x - _oldPosition) < .05) return;
+            if (Math.Abs(transform.position.x - _oldPosition) < .05f) return;
             OnCameraTranslate?.Invoke(_oldPosition - transform.position.x);
             _oldPosition = transform.position.x;
         }

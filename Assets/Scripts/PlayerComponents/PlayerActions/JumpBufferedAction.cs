@@ -7,7 +7,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     public class JumpBufferedAction : BufferedAction
     {
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _inputReader;
+        private readonly ImputReader _inputReader;
 
         private float _timeLeftGrounded;
         private bool _canAirJump;
@@ -19,7 +19,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
         public bool EndedJumpEarly { get; private set; }
 
-        public JumpBufferedAction(Player player, Rigidbody2D rigidbody, InputReader inputReader, float bufferTime,
+        public JumpBufferedAction(Player player, Rigidbody2D rigidbody, ImputReader inputReader, float bufferTime,
             Func<bool> inputTrigger) : base(
             player, bufferTime, inputTrigger)
         {

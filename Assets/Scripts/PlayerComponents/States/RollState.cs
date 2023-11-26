@@ -1,5 +1,4 @@
-﻿using DarkHavoc.CustomUtils;
-using DarkHavoc.ImpulseComponents;
+﻿using DarkHavoc.ImpulseComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ namespace DarkHavoc.PlayerComponents.States
         public bool Ended { get; private set; }
         public bool CanTransitionToSelf => false;
 
-        public RollState(Player player, Rigidbody2D rigidbody, InputReader input, ImpulseAction rollAction)
+        public RollState(Player player, Rigidbody2D rigidbody, ImputReader input, ImpulseAction rollAction)
         {
             _player = player;
             _rigidbody = rigidbody;

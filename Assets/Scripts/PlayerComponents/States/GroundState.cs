@@ -3,49 +3,6 @@ using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
 {
-    public class DeathState : IState
-    {
-        public override string ToString() => "Death";
-        public AnimationState Animation => AnimationState.Death;
-        public bool CanTransitionToSelf => false;
-
-        private readonly Player _player;
-        private readonly Rigidbody2D _rigidbody;
-
-        private float _toLobbyTimer;
-        private bool _ended;
-        
-        public DeathState(Player player ,Rigidbody2D rigidbody)
-        {
-            _player = player;
-            _rigidbody = rigidbody;
-        }
-
-        public void Tick()
-        {
-            _toLobbyTimer -= Time.deltaTime;
-
-            if (!_ended && _toLobbyTimer <= 0f)
-            {
-                _ended = true;
-                GameManager.Instance.LoadLobbyScene();
-            }
-        }
-
-        public void FixedTick()
-        {
-        }
-
-        public void OnEnter()
-        {
-            _toLobbyTimer = 5f;
-            _player.ResetVelocity();
-            _rigidbody.isKinematic = true;
-        }
-
-        public void OnExit() => _rigidbody.isKinematic = false;
-    }
-    
     public class GroundState : IState
     {
         public override string ToString() => "Grounded";
@@ -53,13 +10,13 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
+        private readonly ImputReader _input;
 
         private Vector2 _targetVelocity;
 
         public bool CanTransitionToSelf => false;
 
-        public GroundState(Player player, Rigidbody2D rigidbody, InputReader input)
+        public GroundState(Player player, Rigidbody2D rigidbody, ImputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

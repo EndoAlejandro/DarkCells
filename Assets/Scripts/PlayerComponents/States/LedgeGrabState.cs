@@ -9,11 +9,11 @@ namespace DarkHavoc.PlayerComponents
         public bool CanTransitionToSelf => false;
 
         private readonly Player _player;
-        private readonly InputReader _input;
+        private readonly ImputReader _input;
 
         public bool Ended { get; private set; }
 
-        public LedgeGrabState(Player player, InputReader input)
+        public LedgeGrabState(Player player, ImputReader input)
         {
             _player = player;
             _input = input;

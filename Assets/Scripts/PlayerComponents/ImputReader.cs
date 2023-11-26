@@ -1,15 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
 {
-    [Obsolete("Use ImputReader instead", true)]
-    public class InputReader : MonoBehaviour
+    public class ImputReader
     {
         private SwordMaster _input;
 
         public bool IsActive { get; private set; }
-        
+
         // Input Pressed.
         public Vector2 Movement => _input != null ? _input.Main.Movement.ReadValue<Vector2>() : Vector2.zero;
         public bool JumpHold => _input != null && _input.Main.Jump.IsPressed();
@@ -21,11 +19,12 @@ namespace DarkHavoc.PlayerComponents
         public bool Attack => _input != null && _input.Main.Attack.WasPerformedThisFrame();
         public bool Block => _input != null && _input.Main.Block.WasPerformedThisFrame();
 
-        private void Awake()
+        public bool Pause => _input != null && _input.Pause.Pause.WasPerformedThisFrame();
+
+        public ImputReader()
         {
             _input = new SwordMaster();
-            EnableMainInput();
-            // GameManager.OnSetInputEnabled += GameManagerOnSetInputEnabled;
+            SetPauseEnable(true);
         }
 
         /*private void GameManagerOnSetInputEnabled(bool value)
@@ -34,16 +33,22 @@ namespace DarkHavoc.PlayerComponents
             else DisableMainInput();
         }*/
 
-        private void EnableMainInput()
+        public void SetPauseEnable(bool state)
         {
-            IsActive = true;
-            _input.Enable();
+            if (state) _input.Pause.Enable();
+            else _input.Pause.Disable();
         }
 
-        private void DisableMainInput()
+        public void EnableMainInput()
+        {
+            IsActive = true;
+            _input.Main.Enable();
+        }
+
+        public void DisableMainInput()
         {
             IsActive = false;
-            _input.Disable();
+            _input.Main.Disable();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DarkHavoc.PlayerComponents.States
         public AnimationState Animation { get; }
 
         private readonly Player _player;
-        private readonly InputReader _input;
+        private readonly ImputReader _input;
         private readonly PlayerAnimation _animation;
         private readonly AttackImpulseAction _attackAction;
 
@@ -23,7 +23,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         public bool CanTransitionToSelf => true;
 
-        public AttackState(Player player, Rigidbody2D rigidbody, InputReader input, PlayerAnimation animation,
+        public AttackState(Player player, Rigidbody2D rigidbody, ImputReader input, PlayerAnimation animation,
             AnimationState animationState, AttackImpulseAction attackAction)
         {
             _player = player;

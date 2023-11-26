@@ -9,14 +9,14 @@ namespace DarkHavoc.PlayerComponents
         private Player _player;
         private PlayerAnimation _animation;
         private Rigidbody2D _rigidbody;
-        private InputReader _input;
+        private ImputReader _input;
 
         protected override void References()
         {
             _animation = GetComponentInChildren<PlayerAnimation>();
             _player = GetComponent<Player>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _input = GetComponent<InputReader>();
+            _input = GetComponent<ImputReader>();
         }
 
         protected override void StateMachine()
