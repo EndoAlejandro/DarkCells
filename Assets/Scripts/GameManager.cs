@@ -27,7 +27,7 @@ namespace DarkHavoc
             base.Awake();
 
             _inputReader = new InputReader();
-            ServiceLocator.Instance.AddService(_inputReader);
+            ServiceLocator.Instance.TryToRegisterService(_inputReader);
         }
 
         private void Start()
@@ -36,6 +36,7 @@ namespace DarkHavoc
             _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
             
             _inputReader.DisableMainInput();
+            _inputReader.SetPauseEnable(true);
         }
 
         private void Update()
@@ -64,13 +65,13 @@ namespace DarkHavoc
         private void PauseGame()
         {
             OnGamePauseChanged?.Invoke(true);
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
 
         private void UnpauseGame()
         {
             OnGamePauseChanged?.Invoke(false);
-            Time.timeScale = 1;
+            // Time.timeScale = 1;
         }
 
         public void RegisterPlayer(Player player) => Player = player;

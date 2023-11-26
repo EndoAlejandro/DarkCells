@@ -17,6 +17,10 @@ namespace DarkHavoc.UI
             _button.onClick.AddListener(OnButtonPressed);
         }
 
-        private void OnButtonPressed() => _gameManager.GoToLobby();
+        private void OnButtonPressed()
+        {
+            _button.enabled = false;
+            _gameManager.GoToLobby();
+        }
     }
 }

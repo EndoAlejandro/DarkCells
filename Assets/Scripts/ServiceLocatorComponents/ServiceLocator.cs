@@ -10,12 +10,13 @@ namespace DarkHavoc.ServiceLocatorComponents
         private static ServiceLocator _instance;
         private readonly Dictionary<Type, object> _services = new();
 
-        public void AddService<T>(T service)
+        public bool TryToRegisterService<T>(T service)
         {
             Debug.Log($"Register {service.GetType()} Service.");
             var type = service.GetType();
-            if (_services.ContainsKey(type)) return;
+            if (_services.ContainsKey(type)) return false;
             _services.Add(type, service);
+            return true;
         }
         
         public void RemoveService<T>(T t)

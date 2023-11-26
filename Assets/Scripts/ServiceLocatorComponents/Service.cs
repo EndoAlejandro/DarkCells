@@ -5,15 +5,23 @@ namespace DarkHavoc.ServiceLocatorComponents
     public abstract class Service<T> : MonoBehaviour where T : MonoBehaviour
     {
         protected virtual bool DonDestroyOnLoad => false;
+        private bool _canRemoveService;
 
         protected virtual void Awake()
         {
-            RegisterService();
+            if (!ServiceLocator.Instance.TryToRegisterService(this as T))
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _canRemoveService = true;
             if (DonDestroyOnLoad) DontDestroyOnLoad(gameObject);
         }
 
-        private void RegisterService() => ServiceLocator.Instance.AddService(this as T);
-        protected virtual void OnDestroy() => UnregisterService();
-        private void UnregisterService() => ServiceLocator.Instance.RemoveService(this as T);
+        protected virtual void OnDestroy()
+        {
+            if (_canRemoveService) ServiceLocator.Instance.RemoveService(this as T);
+        }
     }
 }
