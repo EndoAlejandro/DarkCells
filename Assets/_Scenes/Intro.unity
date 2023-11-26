@@ -871,9 +871,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2474112581856581065, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
       propertyPath: m_Name
       value: TransitgionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,13 +10,13 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly ImputReader _input;
+        private readonly InputReader _input;
 
         private Vector2 _targetVelocity;
 
         public bool CanTransitionToSelf => false;
 
-        public GroundState(Player player, Rigidbody2D rigidbody, ImputReader input)
+        public GroundState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;

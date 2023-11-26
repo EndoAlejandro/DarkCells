@@ -26,11 +26,10 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _toLobbyTimer -= Time.deltaTime;
 
-            if (!_ended && _toLobbyTimer <= 0f)
-            {
-                _ended = true;
-                ServiceLocator.Instance.GetService<TransitionManager>().LoadLobbyScene();
-            }
+            if (_ended || _toLobbyTimer > 0f) return;
+            
+            _ended = true;
+            ServiceLocator.Instance.GetService<GameManager>().GoToLobby();
         }
 
         public void FixedTick()

@@ -7,16 +7,16 @@ namespace DarkHavoc.UI
     public class IntroController : MonoBehaviour
     {
         private Button _button;
-        private TransitionManager _transitionManager;
-
+        private GameManager _gameManager;
+        
         private void Awake() => _button = GetComponentInChildren<Button>();
 
         private void Start()
         {
-            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
+            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
             _button.onClick.AddListener(OnButtonPressed);
         }
 
-        private void OnButtonPressed() => _transitionManager.LoadLobbyScene();
+        private void OnButtonPressed() => _gameManager.GoToLobby();
     }
 }

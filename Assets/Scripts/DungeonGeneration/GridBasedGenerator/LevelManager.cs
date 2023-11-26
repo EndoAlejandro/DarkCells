@@ -35,9 +35,9 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             var playerSpawnPoint = _levelGenerator.GetWorldPosition(_levelGenerator.InitialRoom);
             playerSpawnPoint.y += spawnPointOffset;
-            var playerPrefab = ServiceLocator.Instance.GetService<Player>();
+            var playerPrefab = _gameManager.PlayerPrefab;
             var player = Instantiate(playerPrefab, playerSpawnPoint, Quaternion.identity);
-            _gameManager.EnablePlayerMovement();
+            _gameManager.EnableMainInput();
             _gameManager.RegisterPlayer(player);
         }
     }

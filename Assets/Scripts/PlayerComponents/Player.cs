@@ -40,7 +40,6 @@ namespace DarkHavoc.PlayerComponents
         public float Damage => Stats != null ? Stats.Damage : 0f;
         public float Health { get; private set; }
         public float MaxHealth { get; private set; }
-        public bool CanMove { get; private set; }
         public bool IsAlive => Health > 0f;
 
         [SerializeField] private PlayerStats stats;
@@ -54,7 +53,7 @@ namespace DarkHavoc.PlayerComponents
         private Vector2 _targetVelocity;
 
         private Rigidbody2D _rigidbody;
-        private ImputReader _inputReader;
+        private InputReader _inputReader;
         private ImpulseAction _currentImpulseAction;
 
         private BufferedAction _blockBufferedAction;
@@ -74,7 +73,7 @@ namespace DarkHavoc.PlayerComponents
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _inputReader = ServiceLocator.Instance.GetService<ImputReader>();
+            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
 
             Health = Stats.MaxHealth;
             MaxHealth = Stats.MaxHealth;
@@ -83,11 +82,7 @@ namespace DarkHavoc.PlayerComponents
             OnPlayerSpawned?.Invoke(this);
         }
 
-        private void OnEnable()
-        {
-            _useGravity = true;
-            CanMove = true;
-        }
+        private void OnEnable() => _useGravity = true;
 
         private void Actions()
         {

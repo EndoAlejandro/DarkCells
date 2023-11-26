@@ -12,7 +12,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
-        private readonly ImputReader _input;
+        private readonly InputReader _input;
 
         private WallResult _wallResult;
 
@@ -20,7 +20,7 @@ namespace DarkHavoc.PlayerComponents.States
         public bool FacingLedge { get; private set; }
         public bool FacingWall { get; private set; }
 
-        public AirState(Player player, Rigidbody2D rigidbody, ImputReader input)
+        public AirState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;
@@ -29,7 +29,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void Tick()
         {
-            if (_player.CanMove && _player.HasBufferedJump)
+            if (_player.HasBufferedJump)
             {
                 _player.Jump();
                 _player.ApplyVelocity();
@@ -38,7 +38,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
-            _player.Move(_player.CanMove ? _input.Movement.x : 0f);
+            _player.Move(_input.Movement.x);
 
             if (_player.GetNormalizedVertical() > 0f) return;
 

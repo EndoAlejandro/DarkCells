@@ -19,7 +19,7 @@ namespace DarkHavoc.PlayerComponents
         private Animator _animator;
         private SpriteRenderer _renderer;
 
-        private ImputReader _inputReader;
+        private InputReader _inputReader;
         private PlayerStateMachine _playerStateMachine;
         private Player _player;
 
@@ -36,7 +36,7 @@ namespace DarkHavoc.PlayerComponents
             _renderer = GetComponent<SpriteRenderer>();
 
             _player = GetComponentInParent<Player>();
-            _inputReader = ServiceLocator.Instance.GetService<ImputReader>();
+            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
 
             _materialPb = new MaterialPropertyBlock();
@@ -115,7 +115,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void FlipCheck()
         {
-            if (_inputReader.Movement.x == 0 || !_player.CanMove) return;
+            if (_inputReader.Movement.x == 0) return;
             _player.SetFacingLeft(_inputReader.Movement.x < 0);
         }
 

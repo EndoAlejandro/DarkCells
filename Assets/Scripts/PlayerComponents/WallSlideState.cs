@@ -12,11 +12,11 @@ namespace DarkHavoc.PlayerComponents
         public bool Ended { get; private set; }
 
         private readonly Player _player;
-        private readonly ImputReader _input;
+        private readonly InputReader _input;
 
         private WallResult _wallResult;
 
-        public WallSlideState(Player player, ImputReader input)
+        public WallSlideState(Player player, InputReader input)
         {
             _player = player;
             _input = input;

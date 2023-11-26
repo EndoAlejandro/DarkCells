@@ -1,4 +1,5 @@
 using DarkHavoc.PlayerComponents.States;
+using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -9,14 +10,14 @@ namespace DarkHavoc.PlayerComponents
         private Player _player;
         private PlayerAnimation _animation;
         private Rigidbody2D _rigidbody;
-        private ImputReader _input;
+        private InputReader _input;
 
         protected override void References()
         {
             _animation = GetComponentInChildren<PlayerAnimation>();
             _player = GetComponent<Player>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _input = GetComponent<ImputReader>();
+            _input = ServiceLocator.Instance.GetService<InputReader>();
         }
 
         protected override void StateMachine()

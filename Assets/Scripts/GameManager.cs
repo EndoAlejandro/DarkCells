@@ -13,17 +13,29 @@ namespace DarkHavoc
         public static event Action<bool> OnGamePauseChanged;
 
         public Player Player { get; set; }
+        public Player PlayerPrefab => playerPrefab;
 
-        private IEnumerator _currentTransition;
-        private ImputReader _inputReader;
+        [SerializeField] private Player playerPrefab;
+
+        private TransitionManager _transitionManager;
+        private InputReader _inputReader;
         private bool _paused;
+        private Biome _currentBiome;
 
         protected override void Awake()
         {
             base.Awake();
 
-            _inputReader = new ImputReader();
+            _inputReader = new InputReader();
             ServiceLocator.Instance.AddService(_inputReader);
+        }
+
+        private void Start()
+        {
+            _currentBiome = Biome.ForgottenCatacombs;
+            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
+            
+            _inputReader.DisableMainInput();
         }
 
         private void Update()
@@ -34,8 +46,20 @@ namespace DarkHavoc
             else UnpauseGame();
         }
 
-        private void ActivateInput() => OnSetInputEnabled?.Invoke(true);
-        private void DeactivateInput() => OnSetInputEnabled?.Invoke(false);
+        public void GoToLobby() => _transitionManager.LoadLobbyScene();
+        public void GoToNextBiome() => _transitionManager.LoadBiomeScene(_currentBiome);
+
+        public void EnableMainInput()
+        {
+            _inputReader.EnableMainInput();
+            OnSetInputEnabled?.Invoke(true);
+        }
+
+        public void DisableMainInput()
+        {
+            _inputReader.DisableMainInput();
+            OnSetInputEnabled?.Invoke(false);
+        }
 
         private void PauseGame()
         {
@@ -49,7 +73,6 @@ namespace DarkHavoc
             Time.timeScale = 1;
         }
 
-        public void EnablePlayerMovement() => ActivateInput();
         public void RegisterPlayer(Player player) => Player = player;
     }
 }
