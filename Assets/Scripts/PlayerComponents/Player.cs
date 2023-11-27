@@ -69,6 +69,7 @@ namespace DarkHavoc.PlayerComponents
         private float _impulseTimer;
         private bool _useGravity;
         private bool _wallSliding;
+        private float _speedBonus;
 
         private void Awake()
         {
@@ -80,6 +81,11 @@ namespace DarkHavoc.PlayerComponents
             Actions();
             SetPlayerCollider(true);
             OnPlayerSpawned?.Invoke(this);
+        }
+
+        private void Start()
+        {
+            ServiceLocator.Instance.GetService<GameManager>().EnableMainInput();
         }
 
         private void OnEnable() => _useGravity = true;
@@ -107,6 +113,13 @@ namespace DarkHavoc.PlayerComponents
             if (!IsAlive) return;
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
 
+            if (_speedBonus > 0f)
+                _speedBonus = Mathf.Max(_speedBonus - (Time.deltaTime * Stats.SpeedBonusDeceleration), 0f);
+            ActionsTick();
+        }
+
+        private void ActionsTick()
+        {
             _attackBufferedAction.Tick();
             _jumpBufferedAction.Tick();
             _rollAction.Tick();
@@ -173,7 +186,7 @@ namespace DarkHavoc.PlayerComponents
             }
             else
             {
-                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, input * stats.MaxSpeed,
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, input * (stats.MaxSpeed + _speedBonus),
                     stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -214,6 +227,7 @@ namespace DarkHavoc.PlayerComponents
         }
 
         public void SetFacingLeft(bool value) => FacingLeft = value;
+        public void SetSpeedBonus(float speedBonus) => _speedBonus = speedBonus;
 
         public float GetNormalizedHorizontal() =>
             Mathf.Abs(_rigidbody.velocity.x) / (stats == null ? 1 : stats.MaxSpeed);

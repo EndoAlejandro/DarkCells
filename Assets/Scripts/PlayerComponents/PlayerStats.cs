@@ -33,8 +33,8 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float coyoteTime = 0.2f;
 
         [Header("Wall")]
-        [SerializeField] private float wallJumpForce = 10f;
-        [SerializeField] private ImpulseAction wallJumpImpulse;
+        [SerializeField] private Vector2 wallJumpForce = new Vector2(10f, 13f);
+
         [SerializeField] private float wallSlideAcceleration = 1f;
         [SerializeField] private float maxWallSlideSpeed = 1f;
 
@@ -42,6 +42,8 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float ceilingDistance;
 
         [SerializeField] private float rollCooldown;
+        [SerializeField] private float speedBonus;
+        [SerializeField] private float speedBonusDeceleration;
         [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
@@ -91,8 +93,7 @@ namespace DarkHavoc.PlayerComponents
 
         #region Wall Slide
 
-        public float WallJumpForce => wallJumpForce;
-        public ImpulseAction WallJumpImpulse => wallJumpImpulse;
+        public Vector2 WallJumpForce => wallJumpForce;
         public float WallSlideAcceleration => wallSlideAcceleration;
         public float MaxWallSlideSpeed => maxWallSlideSpeed;
 
@@ -102,6 +103,8 @@ namespace DarkHavoc.PlayerComponents
 
         public float CeilingDistance => ceilingDistance;
         public float RollCooldown => rollCooldown;
+        public float SpeedBonus => speedBonus;
+        public float SpeedBonusDeceleration => speedBonusDeceleration;
         public ImpulseAction RollAction => rollAction;
 
         #endregion

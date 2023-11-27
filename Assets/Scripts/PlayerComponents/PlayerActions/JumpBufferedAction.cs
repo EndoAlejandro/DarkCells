@@ -81,7 +81,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
             _canWallJump = false;
             Player.SetFacingLeft(!Player.FacingLeft);
-            targetVelocity.y = Player.Stats.WallJumpForce;
+            targetVelocity = Player.Stats.WallJumpForce;
+            targetVelocity.x *= Player.FacingLeft ? -1 : 1;
             base.UseAction();
         }
 

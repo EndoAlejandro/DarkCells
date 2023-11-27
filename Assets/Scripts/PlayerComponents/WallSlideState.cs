@@ -33,7 +33,7 @@ namespace DarkHavoc.PlayerComponents
 
             if (_player.HasBufferedJump)
             {
-                _player.AddImpulse(_player.Stats.WallJumpImpulse);
+                // _player.AddImpulse(_player.Stats.WallJumpImpulse);
                 _player.WallJump();
                 _player.ApplyVelocity();
                 Ended = true;

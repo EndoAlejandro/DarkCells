@@ -30,6 +30,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             base.UseAction();
             _canRoll = false;
             _cooldown = Player.Stats.RollCooldown + Player.Stats.RollAction.Time;
+            Player.SetSpeedBonus(Player.Stats.SpeedBonus);
         }
     }
 }
