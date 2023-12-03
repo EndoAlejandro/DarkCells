@@ -8,7 +8,7 @@ namespace DarkHavoc.UI
     {
         private static readonly int Out = Animator.StringToHash("Out");
         private static readonly int In = Animator.StringToHash("In");
-        
+
         [SerializeField] private Image healthBar;
 
         private Player _player;
@@ -16,20 +16,14 @@ namespace DarkHavoc.UI
 
         private float _maxHealth;
         private float _currentHealth;
-        private float NormalizedHealth => _currentHealth / _maxHealth;
+        private float NormalizedHealth => 1f - (_currentHealth / _maxHealth);
 
         private void OnEnable() => _animator = GetComponent<Animator>();
 
         private void Start()
         {
             Player.OnPlayerSpawned += PlayerOnPlayerSpawned;
-        }
-
-        private void GameManagerOnTransitionStarted()
-        {
-            _animator.SetTrigger(Out);
-            /*_player.OnDamageTaken -= PlayerOnDamageTaken;
-            _player = null;*/
+            Player.OnPlayerDeSpawned += PlayerOnPlayerDeSpawned;
         }
 
         private void PlayerOnPlayerSpawned(Player player)
@@ -40,9 +34,15 @@ namespace DarkHavoc.UI
             _maxHealth = _player.MaxHealth;
             _currentHealth = _player.Health;
             healthBar.fillAmount = NormalizedHealth;
-            
+
             _animator.SetTrigger(In);
-            _player.OnDamageTaken += PlayerOnDamageTaken;
+            player.OnDamageTaken += PlayerOnDamageTaken;
+        }
+
+        private void PlayerOnPlayerDeSpawned(Player player)
+        {
+            player.OnDamageTaken -= PlayerOnDamageTaken;
+            _player = null;
         }
 
         private void PlayerOnDamageTaken()
@@ -54,6 +54,7 @@ namespace DarkHavoc.UI
         private void OnDestroy()
         {
             Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
+            Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
         }
     }
 }

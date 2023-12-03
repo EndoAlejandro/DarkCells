@@ -123,128 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &174803855
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 18.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
---- !u!1001 &197563761
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 33.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
 --- !u!1 &298654845
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,67 +201,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!1001 &320282826
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 43.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
 --- !u!1 &344216095
 GameObject:
   m_ObjectHideFlags: 0
@@ -12743,136 +12560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 730547370}
---- !u!1001 &542124920
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1655716649516658903, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: stats
-      value: 
-      objectReference: {fileID: 11400000, guid: fe18203bc957eca4ea1b452f29c9d870, type: 2}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4574855924817263365, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
---- !u!1001 &560418159
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -13235,67 +12922,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1212972409
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 51.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_Name
-      value: CagedShocker_Enemy (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e966a069fe40c478fef9239b745996, type: 3}
 --- !u!1 &1270783647
 GameObject:
   m_ObjectHideFlags: 0
@@ -13590,9 +13216,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715241711602946203, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2474112581856581065, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
       propertyPath: m_Name
       value: TransitgionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718682698843259063, guid: da5ad1d173d36654fb9c8006dc8c2269, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13752,11 +13410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.36
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 2757639561945076043, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13796,7 +13454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3099076699550262110, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3369190096021534427, guid: 51e966a069fe40c478fef9239b745996, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13892,12 +13550,6 @@ SceneRoots:
   - {fileID: 755352437}
   - {fileID: 344216098}
   - {fileID: 2974608718351643725}
-  - {fileID: 542124920}
-  - {fileID: 174803855}
-  - {fileID: 560418159}
-  - {fileID: 197563761}
-  - {fileID: 320282826}
-  - {fileID: 1212972409}
   - {fileID: 1889902101}
   - {fileID: 1808062709}
   - {fileID: 497542622}

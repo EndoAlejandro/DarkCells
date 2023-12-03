@@ -8,6 +8,7 @@ namespace DarkHavoc
     public class GameManager : Service<GameManager>
     {
         protected override bool DonDestroyOnLoad => true;
+
         public static event Action<bool> OnSetInputEnabled;
         public static event Action<bool> OnGamePauseChanged;
 

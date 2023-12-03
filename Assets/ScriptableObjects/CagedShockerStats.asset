@@ -19,20 +19,22 @@ MonoBehaviour:
   maxFallSpeed: 5
   maxSpeed: 1.5
   chaseStoppingDistance: 0.5
+  stunTime: 3
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 393
+    m_Bits: 1417
   footPositionOffset: {x: 0.15, y: 0.35}
   groundOffset: 0.35
   groundCheckDistance: 0.05
   wallDetection:
+    distanceCheck: 0.35
+    topOffset: 0.3
+    midOffset: 0
     bottomOffset: 0.3
     horizontalOffset: -0.1
-    distanceCheck: 0.35
     wallLayer:
       serializedVersion: 2
-      m_Bits: 265
-    topOffset: 0.3
+      m_Bits: 1289
     ledgeDetectorOffset: {x: 0, y: 0}
     ledgeDetectorRadius: 0
   damage: 3

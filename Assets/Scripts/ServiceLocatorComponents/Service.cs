@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DarkHavoc.ServiceLocatorComponents
 {
     public abstract class Service<T> : MonoBehaviour where T : MonoBehaviour
     {
         protected virtual bool DonDestroyOnLoad => false;
-        private bool _canRemoveService;
+        protected bool _canRemoveService;
 
         protected virtual void Awake()
         {

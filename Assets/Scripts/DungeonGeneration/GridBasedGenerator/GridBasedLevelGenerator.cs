@@ -15,14 +15,16 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private GridRoom[] _prefabGridRooms;
         private GridRoomData[,] _roomDataMatrix;
-        
+
         private readonly Dictionary<string, Tilemap> _globalTilemaps = new();
 
         public GridRoomData InitialRoom { get; private set; }
+        public List<Vector3> WorldPositionSpawnPoints { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
+            WorldPositionSpawnPoints = new List<Vector3>();
             _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y];
 
             // Load Prefabs
@@ -42,6 +44,18 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             InstantiateTiles();
 
             SetRoomsPrefabsState(false);
+        }
+
+        public List<Transform> GetSpawnPoints()
+        {
+            List<Transform> spawnPoints = new List<Transform>();
+
+            for (int i = 0; i < _roomDataMatrix.GetLength(0); i++)
+            for (int j = 0; j < _roomDataMatrix.GetLength(1); j++)
+            {
+            }
+
+            return spawnPoints;
         }
 
         private void SetRoomsPrefabsState(bool state)
@@ -84,6 +98,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 if (!_globalTilemaps.ContainsKey(tilemap.tag)) continue;
                 CopyGridRoomLayer(tilemap, _globalTilemaps[tilemap.tag], x, y);
             }
+
+            AddSpawnPoints(prefabGridRoomVariant, x, y);
         }
 
         private void CopyGridRoomLayer(Tilemap source, Tilemap target, int x, int y)
@@ -96,6 +112,19 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 var offsetPosition = new Vector3Int(position.x + roomSize.x * x,
                     position.y - roomSize.y * y, position.z);
                 target.SetTile(offsetPosition, tile);
+            }
+        }
+
+        private void AddSpawnPoints(GridRoomVariant prefabGridRoomVariant, int x, int y)
+        {
+            Transform[] localSpawnPoints = prefabGridRoomVariant.GetSpawnPoints();
+
+            foreach (var spawnPoint in localSpawnPoints)
+            {
+                Vector3 localPosition = spawnPoint.position;
+                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x, localPosition.y - roomSize.y * y,
+                    localPosition.z);
+                WorldPositionSpawnPoints.Add(offsetPosition);
             }
         }
 

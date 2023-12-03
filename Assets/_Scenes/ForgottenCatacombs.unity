@@ -306,6 +306,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3412973493179085796, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3412973493179085796, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_Name
       value: LevelGenerator
       objectReference: {fileID: 0}
@@ -874,6 +878,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+--- !u!66 &1253092965 stripped
+CompositeCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1263351575418521516, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+  m_PrefabInstance: {fileID: 918242457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808062707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,9 +1033,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 982741556076222573, guid: 1be458d3d41726348bd804921061c399, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1253092965}
     - target: {fileID: 6304963951302229087, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_Name
       value: '[CAMERA MANAGER]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990494011836376321, guid: 1be458d3d41726348bd804921061c399, type: 3}
+      propertyPath: orthographic size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
+      propertyPath: m_YDamping
+      value: 1.98003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

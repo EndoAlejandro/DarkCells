@@ -36,8 +36,8 @@ namespace DarkHavoc
             mainVirtualCamera.m_Follow = target;
             mainVirtualCamera.m_LookAt = target;
 
-            menuVirtualCamera.m_Follow = target;
-            menuVirtualCamera.m_LookAt = target;
+            menuVirtualCamera.m_Follow = target.parent;
+            menuVirtualCamera.m_LookAt = target.parent;
         }
 
         public void SetCameraBounds(CompositeCollider2D composite) => StartCoroutine(SetCameraBoundsAsync(composite));

@@ -1,5 +1,6 @@
 ﻿using DarkHavoc.ImpulseComponents;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -13,6 +14,9 @@ namespace DarkHavoc.PlayerComponents
 
         [Header("Movement")]
         [SerializeField] private LayerMask layer;
+
+        [SerializeField] private LayerMask groundLayers;
+        [SerializeField] private LayerMask ceilingLayers;
 
         [SerializeField] private float maxSpeed;
 
@@ -70,6 +74,8 @@ namespace DarkHavoc.PlayerComponents
         #region Movement
 
         public LayerMask Layer => layer;
+        public LayerMask GroundLayers => groundLayers;
+        public LayerMask CeilingLayers => ceilingLayers;
         public float MaxSpeed => maxSpeed;
         public float Acceleration => acceleration;
         public float GroundDeceleration => groundDeceleration;

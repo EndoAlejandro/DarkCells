@@ -47,10 +47,10 @@ namespace DarkHavoc.Enemies
 
             stateMachine.AddTransition(firstAttack, stun, () => firstAttack.Stunned);
             stateMachine.AddTransition(secondAttack, stun, () => secondAttack.Stunned);
-            
+
             stateMachine.AddTransition(firstAttack, rest, () => firstAttack.Ended);
             stateMachine.AddTransition(secondAttack, rest, () => secondAttack.Ended);
-            
+
             stateMachine.AddTransition(stun, idle, () => stun.Ended);
             stateMachine.AddTransition(rest, idle, () => rest.Ended);
 

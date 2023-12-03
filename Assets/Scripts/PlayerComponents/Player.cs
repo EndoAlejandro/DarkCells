@@ -13,8 +13,22 @@ namespace DarkHavoc.PlayerComponents
     [RequireComponent(typeof(PlayerStateMachine))]
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
+        public class Context
+        {
+            public float Health { get; protected internal set; }
+            public float MaxHealth { get; private set; }
+            public bool IsAlive => Health > 0;
+
+            public Context(float maxHealth)
+            {
+                MaxHealth = maxHealth;
+                Health = maxHealth;
+            }
+        }
+
         // Events
         public static event Action<Player> OnPlayerSpawned;
+        public static event Action<Player> OnPlayerDeSpawned;
         public event Func<Vector2, bool> TryToBlockDamage;
         public event Action<bool> OnGroundedChanged;
         public event Action<bool> OnLedgeGrabChanged;
@@ -38,9 +52,9 @@ namespace DarkHavoc.PlayerComponents
         public Vector3 MidPoint => midPoint.position;
         public int Direction => FacingLeft ? -1 : 1;
         public float Damage => Stats != null ? Stats.Damage : 0f;
-        public float Health { get; private set; }
-        public float MaxHealth { get; private set; }
-        public bool IsAlive => Health > 0f;
+        public float Health => PlayerContext.Health;
+        public float MaxHealth => PlayerContext.MaxHealth;
+        public bool IsAlive => PlayerContext.IsAlive;
 
         [SerializeField] private PlayerStats stats;
 
@@ -52,6 +66,7 @@ namespace DarkHavoc.PlayerComponents
 
         private Vector2 _targetVelocity;
 
+        private GameManager _gameManager;
         private Rigidbody2D _rigidbody;
         private InputReader _inputReader;
         private ImpulseAction _currentImpulseAction;
@@ -71,13 +86,15 @@ namespace DarkHavoc.PlayerComponents
         private bool _wallSliding;
         private float _speedBonus;
 
+        public static Context PlayerContext { get; private set; }
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _inputReader = ServiceLocator.Instance.GetService<InputReader>();
 
-            Health = Stats.MaxHealth;
-            MaxHealth = Stats.MaxHealth;
+            PlayerContext ??= new Context(Stats.MaxHealth);
+
             Actions();
             SetPlayerCollider(true);
             OnPlayerSpawned?.Invoke(this);
@@ -85,7 +102,8 @@ namespace DarkHavoc.PlayerComponents
 
         private void Start()
         {
-            ServiceLocator.Instance.GetService<GameManager>().EnableMainInput();
+            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _gameManager.EnableMainInput();
         }
 
         private void OnEnable() => _useGravity = true;
@@ -191,14 +209,15 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
-        public bool CheckCeilingCollision() => CheckCollisionCustomDirection(Vector2.up, Stats.CeilingDistance);
+        public bool CheckCeilingCollision() =>
+            CheckCollisionCustomDirection(Vector2.up, Stats.CeilingDistance, Stats.CeilingLayers);
 
         private void CheckCollisions()
         {
             Physics2D.queriesStartInColliders = false;
 
-            bool groundHit = CheckCollisionCustomDirection(Vector2.down, stats.GrounderDistance);
-            bool ceilingHit = CheckCollisionCustomDirection(Vector2.up, stats.GrounderDistance);
+            bool groundHit = CheckCollisionCustomDirection(Vector2.down, stats.GrounderDistance, Stats.GroundLayers);
+            bool ceilingHit = CheckCeilingCollision();
 
             if (ceilingHit) _targetVelocity.y = Mathf.Min(0, _targetVelocity.y);
 
@@ -214,10 +233,10 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
-        private bool CheckCollisionCustomDirection(Vector2 direction, float distance) => Physics2D.CapsuleCast(
-            Collider.bounds.center,
-            Collider.bounds.size, CapsuleDirection2D.Vertical, 0f, direction, distance,
-            ~stats.Layer);
+        private bool CheckCollisionCustomDirection(Vector2 direction, float distance, LayerMask layers) =>
+            Physics2D.CapsuleCast(
+                Collider.bounds.center,
+                Collider.bounds.size, CapsuleDirection2D.Vertical, 0f, direction, distance, layers);
 
         public void ApplyVelocity()
         {
@@ -260,7 +279,7 @@ namespace DarkHavoc.PlayerComponents
             if (result) TryToStunEnemy(damageDealer);
             if (result || !IsAlive) return;
 
-            Health -= damageDealer.Damage * damageMultiplier;
+            PlayerContext.Health -= damageDealer.Damage * damageMultiplier;
 
             AddImpulse(Stats.TakeDamageAction);
 
@@ -272,7 +291,11 @@ namespace DarkHavoc.PlayerComponents
             if (damageDealer.transform.TryGetComponent(out IStunnable stunnable)) stunnable.Stun();
         }
 
-        public void Death() => Debug.Log("Player Dead.");
+        public void Death()
+        {
+            PlayerContext = null;
+            Debug.Log("Player Dead.");
+        }
 
         public void LedgeGrab(bool value)
         {
@@ -292,6 +315,8 @@ namespace DarkHavoc.PlayerComponents
             _wallSliding = value;
             OnWallSlideChanged?.Invoke(value);
         }
+
+        private void OnDestroy() => OnPlayerDeSpawned?.Invoke(this);
 
         private void OnDrawGizmos()
         {

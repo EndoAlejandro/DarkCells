@@ -17,6 +17,12 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 584
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 1409
+  ceilingLayers:
+    serializedVersion: 2
+    m_Bits: 384
   maxSpeed: 6
   acceleration: 80
   groundDeceleration: 70
@@ -45,8 +51,8 @@ MonoBehaviour:
   maxWallSlideSpeed: 3
   ceilingDistance: 0.3
   rollCooldown: 0.25
-  speedBonus: 5
-  speedBonusDeceleration: 5
+  speedBonus: 3
+  speedBonusDeceleration: 2.5
   rollAction:
     time: 0.4
     force: 8

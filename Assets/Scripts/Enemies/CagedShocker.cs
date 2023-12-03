@@ -8,7 +8,7 @@ namespace DarkHavoc.Enemies
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CagedShocker : MonoBehaviour, IDoDamage, ITakeDamage, IEntity, IStunnable
+    public class CagedShocker : Enemy, IDoDamage, ITakeDamage, IEntity, IStunnable
     {
         [SerializeField] private CagedShockerStats stats;
         [SerializeField] private Transform attackOffset;
@@ -39,6 +39,8 @@ namespace DarkHavoc.Enemies
             _rigidbody = GetComponent<Rigidbody2D>();
 
             _results = new Collider2D[50];
+            
+            Debug.Log(transform.position);
         }
 
         private void OnEnable()
