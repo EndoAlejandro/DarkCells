@@ -45,9 +45,13 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
             var isPlayerVisible = _cagedShocker.IsPlayerVisible(_player);
             var horizontalDistance = PlayerHorizontalDistance();
+
             if (isPlayerVisible)
             {
-                if (Mathf.Abs(horizontalDistance) < _cagedShocker.AttackOffset.localPosition.x)
+                var result = Physics2D.OverlapBox(_cagedShocker.HitBox.bounds.center, _cagedShocker.HitBox.bounds.size, 0f,
+                    _cagedShocker.Stats.AttackLayer);
+
+                if (result != null && result.TryGetComponent(out Player player))
                     AttackAvailable = true;
             }
 

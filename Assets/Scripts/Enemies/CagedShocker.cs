@@ -12,6 +12,7 @@ namespace DarkHavoc.Enemies
     {
         [SerializeField] private CagedShockerStats stats;
         [SerializeField] private Transform attackOffset;
+        [SerializeField] private Collider2D hitBox;
         [SerializeField] private Transform midPoint;
 
         private Collider2D _collider;
@@ -26,7 +27,10 @@ namespace DarkHavoc.Enemies
         public Vector3 MidPoint => midPoint.position;
         public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
-        public Transform AttackOffset => attackOffset;
+
+        public Collider2D HitBox => hitBox;
+
+        // public Transform AttackOffset => attackOffset;
         public bool Grounded { get; private set; }
         public bool FacingLeft { get; private set; }
         public float StunTime { get; private set; }
@@ -39,8 +43,6 @@ namespace DarkHavoc.Enemies
             _rigidbody = GetComponent<Rigidbody2D>();
 
             _results = new Collider2D[50];
-            
-            Debug.Log(transform.position);
         }
 
         private void OnEnable()
@@ -117,7 +119,7 @@ namespace DarkHavoc.Enemies
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
-            
+
             Health -= damageDealer.Damage;
             OnDamageTaken?.Invoke();
         }
@@ -129,7 +131,21 @@ namespace DarkHavoc.Enemies
         }
 
         public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / stats.MaxSpeed;
-        public void SetFacingLeft(bool value) => FacingLeft = value;
+
+        public void SetFacingLeft(bool value)
+        {
+            FacingLeft = value;
+            FlipHitBox();
+        }
+
+        private void FlipHitBox()
+        {
+            var localX = FacingLeft ? -1 : 1;
+            var localPosition = HitBox.transform.localPosition;
+            localPosition.x = Mathf.Abs(localPosition.x) * localX;
+            HitBox.transform.localPosition = localPosition;
+        }
+
         public void Stun() => OnStunned?.Invoke();
 
         private void OnDrawGizmos()

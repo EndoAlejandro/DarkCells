@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CagedShockerStats
   m_EditorClassIdentifier: 
   maxHealth: 5
-  idleTime: 1
+  idleTime: 0.15
   gravity: 3
   acceleration: 10
   maxFallSpeed: 5
@@ -34,7 +34,7 @@ MonoBehaviour:
     horizontalOffset: -0.1
     wallLayer:
       serializedVersion: 2
-      m_Bits: 1289
+      m_Bits: 1417
     ledgeDetectorOffset: {x: 0, y: 0}
     ledgeDetectorRadius: 0
   damage: 3
@@ -47,7 +47,7 @@ MonoBehaviour:
   telegraphTime: 0.5
   attackLayer:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 8
   firstAttackAction:
     time: 0
     force: 0

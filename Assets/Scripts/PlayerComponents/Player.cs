@@ -288,7 +288,8 @@ namespace DarkHavoc.PlayerComponents
 
         private void TryToStunEnemy(IDoDamage damageDealer)
         {
-            if (damageDealer.transform.TryGetComponent(out IStunnable stunnable)) stunnable.Stun();
+            if (damageDealer.transform.TryGetComponent(out IStunnable stunnable)) 
+                stunnable.Stun();
         }
 
         public void Death()

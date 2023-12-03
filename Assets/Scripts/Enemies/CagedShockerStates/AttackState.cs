@@ -72,13 +72,13 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
         private void AnimationOnAttackPerformed()
         {
-            var centerOffset = _cagedShocker.AttackOffset.localPosition;
+            /*var centerOffset = _cagedShocker.AttackOffset.localPosition;
             var direction = _cagedShocker.FacingLeft ? -1 : 1;
             centerOffset.x *= 0.5f * direction;
             var boxSize = new Vector2(_cagedShocker.AttackOffset.localPosition.x,
-                _cagedShocker.AttackOffset.localPosition.y * 1.9f);
-            var result = Physics2D.OverlapBox(_cagedShocker.transform.position + centerOffset,
-                boxSize, 0f, ~_cagedShocker.Stats.AttackLayer);
+                _cagedShocker.AttackOffset.localPosition.y * 1.9f);*/
+            var result = Physics2D.OverlapBox(_cagedShocker.HitBox.bounds.center, _cagedShocker.HitBox.bounds.size, 0f,
+                _cagedShocker.Stats.AttackLayer);
 
             if (result && result.transform.TryGetComponent(out ITakeDamage takeDamage))
                 _cagedShocker.DoDamage(takeDamage);
