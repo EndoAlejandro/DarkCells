@@ -3,14 +3,14 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class PatrolState : IState
     {
         public override string ToString() => "Patrol";
         public AnimationState Animation  => AnimationState.Ground;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
         private readonly Collider2D _collider;
 
@@ -25,7 +25,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
 
-        public PatrolState(CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
+        public PatrolState(Enemies.CagedShocker.CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
             _rigidbody = rigidbody;

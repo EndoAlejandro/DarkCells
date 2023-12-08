@@ -1,22 +1,17 @@
-using System;
 using System.Collections;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Enemies.CagedShocker
 {
-    public class CagedShockerAnimation : MonoBehaviour
+    public class CagedShockerAnimation : EnemyAnimation
     {
-        public event Action OnAttackPerformed;
-        public event Action OnAttackInterruptionAvailable;
-
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         [SerializeField] private float hitAnimationDuration = 1f;
 
         private SpriteRenderer _renderer;
-        private Animator _animator;
         private CagedShockerStateMachine _cagedShockerStateMachine;
         private CagedShocker _cagedShocker;
 
@@ -24,38 +19,38 @@ namespace DarkHavoc.Enemies
         private IEnumerator _hitAnimation;
         private IState _previousState;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _renderer = GetComponent<SpriteRenderer>();
-            _animator = GetComponent<Animator>();
             _cagedShocker = GetComponentInParent<CagedShocker>();
             _cagedShockerStateMachine = GetComponentInParent<CagedShockerStateMachine>();
 
             _materialPb = new MaterialPropertyBlock();
         }
 
+        private void EnemyOnXFlipped(bool facingLeft) => _renderer.flipX = _cagedShocker.FacingLeft;
+
         private void Update()
         {
-            _renderer.flipX = _cagedShocker.FacingLeft;
-            _animator.SetFloat(Horizontal, Mathf.Abs(_cagedShocker.GetNormalizedHorizontal()));
+            animator.SetFloat(Horizontal, Mathf.Abs(_cagedShocker.GetNormalizedHorizontal()));
         }
 
         private void OnEnable()
         {
             _cagedShockerStateMachine.OnEntityStateChanged += CagedShockerStateMachineOnEntityStateChanged;
+            _cagedShocker.OnXFlipped += EnemyOnXFlipped;
             _cagedShocker.OnDamageTaken += CagedShockerOnDamageTaken;
         }
 
         private void CagedShockerStateMachineOnEntityStateChanged(IState state)
         {
-            if (_previousState != null) _animator.ResetTrigger(_previousState.Animation.ToString());
+            if (_previousState != null) animator.ResetTrigger(_previousState.Animation.ToString());
 
-            _animator.SetTrigger(state.Animation.ToString());
+            animator.SetTrigger(state.Animation.ToString());
             _previousState = state;
         }
 
-        private void PerformAttack() => OnAttackPerformed?.Invoke();
-        private void AttackInterruptionAvailable() => OnAttackInterruptionAvailable?.Invoke();
 
         private void CagedShockerOnDamageTaken()
         {
@@ -85,6 +80,7 @@ namespace DarkHavoc.Enemies
 
         private void OnDisable()
         {
+            _cagedShocker.OnXFlipped -= EnemyOnXFlipped;
             _cagedShockerStateMachine.OnEntityStateChanged -= CagedShockerStateMachineOnEntityStateChanged;
             _cagedShocker.OnDamageTaken -= CagedShockerOnDamageTaken;
         }

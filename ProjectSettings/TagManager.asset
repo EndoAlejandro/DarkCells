@@ -45,11 +45,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackDecoration
+    uniqueID: 1697072577
+    locked: 0
   - name: Enemy
     uniqueID: 1245454165
     locked: 0
-  - name: BackDecoration
-    uniqueID: 1697072577
+  - name: Ground
+    uniqueID: 2728362553
     locked: 0
   - name: Player
     uniqueID: 563718115

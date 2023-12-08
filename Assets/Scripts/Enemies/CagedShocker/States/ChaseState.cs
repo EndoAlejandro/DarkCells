@@ -4,14 +4,15 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class ChaseState : IState
     {
         public override string ToString() => "Chase";
         public AnimationState Animation => AnimationState.Ground;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
+        private readonly EnemyAttack _attack;
         private readonly Rigidbody2D _rigidbody;
         private readonly Collider2D _collider;
 
@@ -31,9 +32,10 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool CanTransitionToSelf => false;
         public bool AttackAvailable { get; private set; }
 
-        public ChaseState(CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
+        public ChaseState(Enemies.CagedShocker.CagedShocker cagedShocker, EnemyAttack attack, Rigidbody2D rigidbody, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
+            _attack = attack;
             _rigidbody = rigidbody;
             _collider = collider;
         }
@@ -46,14 +48,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
             var isPlayerVisible = _cagedShocker.IsPlayerVisible(_player);
             var horizontalDistance = PlayerHorizontalDistance();
 
-            if (isPlayerVisible)
-            {
-                var result = Physics2D.OverlapBox(_cagedShocker.HitBox.bounds.center, _cagedShocker.HitBox.bounds.size, 0f,
-                    _cagedShocker.Stats.AttackLayer);
-
-                if (result != null && result.TryGetComponent(out Player player))
-                    AttackAvailable = true;
-            }
+            AttackAvailable = isPlayerVisible && _attack.IsPlayerInRange();
 
             _targetDirection =
                 Mathf.Abs(horizontalDistance) > _cagedShocker.Stats.ChaseStoppingDistance

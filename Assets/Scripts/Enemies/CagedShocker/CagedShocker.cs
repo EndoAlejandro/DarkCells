@@ -4,15 +4,13 @@ using DarkHavoc.PlayerComponents;
 using DarkHavoc.Senses;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Enemies.CagedShocker
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class CagedShocker : Enemy, IDoDamage, ITakeDamage, IEntity, IStunnable
     {
-        [SerializeField] private CagedShockerStats stats;
-        [SerializeField] private Transform attackOffset;
-        [SerializeField] private Collider2D hitBox;
+        [Header(nameof(CagedShocker))]
         [SerializeField] private Transform midPoint;
 
         private Collider2D _collider;
@@ -28,14 +26,9 @@ namespace DarkHavoc.Enemies
         public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
 
-        public Collider2D HitBox => hitBox;
-
-        // public Transform AttackOffset => attackOffset;
         public bool Grounded { get; private set; }
-        public bool FacingLeft { get; private set; }
         public float StunTime { get; private set; }
         public Player Player { get; private set; }
-        public CagedShockerStats Stats => stats;
 
         private void Awake()
         {
@@ -131,20 +124,6 @@ namespace DarkHavoc.Enemies
         }
 
         public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / stats.MaxSpeed;
-
-        public void SetFacingLeft(bool value)
-        {
-            FacingLeft = value;
-            FlipHitBox();
-        }
-
-        private void FlipHitBox()
-        {
-            var localX = FacingLeft ? -1 : 1;
-            var localPosition = HitBox.transform.localPosition;
-            localPosition.x = Mathf.Abs(localPosition.x) * localX;
-            HitBox.transform.localPosition = localPosition;
-        }
 
         public void Stun() => OnStunned?.Invoke();
 

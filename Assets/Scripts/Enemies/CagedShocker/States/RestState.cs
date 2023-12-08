@@ -2,7 +2,7 @@
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class StunState : IState
     {

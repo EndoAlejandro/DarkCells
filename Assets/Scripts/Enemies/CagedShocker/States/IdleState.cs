@@ -3,14 +3,14 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class IdleState : IState
     {
         public override string ToString() => "Grounded";
         public AnimationState Animation  => AnimationState.Ground;
         
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
         private readonly Rigidbody2D _rigidbody;
         private float _timer;
         private Vector2 _targetVelocity;
@@ -18,7 +18,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
-        public IdleState(CagedShocker cagedShocker, Rigidbody2D rigidbody)
+        public IdleState(Enemies.CagedShocker.CagedShocker cagedShocker, Rigidbody2D rigidbody)
         {
             _cagedShocker = cagedShocker;
             _rigidbody = rigidbody;

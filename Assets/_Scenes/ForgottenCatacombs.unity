@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000551f3c4af91f7e73e3a79921
+  m_ApplyToSortingLayers: 00000000551f3c4af91f7e73e3a7992139829fa2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -257,6 +257,14 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[12].second.m_TileSpriteIndex
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 2679891001687798931, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679891001687798931, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1697072577
+      objectReference: {fileID: 0}
     - target: {fileID: 2710480884347410174, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -264,6 +272,22 @@ PrefabInstance:
     - target: {fileID: 2766309095330237977, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040428265860793580, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040428265860793580, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1566604743
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062326858690120566, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062326858690120566, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1566604743
       objectReference: {fileID: 0}
     - target: {fileID: 3402525077730704847, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[0].m_Data
@@ -1043,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990494011836376321, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_YDamping

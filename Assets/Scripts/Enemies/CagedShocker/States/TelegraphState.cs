@@ -4,7 +4,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class TelegraphState : IState
     {
@@ -13,7 +13,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
         private readonly float _telegraphTime;
         private readonly FxProvider _fxProvider;
         
@@ -21,7 +21,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         private bool _telegraphed;
         private Vector2 _targetVelocity;
 
-        public TelegraphState(CagedShocker cagedShocker, float telegraphTime)
+        public TelegraphState(Enemies.CagedShocker.CagedShocker cagedShocker, float telegraphTime)
         {
             _cagedShocker = cagedShocker;
             _telegraphTime = telegraphTime;

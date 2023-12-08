@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Cinemachine;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -23,7 +22,11 @@ namespace DarkHavoc
             _confiner = mainVirtualCamera.GetComponent<CinemachineConfiner2D>();
         }
 
-        private void Start() => GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;
+        private void Start()
+        {
+            GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;
+            GameManagerOnGamePauseChanged(isPaused: false);
+        }
 
         private void GameManagerOnGamePauseChanged(bool isPaused)
         {

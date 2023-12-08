@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2757639561945076043}
   - component: {fileID: 1655716649516658903}
+  - component: {fileID: 8208525508801232060}
   - component: {fileID: 4124432131792352718}
   - component: {fileID: 3981881757808953131}
   - component: {fileID: 4739040580748490623}
@@ -161,9 +162,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: d456e8f68824cff4ca6a19a58d914b15, type: 2}
-  attackOffset: {fileID: 8186862770373176400}
-  hitBox: {fileID: 8964115346471511068}
   midPoint: {fileID: 1119788052131082433}
+--- !u!114 &8208525508801232060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099076699550262110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512b1ce0cd8e44f3804a2a626a37a7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 8964115346471511068}
 --- !u!114 &4124432131792352718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +586,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1245454165
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -207775290, guid: 47c285af76cba6b4d9428f39563e0cb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

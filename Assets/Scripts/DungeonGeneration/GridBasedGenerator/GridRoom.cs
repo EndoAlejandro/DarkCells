@@ -9,13 +9,11 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private GridRoomVariant[] _variants;
         public Vector4 Directions => directions;
-        private void SetupVariants() => _variants ??= GetComponentsInChildren<GridRoomVariant>(true);
 
         private void Awake() => _variants = GetComponentsInChildren<GridRoomVariant>(true);
 
         public GridRoomVariant GetRandomVariant()
         {
-            //SetupVariants();
             _variants = GetComponentsInChildren<GridRoomVariant>(true);
             int index = Random.Range(0, _variants.Length);
             return GetVariant(index);

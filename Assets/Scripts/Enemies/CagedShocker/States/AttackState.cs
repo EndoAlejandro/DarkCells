@@ -1,17 +1,17 @@
-﻿using DarkHavoc.EntitiesInterfaces;
-using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class AttackState : IState
     {
         public override string ToString() => "Attack";
         public AnimationState Animation => AnimationState.LightAttack;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
+        private readonly EnemyAttack _attack;
         private readonly CagedShockerAnimation _animation;
         private readonly bool _canCombo;
         private readonly float _attackDuration;
@@ -29,10 +29,12 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public bool TargetOnRange { get; private set; }
         public bool Stunned => _stunned && _attackInterruptionAvailable;
 
-        public AttackState(CagedShocker cagedShocker, CagedShockerAnimation animation, bool canCombo,
+        public AttackState(Enemies.CagedShocker.CagedShocker cagedShocker, EnemyAttack attack, CagedShockerAnimation animation,
+            bool canCombo,
             float attackDuration)
         {
             _cagedShocker = cagedShocker;
+            _attack = attack;
             _animation = animation;
             _canCombo = canCombo;
 
@@ -69,20 +71,7 @@ namespace DarkHavoc.Enemies.CagedShockerStates
 
         private void AnimationOnAttackInterruptionAvailable() => _attackInterruptionAvailable = true;
         private void CagedShockerOnStunned() => _stunned = true;
-
-        private void AnimationOnAttackPerformed()
-        {
-            /*var centerOffset = _cagedShocker.AttackOffset.localPosition;
-            var direction = _cagedShocker.FacingLeft ? -1 : 1;
-            centerOffset.x *= 0.5f * direction;
-            var boxSize = new Vector2(_cagedShocker.AttackOffset.localPosition.x,
-                _cagedShocker.AttackOffset.localPosition.y * 1.9f);*/
-            var result = Physics2D.OverlapBox(_cagedShocker.HitBox.bounds.center, _cagedShocker.HitBox.bounds.size, 0f,
-                _cagedShocker.Stats.AttackLayer);
-
-            if (result && result.transform.TryGetComponent(out ITakeDamage takeDamage))
-                _cagedShocker.DoDamage(takeDamage);
-        }
+        private void AnimationOnAttackPerformed() => _attack.Attack();
 
         public void OnExit()
         {

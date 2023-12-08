@@ -2,7 +2,7 @@
 using UnityEngine;
 using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShockerStates
+namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class DeadState : IState
     {
@@ -10,11 +10,11 @@ namespace DarkHavoc.Enemies.CagedShockerStates
         public AnimationState Animation => AnimationState.Death;
         public bool CanTransitionToSelf => false;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
 
         private Vector2 _targetVelocity;
 
-        public DeadState(CagedShocker cagedShocker) => _cagedShocker = cagedShocker;
+        public DeadState(Enemies.CagedShocker.CagedShocker cagedShocker) => _cagedShocker = cagedShocker;
 
         public void Tick()
         {

@@ -16,7 +16,7 @@ namespace DarkHavoc.PlayerComponents
         public class Context
         {
             public float Health { get; protected internal set; }
-            public float MaxHealth { get; private set; }
+            public float MaxHealth { get; }
             public bool IsAlive => Health > 0;
 
             public Context(float maxHealth)
@@ -98,12 +98,6 @@ namespace DarkHavoc.PlayerComponents
             Actions();
             SetPlayerCollider(true);
             OnPlayerSpawned?.Invoke(this);
-        }
-
-        private void Start()
-        {
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
-            _gameManager.EnableMainInput();
         }
 
         private void OnEnable() => _useGravity = true;
@@ -288,7 +282,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void TryToStunEnemy(IDoDamage damageDealer)
         {
-            if (damageDealer.transform.TryGetComponent(out IStunnable stunnable)) 
+            if (damageDealer.transform.TryGetComponent(out IStunnable stunnable))
                 stunnable.Stun();
         }
 

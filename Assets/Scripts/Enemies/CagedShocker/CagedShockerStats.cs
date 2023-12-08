@@ -2,7 +2,7 @@
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Enemies.CagedShocker
 {
     [CreateAssetMenu(menuName = "Custom/CagedShockerStats", fileName = "NewCagedShockerStats")]
     public class CagedShockerStats : ScriptableObject
