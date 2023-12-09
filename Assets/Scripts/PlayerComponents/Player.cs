@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.CustomUtils.DebugEventButtonComponents;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.PlayerComponents.PlayerActions;
@@ -64,6 +65,9 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private Collider2D defaultCollider;
         [SerializeField] private Collider2D rollCollider;
 
+        [Header("Development")]
+        [SerializeField] private DebugEventButton debugButton;
+
         private Vector2 _targetVelocity;
 
         private GameManager _gameManager;
@@ -99,7 +103,7 @@ namespace DarkHavoc.PlayerComponents
         {
             _inputReader = ServiceLocator.Instance.GetService<InputReader>();
             _gameManager = ServiceLocator.Instance.GetService<GameManager>();
-            
+
             Actions();
             OnPlayerSpawned?.Invoke(this);
         }
@@ -325,8 +329,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void OnDestroy() => OnPlayerDeSpawned?.Invoke(this);
 
-        [ContextMenu("Enable Movement")]
-        private void EnableMovement() => _gameManager.EnableMainInput();
+        public void EnableMovement() => _gameManager.EnableMainInput();
 
         private void OnDrawGizmos()
         {

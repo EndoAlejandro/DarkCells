@@ -4,26 +4,26 @@ using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
-    public class RestState : IState
+    public class StunState : IState
     {
-        public override string ToString() => "Rest";
+        public override string ToString() => "Stun";
         public AnimationState Animation => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
         private readonly CagedShocker _cagedShocker;
-        private readonly float _restTime;
+        private readonly float _stunTime;
         private float _timer;
 
-        public RestState(CagedShocker cagedShocker, float restTime)
+        public StunState(CagedShocker cagedShocker, float stunTime)
         {
             _cagedShocker = cagedShocker;
-            _restTime = restTime;
+            _stunTime = stunTime;
         }
 
         public void Tick() => _timer -= Time.deltaTime;
         public void FixedTick() => _cagedShocker.Move(0);
-        public void OnEnter() => _timer = _restTime;
+        public void OnEnter() => _timer = _stunTime;
         public void OnExit() => _timer = 0f;
     }
 }

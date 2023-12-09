@@ -16,7 +16,6 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         private readonly bool _canCombo;
         private readonly float _attackDuration;
 
-        private Vector2 _targetVelocity;
         private bool _attackInterruptionAvailable;
         private bool _stunned;
         private float _timer;
@@ -46,9 +45,6 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         public void FixedTick()
         {
-            _cagedShocker.CheckGrounded();
-            _cagedShocker.CustomGravity(ref _targetVelocity);
-            _cagedShocker.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()

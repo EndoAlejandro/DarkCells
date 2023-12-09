@@ -10,13 +10,6 @@ namespace DarkHavoc.Enemies.CagedShocker
     [RequireComponent(typeof(Rigidbody2D))]
     public class CagedShocker : Enemy, IDoDamage, ITakeDamage, IEntity, IStunnable
     {
-        [Header(nameof(CagedShocker))]
-        [SerializeField] private Transform midPoint;
-
-        private Collider2D _collider;
-        private Rigidbody2D _rigidbody;
-        private Collider2D[] _results;
-
         public event Action OnStunned;
         public event Action OnDamageTaken;
         public event Action<float> OnTelegraph;
@@ -25,10 +18,20 @@ namespace DarkHavoc.Enemies.CagedShocker
         public Transform MidPoint => midPoint;
         public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
-
-        public bool Grounded { get; private set; }
+        public bool Grounded => LeftFoot || RightFoot;
+        public bool LeftFoot { get; private set; }
+        public bool RightFoot { get; private set; }
         public float StunTime { get; private set; }
         public Player Player { get; private set; }
+
+        [Header(nameof(CagedShocker))]
+        [SerializeField] private Transform midPoint;
+
+        private Collider2D _collider;
+        private Rigidbody2D _rigidbody;
+        private Collider2D[] _results;
+
+        private Vector2 _targetVelocity;
 
         private void Awake()
         {
@@ -44,44 +47,50 @@ namespace DarkHavoc.Enemies.CagedShocker
             Health = stats != null ? stats.MaxHealth : 0;
         }
 
-        public void CheckGrounded(out bool leftFoot, out bool rightFoot)
+        private void FixedUpdate()
+        {
+            if (!IsAlive) return;
+
+            CheckGrounded();
+            CustomGravity();
+            
+            ApplyVelocity();
+        }
+
+        public void CheckGrounded()
         {
             var leftFootPosition =
                 new Vector2(_collider.bounds.min.x - stats.FootPositionOffset.x, transform.position.y);
-            leftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
+            LeftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
                 stats.GroundOffset + stats.GroundCheckDistance, stats.GroundLayerMask);
 
             var rightFootPosition =
                 new Vector2(_collider.bounds.max.x + stats.FootPositionOffset.x, transform.position.y);
-            rightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
+            RightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
                 stats.GroundOffset + stats.GroundCheckDistance, stats.GroundLayerMask);
-
-            Grounded = leftFoot || rightFoot;
         }
 
-        public void CheckGrounded() => CheckGrounded(out bool _, out bool _);
-
-        public void Move(ref Vector2 targetVelocity, int direction)
+        public void Move(int direction)
         {
             if (direction == 0)
             {
                 var deceleration = stats.Acceleration;
-                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
             }
             else
             {
-                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * stats.MaxSpeed,
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, direction * stats.MaxSpeed,
                     stats.Acceleration * Time.fixedDeltaTime);
             }
         }
 
-        public void CustomGravity(ref Vector2 targetVelocity)
+        public void CustomGravity()
         {
-            targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -stats.MaxFallSpeed,
+            _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -stats.MaxFallSpeed,
                 stats.Gravity * Time.fixedDeltaTime);
         }
 
-        public void ApplyVelocity(Vector2 targetVelocity) => _rigidbody.velocity = targetVelocity;
+        public void ApplyVelocity() => _rigidbody.velocity = _targetVelocity;
 
         public void TelegraphAttack(float time) => OnTelegraph?.Invoke(time);
 

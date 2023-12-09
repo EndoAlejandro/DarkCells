@@ -19,7 +19,6 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         private FxProvider _fxProvider;
         private float _timer;
         private bool _telegraphed;
-        private Vector2 _targetVelocity;
 
         public TelegraphState(CagedShocker cagedShocker, float telegraphTime)
         {
@@ -38,21 +37,16 @@ namespace DarkHavoc.Enemies.CagedShocker.States
                 _fxProvider.GetFx(FxType.Telegraph, _cagedShocker.transform.position + Vector3.up * 1.25f);
             }
 
-            _cagedShocker.Move(ref _targetVelocity, 0);
         }
 
-        public void FixedTick()
-        {
-            _cagedShocker.CheckGrounded(out bool _, out bool _);
-            _cagedShocker.CustomGravity(ref _targetVelocity);
-            _cagedShocker.ApplyVelocity(_targetVelocity);
-        }
+        public void FixedTick() => _cagedShocker.Move(0);
 
         public void OnEnter()
         {
             _fxProvider ??= ServiceLocator.Instance.GetService<FxProvider>();
             _telegraphed = false;
             _timer = _telegraphTime;
+            
             _cagedShocker.TelegraphAttack(_telegraphTime);
         }
 

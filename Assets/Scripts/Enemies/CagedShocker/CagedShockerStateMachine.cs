@@ -15,7 +15,7 @@ namespace DarkHavoc.Enemies.CagedShocker
         protected override void References()
         {
             _animation = GetComponentInChildren<CagedShockerAnimation>();
-            _cagedShocker = GetComponent<Enemies.CagedShocker.CagedShocker>();
+            _cagedShocker = GetComponent<CagedShocker>();
             _attack = GetComponent<EnemyAttack>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
@@ -23,16 +23,16 @@ namespace DarkHavoc.Enemies.CagedShocker
 
         protected override void StateMachine()
         {
-            var idle = new IdleState(_cagedShocker, _rigidbody);
-            var patrol = new PatrolState(_cagedShocker, _rigidbody, _collider);
-            var chase = new ChaseState(_cagedShocker, _attack, _rigidbody, _collider);
+            var idle = new IdleState(_cagedShocker);
+            var patrol = new PatrolState(_cagedShocker, _collider);
+            var chase = new ChaseState(_cagedShocker, _attack, _collider);
             var telegraph = new TelegraphState(_cagedShocker, _cagedShocker.Stats.TelegraphTime);
             var firstAttack = new AttackState(_cagedShocker, _attack, _animation, true,
                 _cagedShocker.Stats.FirstAttackTime);
             var secondAttack = new AttackState(_cagedShocker, _attack, _animation, false,
                 _cagedShocker.Stats.SecondAttackTime);
-            var rest = new RestState(_cagedShocker.Stats.RestTime);
-            var stun = new StunState(_cagedShocker.Stats.StunTime);
+            var rest = new RestState(_cagedShocker, _cagedShocker.Stats.RestTime);
+            var stun = new StunState(_cagedShocker, _cagedShocker.Stats.StunTime);
             var dead = new DeadState(_cagedShocker);
 
             // Initial State.

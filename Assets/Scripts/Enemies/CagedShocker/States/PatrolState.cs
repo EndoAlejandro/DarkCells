@@ -8,27 +8,24 @@ namespace DarkHavoc.Enemies.CagedShocker.States
     public class PatrolState : IState
     {
         public override string ToString() => "Patrol";
-        public AnimationState Animation  => AnimationState.Ground;
+        public AnimationState Animation => AnimationState.Ground;
 
-        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
-        private readonly Rigidbody2D _rigidbody;
+        private readonly CagedShocker _cagedShocker;
         private readonly Collider2D _collider;
 
-        private Vector2 _targetVelocity;
         private int _direction;
 
-        // private bool _facingWall;
         private WallResult _wallResult;
-        private bool _rightFoot;
-        private bool _leftFoot;
 
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
 
-        public PatrolState(Enemies.CagedShocker.CagedShocker cagedShocker, Rigidbody2D rigidbody, Collider2D collider)
+        private bool IsLeftFootOnAir => !_cagedShocker.LeftFoot && _cagedShocker.RightFoot;
+        private bool IsRightFootOnAir => _cagedShocker.LeftFoot && !_cagedShocker.RightFoot;
+
+        public PatrolState(CagedShocker cagedShocker, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
-            _rigidbody = rigidbody;
             _collider = collider;
         }
 
@@ -38,8 +35,8 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
             _direction = _cagedShocker.FacingLeft ? -1 : 1;
 
-            if (!_leftFoot && _rightFoot) Ended = _cagedShocker.FacingLeft;
-            else if (_leftFoot && !_rightFoot) Ended = !_cagedShocker.FacingLeft;
+            if (IsLeftFootOnAir) Ended = _cagedShocker.FacingLeft;
+            else if (IsRightFootOnAir) Ended = !_cagedShocker.FacingLeft;
 
             if (_wallResult.FacingWall) Ended = true;
         }
@@ -48,29 +45,19 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         {
             _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
                 _cagedShocker.FacingLeft);
-            // _cagedShocker.CheckWallCollisions(out _facingWall);
-            _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
-            _cagedShocker.Move(ref _targetVelocity, _direction);
-
-            _cagedShocker.CustomGravity(ref _targetVelocity);
-            _cagedShocker.ApplyVelocity(_targetVelocity);
+            _cagedShocker.Move(_direction);
         }
 
         public void OnEnter()
         {
             _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
                 _cagedShocker.FacingLeft);
-            // _cagedShocker.CheckWallCollisions(out _facingWall);
-            _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
 
             if (_wallResult.FacingWall) _cagedShocker.SetFacingLeft(!_cagedShocker.FacingLeft);
-            else if (!_leftFoot && _rightFoot) _cagedShocker.SetFacingLeft(false);
-            else if (_leftFoot && !_rightFoot) _cagedShocker.SetFacingLeft(true);
-
-            // _facingWall = false;
+            else if (IsLeftFootOnAir) _cagedShocker.SetFacingLeft(false);
+            else if (IsRightFootOnAir) _cagedShocker.SetFacingLeft(true);
 
             Ended = false;
-            _targetVelocity = Vector2.zero;
         }
 
         public void OnExit() => Ended = false;

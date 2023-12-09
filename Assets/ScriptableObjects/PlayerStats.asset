@@ -49,7 +49,7 @@ MonoBehaviour:
   wallJumpForce: {x: 10, y: 13}
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
-  ceilingDistance: 0.3
+  ceilingDistance: 0.01
   rollCooldown: 0.25
   speedBonus: 3
   speedBonusDeceleration: 2.5

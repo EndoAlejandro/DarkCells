@@ -11,32 +11,26 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public override string ToString() => "Chase";
         public AnimationState Animation => AnimationState.Ground;
 
-        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
+        private readonly CagedShocker _cagedShocker;
         private readonly EnemyAttack _attack;
-        private readonly Rigidbody2D _rigidbody;
         private readonly Collider2D _collider;
 
         private Player _player;
 
-        private Vector2 _targetVelocity;
-
         private int _targetDirection;
 
-        // private bool _facingWall;
-        private bool _leftFoot;
-        private bool _rightFoot;
         private WallResult _wallResult;
 
-        private bool CanWalk => (_leftFoot && _cagedShocker.FacingLeft) || (_rightFoot && !_cagedShocker.FacingLeft);
+        private bool CanWalk => (_cagedShocker.LeftFoot && _cagedShocker.FacingLeft) ||
+                                (_cagedShocker.RightFoot && !_cagedShocker.FacingLeft);
 
         public bool CanTransitionToSelf => false;
         public bool AttackAvailable { get; private set; }
 
-        public ChaseState(Enemies.CagedShocker.CagedShocker cagedShocker, EnemyAttack attack, Rigidbody2D rigidbody, Collider2D collider)
+        public ChaseState(CagedShocker cagedShocker, EnemyAttack attack, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
             _attack = attack;
-            _rigidbody = rigidbody;
             _collider = collider;
         }
 
@@ -68,14 +62,8 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         {
             _wallResult = EntityVision.CheckWallCollision(_collider, _cagedShocker.Stats.WallDetection,
                 _cagedShocker.FacingLeft);
-            // _cagedShocker.CheckWallCollisions(out _facingWall);
-            _cagedShocker.CheckGrounded(out _leftFoot, out _rightFoot);
 
-            if (!_wallResult.FacingWall)
-                _cagedShocker.Move(ref _targetVelocity, CanWalk ? _targetDirection : 0);
-
-            _cagedShocker.CustomGravity(ref _targetVelocity);
-            _cagedShocker.ApplyVelocity(_targetVelocity);
+            if (!_wallResult.FacingWall) _cagedShocker.Move(CanWalk ? _targetDirection : 0);
         }
 
         public void OnEnter()
