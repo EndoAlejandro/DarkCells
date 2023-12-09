@@ -17,9 +17,9 @@ TagManager:
   - UI
   - PlayerRoll
   - Enemy
-  - Ground
+  - Terrain/Ground
   - IgnoreAll
-  - OneWay
+  - Terrain/OneWay
   - 
   - 
   - 

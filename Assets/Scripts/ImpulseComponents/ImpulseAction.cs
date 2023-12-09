@@ -1,6 +1,7 @@
 ﻿using System;
 using DarkHavoc.CustomUtils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DarkHavoc.ImpulseComponents
 {
@@ -10,11 +11,14 @@ namespace DarkHavoc.ImpulseComponents
         [SerializeField] private float time;
         [SerializeField] private float force;
         [SerializeField] private float deceleration;
-        [SerializeField] private ImpulseActionExtensions.ImpulseDirection direction;
+
+        [FormerlySerializedAs("direction")] [SerializeField]
+        private ImpulseActionExtensions.ImpulseDirection impulseDirection;
+
         public float Time => time;
         public float Force => force;
         public float Deceleration => deceleration;
-        public int Direction => direction == ImpulseActionExtensions.ImpulseDirection.Forward ? 1 : -1;
+        public int ImpulseDirection => impulseDirection == ImpulseActionExtensions.ImpulseDirection.Repel ? 1 : -1;
     }
 
     [Serializable]

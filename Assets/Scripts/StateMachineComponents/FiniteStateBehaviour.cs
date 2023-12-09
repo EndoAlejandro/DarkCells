@@ -17,7 +17,7 @@ namespace DarkHavoc.StateMachineComponents
         // To read the current state from another scripts.
         public IState CurrentStateType => stateMachine.CurrentState;
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
             // Usually all the references are necessary to inject references in the states.
             References();

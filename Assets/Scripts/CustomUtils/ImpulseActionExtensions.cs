@@ -1,5 +1,4 @@
 ﻿using DarkHavoc.ImpulseComponents;
-using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
 namespace DarkHavoc.CustomUtils
@@ -13,7 +12,7 @@ namespace DarkHavoc.CustomUtils
         /// <param name="direction">Normalized looking direction. [-1=left][1=right]</param>
         /// <returns>Max Velocity of impulse.</returns>
         public static float GetTargetVelocity(this ImpulseAction action, int direction) =>
-            action.Force * action.Direction * direction;
+            action.Force * action.ImpulseDirection * direction;
 
         /// <summary>
         /// Smooth deceleration of the impulse using custom delta.
@@ -27,8 +26,8 @@ namespace DarkHavoc.CustomUtils
 
         public enum ImpulseDirection
         {
-            Forward,
-            Backward
+            Repel,
+            Attract
         }
     }
 }

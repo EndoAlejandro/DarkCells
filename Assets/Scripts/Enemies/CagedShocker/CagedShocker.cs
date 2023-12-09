@@ -22,7 +22,7 @@ namespace DarkHavoc.Enemies.CagedShocker
         public event Action<float> OnTelegraph;
         public float IdleTime => stats != null ? stats.IdleTime : 0f;
         public float Damage => stats != null ? stats.Damage : 0;
-        public Vector3 MidPoint => midPoint.position;
+        public Transform MidPoint => midPoint;
         public float Health { get; private set; }
         public bool IsAlive => Health > 0f;
 
@@ -59,6 +59,8 @@ namespace DarkHavoc.Enemies.CagedShocker
             Grounded = leftFoot || rightFoot;
         }
 
+        public void CheckGrounded() => CheckGrounded(out bool _, out bool _);
+
         public void Move(ref Vector2 targetVelocity, int direction)
         {
             if (direction == 0)
@@ -85,7 +87,8 @@ namespace DarkHavoc.Enemies.CagedShocker
 
         public void SeekPlayer()
         {
-            var tempPlayer = EntityVision.CircularCheck<Player>(MidPoint, stats.DetectionDistance, ref _results);
+            var tempPlayer =
+                EntityVision.CircularCheck<Player>(MidPoint.position, stats.DetectionDistance, ref _results);
             if (tempPlayer == null) return;
 
             if (!IsPlayerVisible(tempPlayer))
@@ -95,7 +98,7 @@ namespace DarkHavoc.Enemies.CagedShocker
         }
 
         public bool IsPlayerVisible(Player player) =>
-            EntityVision.IsVisible<Player>(MidPoint, player.MidPoint, FacingLeft, gameObject.layer);
+            EntityVision.IsVisible<Player>(MidPoint.position, player.MidPoint.position, FacingLeft, gameObject.layer);
 
         public void KeepTrackPlayer()
         {
@@ -132,7 +135,7 @@ namespace DarkHavoc.Enemies.CagedShocker
             if (stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
 
-            DetectionRange(MidPoint);
+            DetectionRange(MidPoint.position);
             Gizmos.color = Color.magenta;
             GroundRays(transform.position);
             WallRays();

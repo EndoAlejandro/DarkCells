@@ -36,10 +36,14 @@ namespace DarkHavoc.PlayerComponents
             _renderer = GetComponent<SpriteRenderer>();
 
             _player = GetComponentInParent<Player>();
-            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
             _playerStateMachine = GetComponentInParent<PlayerStateMachine>();
 
             _materialPb = new MaterialPropertyBlock();
+        }
+
+        private void Start()
+        {
+            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
         }
 
         private void OnEnable()

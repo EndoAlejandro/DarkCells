@@ -13,9 +13,8 @@ namespace DarkHavoc.ServiceLocatorComponents
         public bool TryToRegisterService<T>(T service)
         {
             Type type = service.GetType();
-            if (_services.ContainsKey(type)) return false;
-            Debug.Log($"Register {type} Service.");
-            _services.Add(type, service);
+            if (!_services.TryAdd(type, service)) return false;
+            // Debug.Log($"Register {type} Service.");
             return true;
         }
 
@@ -23,7 +22,7 @@ namespace DarkHavoc.ServiceLocatorComponents
         {
             var type = service.GetType();
             if (!_services.ContainsKey(type)) return;
-            Debug.Log($"Remove {type} Service.");
+            // Debug.Log($"Remove {type} Service.");
             _services.Remove(type);
         }
 
@@ -32,7 +31,7 @@ namespace DarkHavoc.ServiceLocatorComponents
             var type = typeof(T);
             if (!_services.TryGetValue(type, out var service))
             {
-                Debug.LogError($"{type} Not found.");
+                // Debug.LogWarning($"{type} Not found.");
                 return null;
                 // throw new Exception($"{type} Not found.");
             }

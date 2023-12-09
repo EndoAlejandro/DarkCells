@@ -9,7 +9,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
     public class AttackBufferedAction : BufferedAction
     {
         private readonly Transform _attackOffset;
-        private Collider2D[] _results;
+        private Collider2D[] _hitboxResults;
+        private RaycastHit2D[] _obstacleCheckResults;
 
         private float _cooldown;
         private float _comboTimer;
@@ -20,7 +21,8 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         {
             _attackOffset = attackOffset;
 
-            _results = new Collider2D[50];
+            _hitboxResults = new Collider2D[50];
+            _obstacleCheckResults = new RaycastHit2D[50];
         }
 
         protected override bool CanBuffer() => _cooldown <= 0f && base.CanBuffer();
@@ -48,14 +50,19 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
             Vector2 boxSize = new Vector2(_attackOffset.localPosition.x, _attackOffset.localPosition.y * 1.9f);
 
-            int size = Physics2D.OverlapBoxNonAlloc(Player.transform.position + centerOffset,
-                boxSize, 0f, _results, ~Player.Stats.AttackLayerMask);
+            int hitboxSize = Physics2D.OverlapBoxNonAlloc(Player.transform.position + centerOffset,
+                boxSize, 0f, _hitboxResults, Player.Stats.AttackLayerMask);
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < hitboxSize; i++)
             {
-                var result = _results[i];
-                if (result.transform.TryGetComponent(out ITakeDamage takeDamage))
-                    Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
+                if (_hitboxResults[i].transform.TryGetComponent(out ITakeDamage takeDamage))
+                {
+                    var lineCastSize = Physics2D.LinecastNonAlloc(Player.MidPoint.position,
+                        takeDamage.MidPoint.position, _obstacleCheckResults, Player.Stats.WallDetection.WallLayer);
+
+                    Debug.Log(lineCastSize);
+                    if (lineCastSize == 0) Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
+                }
             }
         }
 

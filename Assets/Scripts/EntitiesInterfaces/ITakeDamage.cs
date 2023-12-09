@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DarkHavoc.EntitiesInterfaces
 {
-    public interface ITakeDamage
+    public interface ITakeDamage : IMidPoint
     {
         event Action OnDamageTaken;
         Transform transform { get; }

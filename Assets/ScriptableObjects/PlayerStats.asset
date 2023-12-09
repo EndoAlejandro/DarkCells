@@ -57,37 +57,37 @@ MonoBehaviour:
     time: 0.4
     force: 8
     deceleration: 2
-    direction: 0
+    impulseDirection: 0
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 620
+    m_Bits: 128
   damage: 1
   movementReduction: 0.5
   lightAttackBuffer: 0.15
   comboTime: 0.5
-  heavyAttackTime: 0.5
+  heavyAttackTime: 0.47
   blockTime: 0.5
   lightAttackAction:
     time: 0.5
     force: 1
     deceleration: 5
-    direction: 0
+    impulseDirection: 0
     damageMultiplier: 0
     cooldownTime: 0
   heavyAttackAction:
     time: 0.5
     force: 2
     deceleration: 5
-    direction: 0
+    impulseDirection: 0
     damageMultiplier: 2
     cooldownTime: 0.5
   parryAction:
     time: 0.7
     force: 3
     deceleration: 5
-    direction: 1
+    impulseDirection: 1
   takeDamageAction:
     time: 0.5
     force: 7
     deceleration: 20
-    direction: 1
+    impulseDirection: 1

@@ -1,6 +1,5 @@
 ﻿using DarkHavoc.ImpulseComponents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DarkHavoc.PlayerComponents
 {

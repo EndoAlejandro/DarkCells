@@ -13,27 +13,28 @@ namespace DarkHavoc.Enemies
 
         private Rigidbody2D _rigidbody;
 
-        public float Health { get; private set; }
-        float ITakeDamage.Health { get; }
+        private float _health;
+        public float Health => _health;
         public bool IsAlive => true;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            Health = maxHealth;
+            _health = maxHealth;
         }
 
         public void TakeDamage(IDoDamage damageDealer, float damageMultiplier)
         {
-            if (Health < 0) return;
+            if (_health < 0) return;
 
-            Health -= damageDealer.Damage * damageMultiplier;
+            _health -= damageDealer.Damage * damageMultiplier;
             var dif = Mathf.Sign(transform.position.x - damageDealer.transform.position.x);
             _rigidbody.AddForce(new Vector2(dif * knockBackForce, 1f), ForceMode2D.Force);
-            Debug.Log($"Damage:{damageDealer.Damage} || Health:{Health}");
-            if (Health <= 0f) Death();
+            Debug.Log($"Damage:{damageDealer.Damage} || Health:{_health}");
+            if (_health <= 0f) Death();
         }
 
-        public void Death() => Health = maxHealth;
+        public void Death() => _health = maxHealth;
+        public Transform MidPoint { get; }
     }
 }

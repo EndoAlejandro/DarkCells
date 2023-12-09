@@ -49,7 +49,7 @@ namespace DarkHavoc.PlayerComponents
         public Collider2D Collider { get; private set; }
         public bool FacingLeft { get; private set; }
         public bool Grounded { get; private set; }
-        public Vector3 MidPoint => midPoint.position;
+        public Transform MidPoint => midPoint;
         public int Direction => FacingLeft ? -1 : 1;
         public float Damage => Stats != null ? Stats.Damage : 0f;
         public float Health => PlayerContext.Health;
@@ -91,12 +91,16 @@ namespace DarkHavoc.PlayerComponents
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
-
             PlayerContext ??= new Context(Stats.MaxHealth);
-
-            Actions();
             SetPlayerCollider(true);
+        }
+
+        private void Start()
+        {
+            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
+            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            
+            Actions();
             OnPlayerSpawned?.Invoke(this);
         }
 
@@ -156,6 +160,13 @@ namespace DarkHavoc.PlayerComponents
             _currentImpulseAction = impulse;
             _impulseTimer = impulse.Time;
             _extraForce.x = _currentImpulseAction.GetTargetVelocity(Direction);
+        }
+
+        public void AddImpulse(ImpulseAction impulse, int directionOverride)
+        {
+            _currentImpulseAction = impulse;
+            _impulseTimer = impulse.Time;
+            _extraForce.x = _currentImpulseAction.GetTargetVelocity(directionOverride);
         }
 
         public void Roll() => _rollAction.UseAction();
@@ -275,7 +286,8 @@ namespace DarkHavoc.PlayerComponents
 
             PlayerContext.Health -= damageDealer.Damage * damageMultiplier;
 
-            AddImpulse(Stats.TakeDamageAction);
+            var direction = (int)Mathf.Sign(source.x - transform.position.x);
+            AddImpulse(Stats.TakeDamageAction, direction);
 
             OnDamageTaken?.Invoke();
         }
@@ -312,6 +324,9 @@ namespace DarkHavoc.PlayerComponents
         }
 
         private void OnDestroy() => OnPlayerDeSpawned?.Invoke(this);
+
+        [ContextMenu("Enable Movement")]
+        private void EnableMovement() => _gameManager.EnableMainInput();
 
         private void OnDrawGizmos()
         {

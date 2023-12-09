@@ -10,7 +10,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public override string ToString() => "Attack";
         public AnimationState Animation => AnimationState.LightAttack;
 
-        private readonly Enemies.CagedShocker.CagedShocker _cagedShocker;
+        private readonly CagedShocker _cagedShocker;
         private readonly EnemyAttack _attack;
         private readonly CagedShockerAnimation _animation;
         private readonly bool _canCombo;
@@ -21,17 +21,14 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         private bool _stunned;
         private float _timer;
         private float _comboTimer;
-        private Player _player;
 
         public bool CanTransitionToSelf => _canCombo;
         public bool Ended => _timer <= 0f;
         public bool CanCombo => _canCombo && _comboTimer <= 0f;
-        public bool TargetOnRange { get; private set; }
         public bool Stunned => _stunned && _attackInterruptionAvailable;
 
-        public AttackState(Enemies.CagedShocker.CagedShocker cagedShocker, EnemyAttack attack, CagedShockerAnimation animation,
-            bool canCombo,
-            float attackDuration)
+        public AttackState(CagedShocker cagedShocker, EnemyAttack attack, CagedShockerAnimation animation,
+            bool canCombo, float attackDuration)
         {
             _cagedShocker = cagedShocker;
             _attack = attack;
@@ -49,20 +46,18 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         public void FixedTick()
         {
-            _cagedShocker.CheckGrounded(out bool leftFoot, out bool rightFoot);
+            _cagedShocker.CheckGrounded();
             _cagedShocker.CustomGravity(ref _targetVelocity);
             _cagedShocker.ApplyVelocity(_targetVelocity);
         }
 
         public void OnEnter()
         {
-            // TODO: Perform telegraph.
             _stunned = false;
             _attackInterruptionAvailable = false;
 
             _timer = _attackDuration;
             _comboTimer = _cagedShocker.Stats.ComboTime;
-            _player = _cagedShocker.Player;
 
             _cagedShocker.OnStunned += CagedShockerOnStunned;
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
@@ -75,7 +70,6 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         public void OnExit()
         {
-            _player = null;
             _cagedShocker.OnStunned -= CagedShockerOnStunned;
             _animation.OnAttackPerformed -= AnimationOnAttackPerformed;
             _animation.OnAttackInterruptionAvailable -= AnimationOnAttackInterruptionAvailable;

@@ -12,12 +12,12 @@ namespace DarkHavoc.StateMachineComponents
         {
             _finiteStateBehaviour = GetComponentInParent<FiniteStateBehaviour>();
             _debugText = GetComponentInChildren<TMP_Text>();
+            _finiteStateBehaviour.OnEntityStateChanged += FiniteStateBehaviourOnEntityStateChanged;
         }
 
         private void Start()
         {
-            FiniteStateBehaviourOnEntityStateChanged(_finiteStateBehaviour.CurrentStateType);
-            _finiteStateBehaviour.OnEntityStateChanged += FiniteStateBehaviourOnEntityStateChanged;
+            // FiniteStateBehaviourOnEntityStateChanged(_finiteStateBehaviour.CurrentStateType);
         }
 
         private void FiniteStateBehaviourOnEntityStateChanged(IState state) =>
