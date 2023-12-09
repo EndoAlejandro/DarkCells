@@ -46,18 +46,6 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             SetRoomsPrefabsState(false);
         }
 
-        public List<Transform> GetSpawnPoints()
-        {
-            List<Transform> spawnPoints = new List<Transform>();
-
-            for (int i = 0; i < _roomDataMatrix.GetLength(0); i++)
-            for (int j = 0; j < _roomDataMatrix.GetLength(1); j++)
-            {
-            }
-
-            return spawnPoints;
-        }
-
         private void SetRoomsPrefabsState(bool state)
         {
             foreach (var room in _prefabGridRooms) room.gameObject.SetActive(state);

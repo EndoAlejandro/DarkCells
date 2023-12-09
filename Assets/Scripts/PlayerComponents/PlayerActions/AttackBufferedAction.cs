@@ -60,7 +60,6 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
                     var lineCastSize = Physics2D.LinecastNonAlloc(Player.MidPoint.position,
                         takeDamage.MidPoint.position, _obstacleCheckResults, Player.Stats.WallDetection.WallLayer);
 
-                    Debug.Log(lineCastSize);
                     if (lineCastSize == 0) Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
                 }
             }
