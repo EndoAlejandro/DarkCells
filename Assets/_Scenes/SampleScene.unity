@@ -14467,7 +14467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097820260782414158, guid: c5509de8329c0874389c70cbcb1aca36, type: 3}
       propertyPath: events.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1097820260782414158, guid: c5509de8329c0874389c70cbcb1aca36, type: 3}
       propertyPath: eventss.m_PersistentCalls.m_Calls.Array.size
@@ -14515,7 +14515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097820260782414158, guid: c5509de8329c0874389c70cbcb1aca36, type: 3}
       propertyPath: events.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Jump
+      value: EnableMovement
       objectReference: {fileID: 0}
     - target: {fileID: 1097820260782414158, guid: c5509de8329c0874389c70cbcb1aca36, type: 3}
       propertyPath: events.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

@@ -7,6 +7,7 @@ using DarkHavoc.ImpulseComponents;
 using DarkHavoc.PlayerComponents.PlayerActions;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -65,9 +66,6 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private Collider2D defaultCollider;
         [SerializeField] private Collider2D rollCollider;
 
-        [Header("Development")]
-        [SerializeField] private DebugEventButton debugButton;
-
         private Vector2 _targetVelocity;
 
         private GameManager _gameManager;
@@ -92,6 +90,12 @@ namespace DarkHavoc.PlayerComponents
 
         public static Context PlayerContext { get; private set; }
 
+        [Header("Development")]
+        [Button(nameof(InvokeEvents))]
+        [SerializeField] private bool _;
+        public UnityEvent events;
+        public void InvokeEvents() => events?.Invoke();
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();

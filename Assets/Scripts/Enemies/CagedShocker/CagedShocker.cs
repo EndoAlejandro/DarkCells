@@ -53,7 +53,7 @@ namespace DarkHavoc.Enemies.CagedShocker
 
             CheckGrounded();
             CustomGravity();
-            
+
             ApplyVelocity();
         }
 
@@ -178,10 +178,10 @@ namespace DarkHavoc.Enemies.CagedShocker
             horizontal += Stats.WallDetection.HorizontalOffset;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
             // Top Ray.
-            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y - stats.WallDetection.TopOffset);
+            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y + stats.WallDetection.TopOffset);
             Gizmos.DrawLine(topOrigin, topOrigin + (direction * stats.WallDetection.DistanceCheck));
             // Middle Ray.
-            var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y);
+            var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y + stats.WallDetection.MidOffset);
             Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * stats.WallDetection.DistanceCheck));
             // Bottom Ray.
             Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + stats.WallDetection.BottomOffset);

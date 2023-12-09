@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_YDamping
-      value: 1.98003
+      value: 1.960031
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
