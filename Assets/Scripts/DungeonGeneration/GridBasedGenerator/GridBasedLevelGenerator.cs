@@ -120,10 +120,15 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             var initialX = Random.Range(0, _roomDataMatrix.GetLength(0));
             InitialRoom = new GridRoomData(new Vector2Int(initialX, 0));
-            InitialRoom.SetDirection(Vector2Int.down);
+            InitialRoom.SetDirection(Vector2Int.up);
             _roomDataMatrix[initialX, 0] = InitialRoom;
 
-            Vector2Int currentPosition = InitialRoom.Position;
+            var nextRoom = new GridRoomData(new Vector2Int(initialX, 1));
+            nextRoom.SetDirection(Vector2Int.down);
+            _roomDataMatrix[initialX, 1] = nextRoom;
+
+            Vector2Int currentPosition = nextRoom.Position;
+            //Vector2Int currentPosition = InitialRoom.Position;
 
             int safeExit = 100;
             while (safeExit > 0)

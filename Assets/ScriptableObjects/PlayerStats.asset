@@ -28,6 +28,7 @@ MonoBehaviour:
   groundDeceleration: 70
   airDeceleration: 30
   grounderDistance: 0.05
+  ceilingDistance: 0.01
   wallDetection:
     distanceCheck: 0.4
     topOffset: 0
@@ -49,7 +50,7 @@ MonoBehaviour:
   wallJumpForce: {x: 10, y: 13}
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
-  ceilingDistance: 0.01
+  crouchCeilingDistance: 0.25
   rollCooldown: 0.25
   speedBonus: 3
   speedBonusDeceleration: 2.5

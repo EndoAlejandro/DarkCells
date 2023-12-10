@@ -29,7 +29,7 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _timer -= Time.deltaTime;
 
-            if (_player.HasBufferedJump && !_player.CheckCeilingCollision())
+            if (_player.HasBufferedJump && !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance))
             {
                 _player.Jump();
                 _player.ApplyVelocity();

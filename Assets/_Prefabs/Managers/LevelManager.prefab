@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1cf24cdf0232e439e53d71ee7fba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointOffset: 10
+  spawnPointOffset: 1
   bestiary: {fileID: 11400000, guid: bcaf032f2fcdb3e4fabd8597903b6dc6, type: 2}

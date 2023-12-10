@@ -23,7 +23,7 @@ namespace DarkHavoc.PlayerComponents
         protected override void StateMachine()
         {
             // Grounded States
-            var ground = new GroundState(_player, _rigidbody, _input);
+            var ground = new GroundState(_player, _input);
             var roll = new RollState(_player, _rigidbody, _input, _player.Stats.RollAction);
             var crouch = new CrouchState(_player, _rigidbody);
             var death = new DeathState(_player, _rigidbody);
@@ -68,15 +68,18 @@ namespace DarkHavoc.PlayerComponents
             var toRollStates = new IState[] { ground, air, crouch, parry };
             stateMachine.AddManyTransitions(toRollStates, roll, () => _player.HasBufferedRoll);
             stateMachine.AddTransition(roll, ground,
-                () => roll.Ended && _player.Grounded && !_player.CheckCeilingCollision());
+                () => roll.Ended && _player.Grounded &&
+                      !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
             stateMachine.AddTransition(roll, crouch,
-                () => roll.Ended && _player.Grounded && _player.CheckCeilingCollision());
+                () => roll.Ended && _player.Grounded &&
+                      _player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
             stateMachine.AddTransition(roll, lightAttack,
-                () => _player.HasBufferedAttack && !_player.CheckCeilingCollision());
+                () => _player.HasBufferedAttack && !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
 
             // Crouch.
-            stateMachine.AddTransition(crouch, ground, () => !_player.CheckCeilingCollision());
+            stateMachine.AddTransition(crouch, ground,
+                () => !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
 
             // Air Attack.
             var toAirAttack = new IState[] { air, lightAttack };

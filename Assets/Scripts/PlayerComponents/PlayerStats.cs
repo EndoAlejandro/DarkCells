@@ -23,6 +23,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float groundDeceleration = 60f;
         [SerializeField] private float airDeceleration = 30f;
         [SerializeField] private float grounderDistance;
+        [SerializeField] private float ceilingDistance;
         [SerializeField] private WallDetection wallDetection;
 
         [Header("Jump")]
@@ -42,7 +43,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float maxWallSlideSpeed = 1f;
 
         [Header("Roll")]
-        [SerializeField] private float ceilingDistance;
+        [SerializeField] private float crouchCeilingDistance;
 
         [SerializeField] private float rollCooldown;
         [SerializeField] private float speedBonus;
@@ -80,6 +81,7 @@ namespace DarkHavoc.PlayerComponents
         public float GroundDeceleration => groundDeceleration;
         public float AirDeceleration => airDeceleration;
         public float GrounderDistance => grounderDistance;
+        public float CeilingDistance => ceilingDistance;
         public WallDetection WallDetection => wallDetection;
 
         #endregion
@@ -106,7 +108,7 @@ namespace DarkHavoc.PlayerComponents
 
         #region Roll
 
-        public float CeilingDistance => ceilingDistance;
+        public float CrouchCeilingDistance => crouchCeilingDistance;
         public float RollCooldown => rollCooldown;
         public float SpeedBonus => speedBonus;
         public float SpeedBonusDeceleration => speedBonusDeceleration;

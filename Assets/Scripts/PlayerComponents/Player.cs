@@ -93,9 +93,10 @@ namespace DarkHavoc.PlayerComponents
         [Header("Development")]
         [Button(nameof(InvokeEvents))]
         [SerializeField] private bool _;
+
         public UnityEvent events;
         public void InvokeEvents() => events?.Invoke();
-        
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -222,15 +223,15 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
-        public bool CheckCeilingCollision() =>
-            CheckCollisionCustomDirection(Vector2.up, Stats.CeilingDistance, Stats.CeilingLayers);
+        public bool CheckCeilingCollision(float ceilingDistance) =>
+            CheckCollisionCustomDirection(Vector2.up, ceilingDistance, Stats.CeilingLayers);
 
         private void CheckCollisions()
         {
             Physics2D.queriesStartInColliders = false;
 
             bool groundHit = CheckCollisionCustomDirection(Vector2.down, stats.GrounderDistance, Stats.GroundLayers);
-            bool ceilingHit = CheckCeilingCollision();
+            bool ceilingHit = CheckCeilingCollision(Stats.CeilingDistance);
 
             if (ceilingHit) _targetVelocity.y = Mathf.Min(0, _targetVelocity.y);
 
@@ -247,9 +248,8 @@ namespace DarkHavoc.PlayerComponents
         }
 
         private bool CheckCollisionCustomDirection(Vector2 direction, float distance, LayerMask layers) =>
-            Physics2D.CapsuleCast(
-                Collider.bounds.center,
-                Collider.bounds.size, CapsuleDirection2D.Vertical, 0f, direction, distance, layers);
+            Physics2D.CapsuleCast(Collider.bounds.center, Collider.bounds.size,
+                CapsuleDirection2D.Vertical, 0f, direction, distance, layers);
 
         public void ApplyVelocity()
         {
