@@ -25,7 +25,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             base.Awake();
             WorldPositionSpawnPoints = new List<Vector3>();
-            _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y];
+            _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y + 2];
 
             // Load Prefabs
             _prefabGridRooms = prefabRoomsPool.GetComponentsInChildren<GridRoom>(true);
@@ -40,7 +40,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             SetRoomsPrefabsState(true);
 
-            CalculatePath();
+            CalculateMainPath();
+            CalculateSecondaryPath();
             InstantiateTiles();
 
             SetRoomsPrefabsState(false);
@@ -116,7 +117,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             }
         }
 
-        private void CalculatePath()
+        private void CalculateMainPath()
         {
             var initialX = Random.Range(0, _roomDataMatrix.GetLength(0));
             InitialRoom = new GridRoomData(new Vector2Int(initialX, 0));
@@ -137,6 +138,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
                 var currentRoom = _roomDataMatrix[currentPosition.x, currentPosition.y];
                 var direction = GetNextDirection(currentRoom);
+
                 if (direction == Vector2Int.zero)
                 {
                     currentRoom.SetDirection(Vector2Int.up);
@@ -152,6 +154,47 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 _roomDataMatrix[room.Position.x, room.Position.y] = room;
                 currentPosition = room.Position;
             }
+
+            currentPosition += Vector2Int.up;
+            var lastRoom = new GridRoomData(currentPosition);
+            lastRoom.SetDirection(Vector2Int.down);
+            _roomDataMatrix[currentPosition.x, currentPosition.y] = lastRoom;
+        }
+
+        private void CalculateSecondaryPath()
+        {
+            for (int i = 0; i < _roomDataMatrix.GetLength(0); i++)
+            for (int j = 1; j < _roomDataMatrix.GetLength(1) - 1; j++)
+            {
+                var currentPosition = _roomDataMatrix[i, j];
+                if (currentPosition != null) continue;
+                if (i > 0)
+                {
+                    var neighbour = _roomDataMatrix[i - 1, j];
+                    if (neighbour != null)
+                    {
+                        var newRoom = new GridRoomData(new Vector2Int(i, j));
+                        newRoom.SetDirection(Vector2Int.left);
+                        neighbour.SetDirection(Vector2Int.right);
+
+                        _roomDataMatrix[i, j] = newRoom;
+                        continue;
+                    }
+                }
+
+                if (i < _roomDataMatrix.GetLength(0) - 1)
+                {
+                    var neighbour = _roomDataMatrix[i + 1, j];
+                    if (neighbour != null)
+                    {
+                        var newRoom = new GridRoomData(new Vector2Int(i, j));
+                        newRoom.SetDirection(Vector2Int.right);
+                        neighbour.SetDirection(Vector2Int.left);
+                        _roomDataMatrix[i, j] = newRoom;
+                        continue;
+                    }
+                }
+            }
         }
 
         private Vector2Int GetNextDirection(GridRoomData sourceRoom)
@@ -159,7 +202,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             bool rightCheck = sourceRoom.Directions.y == 0 &&
                               sourceRoom.Position.x < _roomDataMatrix.GetLength(0) - 1;
             bool bottomCheck = sourceRoom.Directions.x == 0 &&
-                               sourceRoom.Position.y < _roomDataMatrix.GetLength(1) - 1;
+                               sourceRoom.Position.y < _roomDataMatrix.GetLength(1) - 2;
             bool leftCheck = sourceRoom.Directions.w == 0 &&
                              sourceRoom.Position.x > 0;
 
@@ -169,16 +212,16 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             if (rightCheck & !bottomCheck & leftCheck)
                 return Random.Range(0f, 1f) > .5f ? Vector2Int.right : Vector2Int.left;
             if (rightCheck & bottomCheck & !leftCheck)
-                return Random.Range(0f, 1f) > .7f ? Vector2Int.up : Vector2Int.right;
+                return Random.Range(0f, 1f) > .5f ? Vector2Int.up : Vector2Int.right;
             if (!rightCheck & bottomCheck & leftCheck)
-                return Random.Range(0f, 1f) > .7f ? Vector2Int.up : Vector2Int.left;
+                return Random.Range(0f, 1f) > .5f ? Vector2Int.up : Vector2Int.left;
             if (rightCheck & bottomCheck & leftCheck)
             {
                 float prob = Random.Range(0f, 1f);
                 return prob switch
                 {
-                    > .8f => Vector2Int.up,
-                    > .4f => Vector2Int.left,
+                    > .66f => Vector2Int.up,
+                    > .33f => Vector2Int.left,
                     _ => Vector2Int.right
                 };
             }

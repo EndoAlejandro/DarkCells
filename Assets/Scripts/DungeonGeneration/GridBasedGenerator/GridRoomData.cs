@@ -11,7 +11,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         public Vector4 Directions => _directions;
 
         public GridRoomData(Vector2Int position) => Position = position;
-        public void SetDirections(Vector4 directions) => _directions = directions;
+        // public void SetDirections(Vector4 directions) => _directions = directions;
 
         public void SetDirection(Vector2Int direction)
         {
