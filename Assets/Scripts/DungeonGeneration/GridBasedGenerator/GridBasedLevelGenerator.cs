@@ -170,31 +170,26 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 if (currentPosition != null) continue;
                 if (i > 0)
                 {
-                    var neighbour = _roomDataMatrix[i - 1, j];
-                    if (neighbour != null)
-                    {
-                        var newRoom = new GridRoomData(new Vector2Int(i, j));
-                        newRoom.SetDirection(Vector2Int.left);
-                        neighbour.SetDirection(Vector2Int.right);
-
-                        _roomDataMatrix[i, j] = newRoom;
-                        continue;
-                    }
+                    if (TryToAddSecondaryRoom(i, j, -1)) continue;
                 }
-
                 if (i < _roomDataMatrix.GetLength(0) - 1)
                 {
-                    var neighbour = _roomDataMatrix[i + 1, j];
-                    if (neighbour != null)
-                    {
-                        var newRoom = new GridRoomData(new Vector2Int(i, j));
-                        newRoom.SetDirection(Vector2Int.right);
-                        neighbour.SetDirection(Vector2Int.left);
-                        _roomDataMatrix[i, j] = newRoom;
-                        continue;
-                    }
+                    if (TryToAddSecondaryRoom(i, j, 1)) continue;
                 }
             }
+        }
+
+        private bool TryToAddSecondaryRoom(int i, int j, int direction)
+        {
+            var neighbour = _roomDataMatrix[i + direction, j];
+            if (neighbour == null) return false;
+
+            var newRoom = new GridRoomData(new Vector2Int(i, j));
+            newRoom.SetDirection(Vector2Int.right * direction);
+            neighbour.SetDirection(Vector2Int.right * -direction);
+
+            _roomDataMatrix[i, j] = newRoom;
+            return true;
         }
 
         private Vector2Int GetNextDirection(GridRoomData sourceRoom)

@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[12].second.m_TileSpriteIndex
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 4872328640281115345, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
+      propertyPath: levelSize.x
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4894376766872263975, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1435,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990494011836376321, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_YDamping
