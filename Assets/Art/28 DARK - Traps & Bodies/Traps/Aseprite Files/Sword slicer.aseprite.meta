@@ -1,0 +1,864 @@
+fileFormatVersion: 2
+guid: 4a9880f2d3fb6e8469f793d17b79cc95
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Sword slicer_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 37
+      y: 53
+      width: 6
+      height: 25
+    spriteID: f871e99a30dfd024094e7a9118e58fe3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 37, y: 53}
+  - name: Sword slicer_Frame_1
+    originalName: 
+    pivot: {x: 0.11111111, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 4
+      width: 27
+      height: 5
+    spriteID: a0f2c5e4e6686614f95668efd7cda4eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 4}
+  - name: Sword slicer_Frame_2
+    originalName: 
+    pivot: {x: 0.12, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 42
+      width: 25
+      height: 9
+    spriteID: 47a1079e7dd606d4f8d306d2f6a438bc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 42}
+  - name: Sword slicer_Frame_3
+    originalName: 
+    pivot: {x: 0.11111111, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 17
+      width: 27
+      height: 5
+    spriteID: fa0489b40b597b348acfa43668656d16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 17}
+  - name: Sword slicer_Frame_4
+    originalName: 
+    pivot: {x: 0.11111111, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 30
+      width: 27
+      height: 5
+    spriteID: 5ae5b5e4f75330e45a7256234c16e146
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 30}
+  - name: Sword slicer_Frame_5
+    originalName: 
+    pivot: {x: 0.11111111, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 43
+      width: 27
+      height: 5
+    spriteID: 7c8c3849ea863fb4ab2546bbd38b8377
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 43}
+  - name: Sword slicer_Frame_6
+    originalName: 
+    pivot: {x: 0.11538462, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 37
+      y: 4
+      width: 26
+      height: 7
+    spriteID: 5a751c75db619124aac57e2c85907523
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 37, y: 4}
+  - name: Sword slicer_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 92
+      width: 6
+      height: 26
+    spriteID: 4fbc2ae89fd796947973f0d2dc4ae441
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 92}
+  - name: Sword slicer_Frame_8
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 56
+      width: 27
+      height: 5
+    spriteID: aefe08258a523b448879c3668dfd81aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 56}
+  - name: Sword slicer_Frame_9
+    originalName: 
+    pivot: {x: 0.88, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 25
+      height: 11
+    spriteID: df2f2ae99618edf4e8563fb7fae86513
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Sword slicer_Frame_10
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 69
+      width: 27
+      height: 5
+    spriteID: 65ee0957e9d31b54d947393fc06a0949
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 69}
+  - name: Sword slicer_Frame_11
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 82
+      width: 27
+      height: 5
+    spriteID: fda1346c97909ce4a8d08e754fe6e9e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 82}
+  - name: Sword slicer_Frame_12
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 95
+      width: 27
+      height: 5
+    spriteID: 2ac664a03f0d36c4499fa1ad87fd949f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 95}
+  - name: Sword slicer_Frame_13
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 108
+      width: 27
+      height: 5
+    spriteID: 5605928e7b3c01b49826eebb5b5291ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 108}
+  - name: Sword slicer_Frame_14
+    originalName: 
+    pivot: {x: 0.8888889, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 121
+      width: 27
+      height: 5
+    spriteID: a959566ac75d8224eb92e9c387280679
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 121}
+  - name: Sword slicer_Frame_15
+    originalName: 
+    pivot: {x: 0.88, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 23
+      width: 25
+      height: 11
+    spriteID: 67df56c6f6200a64681c904ebbcb5f47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 23}
+  - name: Sword slicer_Frame_16
+    originalName: 
+    pivot: {x: 0.625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 59
+      width: 8
+      height: 25
+    spriteID: 7ca5c19b0b68f2f4aa1b1e3307045672
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 59}
+  - name: Sword slicer_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 126
+      width: 6
+      height: 26
+    spriteID: 76630162b18910046ba135dbc6e0cb24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 126}
+  - name: Sword slicer_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 160
+      width: 6
+      height: 26
+    spriteID: e370eb3bf27e6024f9a11896c9218bab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 160}
+  - name: Sword slicer_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 194
+      width: 6
+      height: 26
+    spriteID: 8f2e0759328faaf4e91c03b11750f82e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 194}
+  - name: Sword slicer_Frame_20
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 59
+      width: 6
+      height: 26
+    spriteID: edfb64dfe27c6864e86f739b28e6710b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 59}
+  - name: Sword slicer_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 93
+      width: 6
+      height: 26
+    spriteID: b1324759cdd99874b9eb99dfa1bea5d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 93}
+  - name: Sword slicer_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 127
+      width: 6
+      height: 26
+    spriteID: 31ad265260bc1c241a9ecd7b61a809e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 127}
+  - name: Sword slicer_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 161
+      width: 6
+      height: 26
+    spriteID: fe74a7f8a2f9d8c47a92c3f888611ed4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 161}
+  - name: Sword slicer_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 195
+      width: 6
+      height: 26
+    spriteID: 6b82bde7eb7e74f4988bee5af6d685d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 195}
+  - name: Sword slicer_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 37
+      y: 19
+      width: 6
+      height: 26
+    spriteID: 0677380958efe31419a0482224fc20c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 37, y: 19}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 203019191
+    name: Sword slicer
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Sword slicer_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 25
+      spriteId: f871e99a30dfd024094e7a9118e58fe3
+    - name: Sword slicer_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 29
+        y: 0
+        width: 27
+        height: 5
+      spriteId: a0f2c5e4e6686614f95668efd7cda4eb
+    - name: Sword slicer_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 29
+        y: 0
+        width: 25
+        height: 9
+      spriteId: 47a1079e7dd606d4f8d306d2f6a438bc
+    - name: Sword slicer_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 29
+        y: 0
+        width: 27
+        height: 5
+      spriteId: fa0489b40b597b348acfa43668656d16
+    - name: Sword slicer_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 29
+        y: 0
+        width: 27
+        height: 5
+      spriteId: 5ae5b5e4f75330e45a7256234c16e146
+    - name: Sword slicer_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 29
+        y: 0
+        width: 27
+        height: 5
+      spriteId: 7c8c3849ea863fb4ab2546bbd38b8377
+    - name: Sword slicer_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 29
+        y: 0
+        width: 26
+        height: 7
+      spriteId: 5a751c75db619124aac57e2c85907523
+    - name: Sword slicer_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 4fbc2ae89fd796947973f0d2dc4ae441
+    - name: Sword slicer_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: aefe08258a523b448879c3668dfd81aa
+    - name: Sword slicer_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 10
+        y: 0
+        width: 25
+        height: 11
+      spriteId: df2f2ae99618edf4e8563fb7fae86513
+    - name: Sword slicer_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: 65ee0957e9d31b54d947393fc06a0949
+    - name: Sword slicer_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: fda1346c97909ce4a8d08e754fe6e9e4
+    - name: Sword slicer_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: 2ac664a03f0d36c4499fa1ad87fd949f
+    - name: Sword slicer_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: 5605928e7b3c01b49826eebb5b5291ca
+    - name: Sword slicer_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 8
+        y: 0
+        width: 27
+        height: 5
+      spriteId: a959566ac75d8224eb92e9c387280679
+    - name: Sword slicer_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 10
+        y: 0
+        width: 25
+        height: 11
+      spriteId: 67df56c6f6200a64681c904ebbcb5f47
+    - name: Sword slicer_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 27
+        y: 0
+        width: 8
+        height: 25
+      spriteId: 7ca5c19b0b68f2f4aa1b1e3307045672
+    - name: Sword slicer_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 76630162b18910046ba135dbc6e0cb24
+    - name: Sword slicer_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: e370eb3bf27e6024f9a11896c9218bab
+    - name: Sword slicer_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 8f2e0759328faaf4e91c03b11750f82e
+    - name: Sword slicer_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: edfb64dfe27c6864e86f739b28e6710b
+    - name: Sword slicer_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: b1324759cdd99874b9eb99dfa1bea5d9
+    - name: Sword slicer_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 31ad265260bc1c241a9ecd7b61a809e1
+    - name: Sword slicer_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: fe74a7f8a2f9d8c47a92c3f888611ed4
+    - name: Sword slicer_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 6b82bde7eb7e74f4988bee5af6d685d6
+    - name: Sword slicer_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 26
+      spriteId: 0677380958efe31419a0482224fc20c6
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 32}

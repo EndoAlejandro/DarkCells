@@ -1,0 +1,500 @@
+fileFormatVersion: 2
+guid: 5a32e4d1ad442c34faf994921ee4a8ad
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Bear trap_Frame_0
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 39
+      height: 20
+    spriteID: 3be800930741a6e42aa28ec01553ae32
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Bear trap_Frame_1
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 32
+      width: 39
+      height: 20
+    spriteID: 12f6d02d5593d0347b398127c540def6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 32}
+  - name: Bear trap_Frame_7
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 60
+      width: 39
+      height: 20
+    spriteID: 1314c9d6f0508ec499d52e54d7f8b19a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 60}
+  - name: Bear trap_Frame_10
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 88
+      width: 39
+      height: 20
+    spriteID: f447a2131380f5946a58c6db24f8b83f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 88}
+  - name: Bear trap_Frame_11
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 116
+      width: 39
+      height: 20
+    spriteID: aca2697bb639a7e49bc6950241f4a4be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 116}
+  - name: Bear trap_Frame_12
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 144
+      width: 39
+      height: 20
+    spriteID: fd821044dae3c0448a9701e3581855dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 144}
+  - name: Bear trap_Frame_2
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 172
+      width: 39
+      height: 20
+    spriteID: 82a29112a57e67345b03740482c5c688
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 172}
+  - name: Bear trap_Frame_3
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 200
+      width: 39
+      height: 20
+    spriteID: 60b78803862c1524499629546f0edd81
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 200}
+  - name: Bear trap_Frame_4
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 228
+      width: 39
+      height: 20
+    spriteID: d4799309b5c8bf44fa848b274dd8e4db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 228}
+  - name: Bear trap_Frame_5
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 4
+      width: 39
+      height: 20
+    spriteID: 81b3379672ace1447bb8028a92a54e3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 4}
+  - name: Bear trap_Frame_6
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 32
+      width: 39
+      height: 20
+    spriteID: 0f708851aac7a1d4cb2645f341ae0442
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 32}
+  - name: Bear trap_Frame_8
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 60
+      width: 39
+      height: 20
+    spriteID: d93f209e6fbf97141a4b8e82d6d3811b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 60}
+  - name: Bear trap_Frame_9
+    originalName: 
+    pivot: {x: 0.41025642, y: 0.05}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 88
+      width: 39
+      height: 20
+    spriteID: ee117b796ebbeea49965734b0875e20d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 88}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1317000133
+    name: Bear trap
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Bear trap_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 3be800930741a6e42aa28ec01553ae32
+    - name: Bear trap_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 12f6d02d5593d0347b398127c540def6
+    - name: Bear trap_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 1314c9d6f0508ec499d52e54d7f8b19a
+    - name: Bear trap_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: f447a2131380f5946a58c6db24f8b83f
+    - name: Bear trap_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: aca2697bb639a7e49bc6950241f4a4be
+    - name: Bear trap_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: fd821044dae3c0448a9701e3581855dc
+    - name: Bear trap_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 82a29112a57e67345b03740482c5c688
+    - name: Bear trap_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 60b78803862c1524499629546f0edd81
+    - name: Bear trap_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: d4799309b5c8bf44fa848b274dd8e4db
+    - name: Bear trap_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 81b3379672ace1447bb8028a92a54e3a
+    - name: Bear trap_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: 0f708851aac7a1d4cb2645f341ae0442
+    - name: Bear trap_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: d93f209e6fbf97141a4b8e82d6d3811b
+    - name: Bear trap_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 0
+        y: -1
+        width: 39
+        height: 20
+      spriteId: ee117b796ebbeea49965734b0875e20d
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 32, y: 19}
