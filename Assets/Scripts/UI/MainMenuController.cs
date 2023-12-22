@@ -43,7 +43,7 @@ namespace DarkHavoc.UI
         {
             container.SetActive(false);
             yield return _transitionManager.SetMenuPanel(false);
-            _gameManager.EnableMainInput();
+            _gameManager.UnpauseGame();
         }
 
         private void SettingsButtonPressed()

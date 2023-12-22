@@ -25,28 +25,37 @@ namespace DarkHavoc
         }
 
         public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
+
         private IEnumerator LoadLobbySceneAsync()
         {
-            // ResetTriggers();
             yield return SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
-            // ResetTriggers();
         }
 
-        public void LoadBiomeScene(Biome biome) => StartCoroutine(LoadBiomeSceneAsync(biome));
+        public void LoadBiomeScene(Biome biome) =>
+            StartCoroutine(LoadBiomeSceneAsync(biome));
 
         private IEnumerator LoadBiomeSceneAsync(Biome biome)
         {
-            // ResetTriggers();
             yield return SetTransitionPanel(true);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
-            // ResetTriggers();
         }
-        
+
+        public void LoadBossBiomeScene(Biome biome) =>
+            StartCoroutine(LoadBossBiomeSceneAsync(biome));
+
+        private IEnumerator LoadBossBiomeSceneAsync(Biome biome)
+        {
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync(biome + "Boss", LoadSceneMode.Additive);
+            yield return SetTransitionPanel(false);
+        }
+
         public IEnumerator SetTransitionPanel(bool state)
         {
             yield return new WaitUntil(() => _transitionInProgress != state);

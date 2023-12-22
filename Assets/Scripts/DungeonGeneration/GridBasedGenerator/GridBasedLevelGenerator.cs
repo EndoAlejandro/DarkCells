@@ -19,6 +19,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private readonly Dictionary<string, Tilemap> _globalTilemaps = new();
 
         public GridRoomData InitialRoom { get; private set; }
+        public GridRoomData ExitRoom { get; private set; }
+
         public List<Vector3> WorldPositionSpawnPoints { get; private set; }
 
         protected override void Awake()
@@ -129,7 +131,6 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _roomDataMatrix[initialX, 1] = nextRoom;
 
             Vector2Int currentPosition = nextRoom.Position;
-            //Vector2Int currentPosition = InitialRoom.Position;
 
             int safeExit = 100;
             while (safeExit > 0)
@@ -156,9 +157,9 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             }
 
             currentPosition += Vector2Int.up;
-            var lastRoom = new GridRoomData(currentPosition);
-            lastRoom.SetDirection(Vector2Int.down);
-            _roomDataMatrix[currentPosition.x, currentPosition.y] = lastRoom;
+            ExitRoom = new GridRoomData(currentPosition);
+            ExitRoom.SetDirection(Vector2Int.down);
+            _roomDataMatrix[currentPosition.x, currentPosition.y] = ExitRoom;
         }
 
         private void CalculateSecondaryPath()
@@ -172,6 +173,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 {
                     if (TryToAddSecondaryRoom(i, j, -1)) continue;
                 }
+
                 if (i < _roomDataMatrix.GetLength(0) - 1)
                 {
                     if (TryToAddSecondaryRoom(i, j, 1)) continue;
@@ -225,7 +227,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         }
 
         public Vector2 GetWorldPosition(GridRoomData data) =>
-            new(roomSize.x * data.Position.x, roomSize.y * data.Position.y);
+            new(roomSize.x * data.Position.x, roomSize.y * -data.Position.y);
 
         public CompositeCollider2D GetLevelBounds() =>
             _globalTilemaps["CameraCollider"].TryGetComponent(out CompositeCollider2D collider)

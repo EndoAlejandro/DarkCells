@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointOffset: 1
+  exitTriggerPrefab: {fileID: 7296529100447857684, guid: e419628c704834a4ba1ffe244093117f, type: 3}
   bestiary: {fileID: 11400000, guid: bcaf032f2fcdb3e4fabd8597903b6dc6, type: 2}

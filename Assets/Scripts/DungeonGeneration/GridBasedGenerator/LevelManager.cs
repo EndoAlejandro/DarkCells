@@ -8,12 +8,15 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     public class LevelManager : Service<LevelManager>
     {
         [SerializeField] private float spawnPointOffset;
+        [SerializeField] private ExitTrigger exitTriggerPrefab;
 
         [SerializeField] private BiomeBestiary bestiary;
 
-        private Vector3 _spawnPoint;
         private GridBasedLevelGenerator _levelGenerator;
+        private CameraManager _cameraManager;
         private GameManager _gameManager;
+        
+        private Vector3 _spawnPoint;
 
         private void Start()
         {
@@ -28,10 +31,19 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _levelGenerator.GenerateLevel();
             yield return null;
             CompositeCollider2D bounds = _levelGenerator.GetLevelBounds();
-            ServiceLocator.Instance.GetService<CameraManager>().SetCameraBounds(bounds);
+            _cameraManager ??= ServiceLocator.Instance.GetService<CameraManager>();
+            _cameraManager.SetCameraBounds(bounds);
             SpawnEnemies();
             yield return null;
             CreatePlayer();
+            CreateExit();
+        }
+
+        private void CreateExit()
+        {
+            GridRoomData exitRoomData = _levelGenerator.ExitRoom;
+            Vector3 position = _levelGenerator.GetWorldPosition(exitRoomData);
+            Instantiate(exitTriggerPrefab, position, Quaternion.identity);
         }
 
         private void SpawnEnemies()
@@ -54,6 +66,10 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _gameManager.EnableMainInput();
             _gameManager.RegisterPlayer(player);
         }
+
+        public void ExitLevel()
+        {
+            _gameManager.GoToNextLevel();
+        }
     }
 }
-

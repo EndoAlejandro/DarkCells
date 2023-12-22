@@ -25,8 +25,15 @@ namespace DarkHavoc
         private void Start()
         {
             GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;
-            GameManagerOnGamePauseChanged(isPaused: false);
+            // GameManager.OnSetInputEnabled += GameManagerOnSetInputEnabled;
+            // GameManagerOnGamePauseChanged(isPaused: false);
         }
+
+        /*private void GameManagerOnSetInputEnabled(bool enable)
+        {
+            mainVirtualCamera.gameObject.SetActive(enable);
+            menuVirtualCamera.gameObject.SetActive(!enable);
+        }*/
 
         private void GameManagerOnGamePauseChanged(bool isPaused)
         {

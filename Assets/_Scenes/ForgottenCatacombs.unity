@@ -213,10 +213,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2108324649285187968, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
-      propertyPath: m_SurfaceArc
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 3412973493179085796, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_Name
       value: LevelGenerator
@@ -260,10 +256,6 @@ PrefabInstance:
     - target: {fileID: 5601511096462541746, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808640562890505312, guid: 40d5e0e2ae97df8469c1e3783255393a, type: 3}
-      propertyPath: damage
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -435,11 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990494011836376321, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: orthographic size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
-      propertyPath: m_YDamping
-      value: 0.01997892
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
