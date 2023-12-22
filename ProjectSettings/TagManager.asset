@@ -8,6 +8,7 @@ TagManager:
   - OneWay
   - CameraCollider
   - Visuals
+  - Hazard
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Terrain/Ground
   - IgnoreAll
   - Terrain/OneWay
-  - 
+  - Hazard
   - 
   - 
   - 
