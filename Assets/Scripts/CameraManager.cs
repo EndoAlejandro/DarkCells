@@ -22,18 +22,7 @@ namespace DarkHavoc
             _confiner = mainVirtualCamera.GetComponent<CinemachineConfiner2D>();
         }
 
-        private void Start()
-        {
-            GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;
-            // GameManager.OnSetInputEnabled += GameManagerOnSetInputEnabled;
-            // GameManagerOnGamePauseChanged(isPaused: false);
-        }
-
-        /*private void GameManagerOnSetInputEnabled(bool enable)
-        {
-            mainVirtualCamera.gameObject.SetActive(enable);
-            menuVirtualCamera.gameObject.SetActive(!enable);
-        }*/
+        private void Start() => GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;
 
         private void GameManagerOnGamePauseChanged(bool isPaused)
         {
