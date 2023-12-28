@@ -47,7 +47,7 @@ namespace DarkHavoc.StateMachineComponents
 
             _currentState?.OnExit();
             _currentState = state;
-            _currentState.OnEnter();
+            _currentState?.OnEnter();
             OnStateChanged?.Invoke(_currentState);
         }
 
@@ -58,10 +58,10 @@ namespace DarkHavoc.StateMachineComponents
             if (transition != null)
                 SetState(transition.to);
 
-            _currentState.Tick();
+            _currentState?.Tick();
         }
 
-        public void FixedTick() => _currentState.FixedTick();
+        public void FixedTick() => _currentState?.FixedTick();
 
         private StateTransition CheckForTransition()
         {
