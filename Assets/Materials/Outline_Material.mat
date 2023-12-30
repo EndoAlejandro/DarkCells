@@ -55,8 +55,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _HitValue: 0
-    - _ShowOutline: 0
+    - _ShowOutline: 1
     - _Stroke: 1
     m_Colors:
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
