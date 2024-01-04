@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
     public class LevelManager : Service<LevelManager>
     {
         [SerializeField] private float spawnPointOffset;
-        [SerializeField] private ExitTrigger exitTriggerPrefab;
+        [FormerlySerializedAs("exitTriggerPrefab")] [SerializeField] private Exit exitPrefab;
 
         [SerializeField] private BiomeBestiary bestiary;
 
@@ -43,7 +44,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         {
             GridRoomData exitRoomData = _levelGenerator.ExitRoom;
             Vector3 position = _levelGenerator.GetWorldPosition(exitRoomData);
-            Instantiate(exitTriggerPrefab, position, Quaternion.identity);
+            Instantiate(exitPrefab, position, Quaternion.identity);
         }
 
         private void SpawnEnemies()

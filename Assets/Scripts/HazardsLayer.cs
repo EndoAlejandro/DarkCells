@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DarkHavoc
 {
-    public class HazardsLayer : InteractiveTrigger<Player>, IDoDamage
+    public class HazardsLayer : RepetitiveInteractive<Player>, IDoDamage
     {
         [SerializeField] private float damage = 1;
         public float Damage => damage;

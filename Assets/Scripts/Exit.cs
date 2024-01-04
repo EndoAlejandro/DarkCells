@@ -4,7 +4,7 @@ using DarkHavoc.ServiceLocatorComponents;
 
 namespace DarkHavoc
 {
-    public class ExitTrigger : InteractiveTrigger<Player>
+    public class Exit : RepetitiveInteractive<Player>
     {
         protected override void TriggerInteraction(Player player)
         {
