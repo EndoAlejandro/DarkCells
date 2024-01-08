@@ -3,6 +3,17 @@ using UnityEngine;
 
 namespace DarkHavoc.CustomUtils
 {
+    public static class TransformExtensions
+    {
+        public static Transform[] GetChildren(this Transform original)
+        {
+            int count = original.childCount;
+            var children = new Transform[count];
+            for (int i = 0; i < count; i++) children[i] = original.GetChild(i);
+            return children;
+        }
+    }
+    
     public static class ListExtensions
     {
         public static void Shuffle<T>(this IList<T> ts)

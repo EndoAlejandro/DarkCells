@@ -1,4 +1,5 @@
 ﻿using DarkHavoc.PlayerComponents;
+using DarkHavoc.ServiceLocatorComponents;
 
 namespace DarkHavoc
 {
@@ -6,7 +7,8 @@ namespace DarkHavoc
     {
         protected override void TriggerInteraction()
         {
-            //TODO: Go to next biome.
+            //TODO: Go to next level.
+            ServiceLocator.Instance.GetService<GameManager>().GoToNextLevel();
         }
     }
 }

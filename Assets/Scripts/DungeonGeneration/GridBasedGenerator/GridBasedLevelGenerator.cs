@@ -122,9 +122,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private void CalculateMainPath()
         {
             var initialX = Random.Range(0, _roomDataMatrix.GetLength(0));
-            InitialRoom = new GridRoomData(new Vector2Int(initialX, 0));
-            InitialRoom.SetDirection(Vector2Int.up);
-            _roomDataMatrix[initialX, 0] = InitialRoom;
+            SetInitialRoom(initialX);
 
             var nextRoom = new GridRoomData(new Vector2Int(initialX, 1));
             nextRoom.SetDirection(Vector2Int.down);
@@ -157,9 +155,21 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             }
 
             currentPosition += Vector2Int.up;
+            SetExitRoom(currentPosition);
+        }
+
+        private void SetExitRoom(Vector2Int currentPosition)
+        {
             ExitRoom = new GridRoomData(currentPosition);
             ExitRoom.SetDirection(Vector2Int.down);
             _roomDataMatrix[currentPosition.x, currentPosition.y] = ExitRoom;
+        }
+
+        private void SetInitialRoom(int initialX)
+        {
+            InitialRoom = new GridRoomData(new Vector2Int(initialX, 0));
+            InitialRoom.SetDirection(Vector2Int.up);
+            _roomDataMatrix[initialX, 0] = InitialRoom;
         }
 
         private void CalculateSecondaryPath()

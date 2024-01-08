@@ -1,3 +1,4 @@
+using DarkHavoc.CustomUtils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,6 +7,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     public class GridRoomVariant : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsContainer;
+        [SerializeField] private Transform instantiables;
 
         private Tilemap[] _roomTileMaps;
 
@@ -17,12 +19,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             return _roomTileMaps;
         }
 
-        public Transform[] GetSpawnPoints()
-        {
-            int count = spawnPointsContainer.childCount;
-            var children = new Transform[count];
-            for (int i = 0; i < count; i++) children[i] = spawnPointsContainer.GetChild(i);
-            return children;
-        }
+        public Transform[] GetSpawnPoints() => spawnPointsContainer.GetChildren();
+        public Transform[] GetInstantiables() => instantiables.GetChildren();
     }
 }
