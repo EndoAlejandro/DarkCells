@@ -16,7 +16,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private GridBasedLevelGenerator _levelGenerator;
         private CameraManager _cameraManager;
         private GameManager _gameManager;
-        
+
         private Vector3 _spawnPoint;
 
         private void Start()
@@ -35,6 +35,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _cameraManager ??= ServiceLocator.Instance.GetService<CameraManager>();
             _cameraManager.SetCameraBounds(bounds);
             SpawnEnemies();
+            SpawnInstantiables();
             yield return null;
             CreatePlayer();
             CreateExit();
@@ -56,6 +57,14 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 int index = Random.Range(0, bestiary.Bestiary.Length);
                 Instantiate(bestiary.Bestiary[index], spawnPoint, Quaternion.identity);
             }
+        }
+
+        private void SpawnInstantiables()
+        {
+            List<Instantiable> instantiables = _levelGenerator.Instantiables;
+
+            foreach (var instantiable in instantiables)
+                Instantiate(instantiable.Prefab, instantiable.WorldPosition, Quaternion.identity);
         }
 
         private void CreatePlayer()
