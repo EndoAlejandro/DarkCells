@@ -6,7 +6,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class BlockState : IState
     {
         public override string ToString() => "Block";
-        public AnimationState Animation => AnimationState.Block;
+        public AnimationState AnimationState => AnimationState.Block;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

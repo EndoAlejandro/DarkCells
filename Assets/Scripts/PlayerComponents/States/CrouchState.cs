@@ -6,7 +6,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class CrouchState : IState
     {
         public override string ToString() => "Crouch";
-        public AnimationState Animation => AnimationState.Crouch;
+        public AnimationState AnimationState => AnimationState.Crouch;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

@@ -1,14 +1,14 @@
 ﻿using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
+using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class AttackState : IState
     {
         public override string ToString() => "Attack";
-        public AnimationState Animation => AnimationState.LightAttack;
+        public AnimationState AnimationState => AnimationState.LightAttack;
 
         private readonly CagedShocker _cagedShocker;
         private readonly EnemyAttack _attack;

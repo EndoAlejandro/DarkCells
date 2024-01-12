@@ -1,5 +1,4 @@
-﻿using DarkHavoc.ImpulseComponents;
-using DarkHavoc.Senses;
+﻿using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.PlayerComponents
@@ -7,7 +6,7 @@ namespace DarkHavoc.PlayerComponents
     public class WallSlideState : IState
     {
         public override string ToString() => "Wall Slide";
-        public AnimationState Animation => AnimationState.WallSlide;
+        public AnimationState AnimationState => AnimationState.WallSlide;
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
 

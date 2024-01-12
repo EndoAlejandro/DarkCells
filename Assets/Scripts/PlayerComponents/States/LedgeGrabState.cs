@@ -1,11 +1,11 @@
 ﻿using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.PlayerComponents
+namespace DarkHavoc.PlayerComponents.States
 {
     public class LedgeGrabState : IState
     {
         public override string ToString() => "LedgeGrab";
-        public AnimationState Animation => AnimationState.LedgeGrab;
+        public AnimationState AnimationState => AnimationState.LedgeGrab;
         public bool CanTransitionToSelf => false;
 
         private readonly Player _player;

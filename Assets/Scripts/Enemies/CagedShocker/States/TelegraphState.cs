@@ -2,14 +2,13 @@
 using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class TelegraphState : IState
     {
         public override string ToString() => "Telegraph";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 

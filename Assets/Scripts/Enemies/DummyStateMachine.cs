@@ -1,5 +1,4 @@
-﻿using DarkHavoc.EntitiesInterfaces;
-using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Enemies
@@ -16,40 +15,6 @@ namespace DarkHavoc.Enemies
         protected override void StateMachine()
         {
             var idle = new EnemyIdle(_dummy);
-        }
-    }
-
-    public class EnemyIdle : IState
-    {
-        private readonly Dummy _dummy;
-        public EnemyIdle(Dummy dummy)
-        {
-            _dummy = dummy;
-        }
-
-        private void DummyOnTakeDamage(IDoDamage damageDealer)
-        {
-            
-        }
-
-        public AnimationState Animation  => AnimationState.Ground;
-        public bool CanTransitionToSelf => false;
-
-        public void Tick()
-        {
-        }
-
-        public void FixedTick()
-        {
-        }
-
-        public void OnEnter()
-        {
-        }
-
-        public void OnExit()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

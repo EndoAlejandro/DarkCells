@@ -8,7 +8,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class AirState : IState
     {
         public override string ToString() => "Air";
-        public AnimationState Animation => AnimationState.Air;
+        public AnimationState AnimationState => AnimationState.Air;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

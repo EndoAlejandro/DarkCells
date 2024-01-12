@@ -7,7 +7,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class DeathState : IState
     {
         public override string ToString() => "Death";
-        public AnimationState Animation => AnimationState.Death;
+        public AnimationState AnimationState => AnimationState.Death;
         public bool CanTransitionToSelf => false;
 
         private readonly Player _player;

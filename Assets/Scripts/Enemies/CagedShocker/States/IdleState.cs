@@ -1,13 +1,14 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.PlayerComponents;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
+using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class IdleState : IState
     {
         public override string ToString() => "Grounded";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
 
         private readonly CagedShocker _cagedShocker;
         private float _timer;

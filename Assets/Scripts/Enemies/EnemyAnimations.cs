@@ -1,6 +1,6 @@
-﻿namespace DarkHavoc.PlayerComponents
+﻿namespace DarkHavoc.Enemies
 {
-    public enum AnimationState
+    public enum EnemyAnimations
     {
         Ground,
         Air,

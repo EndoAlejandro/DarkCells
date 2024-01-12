@@ -8,7 +8,7 @@ namespace DarkHavoc.PlayerComponents.States
 {
     public class ParryState : IState
     {
-        public AnimationState Animation => AnimationState.Parry;
+        public AnimationState AnimationState => AnimationState.Parry;
         public override string ToString() => "Parry";
         public bool CanTransitionToSelf => true;
         public bool Ended => _timer <= 0f;

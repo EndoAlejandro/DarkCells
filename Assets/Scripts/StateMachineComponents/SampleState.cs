@@ -1,11 +1,10 @@
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
 
 namespace DarkHavoc.StateMachineComponents
 {
     public class SampleState : IState
     {
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
         private readonly float _transitionTime;
         private float _timer;
 

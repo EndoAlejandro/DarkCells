@@ -2,14 +2,14 @@
 using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
+using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class ChaseState : IState
     {
         public override string ToString() => "Chase";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
 
         private readonly CagedShocker _cagedShocker;
         private readonly EnemyAttack _attack;

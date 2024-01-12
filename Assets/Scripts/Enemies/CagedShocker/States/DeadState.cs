@@ -1,12 +1,12 @@
-﻿using DarkHavoc.StateMachineComponents;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
+﻿using DarkHavoc.PlayerComponents;
+using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class DeadState : IState
     {
         public override string ToString() => "Dead";
-        public AnimationState Animation => AnimationState.Death;
+        public AnimationState AnimationState => AnimationState.Death;
         public bool CanTransitionToSelf => false;
         private readonly CagedShocker _cagedShocker;
 

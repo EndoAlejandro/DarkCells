@@ -15,10 +15,14 @@ namespace DarkHavoc.Enemies.Colossal
 
         protected override void StateMachine()
         {
+            var initialDelay = new AnimationOnlyState(3f, AnimationState.None);
+            var awake = new AnimationOnlyState(2f, AnimationState.Awake);
             var idle = new ColossalIdle(2f);
-            // var chase = new ChaseState(1f);
 
-            stateMachine.SetState(idle);
+            stateMachine.SetState(initialDelay);
+
+            stateMachine.AddTransition(initialDelay, awake, () => initialDelay.Ended);
+            stateMachine.AddTransition(awake, idle, () => awake.Ended);
         }
     }
 }

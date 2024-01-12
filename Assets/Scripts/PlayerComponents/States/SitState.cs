@@ -6,7 +6,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class SitState : IState
     {
         public override string ToString() => _sitDown ? " SitDown" : "SitUp";
-        public AnimationState Animation => _sitDown ? AnimationState.SitDown : AnimationState.SitUp;
+        public AnimationState AnimationState => _sitDown ? AnimationState.SitDown : AnimationState.SitUp;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 

@@ -5,7 +5,7 @@ namespace DarkHavoc.Enemies.Colossal
 {
     public class ColossalChase : IState
     {
-        public AnimationState Animation { get; }
+        public AnimationState AnimationState { get; }
         public bool CanTransitionToSelf { get; }
         public void Tick()
         {

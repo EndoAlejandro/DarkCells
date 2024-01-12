@@ -5,7 +5,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class GroundState : IState
     {
         public override string ToString() => "Grounded";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
 
         private readonly Player _player;
         private readonly InputReader _input;

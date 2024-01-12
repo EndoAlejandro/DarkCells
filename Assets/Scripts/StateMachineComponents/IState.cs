@@ -1,11 +1,17 @@
-using DarkHavoc.PlayerComponents;
-
 namespace DarkHavoc.StateMachineComponents
 {
     public interface IState
     {
-        AnimationState Animation { get; }
+        /// <summary>
+        /// Animation to be played in this state.
+        /// </summary>
+        AnimationState AnimationState { get; }
+        
+        /// <summary>
+        /// Allow the State machine to transition to the same state if needed.
+        /// </summary>
         bool CanTransitionToSelf { get; }
+        
         /// <summary>
         /// Called each Update.
         /// </summary>

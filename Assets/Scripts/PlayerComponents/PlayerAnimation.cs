@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DarkHavoc.CustomUtils;
 using DarkHavoc.PlayerComponents.States;
 using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
@@ -13,8 +14,6 @@ namespace DarkHavoc.PlayerComponents
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
-
-        [SerializeField] private float hitAnimationDuration = 1f;
 
         private Animator _animator;
         private SpriteRenderer _renderer;
@@ -70,10 +69,10 @@ namespace DarkHavoc.PlayerComponents
             _renderer.GetPropertyBlock(_materialPb);
 
             float timer = 0f;
-            while (timer < hitAnimationDuration)
+            while (timer < Constants.HitAnimationDuration)
             {
                 timer += Time.deltaTime;
-                float hitThreshold = 1 - (timer / hitAnimationDuration);
+                float hitThreshold = 1 - (timer / Constants.HitAnimationDuration);
                 _materialPb.SetFloat(HitValue, hitThreshold);
                 _renderer.SetPropertyBlock(_materialPb);
                 yield return null;
@@ -134,9 +133,9 @@ namespace DarkHavoc.PlayerComponents
 
         private void PlayerStateMachineOnEntityStateChanged(IState state)
         {
-            if (_previousState != null) _animator.ResetTrigger(_previousState.Animation.ToString());
+            if (_previousState != null) _animator.ResetTrigger(_previousState.AnimationState.ToString());
 
-            _animator.SetTrigger(state.Animation.ToString());
+            _animator.SetTrigger(state.AnimationState.ToString());
             _previousState = state;
         }
     }

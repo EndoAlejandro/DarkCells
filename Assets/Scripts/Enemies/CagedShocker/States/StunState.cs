@@ -1,13 +1,14 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.PlayerComponents;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.PlayerComponents.AnimationState;
+using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
     public class StunState : IState
     {
         public override string ToString() => "Stun";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 

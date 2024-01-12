@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {

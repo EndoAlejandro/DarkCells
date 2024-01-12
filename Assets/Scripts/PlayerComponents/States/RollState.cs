@@ -7,7 +7,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class RollState : IState
     {
         public override string ToString() => "Roll";
-        public AnimationState Animation => AnimationState.Roll;
+        public AnimationState AnimationState => AnimationState.Roll;
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;

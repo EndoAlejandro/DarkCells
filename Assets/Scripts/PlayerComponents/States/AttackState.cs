@@ -8,7 +8,7 @@ namespace DarkHavoc.PlayerComponents.States
     public class AttackState : IState
     {
         public override string ToString() => "Attack";
-        public AnimationState Animation { get; }
+        public AnimationState AnimationState { get; }
 
         private readonly Player _player;
         private readonly InputReader _input;
@@ -30,7 +30,7 @@ namespace DarkHavoc.PlayerComponents.States
             _input = input;
             _animation = animation;
             _attackAction = attackAction;
-            Animation = animationState;
+            AnimationState = animationState;
         }
 
         public void Tick()

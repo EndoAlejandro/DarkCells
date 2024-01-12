@@ -7,7 +7,7 @@ namespace DarkHavoc.Enemies.Colossal
     {
         private readonly float _idleTime;
         public override string ToString() => "Idle";
-        public AnimationState Animation => AnimationState.Ground;
+        public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
