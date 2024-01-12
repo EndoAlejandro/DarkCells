@@ -28,7 +28,6 @@ namespace DarkHavoc.PlayerComponents
             // Grounded States
             var ground = new GroundState(_player, _input);
             var roll = new RollState(_player, _rigidbody, _input, _player.Stats.RollAction);
-            var crouch = new CrouchState(_player, _rigidbody);
             var death = new DeathState(_player, _rigidbody);
 
             // Air States
@@ -68,15 +67,11 @@ namespace DarkHavoc.PlayerComponents
             stateMachine.AddTransition(ledgeGrab, air, () => ledgeGrab.Ended);
 
             // Roll.
-            var toRollStates = new IState[] { ground, air, crouch, parry };
+            var toRollStates = new IState[] { ground, air, parry };
             stateMachine.AddManyTransitions(toRollStates, roll, () => _player.HasBufferedRoll);
             stateMachine.AddTransition(roll, ground, () => roll.Ended && _player.Grounded && !CanEndRoll);
             stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded && !CanEndRoll);
-            // stateMachine.AddTransition(roll, crouch, () => roll.Ended && _player.Grounded && CanEndRoll);
             stateMachine.AddTransition(roll, lightAttack, () => _player.HasBufferedAttack && !CanEndRoll);
-
-            // Crouch.
-            // stateMachine.AddTransition(crouch, ground, () => !CanEndRoll);
 
             // Air Attack.
             var toAirAttack = new IState[] { air, lightAttack };

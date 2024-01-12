@@ -49,7 +49,6 @@ namespace DarkHavoc.PlayerComponents.States
             Ended = false;
             _timer = _rollAction.Time;
             _player.Roll();
-            //_player.AddImpulse(_rollAction);
             _player.SetPlayerCollider(false);
         }
 

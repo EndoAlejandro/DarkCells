@@ -1,8 +1,10 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using System;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.States
 {
+    [Obsolete("This is an old mechanic.", true)]
     public class CrouchState : IState
     {
         public override string ToString() => "Crouch";
