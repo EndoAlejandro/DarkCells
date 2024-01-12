@@ -21,8 +21,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             if (Player.Grounded) _canRoll = true;
             base.Tick();
         }
-
-
+        
         public override void UseAction()
         {
             if (!_canRoll) return;

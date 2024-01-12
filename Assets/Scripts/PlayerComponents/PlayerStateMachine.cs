@@ -12,6 +12,9 @@ namespace DarkHavoc.PlayerComponents
         private Rigidbody2D _rigidbody;
         private InputReader _input;
 
+        private bool CanEndRoll =>
+            _player != null && _player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance);
+
         protected override void References()
         {
             _animation = GetComponentInChildren<PlayerAnimation>();
@@ -67,19 +70,13 @@ namespace DarkHavoc.PlayerComponents
             // Roll.
             var toRollStates = new IState[] { ground, air, crouch, parry };
             stateMachine.AddManyTransitions(toRollStates, roll, () => _player.HasBufferedRoll);
-            stateMachine.AddTransition(roll, ground,
-                () => roll.Ended && _player.Grounded &&
-                      !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
-            stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded);
-            stateMachine.AddTransition(roll, crouch,
-                () => roll.Ended && _player.Grounded &&
-                      _player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
-            stateMachine.AddTransition(roll, lightAttack,
-                () => _player.HasBufferedAttack && !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
+            stateMachine.AddTransition(roll, ground, () => roll.Ended && _player.Grounded && !CanEndRoll);
+            stateMachine.AddTransition(roll, air, () => roll.Ended && !_player.Grounded && !CanEndRoll);
+            // stateMachine.AddTransition(roll, crouch, () => roll.Ended && _player.Grounded && CanEndRoll);
+            stateMachine.AddTransition(roll, lightAttack, () => _player.HasBufferedAttack && !CanEndRoll);
 
             // Crouch.
-            stateMachine.AddTransition(crouch, ground,
-                () => !_player.CheckCeilingCollision(_player.Stats.CrouchCeilingDistance));
+            // stateMachine.AddTransition(crouch, ground, () => !CanEndRoll);
 
             // Air Attack.
             var toAirAttack = new IState[] { air, lightAttack };

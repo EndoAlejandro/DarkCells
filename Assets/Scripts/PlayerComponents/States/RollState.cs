@@ -41,6 +41,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void FixedTick()
         {
+            _player.AddImpulse(_rollAction);
         }
 
         public void OnEnter()
@@ -48,13 +49,14 @@ namespace DarkHavoc.PlayerComponents.States
             Ended = false;
             _timer = _rollAction.Time;
             _player.Roll();
-            _player.AddImpulse(_rollAction);
+            //_player.AddImpulse(_rollAction);
             _player.SetPlayerCollider(false);
         }
 
         public void OnExit()
         {
             Ended = false;
+            _player.AddImpulse(new ImpulseAction());
             _player.SetPlayerCollider(true);
         }
     }
