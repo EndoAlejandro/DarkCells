@@ -15,9 +15,9 @@ namespace DarkHavoc.Enemies.Colossal
 
         protected override void StateMachine()
         {
-            var initialDelay = new AnimationOnlyState(3f, AnimationState.None);
-            var awake = new AnimationOnlyState(2f, AnimationState.Awake);
-            var idle = new ColossalIdle(2f);
+            var initialDelay = new AnimationOnlyState(5f, AnimationState.None);
+            var awake = new AnimationOnlyState(1.1f, AnimationState.Awake);
+            var idle = new ColossalIdle(_colossal, 2f);
 
             stateMachine.SetState(initialDelay);
 

@@ -5,6 +5,7 @@ namespace DarkHavoc.Enemies
 {
     public class AnimationOnlyState : IState
     {
+        public override string ToString() => "AnimationStateOnly";
         public AnimationState AnimationState { get; }
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;

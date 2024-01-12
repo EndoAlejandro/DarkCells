@@ -22,7 +22,7 @@ MonoBehaviour:
     m_Bits: 1409
   ceilingLayers:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 4480
   maxSpeed: 6
   acceleration: 80
   groundDeceleration: 70
@@ -61,7 +61,7 @@ MonoBehaviour:
     impulseDirection: 0
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   damage: 1
   movementReduction: 0.5
   lightAttackBuffer: 0.15

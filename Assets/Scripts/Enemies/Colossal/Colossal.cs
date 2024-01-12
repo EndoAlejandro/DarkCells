@@ -18,6 +18,24 @@ namespace DarkHavoc.Enemies.Colossal
         public float Health { get; private set; }
         public Transform MidPoint => midPoint;
 
+        private Collider2D _collider;
+        private Rigidbody2D _rigidbody;
+
+        private void Awake()
+        {
+            _collider = GetComponent<Collider2D>();
+            _rigidbody = GetComponent<Rigidbody2D>();
+
+            _collider.enabled = false;
+            _rigidbody.isKinematic = true;
+        }
+
+        public void Setup()
+        {
+            _rigidbody.isKinematic = false;
+            _collider.enabled = true;
+        }
+
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1) =>
             takeDamage.TakeDamage(this, damageMultiplier);
 

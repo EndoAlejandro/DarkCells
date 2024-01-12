@@ -5,7 +5,8 @@ namespace DarkHavoc.Enemies.Colossal
 {
     public class ColossalIdle : IState
     {
-        private readonly float _idleTime;
+        private readonly Colossal _colossal;
+        private readonly float _duration;
         public override string ToString() => "Idle";
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
@@ -13,7 +14,11 @@ namespace DarkHavoc.Enemies.Colossal
 
         private float _timer;
 
-        public ColossalIdle(float idleTime) => _idleTime = idleTime;
+        public ColossalIdle(Colossal colossal,float duration)
+        {
+            _colossal = colossal;
+            _duration = duration;
+        }
 
         public void Tick() => _timer--;
 
@@ -21,7 +26,11 @@ namespace DarkHavoc.Enemies.Colossal
         {
         }
 
-        public void OnEnter() => _timer = _idleTime;
+        public void OnEnter()
+        {
+            _colossal.Setup();
+            _timer = _duration;
+        }
 
         public void OnExit()
         {
