@@ -1,3 +1,5 @@
+using System;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,53 +8,36 @@ namespace DarkHavoc.UI
 {
     public class PlayerHealthUI : MonoBehaviour
     {
-        private static readonly int Out = Animator.StringToHash("Out");
-        private static readonly int In = Animator.StringToHash("In");
-
         [SerializeField] private Image healthBar;
 
-        private Player _player;
-        private Animator _animator;
+        private ITakeDamage _takeDamage;
+        private float NormalizedHealth => _takeDamage.Health / _takeDamage.MaxHealth;
 
-        private float _maxHealth;
-        private float _currentHealth;
-        private float NormalizedHealth => 1f - (_currentHealth / _maxHealth);
-
-        private void OnEnable() => _animator = GetComponent<Animator>();
-
-        private void Start()
+        private void Awake()
         {
             Player.OnPlayerSpawned += PlayerOnPlayerSpawned;
             Player.OnPlayerDeSpawned += PlayerOnPlayerDeSpawned;
+            SetActive(false);
         }
 
-        private void PlayerOnPlayerSpawned(Player player)
+        private void PlayerOnPlayerSpawned(Player player) => Setup(player);
+        private void PlayerOnPlayerDeSpawned(Player player) => SetActive(false);
+
+        private void Setup(ITakeDamage takeDamage)
         {
-            _animator = GetComponent<Animator>();
-            _player = player;
-
-            _maxHealth = _player.MaxHealth;
-            _currentHealth = _player.Health;
-            healthBar.fillAmount = NormalizedHealth;
-
-            _animator.SetTrigger(In);
-            player.OnDamageTaken += PlayerOnDamageTaken;
+            _takeDamage = takeDamage;
+            _takeDamage.OnDamageTaken += TakeDamageOnDamageTaken;
+            UpdateHealthBar();
+            SetActive(true);
         }
 
-        private void PlayerOnPlayerDeSpawned(Player player)
-        {
-            player.OnDamageTaken -= PlayerOnDamageTaken;
-            _player = null;
-        }
-
-        private void PlayerOnDamageTaken()
-        {
-            _currentHealth = _player.Health;
-            healthBar.fillAmount = NormalizedHealth;
-        }
+        private void SetActive(bool isActive) => healthBar.gameObject.SetActive(isActive);
+        private void TakeDamageOnDamageTaken() => UpdateHealthBar();
+        private void UpdateHealthBar() => healthBar.fillAmount = NormalizedHealth;
 
         private void OnDestroy()
         {
+            _takeDamage.OnDamageTaken -= TakeDamageOnDamageTaken;
             Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
             Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
         }

@@ -8,7 +8,7 @@ namespace DarkHavoc
         protected override void TriggerInteraction()
         {
             //TODO: Go to next level.
-            ServiceLocator.Instance.GetService<GameManager>().GoToNextLevel();
+            ServiceLocator.GetService<GameManager>().GoToNextLevel();
         }
     }
 }

@@ -17,6 +17,8 @@
         SitUp,
         SitDown,
         Awake,
-        None
+        None,
+        RangedAttack,
+        MeleeAttack
     }
 }

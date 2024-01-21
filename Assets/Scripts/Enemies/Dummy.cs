@@ -10,11 +10,13 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float knockBackForce = 2f;
 
         public event Action OnDamageTaken;
+        public event Action OnDeath;
 
         private Rigidbody2D _rigidbody;
 
         private float _health;
         public float Health => _health;
+        public float MaxHealth { get; private set; }
         public bool IsAlive => true;
 
         private void Awake()

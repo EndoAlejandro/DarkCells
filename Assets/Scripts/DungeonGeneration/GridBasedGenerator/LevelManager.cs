@@ -8,7 +8,6 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     public class LevelManager : Service<LevelManager>
     {
         [SerializeField] private float spawnPointOffset;
-        //[SerializeField] private ExitDoor exitDoorPrefab;
 
         [SerializeField] private BiomeBestiary bestiary;
 
@@ -20,8 +19,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private void Start()
         {
-            _levelGenerator = ServiceLocator.Instance.GetService<GridBasedLevelGenerator>();
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _levelGenerator = ServiceLocator.GetService<GridBasedLevelGenerator>();
+            _gameManager = ServiceLocator.GetService<GameManager>();
             StartCoroutine(StartLevelAsync());
         }
 
@@ -31,12 +30,12 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             _levelGenerator.GenerateLevel();
             yield return null;
             CompositeCollider2D bounds = _levelGenerator.GetLevelBounds();
-            _cameraManager ??= ServiceLocator.Instance.GetService<CameraManager>();
+            _cameraManager ??= ServiceLocator.GetService<CameraManager>();
             _cameraManager.SetCameraBounds(bounds);
             SpawnEnemies();
             SpawnInstantiables();
             yield return null;
-            CreatePlayer();
+            yield return CreatePlayerAsync();
             CreateExit();
         }
 
@@ -66,14 +65,14 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 Instantiate(instantiable.Prefab, instantiable.WorldPosition, Quaternion.identity);
         }
 
-        private void CreatePlayer()
+        private IEnumerator CreatePlayerAsync()
         {
             var playerSpawnPoint = _levelGenerator.GetWorldPosition(_levelGenerator.InitialRoom);
             playerSpawnPoint.y += spawnPointOffset;
             var playerPrefab = _gameManager.PlayerPrefab;
-            var player = Instantiate(playerPrefab, playerSpawnPoint, Quaternion.identity);
+            Instantiate(playerPrefab, playerSpawnPoint, Quaternion.identity);
+            yield return null;
             _gameManager.EnableMainInput();
-            _gameManager.RegisterPlayer(player);
         }
 
         public void ExitLevel()

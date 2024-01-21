@@ -58,7 +58,7 @@ namespace DarkHavoc
         {
             SetPropertyBlock(state);
             SetAdditionalVisuals(state);
-            _input ??= ServiceLocator.Instance.GetService<InputReader>();
+            _input ??= ServiceLocator.GetService<InputReader>();
             if (!oneTimeTrigger) _available = state;
         }
 

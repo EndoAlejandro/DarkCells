@@ -12,7 +12,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public AnimationState AnimationState => AnimationState.Ground;
 
         private readonly CagedShocker _cagedShocker;
-        private readonly EnemyAttack _attack;
+        private readonly EnemyHitBox _hitBox;
         private readonly Collider2D _collider;
 
         private Player _player;
@@ -27,10 +27,10 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public bool CanTransitionToSelf => false;
         public bool AttackAvailable { get; private set; }
 
-        public ChaseState(CagedShocker cagedShocker, EnemyAttack attack, Collider2D collider)
+        public ChaseState(CagedShocker cagedShocker, EnemyHitBox hitBox, Collider2D collider)
         {
             _cagedShocker = cagedShocker;
-            _attack = attack;
+            _hitBox = hitBox;
             _collider = collider;
         }
 
@@ -42,7 +42,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
             var isPlayerVisible = _cagedShocker.IsPlayerVisible(_player);
             var horizontalDistance = PlayerHorizontalDistance();
 
-            AttackAvailable = isPlayerVisible && _attack.IsPlayerInRange();
+            AttackAvailable = isPlayerVisible && _hitBox.IsPlayerInRange();
 
             _targetDirection =
                 Mathf.Abs(horizontalDistance) > _cagedShocker.Stats.ChaseStoppingDistance

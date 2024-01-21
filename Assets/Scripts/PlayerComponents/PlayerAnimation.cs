@@ -42,7 +42,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void Start()
         {
-            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
+            _inputReader = ServiceLocator.GetService<InputReader>();
         }
 
         private void OnEnable()
@@ -103,7 +103,6 @@ namespace DarkHavoc.PlayerComponents
                     HorizontalFloat();
                     VerticalFloat();
                     break;
-                case CrouchState:
                 case BlockState:
                     FlipCheck();
                     break;

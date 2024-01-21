@@ -9,7 +9,7 @@ namespace DarkHavoc.Pooling
 
         protected void OnEnable()
         {
-            if (_animator == null) _animator = GetComponent<Animator>();
+            _animator ??= GetComponent<Animator>();
             if (_animator == null) return;
             _animator.SetTrigger(Animate);
         }

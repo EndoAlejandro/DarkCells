@@ -7,8 +7,9 @@ using UnityEngine;
 namespace DarkHavoc.Enemies
 {
     [RequireComponent(typeof(Animator))]
-    public class EnemyAnimation : MonoBehaviour
+    public abstract class EnemyAnimation : MonoBehaviour
     {
+        private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         public event Action OnAttackInterruptionAvailable;
@@ -21,20 +22,40 @@ namespace DarkHavoc.Enemies
         private FiniteStateBehaviour _stateMachine;
         private IState _previousState;
 
+        private Enemy _enemy;
+
         private IEnumerator _hitAnimation;
+
+        protected abstract float NormalizedHorizontal { get; }
 
         protected virtual void Awake()
         {
             animator = GetComponent<Animator>();
             renderer = GetComponent<SpriteRenderer>();
 
+            _enemy = GetComponentInParent<Enemy>();
             _stateMachine = GetComponentInParent<FiniteStateBehaviour>();
 
             _materialPb = new MaterialPropertyBlock();
         }
 
-        protected virtual void OnEnable() => _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
-        protected virtual void OnDisable() => _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
+        protected virtual void OnEnable()
+        {
+            _enemy.OnXFlipped += EnemyOnXFlipped;
+            _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
+        }
+
+
+        protected virtual void OnDisable()
+        {
+            _enemy.OnXFlipped -= EnemyOnXFlipped;
+            _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
+        }
+
+        private void Update() =>
+            animator.SetFloat(Horizontal, Mathf.Abs(NormalizedHorizontal));
+
+        protected virtual void EnemyOnXFlipped(bool facingLeft) => renderer.flipX = facingLeft;
 
         private void StateMachineOnEntityStateChanged(IState state)
         {

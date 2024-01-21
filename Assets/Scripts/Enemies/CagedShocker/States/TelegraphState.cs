@@ -23,8 +23,6 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         {
             _cagedShocker = cagedShocker;
             _telegraphTime = telegraphTime;
-
-            _fxProvider = ServiceLocator.Instance.GetService<FxProvider>();
         }
 
         public void Tick()
@@ -42,7 +40,8 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         public void OnEnter()
         {
-            _fxProvider ??= ServiceLocator.Instance.GetService<FxProvider>();
+            _fxProvider ??= ServiceLocator.GetService<FxProvider>();
+            
             _telegraphed = false;
             _timer = _telegraphTime;
             

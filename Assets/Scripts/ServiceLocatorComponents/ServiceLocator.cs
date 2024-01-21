@@ -1,35 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DarkHavoc.ServiceLocatorComponents
 {
     public class ServiceLocator
     {
-        public static ServiceLocator Instance => _instance ??= new ServiceLocator();
+        private static ServiceLocator Instance => _instance ??= new ServiceLocator();
         private static ServiceLocator _instance;
         private readonly Dictionary<Type, object> _services = new();
 
-        public bool TryToRegisterService<T>(T service)
+        public static bool TryToRegisterService<T>(T service)
         {
             Type type = service.GetType();
-            if (!_services.TryAdd(type, service)) return false;
+            if (!Instance._services.TryAdd(type, service)) return false;
             // Debug.Log($"Register {type} Service.");
             return true;
         }
 
-        public void RemoveService<T>(T service)
+        public static void RemoveService<T>(T service)
         {
             var type = service.GetType();
-            if (!_services.ContainsKey(type)) return;
+            if (!Instance._services.ContainsKey(type)) return;
             // Debug.Log($"Remove {type} Service.");
-            _services.Remove(type);
+            Instance._services.Remove(type);
         }
 
-        public T GetService<T>() where T : class
+        public static T GetService<T>() where T : class
         {
             var type = typeof(T);
-            if (!_services.TryGetValue(type, out var service))
+            if (!Instance._services.TryGetValue(type, out var service))
             {
                 // Debug.LogWarning($"{type} Not found.");
                 return null;

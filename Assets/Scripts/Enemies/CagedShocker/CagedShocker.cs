@@ -12,17 +12,20 @@ namespace DarkHavoc.Enemies.CagedShocker
     {
         public event Action OnStunned;
         public event Action OnDamageTaken;
+        public event Action OnDeath;
         public event Action<float> OnTelegraph;
-        public float IdleTime => stats != null ? stats.IdleTime : 0f;
-        public float Damage => stats != null ? stats.Damage : 0;
+        public float IdleTime => Stats != null ? Stats.IdleTime : 0f;
+        public float Damage => Stats != null ? Stats.Damage : 0;
         public Transform MidPoint => midPoint;
         public float Health { get; private set; }
+        public float MaxHealth { get; private set; }
         public bool IsAlive => Health > 0f;
         public bool Grounded => LeftFoot || RightFoot;
         public bool LeftFoot { get; private set; }
         public bool RightFoot { get; private set; }
         public float StunTime { get; private set; }
         public Player Player { get; private set; }
+        public CagedShockerStats Stats => stats as CagedShockerStats;
 
         [Header(nameof(CagedShocker))]
         [SerializeField] private Transform midPoint;
@@ -43,8 +46,9 @@ namespace DarkHavoc.Enemies.CagedShocker
 
         private void OnEnable()
         {
-            if (stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
-            Health = stats != null ? stats.MaxHealth : 0;
+            if (Stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
+            Health = Stats != null ? Stats.MaxHealth : 0;
+            MaxHealth = Health;
         }
 
         private void FixedUpdate()
@@ -60,34 +64,34 @@ namespace DarkHavoc.Enemies.CagedShocker
         public void CheckGrounded()
         {
             var leftFootPosition =
-                new Vector2(_collider.bounds.min.x - stats.FootPositionOffset.x, transform.position.y);
-            LeftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
-                stats.GroundOffset + stats.GroundCheckDistance, stats.GroundLayerMask);
+                new Vector2(_collider.bounds.min.x - Stats.FootPositionOffset.x, transform.position.y);
+            LeftFoot = Physics2D.Raycast(leftFootPosition + Vector2.up * Stats.FootPositionOffset.y, Vector2.down,
+                Stats.GroundOffset + Stats.GroundCheckDistance, Stats.GroundLayerMask);
 
             var rightFootPosition =
-                new Vector2(_collider.bounds.max.x + stats.FootPositionOffset.x, transform.position.y);
-            RightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * stats.FootPositionOffset.y, Vector2.down,
-                stats.GroundOffset + stats.GroundCheckDistance, stats.GroundLayerMask);
+                new Vector2(_collider.bounds.max.x + Stats.FootPositionOffset.x, transform.position.y);
+            RightFoot = Physics2D.Raycast(rightFootPosition + Vector2.up * Stats.FootPositionOffset.y, Vector2.down,
+                Stats.GroundOffset + Stats.GroundCheckDistance, Stats.GroundLayerMask);
         }
 
         public void Move(int direction)
         {
             if (direction == 0)
             {
-                var deceleration = stats.Acceleration;
+                var deceleration = Stats.Acceleration;
                 _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
             }
             else
             {
-                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, direction * stats.MaxSpeed,
-                    stats.Acceleration * Time.fixedDeltaTime);
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, direction * Stats.MaxSpeed,
+                    Stats.Acceleration * Time.fixedDeltaTime);
             }
         }
 
         public void CustomGravity()
         {
-            _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -stats.MaxFallSpeed,
-                stats.Gravity * Time.fixedDeltaTime);
+            _targetVelocity.y = Mathf.MoveTowards(_targetVelocity.y, -Stats.MaxFallSpeed,
+                Stats.Gravity * Time.fixedDeltaTime);
         }
 
         public void ApplyVelocity() => _rigidbody.velocity = _targetVelocity;
@@ -97,7 +101,7 @@ namespace DarkHavoc.Enemies.CagedShocker
         public void SeekPlayer()
         {
             var tempPlayer =
-                EntityVision.CircularCheck<Player>(MidPoint.position, stats.DetectionDistance, ref _results);
+                EntityVision.CircularCheck<Player>(MidPoint.position, Stats.DetectionDistance, ref _results);
             if (tempPlayer == null) return;
 
             if (!IsPlayerVisible(tempPlayer))
@@ -114,7 +118,7 @@ namespace DarkHavoc.Enemies.CagedShocker
             if (Player == null) return;
 
             float distance = Vector3.Distance(Player.transform.position, transform.position);
-            if (distance > stats.ScapeDistance) Player = null;
+            if (distance > Stats.ScapeDistance) Player = null;
         }
 
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1f) =>
@@ -135,13 +139,14 @@ namespace DarkHavoc.Enemies.CagedShocker
             _rigidbody.simulated = false;
         }
 
-        public float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / stats.MaxSpeed;
+        public override float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / Stats.MaxSpeed;
+
 
         public void Stun() => OnStunned?.Invoke();
 
         private void OnDrawGizmos()
         {
-            if (stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
+            if (Stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
 
             DetectionRange(MidPoint.position);
@@ -153,22 +158,22 @@ namespace DarkHavoc.Enemies.CagedShocker
         private void DetectionRange(Vector3 position)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(position, stats.DetectionDistance);
+            Gizmos.DrawWireSphere(position, Stats.DetectionDistance);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(position, stats.ScapeDistance);
+            Gizmos.DrawWireSphere(position, Stats.ScapeDistance);
         }
 
         private void GroundRays(Vector3 position)
         {
-            var offset = Vector3.up * stats.FootPositionOffset.y;
-            var distance = Vector3.down * (stats.GroundOffset + stats.GroundCheckDistance);
+            var offset = Vector3.up * Stats.FootPositionOffset.y;
+            var distance = Vector3.down * (Stats.GroundOffset + Stats.GroundCheckDistance);
             // Left Foot.
             var leftFootPosition =
-                new Vector3(_collider.bounds.min.x - stats.FootPositionOffset.x, position.y);
+                new Vector3(_collider.bounds.min.x - Stats.FootPositionOffset.x, position.y);
             Gizmos.DrawLine(leftFootPosition + offset, leftFootPosition + offset + distance);
             // Right Foot.
             var rightFootPosition =
-                new Vector3(_collider.bounds.max.x + stats.FootPositionOffset.x, position.y);
+                new Vector3(_collider.bounds.max.x + Stats.FootPositionOffset.x, position.y);
             Gizmos.DrawLine(rightFootPosition + offset, rightFootPosition + offset + distance);
         }
 
@@ -178,14 +183,14 @@ namespace DarkHavoc.Enemies.CagedShocker
             horizontal += Stats.WallDetection.HorizontalOffset;
             var direction = FacingLeft ? Vector2.left : Vector2.right;
             // Top Ray.
-            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y + stats.WallDetection.TopOffset);
-            Gizmos.DrawLine(topOrigin, topOrigin + (direction * stats.WallDetection.DistanceCheck));
+            Vector2 topOrigin = new Vector2(horizontal, _collider.bounds.max.y + Stats.WallDetection.TopOffset);
+            Gizmos.DrawLine(topOrigin, topOrigin + (direction * Stats.WallDetection.DistanceCheck));
             // Middle Ray.
-            var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y + stats.WallDetection.MidOffset);
-            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * stats.WallDetection.DistanceCheck));
+            var centerOrigin = new Vector2(horizontal, _collider.bounds.center.y + Stats.WallDetection.MidOffset);
+            Gizmos.DrawLine(centerOrigin, centerOrigin + (direction * Stats.WallDetection.DistanceCheck));
             // Bottom Ray.
-            Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + stats.WallDetection.BottomOffset);
-            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * stats.WallDetection.DistanceCheck));
+            Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + Stats.WallDetection.BottomOffset);
+            Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * Stats.WallDetection.DistanceCheck));
         }
     }
 }

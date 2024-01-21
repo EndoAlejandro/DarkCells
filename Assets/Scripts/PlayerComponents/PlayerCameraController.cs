@@ -26,7 +26,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void Start()
         {
-            _cameraManager = ServiceLocator.Instance.GetService<CameraManager>();
+            _cameraManager = ServiceLocator.GetService<CameraManager>();
             
             FallingDampingSetup();
             CameraFollowSetup();

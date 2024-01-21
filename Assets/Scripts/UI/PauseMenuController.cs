@@ -23,9 +23,9 @@ namespace DarkHavoc.UI
         {
             container.SetActive(false);
 
-            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
-            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _inputReader = ServiceLocator.GetService<InputReader>();
+            _transitionManager = ServiceLocator.GetService<TransitionManager>();
+            _gameManager = ServiceLocator.GetService<GameManager>();
 
             _gameManager.SetPauseInput(true);
             GameManager.OnGamePauseChanged += GameManagerOnGamePauseChanged;

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DarkHavoc.ServiceLocatorComponents
 {
@@ -10,7 +9,7 @@ namespace DarkHavoc.ServiceLocatorComponents
 
         protected virtual void Awake()
         {
-            if (!ServiceLocator.Instance.TryToRegisterService(this as T))
+            if (!ServiceLocator.TryToRegisterService(this as T))
             {
                 Destroy(gameObject);
                 return;
@@ -22,7 +21,7 @@ namespace DarkHavoc.ServiceLocatorComponents
 
         protected virtual void OnDestroy()
         {
-            if (_canRemoveService) ServiceLocator.Instance.RemoveService(this as T);
+            if (_canRemoveService) ServiceLocator.RemoveService(this as T);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DarkHavoc
     {
         protected override void TriggerInteraction(Player player)
         {
-            ServiceLocator.Instance.GetService<LevelManager>()?.ExitLevel();
+            ServiceLocator.GetService<LevelManager>()?.ExitLevel();
         }
     }
 }

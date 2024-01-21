@@ -36,6 +36,7 @@ namespace DarkHavoc.PlayerComponents
         public event Action<bool> OnLedgeGrabChanged;
         public event Action<bool> OnWallSlideChanged;
         public event Action OnDamageTaken;
+        public event Action OnDeath;
 
         // Buffered Actions
         public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
@@ -106,8 +107,8 @@ namespace DarkHavoc.PlayerComponents
 
         private void Start()
         {
-            _inputReader = ServiceLocator.Instance.GetService<InputReader>();
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _inputReader = ServiceLocator.GetService<InputReader>();
+            _gameManager = ServiceLocator.GetService<GameManager>();
 
             Actions();
             OnPlayerSpawned?.Invoke(this);
@@ -309,6 +310,7 @@ namespace DarkHavoc.PlayerComponents
         public void Death()
         {
             PlayerContext = null;
+            OnDeath?.Invoke();
             Debug.Log("Player Dead.");
         }
 

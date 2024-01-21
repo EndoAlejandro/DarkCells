@@ -1,4 +1,7 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using System;
+using DarkHavoc.ServiceLocatorComponents;
+using DarkHavoc.StateMachineComponents;
+using DarkHavoc.UI;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
@@ -13,11 +16,13 @@ namespace DarkHavoc.Enemies
         private readonly float _duration;
 
         private float _timer;
+        private readonly Action _callback;
 
-        public AnimationOnlyState(float duration, AnimationState animationState)
+        public AnimationOnlyState(float duration, AnimationState animationState, Action callback = null)
         {
             _duration = duration;
             AnimationState = animationState;
+            _callback = callback;
         }
 
         public void Tick() => _timer -= Time.deltaTime;
@@ -27,6 +32,11 @@ namespace DarkHavoc.Enemies
         }
 
         public void OnEnter() => _timer = _duration;
-        public void OnExit() => _timer = _duration;
+
+        public void OnExit()
+        {
+            _timer = _duration;
+            _callback?.Invoke();
+        }
     }
 }

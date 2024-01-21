@@ -12,7 +12,7 @@ namespace DarkHavoc
         public static event Action<bool> OnSetInputEnabled;
         public static event Action<bool> OnGamePauseChanged;
 
-        public Player Player { get; set; }
+        public Player Player { get; private set; }
         public Player PlayerPrefab => playerPrefab;
         public bool Paused { get; private set; }
 
@@ -30,13 +30,19 @@ namespace DarkHavoc
             base.Awake();
 
             _inputReader = new InputReader();
-            ServiceLocator.Instance.TryToRegisterService(_inputReader);
+            ServiceLocator.TryToRegisterService(_inputReader);
+
+            Player.OnPlayerSpawned += PlayerOnPlayerSpawned;
+            Player.OnPlayerDeSpawned += PlayerOnPlayerDeSpawned;
         }
+
+        private void PlayerOnPlayerDeSpawned(Player player) => Player = null;
+        private void PlayerOnPlayerSpawned(Player player) => Player = player;
 
         private void Start()
         {
             LoadBiomeData();
-            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
+            _transitionManager = ServiceLocator.GetService<TransitionManager>();
             _inputReader.DisableMainInput();
         }
 
@@ -115,6 +121,11 @@ namespace DarkHavoc
             OnGamePauseChanged?.Invoke(false);
         }
 
-        public void RegisterPlayer(Player player) => Player = player;
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
+            Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
+        }
     }
 }

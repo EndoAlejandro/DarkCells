@@ -20,7 +20,7 @@ namespace DarkHavoc.PlayerComponents
             _animation = GetComponentInChildren<PlayerAnimation>();
             _player = GetComponent<Player>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _input = ServiceLocator.Instance.GetService<InputReader>();
+            _input = ServiceLocator.GetService<InputReader>();
         }
 
         protected override void StateMachine()

@@ -13,7 +13,7 @@ namespace DarkHavoc.UI
 
         private void Start()
         {
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
+            _gameManager = ServiceLocator.GetService<GameManager>();
             _button.onClick.AddListener(OnButtonPressed);
         }
 

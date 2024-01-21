@@ -21,8 +21,8 @@ namespace DarkHavoc.UI
 
         private void Start()
         {
-            _gameManager = ServiceLocator.Instance.GetService<GameManager>();
-            _transitionManager = ServiceLocator.Instance.GetService<TransitionManager>();
+            _gameManager = ServiceLocator.GetService<GameManager>();
+            _transitionManager = ServiceLocator.GetService<TransitionManager>();
             
             startGameButton?.onClick.AddListener(() => StartCoroutine(StartButtonPressedAsync()));
             settingsButton?.onClick.AddListener(SettingsButtonPressed);
