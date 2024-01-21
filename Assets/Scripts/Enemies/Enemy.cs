@@ -1,14 +1,25 @@
 ﻿using System;
+using DarkHavoc.EntitiesInterfaces;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour, IDoDamage, ITakeDamage, IEntity
     {
-        [SerializeField] protected EnemyStats stats;
+        public event Action OnDamageTaken;
+        public event Action OnDeath;
         public event Action<bool> OnXFlipped;
+        public float Health { get; protected set; }
+        public float MaxHealth { get; protected set; }
+        public bool IsAlive => Health >= 0f;
+        public Transform MidPoint => midPoint;
         public bool FacingLeft { get; private set; }
         public EnemyStats BaseStats => stats;
+        public abstract float Damage { get; }
+
+
+        [SerializeField] protected EnemyStats stats;
+        [SerializeField] private Transform midPoint;
 
         public abstract float GetNormalizedHorizontal();
 
@@ -16,6 +27,24 @@ namespace DarkHavoc.Enemies
         {
             FacingLeft = facingLeft;
             OnXFlipped?.Invoke(FacingLeft);
+        }
+
+
+        public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1, bool unstoppable = false)
+        {
+            takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
+        }
+
+
+        public virtual void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool unstoppable)
+        {
+            Health = Mathf.Max(Health - damageDealer.Damage, 0f);
+            OnDamageTaken?.Invoke();
+        }
+
+        public virtual void Death()
+        {
+            OnDeath?.Invoke();
         }
     }
 }

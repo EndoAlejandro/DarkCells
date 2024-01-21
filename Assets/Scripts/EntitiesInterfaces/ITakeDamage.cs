@@ -11,7 +11,7 @@ namespace DarkHavoc.EntitiesInterfaces
         float Health { get; }
         float MaxHealth { get; }
         bool IsAlive { get; }
-        void TakeDamage(IDoDamage damageDealer, float damageMultiplier);
+        void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool unstoppable);
         void Death();
     }
 }

@@ -8,7 +8,10 @@ namespace DarkHavoc.Enemies
     [RequireComponent(typeof(Collider2D))]
     public class EnemyHitBox : MonoBehaviour
     {
+        public bool CanBeParried => canBeParried;
+        
         [SerializeField] private float cooldown = 1f;
+        [SerializeField] private bool canBeParried;
         [SerializeField] private bool debug;
 
         private Collider2D _hitBox;
@@ -20,7 +23,6 @@ namespace DarkHavoc.Enemies
         private bool _isSphere;
         private bool _onCooldown;
         private int _offsetDirection;
-
 
         private void Awake()
         {

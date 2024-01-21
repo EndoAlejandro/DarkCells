@@ -41,13 +41,14 @@ namespace DarkHavoc.Enemies
 
         protected virtual void OnEnable()
         {
+            _enemy.OnDamageTaken += EnemyOnDamageTaken;
             _enemy.OnXFlipped += EnemyOnXFlipped;
             _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
         }
 
-
         protected virtual void OnDisable()
         {
+            _enemy.OnDamageTaken -= EnemyOnDamageTaken;
             _enemy.OnXFlipped -= EnemyOnXFlipped;
             _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
         }
@@ -66,7 +67,7 @@ namespace DarkHavoc.Enemies
             _previousState = state;
         }
 
-        protected void PlayHitAnimation()
+        private void EnemyOnDamageTaken()
         {
             if (_hitAnimation != null) StopCoroutine(_hitAnimation);
             _hitAnimation = HitAnimationAsync();

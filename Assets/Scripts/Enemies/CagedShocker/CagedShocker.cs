@@ -8,27 +8,18 @@ namespace DarkHavoc.Enemies.CagedShocker
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CagedShocker : Enemy, IDoDamage, ITakeDamage, IEntity, IStunnable
+    public class CagedShocker : Enemy, IStunnable
     {
         public event Action OnStunned;
-        public event Action OnDamageTaken;
-        public event Action OnDeath;
         public event Action<float> OnTelegraph;
         public float IdleTime => Stats != null ? Stats.IdleTime : 0f;
-        public float Damage => Stats != null ? Stats.Damage : 0;
-        public Transform MidPoint => midPoint;
-        public float Health { get; private set; }
-        public float MaxHealth { get; private set; }
-        public bool IsAlive => Health > 0f;
+        public override float Damage => Stats != null ? Stats.Damage : 0;
         public bool Grounded => LeftFoot || RightFoot;
         public bool LeftFoot { get; private set; }
         public bool RightFoot { get; private set; }
         public float StunTime { get; private set; }
         public Player Player { get; private set; }
         public CagedShockerStats Stats => stats as CagedShockerStats;
-
-        [Header(nameof(CagedShocker))]
-        [SerializeField] private Transform midPoint;
 
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
@@ -121,22 +112,19 @@ namespace DarkHavoc.Enemies.CagedShocker
             if (distance > Stats.ScapeDistance) Player = null;
         }
 
-        public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1f) =>
-            takeDamage.TakeDamage(this, damageMultiplier);
-
-        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier)
+        public override void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool unstoppable)
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
 
-            Health -= damageDealer.Damage;
-            OnDamageTaken?.Invoke();
+            base.TakeDamage(damageDealer, damageMultiplier, unstoppable);
         }
 
-        public void Death()
+        public override void Death()
         {
             _collider.enabled = false;
             _rigidbody.simulated = false;
+            base.Death();
         }
 
         public override float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / Stats.MaxSpeed;

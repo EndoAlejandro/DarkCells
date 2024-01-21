@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
-using DarkHavoc.CustomUtils;
 
 namespace DarkHavoc.Enemies.Colossal
 {
@@ -18,8 +14,6 @@ namespace DarkHavoc.Enemies.Colossal
             _colossal = GetComponentInParent<Colossal>();
         }
 
-        private void A(ref bool b){}
-        
         protected override void EnemyOnXFlipped(bool facingLeft)
         {
             base.EnemyOnXFlipped(facingLeft);

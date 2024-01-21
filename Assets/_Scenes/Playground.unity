@@ -567,6 +567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   knockBackForce: 2
+  _rigidbody: {fileID: 0}
+  _health: 0
+  <MaxHealth>k__BackingField: 0
 --- !u!1 &358447311
 GameObject:
   m_ObjectHideFlags: 0
@@ -13080,6 +13083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 30
+  canBeParried: 0
   debug: 0
 --- !u!1 &1033175533
 GameObject:
@@ -13172,6 +13176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  canBeParried: 0
   debug: 0
 --- !u!1 &1068673097
 GameObject:
@@ -13815,6 +13820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 4
+  canBeParried: 0
   debug: 0
 --- !u!1001 &1795540753
 PrefabInstance:

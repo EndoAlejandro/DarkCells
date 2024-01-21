@@ -6,6 +6,6 @@ namespace DarkHavoc.EntitiesInterfaces
     {
         Transform transform { get; }
         float Damage { get; }
-        void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1f);
+        void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1f, bool unstoppable = false);
     }
 }
