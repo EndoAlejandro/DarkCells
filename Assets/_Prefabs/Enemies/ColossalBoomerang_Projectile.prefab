@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3552042330245675273}
   - component: {fileID: 4406025494271028283}
   - component: {fileID: 2552046392299744313}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 5541001286273840689}
   - component: {fileID: 3523182916085360872}
   - component: {fileID: 8016857826090573392}
-  m_Layer: 12
-  m_Name: ColossalBoomerang
+  m_Layer: 14
+  m_Name: ColossalBoomerang_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  cooldown: 5
 --- !u!61 &3523182916085360872
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8786924, y: 1.2023966}
+  m_Size: {x: 2.8400333, y: 0.75265527}
   m_EdgeRadius: 0
 --- !u!50 &8016857826090573392
 Rigidbody2D:

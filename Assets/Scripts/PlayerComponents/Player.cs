@@ -15,6 +15,7 @@ namespace DarkHavoc.PlayerComponents
     [RequireComponent(typeof(PlayerStateMachine))]
     public class Player : MonoBehaviour, IDoDamage, IEntity, ITakeDamage
     {
+        [Serializable]
         public class Context
         {
             public float Health { get; protected internal set; }
@@ -55,9 +56,9 @@ namespace DarkHavoc.PlayerComponents
         public Transform MidPoint => midPoint;
         public int Direction => FacingLeft ? -1 : 1;
         public float Damage => Stats != null ? Stats.Damage : 0f;
-        public float Health => PlayerContext.Health;
-        public float MaxHealth => PlayerContext.MaxHealth;
-        public bool IsAlive => PlayerContext.IsAlive;
+        public float Health => PlayerContext?.Health ?? 1;
+        public float MaxHealth => PlayerContext?.MaxHealth ?? 1;
+        public bool IsAlive => PlayerContext?.IsAlive ?? false;
 
         [SerializeField] private PlayerStats stats;
 
@@ -309,8 +310,8 @@ namespace DarkHavoc.PlayerComponents
 
         public void Death()
         {
-            PlayerContext = null;
             OnDeath?.Invoke();
+            PlayerContext = null;
             Debug.Log("Player Dead.");
         }
 

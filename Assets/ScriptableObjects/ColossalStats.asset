@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   idleTime: 1
   acceleration: 10
-  maxSpeed: 1.5
+  maxSpeed: 5
   attackLayer:
     serializedVersion: 2
     m_Bits: 8

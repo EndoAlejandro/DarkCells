@@ -36,8 +36,7 @@ namespace DarkHavoc.Enemies
             if (!IsAlive) return;
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();
-
-            if (!IsAlive) Death();
+            // if (!IsAlive) Death();
         }
 
         public abstract void Move(int direction);

@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
-using DarkHavoc.ServiceLocatorComponents;
-using DarkHavoc.UI;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies.Colossal
@@ -12,6 +10,7 @@ namespace DarkHavoc.Enemies.Colossal
     [RequireComponent(typeof(Rigidbody2D))]
     public class Colossal : Enemy
     {
+        public static event Action<ITakeDamage> OnSpawned; 
         public event Action<bool> OnBuffStateChanged;
         public ColossalStats Stats => stats as ColossalStats;
         public ColossalBoomerangArms BoomerangArms => boomerangArms;
@@ -61,7 +60,7 @@ namespace DarkHavoc.Enemies.Colossal
             _rigidbody.isKinematic = false;
             _collider.enabled = true;
 
-            ServiceLocator.GetService<HealthUI>().Setup(this);
+            OnSpawned?.Invoke(this);
         }
 
         private void Start() => _initialHeight = transform.position.y;

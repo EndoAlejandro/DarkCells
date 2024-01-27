@@ -7,13 +7,14 @@ namespace DarkHavoc.ServiceLocatorComponents
     {
         private static ServiceLocator Instance => _instance ??= new ServiceLocator();
         private static ServiceLocator _instance;
-        private readonly Dictionary<Type, object> _services = new();
+        private readonly Dictionary<Type, object> _services;
+
+        private ServiceLocator() => _services = new Dictionary<Type, object>();
 
         public static bool TryToRegisterService<T>(T service)
         {
             Type type = service.GetType();
             if (!Instance._services.TryAdd(type, service)) return false;
-            // Debug.Log($"Register {type} Service.");
             return true;
         }
 
@@ -21,7 +22,6 @@ namespace DarkHavoc.ServiceLocatorComponents
         {
             var type = service.GetType();
             if (!Instance._services.ContainsKey(type)) return;
-            // Debug.Log($"Remove {type} Service.");
             Instance._services.Remove(type);
         }
 
@@ -29,11 +29,7 @@ namespace DarkHavoc.ServiceLocatorComponents
         {
             var type = typeof(T);
             if (!Instance._services.TryGetValue(type, out var service))
-            {
-                // Debug.LogWarning($"{type} Not found.");
                 return null;
-                // throw new Exception($"{type} Not found.");
-            }
 
             return (T)service;
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -8,7 +9,6 @@ namespace DarkHavoc
     public class GameManager : Service<GameManager>
     {
         protected override bool DonDestroyOnLoad => true;
-
         public static event Action<bool> OnSetInputEnabled;
         public static event Action<bool> OnGamePauseChanged;
 
@@ -126,6 +126,13 @@ namespace DarkHavoc
             base.OnDestroy();
             Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
             Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
+        }
+
+        public IEnumerator CreatePlayerAsync(Vector3 playerSpawnPoint)
+        {
+            Instantiate(PlayerPrefab, playerSpawnPoint, Quaternion.identity);
+            yield return null;
+            EnableMainInput();
         }
     }
 }

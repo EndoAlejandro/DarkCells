@@ -13,7 +13,7 @@ namespace DarkHavoc.CustomUtils
             return children;
         }
     }
-    
+
     public static class ListExtensions
     {
         public static void Shuffle<T>(this IList<T> ts)
@@ -30,9 +30,11 @@ namespace DarkHavoc.CustomUtils
             }
         }
     }
-    
+
     public static class Vector3Extensions
     {
+        public static Vector3 Clone(this Vector3 original) => new(original.x, original.y, original.z);
+
         public static Vector3 With(this Vector3 original, float? x = null, float? y = null, float? z = null)
         {
             return new Vector3(x ?? original.x, y ?? original.y, z ?? original.z);

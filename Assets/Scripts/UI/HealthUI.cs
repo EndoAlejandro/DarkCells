@@ -1,4 +1,5 @@
-﻿using DarkHavoc.EntitiesInterfaces;
+﻿using DarkHavoc.Enemies.Colossal;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,13 @@ namespace DarkHavoc.UI
 
         private void OnEnable() => SetActive(false);
 
-        public void Setup(ITakeDamage takeDamage)
+        protected override void Awake()
+        {
+            base.Awake();
+            Colossal.OnSpawned += ColossalOnSpawned;
+        }
+
+        private void ColossalOnSpawned(ITakeDamage takeDamage)
         {
             _takeDamage = takeDamage;
             _takeDamage.OnDamageTaken += TakeDamageOnDamageTaken;
@@ -29,7 +36,8 @@ namespace DarkHavoc.UI
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            _takeDamage.OnDamageTaken -= TakeDamageOnDamageTaken;
+            Colossal.OnSpawned -= ColossalOnSpawned;
+            if (_takeDamage != null) _takeDamage.OnDamageTaken -= TakeDamageOnDamageTaken;
         }
     }
 }

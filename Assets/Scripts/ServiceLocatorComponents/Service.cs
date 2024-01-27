@@ -5,7 +5,7 @@ namespace DarkHavoc.ServiceLocatorComponents
     public abstract class Service<T> : MonoBehaviour where T : MonoBehaviour
     {
         protected virtual bool DonDestroyOnLoad => false;
-        protected bool _canRemoveService;
+        private bool _canRemoveService;
 
         protected virtual void Awake()
         {

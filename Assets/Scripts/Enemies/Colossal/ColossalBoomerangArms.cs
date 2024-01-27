@@ -47,7 +47,6 @@ namespace DarkHavoc.Enemies.Colossal
 
             if (distance > 1f) return;
             if (_returning) DestroyArms();
-            else Return();
         }
 
         private void Return()
@@ -58,9 +57,9 @@ namespace DarkHavoc.Enemies.Colossal
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.transform.root.TryGetComponent(out Player player)) return;
-            _colossal.DoDamage(player);
-            player.TakeDamage(_colossal);
+            if (other.transform.root.TryGetComponent(out Player player))
+                _colossal.DoDamage(player, unstoppable: _colossal.IsBuffActive);
+
             if (!_returning) Return();
         }
 

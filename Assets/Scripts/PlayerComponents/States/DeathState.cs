@@ -27,22 +27,21 @@ namespace DarkHavoc.PlayerComponents.States
             _toLobbyTimer -= Time.deltaTime;
 
             if (_ended || _toLobbyTimer > 0f) return;
-            
+
             _ended = true;
             ServiceLocator.GetService<GameManager>().GoToLobby();
         }
 
-        public void FixedTick()
-        {
-        }
+        public void FixedTick() => _player.Move(0);
 
         public void OnEnter()
         {
             _toLobbyTimer = 5f;
             _player.ResetVelocity();
-            _rigidbody.isKinematic = true;
+            _player.Death();
+            _rigidbody.simulated = false;
         }
 
-        public void OnExit() => _rigidbody.isKinematic = false;
+        public void OnExit() => _rigidbody.simulated = true;
     }
 }

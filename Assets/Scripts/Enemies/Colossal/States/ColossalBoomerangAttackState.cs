@@ -38,7 +38,7 @@ namespace DarkHavoc.Enemies.Colossal.States
             _boomerangArms =
                 Object.Instantiate(_colossal.BoomerangArms, _colossal.transform.position, Quaternion.identity);
             _boomerangArms.Setup(_colossal, 10f);
-            
+
             _boomerangArms.OnDestroyed += BoomerangArmsOnDestroyed;
         }
 
@@ -47,7 +47,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         public void OnExit()
         {
             _animation.OnBoomerangAttack -= AnimationOnBoomerangAttack;
-            _boomerangArms.OnDestroyed -= BoomerangArmsOnDestroyed;
+            if (_boomerangArms != null) _boomerangArms.OnDestroyed -= BoomerangArmsOnDestroyed;
         }
     }
 }

@@ -39,7 +39,11 @@ namespace DarkHavoc
             menuVirtualCamera.m_LookAt = target.parent;
         }
 
-        public void SetCameraBounds(CompositeCollider2D composite) => StartCoroutine(SetCameraBoundsAsync(composite));
+        public void SetCameraBounds(CompositeCollider2D bounds)
+        {
+            if (bounds == null) return;
+            StartCoroutine(SetCameraBoundsAsync(bounds));
+        }
 
         private IEnumerator SetCameraBoundsAsync(CompositeCollider2D composite)
         {
