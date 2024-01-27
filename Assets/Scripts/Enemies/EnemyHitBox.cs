@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
@@ -8,10 +7,9 @@ namespace DarkHavoc.Enemies
     [RequireComponent(typeof(Collider2D))]
     public class EnemyHitBox : MonoBehaviour
     {
-        public bool CanBeParried => canBeParried;
-        
+        public bool IsUnstoppable { get; private set; }
+
         [SerializeField] private float cooldown = 1f;
-        [SerializeField] private bool canBeParried;
         [SerializeField] private bool debug;
 
         private Collider2D _hitBox;
@@ -70,11 +68,11 @@ namespace DarkHavoc.Enemies
         private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_hitBox.bounds.center,
             ((CircleCollider2D)_hitBox).radius, _results, _enemy.BaseStats.AttackLayer);
 
-        public void Attack()
+        public void Attack(bool isUnstoppable = false)
         {
+            IsUnstoppable = isUnstoppable;
             OverlapHitBox();
-            if (_player) 
-                _player.TakeDamage(_enemy as IDoDamage);
+            if (_player) _player.TakeDamage(_enemy, isUnstoppable: isUnstoppable);
             StartCoroutine(CooldownAsync());
         }
 

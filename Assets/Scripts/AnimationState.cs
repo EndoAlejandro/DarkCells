@@ -19,6 +19,8 @@
         Awake,
         None,
         RangedAttack,
-        MeleeAttack
+        MeleeAttack,
+        BuffAttack,
+        BoomerangAttack
     }
 }

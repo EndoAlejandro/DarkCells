@@ -7,23 +7,19 @@ namespace DarkHavoc.PlayerComponents.States
     {
         public override string ToString() => "Block";
         public AnimationState AnimationState => AnimationState.Block;
-
-        private readonly Player _player;
-        private readonly Rigidbody2D _rigidbody;
-        private readonly InputReader _input;
-
-        private Vector2 _targetVelocity;
-        private float _timer;
-
         public bool Ended => _timer <= 0f;
         public bool CanTransitionToSelf => false;
         public bool ParryAvailable { get; private set; }
+
+        private readonly Player _player;
+        private readonly Rigidbody2D _rigidbody;
+
+        private float _timer;
 
         public BlockState(Player player, Rigidbody2D rigidbody, InputReader input)
         {
             _player = player;
             _rigidbody = rigidbody;
-            _input = input;
         }
 
         public void Tick()
@@ -44,7 +40,6 @@ namespace DarkHavoc.PlayerComponents.States
             _player.TryToBlockDamage += PlayerOnTryToBlockDamage;
 
             _timer = _player.Stats.BlockTime;
-            _targetVelocity = _rigidbody.velocity;
             ParryAvailable = false;
         }
 

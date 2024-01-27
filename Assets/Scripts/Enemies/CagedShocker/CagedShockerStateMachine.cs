@@ -31,7 +31,7 @@ namespace DarkHavoc.Enemies.CagedShocker
                 _cagedShocker.Stats.SecondAttackTime);
             var rest = new RestState(_cagedShocker, _cagedShocker.Stats.RestTime);
             var stun = new StunState(_cagedShocker, _cagedShocker.Stats.StunTime);
-            var dead = new DeadState(_cagedShocker);
+            var dead = new DeathState(_cagedShocker);
 
             // Initial State.
             stateMachine.SetState(idle);

@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-
 using DarkHavoc.CustomUtils;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
@@ -15,8 +14,6 @@ namespace DarkHavoc.Enemies.Colossal.States
         public override string ToString() => "Chase";
 
         private readonly Colossal _colossal;
-        private readonly EnemyHitBox _rangedHitBox;
-        private readonly EnemyHitBox _meleeHitBox;
         private readonly float _stoppingDistance;
         private readonly float _chaseTime;
 
@@ -24,7 +21,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         private int _direction;
         private float _timer;
         private float _distance;
-        
+
         // Turning.
         private readonly float _turnAwait;
         private CancellationTokenSource _cts;
@@ -33,23 +30,34 @@ namespace DarkHavoc.Enemies.Colossal.States
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => true;
         public bool Ended => _timer <= 0f;
-        private bool Stop => _distance <= _stoppingDistance;
         public bool RangedAvailable { get; private set; }
         public bool MeleeAvailable { get; private set; }
+        public bool BuffAvailable { get; private set; }
+        public bool BoomerangAvailable => _boomerangCdTimer <= 0f && PlayerInFront;
 
-        public ColossalChaseState(Colossal colossal, EnemyHitBox rangedHitBox, EnemyHitBox meleeHitBox,
-            float stoppingDistance)
+        private bool Stop => _distance <= _stoppingDistance;
+
+        private bool PlayerInFront => (_colossal.FacingLeft && _direction < 0) ||
+                                      (!_colossal.FacingLeft && _direction > 0);
+
+        private float _boomerangCooldown;
+        private float _boomerangCdTimer;
+
+        public ColossalChaseState(Colossal colossal, float stoppingDistance)
         {
             _colossal = colossal;
-            _rangedHitBox = rangedHitBox;
-            _meleeHitBox = meleeHitBox;
             _stoppingDistance = stoppingDistance;
 
             _chaseTime = .2f;
             _turnAwait = Constants.TurnAwait;
+            _boomerangCooldown = _colossal.BoomerangArms.Cooldown;
         }
 
-        public void Tick() => _timer -= Time.deltaTime;
+        public void Tick()
+        {
+            _timer -= Time.deltaTime;
+            _boomerangCdTimer -= Time.deltaTime;
+        }
 
         public void FixedTick()
         {
@@ -57,8 +65,9 @@ namespace DarkHavoc.Enemies.Colossal.States
 
             _colossal.Move(Stop || _changingDirection ? 0 : _direction);
 
-            RangedAvailable = _rangedHitBox.IsPlayerInRange();
-            MeleeAvailable = _meleeHitBox.IsPlayerInRange();
+            RangedAvailable = _colossal.RangedHitBox.IsPlayerInRange();
+            MeleeAvailable = _colossal.MeleeHitBox.IsPlayerInRange();
+            BuffAvailable = _colossal.BuffHitBox.IsPlayerInRange();
 
             if (_changingDirection) return;
             if (_direction < 0 && !_colossal.FacingLeft) ModifyFacingDirection(true);
@@ -87,6 +96,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         {
             _colossal.Move(0);
 
+            BuffAvailable = false;
             RangedAvailable = false;
             MeleeAvailable = false;
             _cts.Cancel();
@@ -106,6 +116,11 @@ namespace DarkHavoc.Enemies.Colossal.States
             }
 
             _changingDirection = false;
+        }
+
+        public void BoomerangCooldown()
+        {
+            _boomerangCdTimer = _boomerangCooldown;
         }
     }
 }

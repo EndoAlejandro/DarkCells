@@ -2,7 +2,7 @@
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Enemies.Colossal.States
 {
     public class ColossalRangedAttackState : ColossalAttackState
     {
@@ -53,8 +53,39 @@ namespace DarkHavoc.Enemies.Colossal
         protected override void AnimationOnAttack()
         {
             base.AnimationOnAttack();
+
+            // Extra smoke fx - visual only.
             Vector2 position = new Vector2(hitBox.transform.position.x, colossal.transform.position.y);
-            ServiceLocator.GetService<FxProvider>().GetFx(FxType.ColossalMelee, position);
+            ServiceLocator.GetService<FxManager>().GetFx(FxType.ColossalMelee, position);
+        }
+    }
+
+    public class ColossalBuffAttackState : ColossalAttackState
+    {
+        public override string ToString() => "Buff Attack";
+        public override AnimationState AnimationState => AnimationState.BuffAttack;
+
+        public ColossalBuffAttackState(Colossal colossal, ColossalAnimation animation, EnemyHitBox hitBox,
+            float duration) : base(colossal, animation, hitBox, duration)
+        {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            animation.OnBuffAttack += AnimationOnAttack;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            animation.OnBuffAttack -= AnimationOnAttack;
+        }
+
+        protected override void AnimationOnAttack()
+        {
+            base.AnimationOnAttack();
+            colossal.ActivateBuff();
         }
     }
 }

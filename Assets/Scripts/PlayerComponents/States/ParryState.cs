@@ -27,9 +27,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         public void Tick() => _timer -= Time.deltaTime;
 
-        public void FixedTick()
-        {
-        }
+        public void FixedTick() => _player.Move(0f);
 
         public void OnEnter()
         {
@@ -43,7 +41,7 @@ namespace DarkHavoc.PlayerComponents.States
         {
             float difference = damageSource.x - _player.transform.position.x;
             bool result = (difference < 0 && _player.FacingLeft) || (difference > 0 && !_player.FacingLeft);
-            
+
             return result;
         }
 

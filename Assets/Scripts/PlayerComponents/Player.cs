@@ -285,10 +285,10 @@ namespace DarkHavoc.PlayerComponents
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier, bool unstoppable = false) =>
             takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
 
-        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool unstoppable = false)
+        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool isUnstoppable = false)
         {
             Vector2 source = damageDealer.transform.position;
-            bool result = !unstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
+            bool result = !isUnstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
 
             if (result) TryToStunEnemy(damageDealer);
             if (result || !IsAlive) return;

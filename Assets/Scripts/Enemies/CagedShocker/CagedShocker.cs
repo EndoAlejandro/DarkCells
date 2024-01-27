@@ -21,6 +21,8 @@ namespace DarkHavoc.Enemies.CagedShocker
         public Player Player { get; private set; }
         public CagedShockerStats Stats => stats as CagedShockerStats;
 
+        [SerializeField] private bool debug;
+
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
         private Collider2D[] _results;
@@ -65,7 +67,7 @@ namespace DarkHavoc.Enemies.CagedShocker
                 Stats.GroundOffset + Stats.GroundCheckDistance, Stats.GroundLayerMask);
         }
 
-        public void Move(int direction)
+        public override void Move(int direction)
         {
             if (direction == 0)
             {
@@ -112,12 +114,12 @@ namespace DarkHavoc.Enemies.CagedShocker
             if (distance > Stats.ScapeDistance) Player = null;
         }
 
-        public override void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool unstoppable)
+        public override void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
             if (damageDealer.transform.TryGetComponent(out Player player))
                 Player = player;
 
-            base.TakeDamage(damageDealer, damageMultiplier, unstoppable);
+            base.TakeDamage(damageDealer, damageMultiplier, isUnstoppable);
         }
 
         public override void Death()
@@ -127,13 +129,16 @@ namespace DarkHavoc.Enemies.CagedShocker
             base.Death();
         }
 
-        public override float GetNormalizedHorizontal() => Mathf.Abs(_rigidbody.velocity.x) / Stats.MaxSpeed;
-
+        public override float GetNormalizedHorizontal() =>
+            Mathf.Abs(_rigidbody.velocity.x) / Stats.MaxSpeed;
 
         public void Stun() => OnStunned?.Invoke();
 
+        #region Debug
+
         private void OnDrawGizmos()
         {
+            if (!debug) return;
             if (Stats == null) stats = ScriptableObject.CreateInstance<CagedShockerStats>();
             if (_collider == null) _collider = GetComponent<CapsuleCollider2D>();
 
@@ -180,5 +185,7 @@ namespace DarkHavoc.Enemies.CagedShocker
             Vector2 bottomOrigin = new Vector2(horizontal, _collider.bounds.min.y + Stats.WallDetection.BottomOffset);
             Gizmos.DrawLine(bottomOrigin, bottomOrigin + (direction * Stats.WallDetection.DistanceCheck));
         }
+
+        #endregion
     }
 }

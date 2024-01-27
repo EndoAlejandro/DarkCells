@@ -18,7 +18,7 @@ namespace DarkHavoc.Enemies
         protected Animator animator;
         protected new SpriteRenderer renderer;
 
-        private MaterialPropertyBlock _materialPb;
+        protected MaterialPropertyBlock materialPb;
         private FiniteStateBehaviour _stateMachine;
         private IState _previousState;
 
@@ -36,7 +36,7 @@ namespace DarkHavoc.Enemies
             _enemy = GetComponentInParent<Enemy>();
             _stateMachine = GetComponentInParent<FiniteStateBehaviour>();
 
-            _materialPb = new MaterialPropertyBlock();
+            materialPb = new MaterialPropertyBlock();
         }
 
         protected virtual void OnEnable()
@@ -76,21 +76,21 @@ namespace DarkHavoc.Enemies
 
         private IEnumerator HitAnimationAsync()
         {
-            renderer.GetPropertyBlock(_materialPb);
+            renderer.GetPropertyBlock(materialPb);
 
             float timer = 0f;
             while (timer < Constants.HitAnimationDuration)
             {
                 timer += Time.deltaTime;
                 float hitThreshold = 1 - (timer / Constants.HitAnimationDuration);
-                _materialPb.SetFloat(HitValue, hitThreshold);
-                renderer.SetPropertyBlock(_materialPb);
+                materialPb.SetFloat(HitValue, hitThreshold);
+                renderer.SetPropertyBlock(materialPb);
                 yield return null;
             }
 
             yield return null;
-            _materialPb.SetFloat(HitValue, 0f);
-            renderer.SetPropertyBlock(_materialPb);
+            materialPb.SetFloat(HitValue, 0f);
+            renderer.SetPropertyBlock(materialPb);
         }
 
 
