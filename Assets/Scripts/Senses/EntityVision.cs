@@ -9,6 +9,7 @@ namespace DarkHavoc.Senses
         public static T CircularCheck<T>(Vector2 origin, float distance, ref Collider2D[] results)
             where T : Object, IEntity
         {
+            results ??= new Collider2D[50];
             int size = Physics2D.OverlapCircleNonAlloc(origin, distance, results);
 
             for (int i = 0; i < size; i++)
@@ -20,11 +21,12 @@ namespace DarkHavoc.Senses
             return null;
         }
 
-        public static bool IsVisible<T>(Vector3 from, Vector3 to, bool facingLeft, LayerMask sourceLayerMask)
+        public static bool IsVisible<T>(Vector3 from, Vector3 to, bool facingLeft, LayerMask sourceLayerMask,
+            bool radialVision)
             where T : IEntity
         {
             float direction = to.x - from.x;
-            if ((direction < 0f && !facingLeft) || (direction > 0f && facingLeft)) return false;
+            if (!radialVision && ((direction < 0f && !facingLeft) || (direction > 0f && facingLeft))) return false;
 
             var result = Physics2D.Linecast(from, to, ~sourceLayerMask);
             return result && result.transform.TryGetComponent(out T t);
@@ -76,7 +78,8 @@ namespace DarkHavoc.Senses
             {
                 float sphereOffset =
                     facingLeft ? -wallDetection.LedgeDetectorOffset.x : wallDetection.LedgeDetectorOffset.x;
-                Vector2 spherePosition = new Vector2(sphereOffset + horizontal, collider.bounds.max.y + wallDetection.LedgeDetectorOffset.y);
+                Vector2 spherePosition = new Vector2(sphereOffset + horizontal,
+                    collider.bounds.max.y + wallDetection.LedgeDetectorOffset.y);
                 Collider2D result = Physics2D.OverlapCircle(spherePosition, wallDetection.LedgeDetectorRadius,
                     hit.transform.gameObject.layer);
 

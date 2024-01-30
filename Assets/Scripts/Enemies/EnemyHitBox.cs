@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using DarkHavoc.CustomUtils;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
@@ -14,7 +16,8 @@ namespace DarkHavoc.Enemies
 
         private Collider2D _hitBox;
         private Player _player;
-        private Enemy _enemy;
+        private IEntity _entity;
+        private IDoDamage _doDamage;
         private EnemyAnimation _animation;
         private Collider2D[] _results;
 
@@ -25,7 +28,8 @@ namespace DarkHavoc.Enemies
         private void Awake()
         {
             _hitBox = GetComponent<Collider2D>();
-            _enemy = GetComponentInParent<Enemy>();
+            _entity = GetComponentInParent<IEntity>();
+            _doDamage = GetComponentInParent<IDoDamage>();
             _results = new Collider2D[50];
             _isSphere = _hitBox is CircleCollider2D;
         }
@@ -33,10 +37,10 @@ namespace DarkHavoc.Enemies
         private void Start()
         {
             _offsetDirection = transform.localPosition.x >= 0 ? 1 : -1;
-            _enemy.OnXFlipped += EnemyOnXFlipped;
+            _entity.OnXFlipped += IEntityOnXFlipped;
         }
 
-        private void EnemyOnXFlipped(bool facingLeft)
+        private void IEntityOnXFlipped(bool facingLeft)
         {
             var localX = facingLeft ? -_offsetDirection : _offsetDirection;
             var localPosition = _hitBox.transform.localPosition;
@@ -62,17 +66,17 @@ namespace DarkHavoc.Enemies
         {
             Bounds bounds = _hitBox.bounds;
             return Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0f, _results,
-                _enemy.BaseStats.AttackLayer);
+                Constants.PlayerLayer);
         }
 
         private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_hitBox.bounds.center,
-            ((CircleCollider2D)_hitBox).radius, _results, _enemy.BaseStats.AttackLayer);
+            ((CircleCollider2D)_hitBox).radius, _results, Constants.PlayerLayer);
 
         public void Attack(bool isUnstoppable = false)
         {
             IsUnstoppable = isUnstoppable;
             OverlapHitBox();
-            if (_player) _player.TakeDamage(_enemy, isUnstoppable: isUnstoppable);
+            if (_player) _player.TakeDamage(_doDamage, isUnstoppable: isUnstoppable);
             StartCoroutine(CooldownAsync());
         }
 
@@ -90,7 +94,7 @@ namespace DarkHavoc.Enemies
             _onCooldown = false;
         }
 
-        private void OnDestroy() => _enemy.OnXFlipped -= EnemyOnXFlipped;
+        private void OnDestroy() => _entity.OnXFlipped -= IEntityOnXFlipped;
 
         private void OnDrawGizmos()
         {

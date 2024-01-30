@@ -1,9 +1,8 @@
-﻿using DarkHavoc.PlayerComponents;
-using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
-    public class DeathState : IState
+    public class EnemyDeathState : IState
     {
         public override string ToString() => "Dead";
         public AnimationState AnimationState => AnimationState.Death;
@@ -11,7 +10,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         
         private readonly Enemy _enemy;
 
-        public DeathState(Enemy enemy) => _enemy = enemy;
+        public EnemyDeathState(Enemy enemy) => _enemy = enemy;
 
         public void Tick()
         {

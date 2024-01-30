@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
     [RequireComponent(typeof(Animator))]
-    public abstract class EnemyAnimation : MonoBehaviour
+    public class EnemyAnimation : MonoBehaviour
     {
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         public event Action OnAttackInterruptionAvailable;
         public event Action OnAttackPerformed;
+        public event Action OnAttackEnded;
 
         protected Animator animator;
         protected new SpriteRenderer renderer;
@@ -22,18 +24,20 @@ namespace DarkHavoc.Enemies
         private FiniteStateBehaviour _stateMachine;
         private IState _previousState;
 
-        private Enemy _enemy;
+        private ITakeDamage _takeDamage;
+        private IEntity _entity;
 
         private IEnumerator _hitAnimation;
 
-        protected abstract float NormalizedHorizontal { get; }
+        protected virtual float NormalizedHorizontal => 0f;
 
         protected virtual void Awake()
         {
             animator = GetComponent<Animator>();
             renderer = GetComponent<SpriteRenderer>();
 
-            _enemy = GetComponentInParent<Enemy>();
+            _takeDamage = GetComponentInParent<ITakeDamage>();
+            _entity = GetComponentInParent<IEntity>();
             _stateMachine = GetComponentInParent<FiniteStateBehaviour>();
 
             materialPb = new MaterialPropertyBlock();
@@ -41,15 +45,15 @@ namespace DarkHavoc.Enemies
 
         protected virtual void OnEnable()
         {
-            _enemy.OnDamageTaken += EnemyOnDamageTaken;
-            _enemy.OnXFlipped += EnemyOnXFlipped;
+            _takeDamage.OnDamageTaken += EnemyOnDamageTaken;
+            _entity.OnXFlipped += EnemyOnXFlipped;
             _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
         }
 
         protected virtual void OnDisable()
         {
-            _enemy.OnDamageTaken -= EnemyOnDamageTaken;
-            _enemy.OnXFlipped -= EnemyOnXFlipped;
+            _takeDamage.OnDamageTaken -= EnemyOnDamageTaken;
+            _entity.OnXFlipped -= EnemyOnXFlipped;
             _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
         }
 
@@ -96,8 +100,9 @@ namespace DarkHavoc.Enemies
 
         #region Animation Calls
 
-        private void PerformAttack() => OnAttackPerformed?.Invoke();
-        private void AttackInterruptionAvailable() => OnAttackInterruptionAvailable?.Invoke();
+        protected void PerformAttack() => OnAttackPerformed?.Invoke();
+        protected void EndAttack() => OnAttackEnded?.Invoke();
+        protected void AttackInterruptionAvailable() => OnAttackInterruptionAvailable?.Invoke();
 
         #endregion
     }

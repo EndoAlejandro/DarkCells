@@ -1,7 +1,6 @@
 ﻿using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
-using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
@@ -10,22 +9,22 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public override string ToString() => "Grounded";
         public AnimationState AnimationState => AnimationState.Ground;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemy _enemy;
         private float _timer;
 
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
-        public IdleState(CagedShocker cagedShocker) => _cagedShocker = cagedShocker;
+        public IdleState(Enemy enemy) => _enemy = enemy;
 
         public void Tick()
         {
             _timer -= Time.deltaTime;
-            _cagedShocker.SeekPlayer();
+            _enemy.SeekPlayer();
         }
 
-        public void FixedTick() => _cagedShocker.Move(0);
-        public void OnEnter() => _timer = _cagedShocker.IdleTime;
+        public void FixedTick() => _enemy.Move(0);
+        public void OnEnter() => _timer = _enemy.Stats.IdleTime;
         public void OnExit() => _timer = 0f;
     }
 }

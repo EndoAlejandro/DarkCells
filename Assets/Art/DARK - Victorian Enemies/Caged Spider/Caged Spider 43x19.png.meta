@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +70,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,9 +132,736 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Caged Spider 43x19_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 95
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd0eb69d0a92a44585228f731b21566
+      internalID: -1468857250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa469245c1961448b6258228a4e35d0
+      internalID: 1550509327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_2
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05555b8a3393a0849a59e8b81b25d3a9
+      internalID: -334928217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5495e914f3343d4fac597f8febb6fc7
+      internalID: 1834089954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2016a869180f65049863f63af02cfe56
+      internalID: -8905775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70453108bf29d3b4fac39ac92261affc
+      internalID: -1660120479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_6
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb6e5b4f5f0a9c418cf118f5c8d4c0e
+      internalID: -1221092339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_7
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7060cf21651202c419f107edc58ec5ac
+      internalID: 2131943044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_8
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 76
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7124a986d97214eabf9daaa60bf809
+      internalID: -848192063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d5a0697f605724f8d3dceb8e31ecd5
+      internalID: -1842752930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_10
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59372c2f042e2e7468094102ce6b4a24
+      internalID: 40908851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_11
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9930e69d39984d4c802460e6088cc58
+      internalID: -1489824805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_12
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b5f7717371c4048bf814c17fbca648
+      internalID: 259724466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_13
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bb35e1f925b124c9de6c1465344020
+      internalID: 75444498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_14
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 57
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5864a68d6bc68fa428953e44006aefe7
+      internalID: 1064481909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f47be1178bf4f4681010e7c337ebff
+      internalID: 758200391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_16
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f0a6673c10e1e438cbf171a54f9b32
+      internalID: -294670612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_17
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428a9ac7fba4b1a48b2988375f5c3a1d
+      internalID: 1898938142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_18
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c3eecc4d6c50047a1018c2e462491c
+      internalID: 531741870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_19
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88191412907c23e4bbf99b205f72c873
+      internalID: -164944981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_20
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530da44bd88faf64d87c4b719098b3b9
+      internalID: 623411844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_21
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042fb49a97172564bbe168e5dc8f711b
+      internalID: -1319841141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_22
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 38
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f13549a94977084f88e6ce704f26545
+      internalID: -275751273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda7754551233434c899169a996af1cc
+      internalID: 1062236163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_24
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 19
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ae603ea85dae941b8e3ee5551df40e
+      internalID: 501822944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b553ecba1711fc4a93d4d6bc85c0908
+      internalID: 1765204285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_26
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6109f5a28a1f7564a85522749ae9b3b3
+      internalID: 1201177997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_27
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c68db62e220394a930a16ebbefbdde
+      internalID: -328281594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_28
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca721db688853f34fbc87299c7607dc2
+      internalID: -406164317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_29
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39ead032722b43488be7f1773acdf5d
+      internalID: 1296681823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_30
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c7c71ba75a1874e865750b9092bb43
+      internalID: 1323111864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_31
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80663d92c581be3419daf661525862ff
+      internalID: -1920874476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_32
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df86224e72d591d4fad8f9c66e1d8267
+      internalID: -1234307757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caged Spider 43x19_33
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 43
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4418605, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f678f551b12717f4e8713e391ce3eacc
+      internalID: 2017143711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +872,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Caged Spider 43x19_0: -1468857250
+      Caged Spider 43x19_1: 1550509327
+      Caged Spider 43x19_10: 40908851
+      Caged Spider 43x19_11: -1489824805
+      Caged Spider 43x19_12: 259724466
+      Caged Spider 43x19_13: 75444498
+      Caged Spider 43x19_14: 1064481909
+      Caged Spider 43x19_15: 758200391
+      Caged Spider 43x19_16: -294670612
+      Caged Spider 43x19_17: 1898938142
+      Caged Spider 43x19_18: 531741870
+      Caged Spider 43x19_19: -164944981
+      Caged Spider 43x19_2: -334928217
+      Caged Spider 43x19_20: 623411844
+      Caged Spider 43x19_21: -1319841141
+      Caged Spider 43x19_22: -275751273
+      Caged Spider 43x19_23: 1062236163
+      Caged Spider 43x19_24: 501822944
+      Caged Spider 43x19_25: 1765204285
+      Caged Spider 43x19_26: 1201177997
+      Caged Spider 43x19_27: -328281594
+      Caged Spider 43x19_28: -406164317
+      Caged Spider 43x19_29: 1296681823
+      Caged Spider 43x19_3: 1834089954
+      Caged Spider 43x19_30: 1323111864
+      Caged Spider 43x19_31: -1920874476
+      Caged Spider 43x19_32: -1234307757
+      Caged Spider 43x19_33: 2017143711
+      Caged Spider 43x19_4: -8905775
+      Caged Spider 43x19_5: -1660120479
+      Caged Spider 43x19_6: -1221092339
+      Caged Spider 43x19_7: 2131943044
+      Caged Spider 43x19_8: -848192063
+      Caged Spider 43x19_9: -1842752930
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

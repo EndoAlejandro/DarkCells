@@ -30,6 +30,7 @@ namespace DarkHavoc.PlayerComponents
         }
 
         // Events
+        public event Action<bool> OnXFlipped;
         public static event Action<Player> OnPlayerSpawned;
         public static event Action<Player> OnPlayerDeSpawned;
         public event Func<Vector2, bool> TryToBlockDamage;
@@ -260,7 +261,12 @@ namespace DarkHavoc.PlayerComponents
             _rigidbody.velocity = target;
         }
 
-        public void SetFacingLeft(bool value) => FacingLeft = value;
+        public void SetFacingLeft(bool value)
+        {
+            FacingLeft = value;
+            OnXFlipped?.Invoke(FacingLeft);
+        }
+
         public void SetSpeedBonus(float speedBonus) => _speedBonus = speedBonus;
 
         public float GetNormalizedHorizontal() =>

@@ -25,7 +25,7 @@ namespace DarkHavoc.Enemies.Colossal
             var awake = new AnimationOnlyState(1.1f, AnimationState.Awake);
             var idle = new ColossalIdle(_colossal, 1f);
             var chase = new ColossalChaseState(_colossal, 3.5f);
-            var death = new DeathState(_colossal);
+            var death = new BossDeathState(_colossal);
 
             // Attacks.
             var rangedAttack = new ColossalRangedAttackState(

@@ -1,27 +1,18 @@
-using System;
-using DarkHavoc.EntitiesInterfaces;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.CagedShocker
+namespace DarkHavoc.Enemies.CagedSpider
 {
-    [RequireComponent(typeof(Collider2D))]
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class CagedShocker : Enemy, IStunnable
+    public class CagedSpider : Enemy
     {
-        public event Action OnStunned;
-        public override float Damage => Stats != null ? Stats.Damage : 0;
-        
-        public float StunTime { get; private set; }
-
-        public void Stun() => OnStunned?.Invoke();
+        public override float Damage => 1;
 
         #region Debug
 
         private void OnDrawGizmos()
         {
             if (!debug) return;
-            stats ??= ScriptableObject.CreateInstance<EnemyStats>();
-            if (collider == null) collider = GetComponent<CapsuleCollider2D>();
+            if (stats == null) stats = ScriptableObject.CreateInstance<EnemyStats>();
+            if (collider == null) collider = GetComponent<Collider2D>();
 
             DetectionRange(MidPoint.position);
             Gizmos.color = Color.magenta;
