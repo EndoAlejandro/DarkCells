@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a624429f41f4434a6705c91af13ab1c, type: 3}
+  m_Name: DarkWarden_Stats
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  idleTime: 0.15
+  acceleration: 10
+  maxSpeed: 3
+  gravity: 3
+  maxFallSpeed: 5
+  chaseStoppingDistance: 0.5
+  stunTime: 3
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1417
+  footPositionOffset: {x: 0, y: 0}
+  groundOffset: 0
+  groundCheckDistance: 0.1
+  wallDetection:
+    distanceCheck: 0.35
+    topOffset: -0.08
+    midOffset: 0
+    bottomOffset: 0.05
+    horizontalOffset: -0.16
+    wallLayer:
+      serializedVersion: 2
+      m_Bits: 1417
+    ledgeDetectorOffset: {x: 0, y: 0}
+    ledgeDetectorRadius: 0
+  damage: 1
+  firstAttackTime: 2
+  secondAttackTime: 1
+  detectionDistance: 7
+  scapeDistance: 10
+  comboTime: 1
+  restTime: 3
+  telegraphTime: 0.1
+  firstAttackAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    impulseDirection: 0
+  secondAttackAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    impulseDirection: 0
+  takeDamageAction:
+    time: 0
+    force: 0
+    deceleration: 0
+    impulseDirection: 0

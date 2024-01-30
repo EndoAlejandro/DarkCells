@@ -2,7 +2,7 @@
 
 namespace DarkHavoc.Enemies.CagedSpider
 {
-    public class AttackState : IState
+    public class EnemyAttackState : IState
     {
         public override string ToString() => "Attack";
         public AnimationState AnimationState => AnimationState.LightAttack;
@@ -13,7 +13,7 @@ namespace DarkHavoc.Enemies.CagedSpider
         private readonly EnemyHitBox _hitbox;
         private readonly EnemyAnimation _animation;
 
-        public AttackState(Enemy enemy,EnemyHitBox hitbox, EnemyAnimation animation)
+        public EnemyAttackState(Enemy enemy,EnemyHitBox hitbox, EnemyAnimation animation)
         {
             _enemy = enemy;
             _hitbox = hitbox;

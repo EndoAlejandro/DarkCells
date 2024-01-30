@@ -20,12 +20,12 @@ namespace DarkHavoc.Enemies.CagedShocker
         protected override void StateMachine()
         {
             var idle = new IdleState(_cagedShocker);
-            var patrol = new PatrolState(_cagedShocker, _collider);
+            var patrol = new SideToSidePatrolState(_cagedShocker, _collider);
             var chase = new ChaseState(_cagedShocker, _cagedShocker.HitBox, _collider);
             var telegraph = new TelegraphState(_cagedShocker, 1.25f);
-            var firstAttack = new AttackState(_cagedShocker, _cagedShocker.HitBox, _animation, true,
+            var firstAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, true,
                 _cagedShocker.Stats.FirstAttackTime);
-            var secondAttack = new AttackState(_cagedShocker, _cagedShocker.HitBox, _animation, false,
+            var secondAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, false,
                 _cagedShocker.Stats.SecondAttackTime);
             var rest = new RestState(_cagedShocker, _cagedShocker.Stats.RestTime);
             var stun = new StunState(_cagedShocker, _cagedShocker.Stats.StunTime);

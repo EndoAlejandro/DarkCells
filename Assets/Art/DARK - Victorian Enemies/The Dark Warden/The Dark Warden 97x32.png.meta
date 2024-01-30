@@ -154,10 +154,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: The Dark Warden 97x32_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: The Dark Warden 97x32_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 194
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: The Dark Warden 97x32_3
       rect:
         serializedVersion: 2
-        x: 288
+        x: 291
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: The Dark Warden 97x32_4
       rect:
         serializedVersion: 2
-        x: 384
+        x: 388
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: The Dark Warden 97x32_5
       rect:
         serializedVersion: 2
-        x: 480
+        x: 485
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: The Dark Warden 97x32_6
       rect:
         serializedVersion: 2
-        x: 576
+        x: 582
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,12 +299,12 @@ TextureImporter:
       name: The Dark Warden 97x32_7
       rect:
         serializedVersion: 2
-        x: 672
+        x: 679
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -320,12 +320,12 @@ TextureImporter:
       name: The Dark Warden 97x32_8
       rect:
         serializedVersion: 2
-        x: 768
+        x: 776
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: The Dark Warden 97x32_9
       rect:
         serializedVersion: 2
-        x: 864
+        x: 873
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -362,12 +362,12 @@ TextureImporter:
       name: The Dark Warden 97x32_10
       rect:
         serializedVersion: 2
-        x: 960
+        x: 970
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -383,12 +383,12 @@ TextureImporter:
       name: The Dark Warden 97x32_11
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 1067
         y: 96
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -406,10 +406,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -425,12 +425,12 @@ TextureImporter:
       name: The Dark Warden 97x32_13
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -446,12 +446,12 @@ TextureImporter:
       name: The Dark Warden 97x32_14
       rect:
         serializedVersion: 2
-        x: 192
+        x: 194
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -467,12 +467,12 @@ TextureImporter:
       name: The Dark Warden 97x32_15
       rect:
         serializedVersion: 2
-        x: 288
+        x: 291
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -488,12 +488,12 @@ TextureImporter:
       name: The Dark Warden 97x32_16
       rect:
         serializedVersion: 2
-        x: 384
+        x: 388
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -509,12 +509,12 @@ TextureImporter:
       name: The Dark Warden 97x32_17
       rect:
         serializedVersion: 2
-        x: 480
+        x: 485
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -530,12 +530,12 @@ TextureImporter:
       name: The Dark Warden 97x32_18
       rect:
         serializedVersion: 2
-        x: 576
+        x: 582
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -551,12 +551,12 @@ TextureImporter:
       name: The Dark Warden 97x32_19
       rect:
         serializedVersion: 2
-        x: 672
+        x: 679
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -572,12 +572,12 @@ TextureImporter:
       name: The Dark Warden 97x32_20
       rect:
         serializedVersion: 2
-        x: 768
+        x: 776
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -593,12 +593,12 @@ TextureImporter:
       name: The Dark Warden 97x32_21
       rect:
         serializedVersion: 2
-        x: 864
+        x: 873
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -614,12 +614,12 @@ TextureImporter:
       name: The Dark Warden 97x32_22
       rect:
         serializedVersion: 2
-        x: 960
+        x: 970
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -635,12 +635,12 @@ TextureImporter:
       name: The Dark Warden 97x32_23
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 1067
         y: 64
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -658,10 +658,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -677,12 +677,12 @@ TextureImporter:
       name: The Dark Warden 97x32_25
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -698,12 +698,12 @@ TextureImporter:
       name: The Dark Warden 97x32_26
       rect:
         serializedVersion: 2
-        x: 192
+        x: 194
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -719,12 +719,12 @@ TextureImporter:
       name: The Dark Warden 97x32_27
       rect:
         serializedVersion: 2
-        x: 288
+        x: 291
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -740,12 +740,12 @@ TextureImporter:
       name: The Dark Warden 97x32_28
       rect:
         serializedVersion: 2
-        x: 384
+        x: 388
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -761,12 +761,12 @@ TextureImporter:
       name: The Dark Warden 97x32_29
       rect:
         serializedVersion: 2
-        x: 480
+        x: 485
         y: 32
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -782,12 +782,12 @@ TextureImporter:
       name: The Dark Warden 97x32_30
       rect:
         serializedVersion: 2
-        x: 576
+        x: 582
         y: 32
-        width: 74
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.4054054, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -803,12 +803,12 @@ TextureImporter:
       name: The Dark Warden 97x32_31
       rect:
         serializedVersion: 2
-        x: 672
+        x: 679
         y: 32
-        width: 95
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.3157895, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -824,12 +824,12 @@ TextureImporter:
       name: The Dark Warden 97x32_32
       rect:
         serializedVersion: 2
-        x: 768
+        x: 776
         y: 32
-        width: 94
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.31914893, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -845,12 +845,12 @@ TextureImporter:
       name: The Dark Warden 97x32_33
       rect:
         serializedVersion: 2
-        x: 864
+        x: 873
         y: 32
-        width: 94
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.31914893, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -866,12 +866,12 @@ TextureImporter:
       name: The Dark Warden 97x32_34
       rect:
         serializedVersion: 2
-        x: 960
+        x: 970
         y: 32
-        width: 100
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.3, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -887,12 +887,12 @@ TextureImporter:
       name: The Dark Warden 97x32_35
       rect:
         serializedVersion: 2
-        x: 1060
+        x: 1067
         y: 32
-        width: 99
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.3030303, y: -0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -908,12 +908,12 @@ TextureImporter:
       name: The Dark Warden 97x32_36
       rect:
         serializedVersion: 2
-        x: 1159
+        x: 1164
         y: 32
-        width: 98
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.30612245, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -929,12 +929,12 @@ TextureImporter:
       name: The Dark Warden 97x32_37
       rect:
         serializedVersion: 2
-        x: 1257
+        x: 1261
         y: 32
-        width: 100
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.3, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -950,12 +950,12 @@ TextureImporter:
       name: The Dark Warden 97x32_38
       rect:
         serializedVersion: 2
-        x: 1357
+        x: 1358
         y: 32
-        width: 98
+        width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.30612245, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -976,7 +976,7 @@ TextureImporter:
         width: 97
         height: 32
       alignment: 9
-      pivot: {x: 0.30927834, y: 0}
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -994,10 +994,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1013,12 +1013,12 @@ TextureImporter:
       name: The Dark Warden 97x32_41
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1034,12 +1034,12 @@ TextureImporter:
       name: The Dark Warden 97x32_42
       rect:
         serializedVersion: 2
-        x: 192
+        x: 194
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1055,12 +1055,12 @@ TextureImporter:
       name: The Dark Warden 97x32_43
       rect:
         serializedVersion: 2
-        x: 288
+        x: 291
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1076,12 +1076,12 @@ TextureImporter:
       name: The Dark Warden 97x32_44
       rect:
         serializedVersion: 2
-        x: 384
+        x: 388
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1097,12 +1097,12 @@ TextureImporter:
       name: The Dark Warden 97x32_45
       rect:
         serializedVersion: 2
-        x: 480
+        x: 485
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1118,12 +1118,12 @@ TextureImporter:
       name: The Dark Warden 97x32_46
       rect:
         serializedVersion: 2
-        x: 576
+        x: 582
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1139,12 +1139,12 @@ TextureImporter:
       name: The Dark Warden 97x32_47
       rect:
         serializedVersion: 2
-        x: 672
+        x: 679
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1160,12 +1160,12 @@ TextureImporter:
       name: The Dark Warden 97x32_48
       rect:
         serializedVersion: 2
-        x: 768
+        x: 776
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1181,12 +1181,12 @@ TextureImporter:
       name: The Dark Warden 97x32_49
       rect:
         serializedVersion: 2
-        x: 864
+        x: 873
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1202,12 +1202,12 @@ TextureImporter:
       name: The Dark Warden 97x32_50
       rect:
         serializedVersion: 2
-        x: 960
+        x: 970
         y: 0
-        width: 60
+        width: 97
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.2680412, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

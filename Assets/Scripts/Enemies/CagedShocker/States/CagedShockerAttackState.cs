@@ -5,7 +5,7 @@ using AnimationState = DarkHavoc.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
-    public class AttackState : IState
+    public class CagedShockerAttackState : IState
     {
         public override string ToString() => "Attack";
         public AnimationState AnimationState => AnimationState.LightAttack;
@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public bool CanCombo => _canCombo && _comboTimer <= 0f;
         public bool Stunned => _stunned && _attackInterruptionAvailable;
 
-        public AttackState(CagedShocker cagedShocker, EnemyHitBox hitBox, CagedShockerAnimation animation,
+        public CagedShockerAttackState(CagedShocker cagedShocker, EnemyHitBox hitBox, CagedShockerAnimation animation,
             bool canCombo, float attackDuration)
         {
             _cagedShocker = cagedShocker;
