@@ -32,7 +32,7 @@ namespace DarkHavoc.Enemies
         [SerializeField] protected bool debug;
 
         protected new Collider2D collider;
-        
+
         private new Rigidbody2D rigidbody;
         private Collider2D[] _results;
         private Vector2 targetVelocity;
@@ -82,7 +82,8 @@ namespace DarkHavoc.Enemies
             }
             else
             {
-                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * Stats.MaxSpeed,
+                var speed = Player == null ? Stats.PatrolSpeed : Stats.MaxSpeed;
+                targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * speed,
                     Stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -116,7 +117,8 @@ namespace DarkHavoc.Enemies
         }
 
         public bool IsPlayerVisible(Player player) =>
-            EntityVision.IsVisible<Player>(MidPoint.position, player.MidPoint.position, FacingLeft, gameObject.layer, radialVision);
+            EntityVision.IsVisible<Player>(MidPoint.position, player.MidPoint.position, FacingLeft, gameObject.layer,
+                radialVision);
 
         public void SetFacingLeft(bool facingLeft)
         {

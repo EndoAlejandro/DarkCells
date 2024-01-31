@@ -9,22 +9,20 @@ namespace DarkHavoc.Enemies.CagedShocker.States
     {
         public override string ToString() => "Chase";
         public AnimationState AnimationState => AnimationState.Ground;
+        public bool CanTransitionToSelf => false;
+        public bool AttackAvailable { get; private set; }
+        
+        private bool CanWalk => (_enemy.LeftFoot && _enemy.FacingLeft) ||
+                                (_enemy.RightFoot && !_enemy.FacingLeft);
 
         private readonly Enemy _enemy;
         private readonly EnemyHitBox _hitBox;
         private readonly Collider2D _collider;
 
         private Player _player;
-
-        private int _targetDirection;
-
         private WallResult _wallResult;
 
-        private bool CanWalk => (_enemy.LeftFoot && _enemy.FacingLeft) ||
-                                (_enemy.RightFoot && !_enemy.FacingLeft);
-
-        public bool CanTransitionToSelf => false;
-        public bool AttackAvailable { get; private set; }
+        private int _targetDirection;
 
         public ChaseState(Enemy enemy, EnemyHitBox hitBox, Collider2D collider)
         {
@@ -44,7 +42,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
             AttackAvailable = isPlayerVisible && _hitBox.IsPlayerInRange();
 
             _targetDirection =
-                Mathf.Abs(horizontalDistance) > _enemy.Stats.ChaseStoppingDistance
+                Mathf.Abs(horizontalDistance) > _enemy.Stats.StoppingDistance
                     ? (int)Mathf.Sign(horizontalDistance)
                     : 0;
 

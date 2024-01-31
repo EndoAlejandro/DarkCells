@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/Enemy/CagedShockerStats", fileName = "CagedShockerStats", order = 0)]
+    [CreateAssetMenu(menuName = "ScriptableObjects/Enemy/EnemyStats", fileName = "Enemy_Stats", order = 0)]
     public class EnemyStats : BaseStats
     {
         [Header("Movement")]
         [SerializeField] private float gravity = 3f;
 
         [SerializeField] private float maxFallSpeed = 5f;
-        [SerializeField] private float chaseStoppingDistance = .35f;
+        [SerializeField] private float stoppingDistance = .5f;
         [SerializeField] private float stunTime = 3f;
 
         [Header("Environment Check")]
@@ -42,7 +42,7 @@ namespace DarkHavoc.Enemies
 
         public float Gravity => gravity;
         public float MaxFallSpeed => maxFallSpeed;
-        public float ChaseStoppingDistance => chaseStoppingDistance;
+        public float StoppingDistance => stoppingDistance;
         public float StunTime => stunTime;
 
         #endregion

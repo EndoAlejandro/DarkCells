@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: DarkWarden_Stats
   m_EditorClassIdentifier: 
   maxHealth: 5
-  idleTime: 0.15
+  idleTime: 1
   acceleration: 10
+  patrolSpeed: 2
   maxSpeed: 3
   gravity: 3
   maxFallSpeed: 5
-  chaseStoppingDistance: 0.5
+  stoppingDistance: 3
   stunTime: 3
   groundLayerMask:
     serializedVersion: 2
@@ -27,11 +28,11 @@ MonoBehaviour:
   groundOffset: 0
   groundCheckDistance: 0.1
   wallDetection:
-    distanceCheck: 0.35
-    topOffset: -0.08
+    distanceCheck: 0.5
+    topOffset: -0.05
     midOffset: 0
     bottomOffset: 0.05
-    horizontalOffset: -0.16
+    horizontalOffset: 0
     wallLayer:
       serializedVersion: 2
       m_Bits: 1417

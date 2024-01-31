@@ -9,11 +9,13 @@ namespace DarkHavoc.Enemies
 
         [SerializeField] private float idleTime = 1f;
         [SerializeField] private float acceleration = 10f;
+        [SerializeField] private float patrolSpeed = 1f;
         [SerializeField] private float maxSpeed = 1.5f;
 
         public int MaxHealth => maxHealth;
         public float IdleTime => idleTime;
         public float Acceleration => acceleration;
+        public float PatrolSpeed => patrolSpeed;
         public float MaxSpeed => maxSpeed;
     }
 }
