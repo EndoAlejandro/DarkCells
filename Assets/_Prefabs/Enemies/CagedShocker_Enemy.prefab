@@ -176,8 +176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: d456e8f68824cff4ca6a19a58d914b15, type: 2}
-  debug: 0
   midPoint: {fileID: 1119788052131082433}
+  hitbox: {fileID: 280224379643872427}
+  radialVision: 0
+  debug: 0
 --- !u!114 &4124432131792352718
 MonoBehaviour:
   m_ObjectHideFlags: 0

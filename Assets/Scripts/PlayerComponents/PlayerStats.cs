@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents
 {
-    [CreateAssetMenu(menuName = "Custom/PlayerStats", fileName = "NewPlayerStats")]
+    [CreateAssetMenu(menuName = "ScriptableObjects/PlayerStats", fileName = "NewPlayerStats")]
     public class PlayerStats : ScriptableObject
     {
         [Header("Stats")]

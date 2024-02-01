@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace DarkHavoc
+namespace DarkHavoc.Interactable
 {
-    public abstract class RepetitiveInteractive<T> : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public abstract class TriggerEnterInteractive<T> : MonoBehaviour
     {
         [SerializeField] protected float cooldown;
 
@@ -19,11 +20,13 @@ namespace DarkHavoc
 
         private IEnumerator TriggerInteractionAsync(T t)
         {
-            _available = false;
+            SetAvailable(false);
             TriggerInteraction(t);
             yield return new WaitForSeconds(cooldown);
-            _available = true;
+            SetAvailable(true);
         }
+
+        protected virtual void SetAvailable(bool value) => _available = value;
 
         protected abstract void TriggerInteraction(T t);
     }

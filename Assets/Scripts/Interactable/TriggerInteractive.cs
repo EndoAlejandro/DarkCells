@@ -1,9 +1,8 @@
-﻿using System;
-using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
-namespace DarkHavoc
+namespace DarkHavoc.Interactable
 {
     [RequireComponent(typeof(Collider2D))]
     public abstract class TriggerInteractive<T> : MonoBehaviour

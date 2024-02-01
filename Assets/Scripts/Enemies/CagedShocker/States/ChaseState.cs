@@ -11,7 +11,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
         public bool AttackAvailable { get; private set; }
-        
+
         private bool CanWalk => (_enemy.LeftFoot && _enemy.FacingLeft) ||
                                 (_enemy.RightFoot && !_enemy.FacingLeft);
 
@@ -41,10 +41,9 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
             AttackAvailable = isPlayerVisible && _hitBox.IsPlayerInRange();
 
-            _targetDirection =
-                Mathf.Abs(horizontalDistance) > _enemy.Stats.StoppingDistance
-                    ? (int)Mathf.Sign(horizontalDistance)
-                    : 0;
+            _targetDirection = Mathf.Abs(horizontalDistance) > _enemy.Stats.StoppingDistance
+                ? (int)Mathf.Sign(horizontalDistance)
+                : 0;
 
             if (_enemy.FacingLeft && horizontalDistance > 0f) _enemy.SetFacingLeft(false);
             if (!_enemy.FacingLeft && horizontalDistance < 0f) _enemy.SetFacingLeft(true);

@@ -1,11 +1,21 @@
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
+using UnityEngine;
 
 namespace DarkHavoc
 {
-    public class LobbyController : RepetitiveInteractive<Player>
+    [RequireComponent(typeof(Collider2D))]
+    public class LobbyController : MonoBehaviour
     {
-        protected override void TriggerInteraction(Player player) =>
+        private Collider2D _collider;
+
+        protected virtual void Awake() => _collider = GetComponent<Collider2D>();
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.TryGetComponent(out Player player)) return;
             ServiceLocator.GetService<GameManager>()?.StartGame();
+            _collider.enabled = false;
+        }
     }
 }
