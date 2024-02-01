@@ -1,5 +1,4 @@
 using System.Collections;
-using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 

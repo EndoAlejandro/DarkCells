@@ -77,7 +77,7 @@ namespace DarkHavoc.Enemies
         {
             if (direction == 0)
             {
-                var deceleration = Stats.Acceleration;
+                var deceleration = Stats.Acceleration * 2;
                 targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, 0f, deceleration * Time.fixedDeltaTime);
             }
             else
