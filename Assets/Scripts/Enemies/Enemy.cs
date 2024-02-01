@@ -35,7 +35,7 @@ namespace DarkHavoc.Enemies
 
         private new Rigidbody2D rigidbody;
         private Collider2D[] _results;
-        private Vector2 targetVelocity;
+        protected Vector2 targetVelocity;
 
         protected virtual void Awake()
         {

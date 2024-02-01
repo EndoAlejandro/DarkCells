@@ -6,6 +6,12 @@ namespace DarkHavoc.Enemies.Assassin
     {
         public override float Damage => 1f;
         
+        public void Jump()
+        {
+            if(!Grounded) return;
+            targetVelocity.y = 5f;
+        }
+        
         #region Debug
 
         private void OnDrawGizmos()

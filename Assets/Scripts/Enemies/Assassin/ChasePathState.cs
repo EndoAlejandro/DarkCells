@@ -35,7 +35,10 @@ namespace DarkHavoc.Enemies.Assassin
             {
                 var direction = path[0].transform.position - _assassin.transform.position;
 
-                _assassin.Move((int)Mathf.Sign(direction.x));
+                if (Mathf.Abs(direction.x) > _assassin.Stats.StoppingDistance)
+                    _assassin.Move((int)Mathf.Sign(direction.x));
+                else 
+                    _assassin.Move(0);
             }
         }
 
