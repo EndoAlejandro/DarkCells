@@ -7,14 +7,14 @@ namespace DarkHavoc.Enemies
         public event Action OnAttackInterruptionAvailable;
         public event Action OnAttackPerformed;
         public event Action OnAttackEnded;
-        protected override float NormalizedHorizontal => _enemy != null ? _enemy.GetNormalizedHorizontal() : 0f;
-        
-        private Enemy _enemy;
+        protected override float NormalizedHorizontal => enemy != null ? enemy.GetNormalizedHorizontal() : 0f;
+
+        protected Enemy enemy;
 
         protected override void Awake()
         {
             base.Awake();
-            _enemy = GetComponentInParent<Enemy>();
+            enemy = GetComponentInParent<Enemy>();
         }
 
         #region Animation Calls
