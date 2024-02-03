@@ -38,7 +38,7 @@ namespace DarkHavoc.Enemies
             materialPb = new MaterialPropertyBlock();
         }
 
-        private void Update() =>
+        protected virtual void Update() =>
             animator.SetFloat(Horizontal, Mathf.Abs(NormalizedHorizontal));
 
         protected virtual void OnEnable()

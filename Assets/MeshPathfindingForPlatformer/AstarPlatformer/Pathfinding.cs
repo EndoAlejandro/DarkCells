@@ -24,9 +24,9 @@ namespace Calcatz.MeshPathfinding
         /*[SerializeField]*/ private Transform m_target;
 
         [Tooltip("Whether or not to include the starting node in the calculated path.")]
-        [SerializeField] private bool m_includeStartingNode = true;
+        [SerializeField] private bool m_includeStartingNode;
 
-        private Node[] pathResult;
+        protected Node[] pathResult;
 
         /*
          * Each Pathfinding user has their own node data dictionary

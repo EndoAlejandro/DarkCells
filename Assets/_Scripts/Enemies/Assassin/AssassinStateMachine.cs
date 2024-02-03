@@ -1,4 +1,5 @@
 using Calcatz.MeshPathfinding;
+using DarkHavoc.Enemies.Assassin.States;
 using DarkHavoc.Enemies.CagedShocker.States;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
@@ -13,13 +14,13 @@ namespace DarkHavoc.Enemies.Assassin
 
         private Assassin _assassin;
         private Collider2D _collider;
-        private Pathfinding _pathfinding;
+        private EntityPathfinding _pathfinding;
 
         protected override void References()
         {
             _assassin = GetComponent<Assassin>();
             _collider = GetComponent<Collider2D>();
-            _pathfinding = GetComponent<Pathfinding>();
+            _pathfinding = GetComponent<EntityPathfinding>();
         }
 
         protected override void StateMachine()
@@ -27,11 +28,15 @@ namespace DarkHavoc.Enemies.Assassin
             var idle = new IdleState(_assassin);
             var patrol = new SideToSidePatrolState(_assassin, _collider);
             var chase = new ChasePathState(_assassin, player, _collider, _pathfinding);
+            var airChase = new AirChaseState(_assassin, player, _collider, _pathfinding);
 
             stateMachine.SetState(chase);
 
             stateMachine.AddTransition(idle, patrol, () => idle.Ended && _assassin.Grounded);
             stateMachine.AddTransition(patrol, idle, () => patrol.Ended || !_assassin.Grounded);
+
+            stateMachine.AddTransition(chase, airChase, () => !_assassin.Grounded);
+            stateMachine.AddTransition(airChase, chase, () => _assassin.Grounded);
         }
     }
 }

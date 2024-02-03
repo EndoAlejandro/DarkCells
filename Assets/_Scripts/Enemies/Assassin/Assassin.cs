@@ -1,19 +1,30 @@
+using System;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies.Assassin
 {
     public class Assassin : Enemy
     {
+        public float GetNormalizedVertical() => rigidbody.velocity.y;
         public override float Damage => 1f;
 
         [SerializeField] private float jumpForce = 8f;
-        
+        [SerializeField] private float jumpCooldown = 1f;
+
+        private float _jumpTimer;
+
+        private void Update()
+        {
+            _jumpTimer -= Time.deltaTime;
+        }
+
         public void Jump()
         {
-            if(!Grounded) return;
+            if (!Grounded) return;
             targetVelocity.y = jumpForce;
+            _jumpTimer = jumpCooldown;
         }
-        
+
         #region Debug
 
         private void OnDrawGizmos()

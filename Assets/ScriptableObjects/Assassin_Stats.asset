@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   idleTime: 1
-  acceleration: 5
+  acceleration: 10
   patrolSpeed: 2
-  maxSpeed: 2
+  maxSpeed: 3
   gravity: 30
   maxFallSpeed: 5
-  stoppingDistance: 0.5
+  stoppingDistance: 0.1
   stunTime: 3
   groundLayerMask:
     serializedVersion: 2

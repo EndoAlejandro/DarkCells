@@ -114,6 +114,10 @@ namespace DarkHavoc.PlayerComponents
 
             Actions();
             OnPlayerSpawned?.Invoke(this);
+
+#if UNITY_EDITOR
+            InvokeEvents();
+#endif
         }
 
         private void OnEnable() => _useGravity = true;

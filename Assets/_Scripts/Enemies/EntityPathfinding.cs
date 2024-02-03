@@ -1,21 +1,18 @@
 ﻿using Calcatz.MeshPathfinding;
+using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
-    public class EntityPathfinding : PathfindingUserBase
+    public class EntityPathfinding : Pathfinding
     {
-        private void Start()
-        {
-            //pathfinding.SetTarget(target);
-            pathfinding.StartFindPath(1, true);
-        }
+        public Vector3 Direction => NextNode != null ? NextNode.transform.position - transform.position : Vector3.zero;
+        public Node NextNode => HasPath ? pathResult[0] : null;
+        private bool HasPath => pathResult is { Length: > 0 };
 
-        private void FixedUpdate()
+        public void StartFindPath(Transform target)
         {
-            Node[] path = pathfinding.GetPathResult();
-            if (path != null)
-            {
-            }
+            if (HasPath) return;
+            StartFindPath(target, 1f, true);
         }
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Collider2D))]
     public abstract class Enemy : MonoBehaviour, IDoDamage, ITakeDamage, IEntity
     {
         public event Action OnDamageTaken;
@@ -22,7 +24,7 @@ namespace DarkHavoc.Enemies
         public bool LeftFoot { get; private set; }
         public bool RightFoot { get; private set; }
         public bool Grounded => LeftFoot || RightFoot;
-        public bool LedgeInFront => FacingLeft ? !LeftFoot : !RightFoot;
+        public bool LedgeInFront => FacingLeft ? !LeftFoot && RightFoot : !RightFoot && LeftFoot;
         public abstract float Damage { get; }
         public EnemyHitBox HitBox => hitbox;
 
@@ -34,7 +36,7 @@ namespace DarkHavoc.Enemies
 
         protected new Collider2D collider;
 
-        private new Rigidbody2D rigidbody;
+        protected new Rigidbody2D rigidbody;
         private Collider2D[] _results;
         protected Vector2 targetVelocity;
 
