@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies.Assassin
@@ -7,22 +7,21 @@ namespace DarkHavoc.Enemies.Assassin
     {
         public float GetNormalizedVertical() => rigidbody.velocity.y;
         public override float Damage => 1f;
+        public EnemyHitBox SlashHitBox => slashHitBox;
 
-        [SerializeField] private float jumpForce = 8f;
-        [SerializeField] private float jumpCooldown = 1f;
+        [SerializeField] private EnemyHitBox slashHitBox;
 
-        private float _jumpTimer;
-
-        private void Update()
+        public void ResetVelocity()
         {
-            _jumpTimer -= Time.deltaTime;
+            rigidbody.velocity = Vector2.zero;
+            targetVelocity = Vector2.zero;
         }
 
-        public void Jump()
+        public void Jump(bool lightJump = false)
         {
             if (!Grounded) return;
-            targetVelocity.y = jumpForce;
-            _jumpTimer = jumpCooldown;
+            float scale = lightJump ? .5f : 1f;
+            targetVelocity.y = Stats.JumpForce * scale;
         }
 
         #region Debug

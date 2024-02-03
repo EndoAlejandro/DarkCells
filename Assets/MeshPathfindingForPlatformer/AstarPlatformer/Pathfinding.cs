@@ -19,9 +19,8 @@ namespace Calcatz.MeshPathfinding
             set => _waypoints = value;
         }
 
-        [FormerlySerializedAs("target")]
         [Tooltip("The target position, defined by a transform's position, to create the path.")]
-        /*[SerializeField]*/ private Transform m_target;
+        public Transform Target { get; private set; }
 
         [Tooltip("Whether or not to include the starting node in the calculated path.")]
         [SerializeField] private bool m_includeStartingNode;
@@ -42,7 +41,7 @@ namespace Calcatz.MeshPathfinding
         {
             if (_target != null)
             {
-                m_target = _target;
+                Target = _target;
             }
 
             StartFindPath(_unitHeight, _looping);
@@ -56,7 +55,7 @@ namespace Calcatz.MeshPathfinding
 
         public void SetTarget(Transform _target)
         {
-            m_target = _target;
+            Target = _target;
         }
 
         public Node GetStartNode()
@@ -92,7 +91,7 @@ namespace Calcatz.MeshPathfinding
 
                 startNodeData =
                     nodeDataDictionary[Waypoints.FindNodeLessThanHeight(transform.position, _unitHeight)];
-                Node.Data targetNodeData = nodeDataDictionary[Waypoints.FindNode(m_target.position)];
+                Node.Data targetNodeData = nodeDataDictionary[Waypoints.FindNode(Target.position)];
 
                 if (startNodeData.nodeObject.traversable && targetNodeData.nodeObject.traversable)
                 {

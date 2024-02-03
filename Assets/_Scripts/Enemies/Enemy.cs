@@ -76,7 +76,7 @@ namespace DarkHavoc.Enemies
                 Stats.GroundOffset + Stats.GroundCheckDistance, Stats.GroundLayerMask);
         }
 
-        public void Move(int direction)
+        public void Move(int direction, float overrideAcceleration = -1f)
         {
             if (direction == 0)
             {
@@ -85,9 +85,10 @@ namespace DarkHavoc.Enemies
             }
             else
             {
+                var acceleration = overrideAcceleration >= 0 ? overrideAcceleration : Stats.Acceleration; 
                 var speed = Player == null ? Stats.PatrolSpeed : Stats.MaxSpeed;
                 targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * speed,
-                    Stats.Acceleration * Time.fixedDeltaTime);
+                    acceleration * Time.fixedDeltaTime);
             }
         }
 

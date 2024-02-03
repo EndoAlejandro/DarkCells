@@ -1,11 +1,11 @@
 ﻿using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.Enemies.CagedSpider
+namespace DarkHavoc.Enemies.SharedStates
 {
     public class EnemyAttackState : IState
     {
         public override string ToString() => "Attack";
-        public AnimationState AnimationState => AnimationState.LightAttack;
+        public virtual AnimationState AnimationState => AnimationState.LightAttack;
         public bool CanTransitionToSelf => false;
         public bool Ended { get; private set; }
 
@@ -26,23 +26,23 @@ namespace DarkHavoc.Enemies.CagedSpider
         {
         }
 
-        public void FixedTick() => _enemy.Move(0);
+        public virtual void FixedTick() => _enemy.Move(0);
 
-        public void OnEnter()
+        public virtual void OnEnter()
         {
             Ended = false;
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
             _animation.OnAttackEnded += AnimationOnAttackEnded;
         }
 
-        private void AnimationOnAttackEnded() => Ended = true;
+        protected virtual void AnimationOnAttackEnded() => Ended = true;
 
-        private void AnimationOnAttackPerformed()
+        protected virtual void AnimationOnAttackPerformed()
         {
             _hitbox.Attack(_isUnstoppable);
         }
 
-        public void OnExit()
+        public virtual void OnExit()
         {
             _animation.OnAttackEnded -= AnimationOnAttackEnded;
             _animation.OnAttackPerformed -= AnimationOnAttackPerformed;

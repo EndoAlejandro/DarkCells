@@ -15,12 +15,13 @@ MonoBehaviour:
   maxHealth: 5
   idleTime: 1
   acceleration: 10
-  patrolSpeed: 2
-  maxSpeed: 3
+  patrolSpeed: 4
+  maxSpeed: 6
   gravity: 30
   maxFallSpeed: 5
   stoppingDistance: 0.1
   stunTime: 3
+  jumpForce: 10
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1417

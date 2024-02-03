@@ -13,6 +13,7 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float maxFallSpeed = 5f;
         [SerializeField] private float stoppingDistance = .5f;
         [SerializeField] private float stunTime = 3f;
+        [SerializeField] private float jumpForce = 10f;
 
         [Header("Environment Check")]
         [SerializeField] private LayerMask groundLayerMask;
@@ -44,6 +45,7 @@ namespace DarkHavoc.Enemies
         public float MaxFallSpeed => maxFallSpeed;
         public float StoppingDistance => stoppingDistance;
         public float StunTime => stunTime;
+        public float JumpForce => jumpForce;
 
         #endregion
 

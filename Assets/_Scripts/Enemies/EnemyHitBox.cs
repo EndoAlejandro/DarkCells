@@ -14,7 +14,7 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float cooldown = 1f;
         [SerializeField] private bool debug;
 
-        private Collider2D _hitBox;
+        private Collider2D _collider;
         private Player _player;
         private IEntity _entity;
         private IDoDamage _doDamage;
@@ -27,11 +27,11 @@ namespace DarkHavoc.Enemies
 
         private void Awake()
         {
-            _hitBox = GetComponent<Collider2D>();
+            _collider = GetComponent<Collider2D>();
             _entity = GetComponentInParent<IEntity>();
             _doDamage = GetComponentInParent<IDoDamage>();
             _results = new Collider2D[50];
-            _isSphere = _hitBox is CircleCollider2D;
+            _isSphere = _collider is CircleCollider2D;
         }
 
         private void Start()
@@ -43,9 +43,9 @@ namespace DarkHavoc.Enemies
         private void IEntityOnXFlipped(bool facingLeft)
         {
             var localX = facingLeft ? -_offsetDirection : _offsetDirection;
-            var localPosition = _hitBox.transform.localPosition;
+            var localPosition = _collider.transform.localPosition;
             localPosition.x = Mathf.Abs(localPosition.x) * localX;
-            _hitBox.transform.localPosition = localPosition;
+            _collider.transform.localPosition = localPosition;
         }
 
         private void OverlapHitBox()
@@ -64,13 +64,13 @@ namespace DarkHavoc.Enemies
 
         private int OverlapBox()
         {
-            Bounds bounds = _hitBox.bounds;
+            Bounds bounds = _collider.bounds;
             return Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0f, _results,
                 Constants.PlayerLayer);
         }
 
-        private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_hitBox.bounds.center,
-            ((CircleCollider2D)_hitBox).radius, _results, Constants.PlayerLayer);
+        private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_collider.bounds.center,
+            ((CircleCollider2D)_collider).radius, _results, Constants.PlayerLayer);
 
         public void Attack(bool isUnstoppable = false)
         {
@@ -100,17 +100,17 @@ namespace DarkHavoc.Enemies
         {
             if (!debug) return;
 
-            _hitBox = GetComponent<Collider2D>();
-            _isSphere = _hitBox is CircleCollider2D;
+            _collider = GetComponent<Collider2D>();
+            _isSphere = _collider is CircleCollider2D;
 
             Gizmos.color = Color.red;
             if (_isSphere)
             {
-                Gizmos.DrawWireSphere(_hitBox.bounds.center, ((CircleCollider2D)_hitBox).radius);
+                Gizmos.DrawWireSphere(_collider.bounds.center, ((CircleCollider2D)_collider).radius);
             }
             else
             {
-                Gizmos.DrawWireCube(transform.position, _hitBox.bounds.size);
+                Gizmos.DrawWireCube(transform.position, _collider.bounds.size);
             }
         }
     }
