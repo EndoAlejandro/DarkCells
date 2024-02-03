@@ -1,5 +1,6 @@
 ﻿using DarkHavoc.Enemies.CagedShocker.States;
 using DarkHavoc.Enemies.CagedSpider;
+using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 

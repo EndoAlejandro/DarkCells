@@ -1,29 +1,27 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
 
 namespace Calcatz.MeshPathfinding {
 
     public class Heap<T> where T : IHeapItem<T> {
 
-        T[] items;
-        int currentItemCount;
+        private readonly T[] _items;
+        private int _currentItemCount;
 
         public Heap(int maxSize) {
-            items = new T[maxSize];
+            _items = new T[maxSize];
         }
 
         public void Add(T item) {
-            item.HeapIndex = currentItemCount;
-            items[currentItemCount] = item;
+            item.HeapIndex = _currentItemCount;
+            _items[_currentItemCount] = item;
             SortUp(item);
-            currentItemCount++;
+            _currentItemCount++;
         }
 
         void SortUp(T item) {
             int parentIndex = (item.HeapIndex - 1) / 2;
             while (true) {
-                T parentItem = items[parentIndex];
+                T parentItem = _items[parentIndex];
                 if (item.CompareTo(parentItem) > 0) {
                     Swap(item, parentItem);
                 } else {
@@ -39,16 +37,16 @@ namespace Calcatz.MeshPathfinding {
                 int childIndexRight = item.HeapIndex * 2 + 2;
                 int swapIndex = 0;
 
-                if (childIndexLeft < currentItemCount) {
+                if (childIndexLeft < _currentItemCount) {
                     swapIndex = childIndexLeft;
-                    if (childIndexRight < currentItemCount) {
-                        if (items[childIndexLeft].CompareTo(items[childIndexRight]) < 0) {
+                    if (childIndexRight < _currentItemCount) {
+                        if (_items[childIndexLeft].CompareTo(_items[childIndexRight]) < 0) {
                             swapIndex = childIndexRight;
                         }
                     }
 
-                    if (item.CompareTo(items[swapIndex]) < 0) {
-                        Swap(item, items[swapIndex]);
+                    if (item.CompareTo(_items[swapIndex]) < 0) {
+                        Swap(item, _items[swapIndex]);
                     } else {
                         return;
                     }
@@ -59,19 +57,19 @@ namespace Calcatz.MeshPathfinding {
         }
 
         void Swap(T item1, T item2) {
-            items[item1.HeapIndex] = item2;
-            items[item2.HeapIndex] = item1;
+            _items[item1.HeapIndex] = item2;
+            _items[item2.HeapIndex] = item1;
             int tempIndex = item1.HeapIndex;
             item1.HeapIndex = item2.HeapIndex;
             item2.HeapIndex = tempIndex;
         }
 
         public T RemoveFirstItem() {
-            T firstItem = items[0];
-            currentItemCount--;
-            items[0] = items[currentItemCount];
-            items[0].HeapIndex = 0;
-            SortDown(items[0]);
+            T firstItem = _items[0];
+            _currentItemCount--;
+            _items[0] = _items[_currentItemCount];
+            _items[0].HeapIndex = 0;
+            SortDown(_items[0]);
             return firstItem;
         }
 
@@ -81,19 +79,16 @@ namespace Calcatz.MeshPathfinding {
 
         public int Count {
             get {
-                return currentItemCount;
+                return _currentItemCount;
             }
         }
 
         public bool Contains(T item) {
-            return Equals(items[item.HeapIndex], item);
+            return Equals(_items[item.HeapIndex], item);
         }
     }
 
     public interface IHeapItem<T> : IComparable<T> {
-        int HeapIndex {
-            get;
-            set;
-        }
+        int HeapIndex { get; set; }
     }
 }

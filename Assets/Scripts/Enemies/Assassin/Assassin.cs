@@ -5,11 +5,13 @@ namespace DarkHavoc.Enemies.Assassin
     public class Assassin : Enemy
     {
         public override float Damage => 1f;
+
+        [SerializeField] private float jumpForce = 8f;
         
         public void Jump()
         {
             if(!Grounded) return;
-            targetVelocity.y = 5f;
+            targetVelocity.y = jumpForce;
         }
         
         #region Debug

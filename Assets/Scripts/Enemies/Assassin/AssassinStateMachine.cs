@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.Assassin
         {
             var idle = new IdleState(_assassin);
             var patrol = new SideToSidePatrolState(_assassin, _collider);
-            var chase = new ChasePathState(_assassin,player, _pathfinding);
+            var chase = new ChasePathState(_assassin, player, _collider, _pathfinding);
 
             stateMachine.SetState(chase);
 

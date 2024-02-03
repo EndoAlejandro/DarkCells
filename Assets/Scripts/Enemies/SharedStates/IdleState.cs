@@ -1,5 +1,4 @@
-﻿using DarkHavoc.PlayerComponents;
-using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies.CagedShocker.States

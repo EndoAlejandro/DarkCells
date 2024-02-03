@@ -1,4 +1,5 @@
 using DarkHavoc.Enemies.CagedShocker.States;
+using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ namespace DarkHavoc.Enemies.CagedShocker
 {
     public class CagedShockerStateMachine : FiniteStateBehaviour
     {
-        private CagedShockerAnimation _animation;
+        private EnemyAnimation _animation;
         private CagedShocker _cagedShocker;
         private Collider2D _collider;
 
         protected override void References()
         {
-            _animation = GetComponentInChildren<CagedShockerAnimation>();
+            _animation = GetComponentInChildren<EnemyAnimation>();
             _cagedShocker = GetComponent<CagedShocker>();
             _collider = GetComponent<Collider2D>();
         }

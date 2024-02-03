@@ -1,6 +1,6 @@
 ﻿using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.Enemies.CagedShocker.States
+namespace DarkHavoc.Enemies.SharedStates
 {
     public class EnemyDeathState : IState
     {

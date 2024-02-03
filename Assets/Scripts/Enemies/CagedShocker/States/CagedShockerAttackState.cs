@@ -12,7 +12,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         private readonly CagedShocker _cagedShocker;
         private readonly EnemyHitBox _hitBox;
-        private readonly CagedShockerAnimation _animation;
+        private readonly EnemyAnimation _animation;
         private readonly bool _canCombo;
         private readonly float _attackDuration;
 
@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public bool CanCombo => _canCombo && _comboTimer <= 0f;
         public bool Stunned => _stunned && _attackInterruptionAvailable;
 
-        public CagedShockerAttackState(CagedShocker cagedShocker, EnemyHitBox hitBox, CagedShockerAnimation animation,
+        public CagedShockerAttackState(CagedShocker cagedShocker, EnemyHitBox hitBox, EnemyAnimation animation,
             bool canCombo, float attackDuration)
         {
             _cagedShocker = cagedShocker;

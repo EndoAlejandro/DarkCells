@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DarkHavoc.Enemies.Colossal
 {
-    public class ColossalAnimation : EnemyAnimation
+    public class ColossalAnimation : EntityAnimation
     {
         private static readonly int TurnAround = Animator.StringToHash("TurnAround");
         private static readonly int ShowOutline = Shader.PropertyToID("_ShowOutline");

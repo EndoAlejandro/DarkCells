@@ -17,9 +17,9 @@ MonoBehaviour:
   acceleration: 5
   patrolSpeed: 2
   maxSpeed: 2
-  gravity: 3
+  gravity: 30
   maxFallSpeed: 5
-  stoppingDistance: 3
+  stoppingDistance: 0.5
   stunTime: 3
   groundLayerMask:
     serializedVersion: 2

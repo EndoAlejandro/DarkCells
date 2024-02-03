@@ -22,6 +22,7 @@ namespace DarkHavoc.Enemies
         public bool LeftFoot { get; private set; }
         public bool RightFoot { get; private set; }
         public bool Grounded => LeftFoot || RightFoot;
+        public bool LedgeInFront => FacingLeft ? !LeftFoot : !RightFoot;
         public abstract float Damage { get; }
         public EnemyHitBox HitBox => hitbox;
 
