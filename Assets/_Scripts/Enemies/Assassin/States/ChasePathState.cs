@@ -16,7 +16,6 @@ namespace DarkHavoc.Enemies.Assassin.States
         private readonly Assassin _assassin;
         private readonly EnemyHitBox _lightHitBox;
         private readonly EnemyHitBox _slashHitBox;
-        private readonly Player _player;
         private readonly Collider2D _collider;
         private readonly EntityPathfinding _pathfinding;
 
@@ -24,13 +23,12 @@ namespace DarkHavoc.Enemies.Assassin.States
 
         private int _horizontalDirection;
 
-        public ChasePathState(Assassin assassin, EnemyHitBox lightHitBox, EnemyHitBox slashHitBox, Player player,
+        public ChasePathState(Assassin assassin, EnemyHitBox lightHitBox, EnemyHitBox slashHitBox,
             Collider2D collider, EntityPathfinding pathfinding)
         {
             _assassin = assassin;
             _lightHitBox = lightHitBox;
             _slashHitBox = slashHitBox;
-            _player = player;
             _collider = collider;
             _pathfinding = pathfinding;
         }
@@ -62,7 +60,6 @@ namespace DarkHavoc.Enemies.Assassin.States
             PathfindingMovement();
         }
 
-
         private void PathfindingMovement()
         {
             _horizontalDirection = (int)Mathf.Sign(_pathfinding.Direction.x);
@@ -76,7 +73,7 @@ namespace DarkHavoc.Enemies.Assassin.States
 
         public void OnEnter()
         {
-            _pathfinding.StartFindPath(_player.transform);
+            if (_assassin.Player != null) _pathfinding.StartFindPath(_assassin.Player.transform);
         }
 
         public void OnExit()

@@ -32,23 +32,40 @@ namespace DarkHavoc.Enemies.Assassin
             var idle = new IdleState(_assassin);
             var patrol = new SideToSidePatrolState(_assassin, _collider);
             var chase = new ChasePathState(_assassin, _assassin.HitBox,
-                _assassin.SlashHitBox, player, _collider, _pathfinding);
-            var airChase = new AirChaseState(_assassin, player, _collider, _pathfinding);
+                _assassin.SlashHitBox, _collider, _pathfinding);
+            var airChase = new AirChaseState(_assassin, _collider, _pathfinding);
 
+            var lightTelegraph = new TelegraphState(_assassin, _assassin.HitBox, 1f);
+            var slashTelegraph = new TelegraphState(_assassin, _assassin.SlashHitBox, 1f);
             var lightAttack = new EnemyAttackState(_assassin, _assassin.HitBox, _animation);
             var slashAttack =
-                new EnemyDisplaceAttackState(_assassin, _assassin.SlashHitBox, _animation, isUnstoppable: true);
+                new EnemyDisplaceAttackState(_assassin, _collider, _assassin.SlashHitBox, _animation,
+                    isUnstoppable: true);
 
-            stateMachine.SetState(chase);
+            var death = new EnemyDeathState(_assassin);
+
+            stateMachine.SetState(idle);
 
             stateMachine.AddTransition(idle, patrol, () => idle.Ended && _assassin.Grounded);
             stateMachine.AddTransition(patrol, idle, () => patrol.Ended || !_assassin.Grounded);
 
+            var toChaseStates = new IState[] { idle, patrol };
+            stateMachine.AddManyTransitions(toChaseStates, chase, () => _assassin.Player != null && _assassin.Grounded);
+
             stateMachine.AddTransition(chase, airChase, () => !_assassin.Grounded);
             stateMachine.AddTransition(airChase, chase, () => _assassin.Grounded);
 
-            stateMachine.AddTransition(chase, slashAttack, () => chase.SlashAttackAvailable);
-            stateMachine.AddTransition(slashAttack, chase, () => slashAttack.Ended);
+            stateMachine.AddTransition(chase, idle, () => _assassin.Player == null);
+
+            stateMachine.AddTransition(chase, lightTelegraph, () => chase.LightAttackAvailable);
+            stateMachine.AddTransition(lightTelegraph, lightAttack, () => lightTelegraph.Ended);
+            stateMachine.AddTransition(lightAttack, idle, () => lightAttack.Ended);
+
+            stateMachine.AddTransition(chase, slashTelegraph, () => chase.SlashAttackAvailable);
+            stateMachine.AddTransition(slashTelegraph, slashAttack, () => slashTelegraph.Ended);
+            stateMachine.AddTransition(slashAttack, idle, () => slashAttack.Ended);
+
+            stateMachine.AddAnyTransition(death, () => !_assassin.IsAlive);
         }
     }
 }

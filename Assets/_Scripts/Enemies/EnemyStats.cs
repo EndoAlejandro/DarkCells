@@ -33,7 +33,6 @@ namespace DarkHavoc.Enemies
         [SerializeField] private float scapeDistance = 10f;
         [SerializeField] private float comboTime = 0.05f;
         [SerializeField] private float restTime = 1f;
-        [SerializeField] private float telegraphTime = 1f;
 
         [SerializeField] private ImpulseAction firstAttackAction;
         [SerializeField] private ImpulseAction secondAttackAction;
@@ -66,7 +65,6 @@ namespace DarkHavoc.Enemies
         public float SecondAttackTime => secondAttackTime;
         public float DetectionDistance => detectionDistance;
         public float ScapeDistance => scapeDistance;
-        public float TelegraphTime => telegraphTime;
         public float ComboTime => comboTime;
         public float RestTime => restTime;
         public ImpulseAction FirstAttackAction => firstAttackAction;

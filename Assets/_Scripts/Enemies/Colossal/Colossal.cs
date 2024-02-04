@@ -99,23 +99,24 @@ namespace DarkHavoc.Enemies.Colossal
             OnBuffStateChanged?.Invoke(IsBuffActive);
         }
 
-        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
+        public DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
-            if (IsBuffActive) return;
-
-            if (!IsAlive) return;
+            if (IsBuffActive) return DamageResult.Blocked;
+            if (!IsAlive) return DamageResult.Killed;
+            
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();
 
             if (Health > 0 && Health % _breakpoint == 0) CanBuff = true;
+            return DamageResult.Success;
         }
-        
+
         public void SetFacingLeft(bool facingLeft)
         {
             FacingLeft = facingLeft;
             OnXFlipped?.Invoke(FacingLeft);
         }
-        
+
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1, bool unstoppable = false) =>
             takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
 

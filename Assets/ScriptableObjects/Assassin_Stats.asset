@@ -15,8 +15,8 @@ MonoBehaviour:
   maxHealth: 5
   idleTime: 1
   acceleration: 10
-  patrolSpeed: 4
-  maxSpeed: 6
+  patrolSpeed: 2
+  maxSpeed: 4
   gravity: 30
   maxFallSpeed: 5
   stoppingDistance: 0.1
@@ -33,7 +33,7 @@ MonoBehaviour:
     topOffset: -0.05
     midOffset: 0
     bottomOffset: 0.05
-    horizontalOffset: 0
+    horizontalOffset: -0.17
     wallLayer:
       serializedVersion: 2
       m_Bits: 1417

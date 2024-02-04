@@ -9,9 +9,11 @@ namespace DarkHavoc.Enemies
     [RequireComponent(typeof(Collider2D))]
     public class EnemyHitBox : MonoBehaviour
     {
+        public float TelegraphTime => telegraphTime;
         public bool IsUnstoppable { get; private set; }
 
         [SerializeField] private float cooldown = 1f;
+        [SerializeField] private float telegraphTime = 1f;
         [SerializeField] private bool debug;
 
         private Collider2D _collider;
@@ -72,12 +74,23 @@ namespace DarkHavoc.Enemies
         private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_collider.bounds.center,
             ((CircleCollider2D)_collider).radius, _results, Constants.PlayerLayer);
 
-        public void Attack(bool isUnstoppable = false)
+        public void SetUnstoppable(bool value) => IsUnstoppable = value;
+
+        /// <summary>
+        /// Executes attack and try to deal damage to player.
+        /// </summary>
+        /// <param name="isUnstoppable"></param>
+        /// <returns>Returns true if successfully do damage.</returns>
+        public DamageResult TryToAttack(bool isUnstoppable = false)
         {
-            IsUnstoppable = isUnstoppable;
+            SetUnstoppable(isUnstoppable);
             OverlapHitBox();
-            if (_player) _player.TakeDamage(_doDamage, isUnstoppable: isUnstoppable);
+            
+            DamageResult result = DamageResult.Failed;
+            if (_player) result = _player.TakeDamage(_doDamage, isUnstoppable: isUnstoppable);
+            
             StartCoroutine(CooldownAsync());
+            return result;
         }
 
         public bool IsPlayerInRange()

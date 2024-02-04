@@ -296,13 +296,14 @@ namespace DarkHavoc.PlayerComponents
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier, bool unstoppable = false) =>
             takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
 
-        public void TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool isUnstoppable = false)
+        public DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool isUnstoppable = false)
         {
             Vector2 source = damageDealer.transform.position;
             bool result = !isUnstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
 
             if (result) TryToStunEnemy(damageDealer);
-            if (result || !IsAlive) return;
+            if (result) return DamageResult.Blocked;
+            if (!IsAlive) return DamageResult.Killed;
 
             PlayerContext.Health -= damageDealer.Damage * damageMultiplier;
 
@@ -310,6 +311,7 @@ namespace DarkHavoc.PlayerComponents
             AddImpulse(Stats.TakeDamageAction, direction);
 
             OnDamageTaken?.Invoke();
+            return DamageResult.Success;
         }
 
         private void TryToStunEnemy(IDoDamage damageDealer)

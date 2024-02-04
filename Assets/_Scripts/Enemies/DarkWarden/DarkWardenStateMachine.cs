@@ -24,7 +24,7 @@ namespace DarkHavoc.Enemies.DarkWarden
             var idle = new IdleState(_darkWarden);
             var patrol = new SideToSidePatrolState(_darkWarden, _collider);
             var chase = new ChaseState(_darkWarden, _darkWarden.HitBox, _collider);
-            var telegraph = new TelegraphState(_darkWarden, .5f, isUnstoppable: true);
+            var telegraph = new TelegraphState(_darkWarden, _darkWarden.HitBox, .5f);
             var attack = new EnemyAttackState(_darkWarden, _darkWarden.HitBox, _animation, isUnstoppable: true);
             var death = new EnemyDeathState(_darkWarden);
 

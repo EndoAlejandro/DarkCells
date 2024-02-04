@@ -13,20 +13,17 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public bool Ended => _timer <= 0f;
 
         private readonly Enemy _enemy;
-        private readonly float _telegraphTime;
+        private readonly EnemyHitBox _hitbox;
         private readonly float _heightOffset;
-        private readonly bool _isUnstoppable;
 
         private FxManager _fxManager;
         private float _timer;
 
-        public TelegraphState(Enemy enemy, float heightOffset, bool isUnstoppable = false)
+        public TelegraphState(Enemy enemy, EnemyHitBox hitbox, float heightOffset)
         {
             _enemy = enemy;
             _heightOffset = heightOffset;
-            _isUnstoppable = isUnstoppable;
-
-            _telegraphTime = _enemy.Stats.TelegraphTime;
+            _hitbox = hitbox;
         }
 
         public void Tick() => _timer -= Time.deltaTime;
@@ -36,9 +33,9 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public void OnEnter()
         {
             _fxManager ??= ServiceLocator.GetService<FxManager>();
-            _fxManager.GetFx(_isUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph,
+            _fxManager.GetFx(_hitbox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph,
                 _enemy.transform.position + Vector3.up * _heightOffset);
-            _timer = _telegraphTime;
+            _timer = _hitbox.TelegraphTime;
         }
 
         public void OnExit() => _timer = 0f;

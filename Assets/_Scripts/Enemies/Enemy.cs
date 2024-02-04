@@ -35,10 +35,10 @@ namespace DarkHavoc.Enemies
         [SerializeField] protected bool debug;
 
         protected new Collider2D collider;
-
         protected new Rigidbody2D rigidbody;
-        private Collider2D[] _results;
         protected Vector2 targetVelocity;
+
+        private Collider2D[] _results;
 
         protected virtual void Awake()
         {
@@ -57,6 +57,7 @@ namespace DarkHavoc.Enemies
         {
             if (!IsAlive) return;
 
+            KeepTrackPlayer();
             CheckGrounded();
             CustomGravity();
 
@@ -85,7 +86,7 @@ namespace DarkHavoc.Enemies
             }
             else
             {
-                var acceleration = overrideAcceleration >= 0 ? overrideAcceleration : Stats.Acceleration; 
+                var acceleration = overrideAcceleration >= 0 ? overrideAcceleration : Stats.Acceleration;
                 var speed = Player == null ? Stats.PatrolSpeed : Stats.MaxSpeed;
                 targetVelocity.x = Mathf.MoveTowards(targetVelocity.x, direction * speed,
                     acceleration * Time.fixedDeltaTime);
@@ -104,7 +105,8 @@ namespace DarkHavoc.Enemies
         {
             var tempPlayer =
                 EntityVision.CircularCheck<Player>(MidPoint.position, Stats.DetectionDistance, ref _results);
-            if (tempPlayer == null) return;
+            if (tempPlayer == null)
+                return;
 
             if (!IsPlayerVisible(tempPlayer))
                 return;
@@ -133,13 +135,14 @@ namespace DarkHavoc.Enemies
         public void DoDamage(ITakeDamage takeDamage, float damageMultiplier = 1, bool unstoppable = false) =>
             takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
 
-        public virtual void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
+        public virtual DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
-            if (!IsAlive) return;
+            if (!IsAlive) return DamageResult.Killed;
 
             if (damageDealer.transform.TryGetComponent(out Player player)) Player = player;
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();
+            return DamageResult.Success;
         }
 
         public virtual void Death()

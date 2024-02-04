@@ -3,6 +3,14 @@ using UnityEngine;
 
 namespace DarkHavoc.EntitiesInterfaces
 {
+    public enum DamageResult
+    {
+        Success,
+        Blocked,
+        Killed,
+        Failed
+    }
+    
     public interface ITakeDamage : IMidPoint
     {
         event Action OnDamageTaken;
@@ -11,7 +19,7 @@ namespace DarkHavoc.EntitiesInterfaces
         float Health { get; }
         float MaxHealth { get; }
         bool IsAlive { get; }
-        void TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable);
+        DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable);
         void Death();
     }
 }

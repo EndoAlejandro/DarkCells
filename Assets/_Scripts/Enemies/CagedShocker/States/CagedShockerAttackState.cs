@@ -62,7 +62,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         private void AnimationOnAttackInterruptionAvailable() => _attackInterruptionAvailable = true;
         private void CagedShockerOnStunned() => _stunned = true;
-        private void AnimationOnAttackPerformed() => _hitBox.Attack();
+        private void AnimationOnAttackPerformed() => _hitBox.TryToAttack();
 
         public void OnExit()
         {

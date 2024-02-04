@@ -41,7 +41,7 @@ namespace DarkHavoc.Enemies.Colossal.States
             _timer = _duration;
         }
 
-        protected virtual void AnimationOnAttack() => hitBox.Attack(colossal.IsBuffActive);
+        protected virtual void AnimationOnAttack() => hitBox.TryToAttack(colossal.IsBuffActive);
 
         public virtual void OnExit()
         {

@@ -1,4 +1,5 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Enemies.SharedStates
 {
@@ -20,6 +21,8 @@ namespace DarkHavoc.Enemies.SharedStates
             _hitbox = hitbox;
             _animation = animation;
             _isUnstoppable = isUnstoppable;
+
+            _hitbox.SetUnstoppable(_isUnstoppable);
         }
 
         public void Tick()
@@ -39,7 +42,8 @@ namespace DarkHavoc.Enemies.SharedStates
 
         protected virtual void AnimationOnAttackPerformed()
         {
-            _hitbox.Attack(_isUnstoppable);
+            var result = _hitbox.TryToAttack(_isUnstoppable);
+            if (result == DamageResult.Blocked) Ended = true;
         }
 
         public virtual void OnExit()

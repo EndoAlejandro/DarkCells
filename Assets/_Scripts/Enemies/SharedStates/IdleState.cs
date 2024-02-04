@@ -1,7 +1,7 @@
 ﻿using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.CagedShocker.States
+namespace DarkHavoc.Enemies.SharedStates
 {
     public class IdleState : IState
     {

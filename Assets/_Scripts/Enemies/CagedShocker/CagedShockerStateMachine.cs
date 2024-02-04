@@ -23,7 +23,7 @@ namespace DarkHavoc.Enemies.CagedShocker
             var idle = new IdleState(_cagedShocker);
             var patrol = new SideToSidePatrolState(_cagedShocker, _collider);
             var chase = new ChaseState(_cagedShocker, _cagedShocker.HitBox, _collider);
-            var telegraph = new TelegraphState(_cagedShocker, 1.25f);
+            var telegraph = new TelegraphState(_cagedShocker, _cagedShocker.HitBox, 1.25f);
             var firstAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, true,
                 _cagedShocker.Stats.FirstAttackTime);
             var secondAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, false,

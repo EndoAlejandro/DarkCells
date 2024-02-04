@@ -6,17 +6,23 @@ namespace DarkHavoc.Enemies.SharedStates
     {
         public override AnimationState AnimationState => AnimationState.HeavyAttack;
         private readonly Assassin.Assassin _assassin;
+        private readonly Collider2D _collider;
 
         private bool _canMove;
 
-        public EnemyDisplaceAttackState(Assassin.Assassin enemy, EnemyHitBox hitbox, EnemyAnimation animation,
-            bool isUnstoppable = false) : base(enemy, hitbox, animation, isUnstoppable) => _assassin = enemy;
+        public EnemyDisplaceAttackState(Assassin.Assassin enemy, Collider2D collider, EnemyHitBox hitbox,
+            EnemyAnimation animation,
+            bool isUnstoppable = false) : base(enemy, hitbox, animation, isUnstoppable)
+        {
+            _assassin = enemy;
+            _collider = collider;
+        }
 
 
         public override void FixedTick()
         {
             if (!_assassin.LedgeInFront && _canMove)
-                _assassin.Move(_assassin.FacingLeft ? -20 : 20, _assassin.Stats.Acceleration * 20);
+                _assassin.Move(_assassin.FacingLeft ? -8 : 8, _assassin.Stats.Acceleration * 100);
             else
             {
                 _assassin.ResetVelocity();
@@ -33,12 +39,15 @@ namespace DarkHavoc.Enemies.SharedStates
         {
             base.AnimationOnAttackPerformed();
             _canMove = true;
+            Physics2D.IgnoreCollision(_collider, _assassin.Player.Collider, true);
         }
 
         public override void OnExit()
         {
             base.OnExit();
+            _canMove = false;
             _assassin.ResetVelocity();
+            Physics2D.IgnoreCollision(_collider, _assassin.Player.Collider, false);
         }
     }
 }
