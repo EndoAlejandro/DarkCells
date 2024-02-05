@@ -9,6 +9,7 @@ namespace DarkHavoc.Enemies.SharedStates
         private readonly Collider2D _collider;
 
         private bool _canMove;
+        private int _initialLayer;
 
         public EnemyDisplaceAttackState(Assassin.Assassin enemy, Collider2D collider, EnemyHitBox hitbox,
             EnemyAnimation animation,
@@ -39,6 +40,9 @@ namespace DarkHavoc.Enemies.SharedStates
         {
             base.AnimationOnAttackPerformed();
             _canMove = true;
+
+            _initialLayer = _assassin.gameObject.layer;
+            // _assassin.gameObject.layer = LayerMask.NameToLayer("IgnoreEnemy");
             Physics2D.IgnoreCollision(_collider, _assassin.Player.Collider, true);
         }
 
@@ -47,6 +51,8 @@ namespace DarkHavoc.Enemies.SharedStates
             base.OnExit();
             _canMove = false;
             _assassin.ResetVelocity();
+
+            // _assassin.gameObject.layer = _initialLayer;
             Physics2D.IgnoreCollision(_collider, _assassin.Player.Collider, false);
         }
     }

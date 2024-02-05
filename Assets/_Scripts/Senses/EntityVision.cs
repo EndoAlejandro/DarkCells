@@ -26,7 +26,7 @@ namespace DarkHavoc.Senses
             where T : IEntity
         {
             float direction = to.x - from.x;
-            // if (!radialVision && ((direction < 0f && !facingLeft) || (direction > 0f && facingLeft))) return false;
+            if (!radialVision && ((direction < 0f && !facingLeft) || (direction > 0f && facingLeft))) return false;
 
             var result = Physics2D.Linecast(from, to, ~sourceLayerMask);
             return result && result.transform.TryGetComponent(out T t);

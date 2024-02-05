@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   idleTime: 0.15
-  gravity: 3
   acceleration: 10
-  maxFallSpeed: 5
+  patrolSpeed: 1
   maxSpeed: 1.5
-  chaseStoppingDistance: 0.5
+  gravity: 3
+  maxFallSpeed: 5
+  stoppingDistance: 0.5
   stunTime: 3
+  jumpForce: 10
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1417
@@ -34,7 +36,7 @@ MonoBehaviour:
     horizontalOffset: -0.1
     wallLayer:
       serializedVersion: 2
-      m_Bits: 1417
+      m_Bits: 1289
     ledgeDetectorOffset: {x: 0, y: 0}
     ledgeDetectorRadius: 0
   damage: 3
@@ -44,10 +46,6 @@ MonoBehaviour:
   scapeDistance: 10
   comboTime: 1
   restTime: 3
-  telegraphTime: 0.5
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 8
   firstAttackAction:
     time: 0
     force: 0

@@ -8,6 +8,7 @@ namespace DarkHavoc.Enemies.SharedStates
         public override string ToString() => "Attack";
         public virtual AnimationState AnimationState => AnimationState.LightAttack;
         public bool CanTransitionToSelf => false;
+        public bool Blocked { get; private set; }
         public bool Ended { get; private set; }
 
         private readonly Enemy _enemy;
@@ -34,6 +35,7 @@ namespace DarkHavoc.Enemies.SharedStates
         public virtual void OnEnter()
         {
             Ended = false;
+            Blocked = false;
             _animation.OnAttackPerformed += AnimationOnAttackPerformed;
             _animation.OnAttackEnded += AnimationOnAttackEnded;
         }
@@ -43,7 +45,7 @@ namespace DarkHavoc.Enemies.SharedStates
         protected virtual void AnimationOnAttackPerformed()
         {
             var result = _hitbox.TryToAttack(_isUnstoppable);
-            if (result == DamageResult.Blocked) Ended = true;
+            if (result == DamageResult.Blocked) Blocked = true;
         }
 
         public virtual void OnExit()

@@ -24,10 +24,7 @@ namespace DarkHavoc.Enemies.CagedShocker
             var patrol = new SideToSidePatrolState(_cagedShocker, _collider);
             var chase = new ChaseState(_cagedShocker, _cagedShocker.HitBox, _collider);
             var telegraph = new TelegraphState(_cagedShocker, _cagedShocker.HitBox, 1.25f);
-            var firstAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, true,
-                _cagedShocker.Stats.FirstAttackTime);
-            var secondAttack = new CagedShockerAttackState(_cagedShocker, _cagedShocker.HitBox, _animation, false,
-                _cagedShocker.Stats.SecondAttackTime);
+            var attack = new EnemyAttackState(_cagedShocker, _cagedShocker.HitBox, _animation);
             var rest = new RestState(_cagedShocker, _cagedShocker.Stats.RestTime);
             var stun = new StunState(_cagedShocker, _cagedShocker.Stats.StunTime);
             var dead = new EnemyDeathState(_cagedShocker);
@@ -43,14 +40,10 @@ namespace DarkHavoc.Enemies.CagedShocker
             stateMachine.AddTransition(chase, idle, () => _cagedShocker.Player == null);
 
             stateMachine.AddTransition(chase, telegraph, () => chase.AttackAvailable);
-            stateMachine.AddTransition(telegraph, firstAttack, () => telegraph.Ended);
-            stateMachine.AddTransition(firstAttack, secondAttack, () => firstAttack.CanCombo);
+            stateMachine.AddTransition(telegraph, attack, () => telegraph.Ended);
 
-            stateMachine.AddTransition(firstAttack, stun, () => firstAttack.Stunned);
-            stateMachine.AddTransition(secondAttack, stun, () => secondAttack.Stunned);
-
-            stateMachine.AddTransition(firstAttack, rest, () => firstAttack.Ended);
-            stateMachine.AddTransition(secondAttack, rest, () => secondAttack.Ended);
+            stateMachine.AddTransition(attack, stun, () => attack.Blocked);
+            stateMachine.AddTransition(attack, idle, () => attack.Ended);
 
             stateMachine.AddTransition(stun, idle, () => stun.Ended);
             stateMachine.AddTransition(rest, idle, () => rest.Ended);

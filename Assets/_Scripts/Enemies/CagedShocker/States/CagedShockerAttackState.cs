@@ -1,10 +1,10 @@
-﻿using DarkHavoc.PlayerComponents;
-using DarkHavoc.StateMachineComponents;
+﻿using System;
 using UnityEngine;
-using AnimationState = DarkHavoc.AnimationState;
+using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {
+    [Obsolete("Not longer supported state, use EnemyAttackState instead", true)]
     public class CagedShockerAttackState : IState
     {
         public override string ToString() => "Attack";

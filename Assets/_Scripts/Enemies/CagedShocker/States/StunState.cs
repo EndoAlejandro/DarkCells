@@ -12,19 +12,24 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
 
-        private readonly CagedShocker _cagedShocker;
+        private readonly Enemy _enemy;
         private readonly float _stunTime;
         private float _timer;
 
-        public StunState(CagedShocker cagedShocker, float stunTime)
+        public StunState(Enemy enemy, float stunTime)
         {
-            _cagedShocker = cagedShocker;
+            _enemy = enemy;
             _stunTime = stunTime;
         }
 
         public void Tick() => _timer -= Time.deltaTime;
-        public void FixedTick() => _cagedShocker.Move(0);
-        public void OnEnter() => _timer = _stunTime;
+        public void FixedTick() => _enemy.Move(0);
+        public void OnEnter()
+        {
+            _timer = _stunTime;
+            // TODO: Stun feedback.
+        }
+
         public void OnExit() => _timer = 0f;
     }
 }

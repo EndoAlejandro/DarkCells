@@ -21,6 +21,7 @@ MonoBehaviour:
   maxFallSpeed: 5
   stoppingDistance: 3
   stunTime: 3
+  jumpForce: 10
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1417
@@ -35,7 +36,7 @@ MonoBehaviour:
     horizontalOffset: 0
     wallLayer:
       serializedVersion: 2
-      m_Bits: 1417
+      m_Bits: 1289
     ledgeDetectorOffset: {x: 0, y: 0}
     ledgeDetectorRadius: 0
   damage: 1
@@ -45,7 +46,6 @@ MonoBehaviour:
   scapeDistance: 10
   comboTime: 1
   restTime: 3
-  telegraphTime: 0.1
   firstAttackAction:
     time: 0
     force: 0
