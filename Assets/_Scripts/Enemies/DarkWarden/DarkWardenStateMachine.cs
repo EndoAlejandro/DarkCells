@@ -23,7 +23,7 @@ namespace DarkHavoc.Enemies.DarkWarden
         {
             var idle = new IdleState(_darkWarden);
             var patrol = new SideToSidePatrolState(_darkWarden, _collider);
-            var chase = new ChaseState(_darkWarden, _darkWarden.HitBox, _collider);
+            var chase = new ChaseSideToSideState(_darkWarden, _collider, _darkWarden.HitBox);
             var telegraph = new TelegraphState(_darkWarden, _darkWarden.HitBox, .5f);
             var attack = new EnemyAttackState(_darkWarden, _darkWarden.HitBox, _animation, isUnstoppable: true);
             var death = new EnemyDeathState(_darkWarden);
@@ -37,7 +37,7 @@ namespace DarkHavoc.Enemies.DarkWarden
             stateMachine.AddManyTransitions(toChaseStates, chase, () => _darkWarden.Player != null);
             stateMachine.AddTransition(chase, idle, () => _darkWarden.Player == null);
 
-            stateMachine.AddTransition(chase, telegraph, () => chase.AttackAvailable);
+            stateMachine.AddTransition(chase, telegraph, () => chase.FirstHitBoxAvailable && chase.IsPlayerVisible);
             stateMachine.AddTransition(telegraph, attack, () => telegraph.Ended);
             stateMachine.AddTransition(attack, idle, () => attack.Ended);
 

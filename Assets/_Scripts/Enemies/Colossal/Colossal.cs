@@ -103,7 +103,7 @@ namespace DarkHavoc.Enemies.Colossal
         {
             if (IsBuffActive) return DamageResult.Blocked;
             if (!IsAlive) return DamageResult.Killed;
-            
+
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();
 

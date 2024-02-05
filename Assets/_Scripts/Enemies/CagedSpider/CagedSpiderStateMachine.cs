@@ -21,7 +21,7 @@ namespace DarkHavoc.Enemies.CagedSpider
         protected override void StateMachine()
         {
             var idle = new IdleState(_cagedSpider);
-            var chase = new ChaseState(_cagedSpider, _cagedSpider.HitBox, _collider);
+            var chase = new ChaseSideToSideState(_cagedSpider, _collider, _cagedSpider.HitBox);
             var telegraph = new TelegraphState(_cagedSpider, _cagedSpider.HitBox, .5f);
             var attack = new EnemyAttackState(_cagedSpider, _cagedSpider.HitBox, _animation);
             var death = new EnemyDeathState(_cagedSpider);
@@ -29,7 +29,7 @@ namespace DarkHavoc.Enemies.CagedSpider
             stateMachine.SetState(idle);
 
             stateMachine.AddTransition(idle, chase, () => idle.Ended && _cagedSpider.Player != null);
-            stateMachine.AddTransition(chase, telegraph, () => chase.AttackAvailable);
+            stateMachine.AddTransition(chase, telegraph, () => chase.FirstHitBoxAvailable);
             stateMachine.AddTransition(telegraph, attack, () => telegraph.Ended);
             stateMachine.AddTransition(attack, idle, () => attack.Ended);
 

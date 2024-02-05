@@ -31,8 +31,8 @@ namespace DarkHavoc.Enemies.Assassin
         {
             var idle = new IdleState(_assassin);
             var patrol = new SideToSidePatrolState(_assassin, _collider);
-            var chase = new ChasePathState(_assassin, _assassin.HitBox,
-                _assassin.SlashHitBox, _collider, _pathfinding);
+            var chase = new ChasePathState(_assassin, _collider, _pathfinding,
+                _assassin.HitBox, _assassin.SlashHitBox);
             var airChase = new AirChaseState(_assassin, _collider, _pathfinding);
 
             var lightTelegraph = new TelegraphState(_assassin, _assassin.HitBox, 1f);
@@ -58,14 +58,14 @@ namespace DarkHavoc.Enemies.Assassin
 
             stateMachine.AddTransition(chase, idle, () => _assassin.Player == null);
 
-            stateMachine.AddTransition(chase, lightTelegraph, () => chase.LightAttackAvailable);
+            stateMachine.AddTransition(chase, lightTelegraph, () => chase.FirstHitBoxAvailable);
             stateMachine.AddTransition(lightTelegraph, lightAttack, () => lightTelegraph.Ended);
             stateMachine.AddTransition(lightAttack, idle, () => lightAttack.Ended);
 
             stateMachine.AddTransition(lightAttack, stun, () => lightAttack.Blocked);
             stateMachine.AddTransition(stun, idle, () => stun.Ended);
 
-            stateMachine.AddTransition(chase, slashTelegraph, () => chase.SlashAttackAvailable);
+            stateMachine.AddTransition(chase, slashTelegraph, () => chase.SecondHitBoxAvailable);
             stateMachine.AddTransition(slashTelegraph, slashAttack, () => slashTelegraph.Ended);
             stateMachine.AddTransition(slashAttack, idle, () => slashAttack.Ended);
 

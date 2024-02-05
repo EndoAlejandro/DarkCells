@@ -1,34 +1,27 @@
-﻿using DarkHavoc.PlayerComponents;
-using DarkHavoc.Senses;
+﻿using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.Assassin.States
+namespace DarkHavoc.Enemies.SharedStates
 {
-    public class ChasePathState : IState
+    public class ChasePathState : MultiHitboxState, IState
     {
         public override string ToString() => "Chase Path";
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
-        public bool LightAttackAvailable { get; private set; }
-        public bool SlashAttackAvailable { get; private set; }
 
-        private readonly Assassin _assassin;
-        private readonly EnemyHitBox _lightHitBox;
-        private readonly EnemyHitBox _slashHitBox;
+        private readonly Assassin.Assassin _assassin;
         private readonly Collider2D _collider;
         private readonly EntityPathfinding _pathfinding;
 
         private WallResult _wallResult;
-
         private int _horizontalDirection;
 
-        public ChasePathState(Assassin assassin, EnemyHitBox lightHitBox, EnemyHitBox slashHitBox,
-            Collider2D collider, EntityPathfinding pathfinding)
+        public ChasePathState(Assassin.Assassin assassin, Collider2D collider, EntityPathfinding pathfinding,
+            EnemyHitBox firstHitBox = null, EnemyHitBox secondHitBox = null, EnemyHitBox thirdHitBox = null) : base(
+            firstHitBox, secondHitBox, thirdHitBox)
         {
             _assassin = assassin;
-            _lightHitBox = lightHitBox;
-            _slashHitBox = slashHitBox;
             _collider = collider;
             _pathfinding = pathfinding;
         }
@@ -38,8 +31,7 @@ namespace DarkHavoc.Enemies.Assassin.States
             if (_horizontalDirection < 0 && !_assassin.FacingLeft) _assassin.SetFacingLeft(true);
             else if (_horizontalDirection > 0 && _assassin.FacingLeft) _assassin.SetFacingLeft(false);
 
-            LightAttackAvailable = _lightHitBox.IsPlayerInRange();
-            SlashAttackAvailable = _slashHitBox.IsPlayerInRange();
+            HitBoxCheck();
         }
 
         private bool HeightJump() => _pathfinding.Direction.y > .5f;

@@ -3,20 +3,19 @@ using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.CagedShocker.States
+namespace DarkHavoc.Enemies.SharedStates
 {
-    public class ChaseState : IState
+    public class ChaseSideToSideState : MultiHitboxState, IState
     {
         public override string ToString() => "Chase";
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
-        public bool AttackAvailable { get; private set; }
+        public bool IsPlayerVisible { get; private set; }
 
         private bool CanWalk => (_enemy.LeftFoot && _enemy.FacingLeft) ||
                                 (_enemy.RightFoot && !_enemy.FacingLeft);
 
         private readonly Enemy _enemy;
-        private readonly EnemyHitBox _hitBox;
         private readonly Collider2D _collider;
 
         private Player _player;
@@ -24,10 +23,11 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         private int _targetDirection;
 
-        public ChaseState(Enemy enemy, EnemyHitBox hitBox, Collider2D collider)
+        public ChaseSideToSideState(Enemy enemy, Collider2D collider, EnemyHitBox firstHitBox = null,
+            EnemyHitBox secondHitBox = null, EnemyHitBox thirdHitBox = null) :
+            base(firstHitBox, secondHitBox, thirdHitBox)
         {
             _enemy = enemy;
-            _hitBox = hitBox;
             _collider = collider;
         }
 
@@ -36,10 +36,8 @@ namespace DarkHavoc.Enemies.CagedShocker.States
             if (_enemy.Player == null) return;
             _enemy.SeekPlayer();
 
-            var isPlayerVisible = _enemy.IsPlayerVisible(_player);
+            IsPlayerVisible = _enemy.IsPlayerVisible(_player);
             var horizontalDistance = PlayerHorizontalDistance();
-
-            AttackAvailable = isPlayerVisible && _hitBox.IsPlayerInRange();
 
             _targetDirection = Mathf.Abs(horizontalDistance) > _enemy.Stats.StoppingDistance
                 ? (int)Mathf.Sign(horizontalDistance)
@@ -49,6 +47,8 @@ namespace DarkHavoc.Enemies.CagedShocker.States
             if (!_enemy.FacingLeft && horizontalDistance < 0f) _enemy.SetFacingLeft(true);
 
             _enemy.KeepTrackPlayer();
+
+            HitBoxCheck();
         }
 
         private float PlayerHorizontalDistance() =>
@@ -65,7 +65,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
 
         public void OnEnter()
         {
-            AttackAvailable = false;
+            IsPlayerVisible = false;
             _player = _enemy.Player;
         }
 
