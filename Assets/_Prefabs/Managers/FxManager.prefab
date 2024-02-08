@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7511548128450807470}
   - component: {fileID: 2241165353972877865}
   m_Layer: 0
-  m_Name: FxProvider
+  m_Name: FxManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +47,4 @@ MonoBehaviour:
   telegraphAttackPrefab: {fileID: 9143803946635656790, guid: 57cd509bddfda4b4ab212dc6a1a7f23f, type: 3}
   dangerousTelegraphAttackPrefab: {fileID: 5600386458909092640, guid: 929e1a88b2f8c66458da4dd02902fb5b, type: 3}
   colossalMeleeExplosion: {fileID: 2366007055084804826, guid: 88e0c67c776ff934e9cec01ee26cdaa9, type: 3}
+  archerAttack: {fileID: 7256155686450004504, guid: 06adcaa36c54edf42971c118bf69e896, type: 3}

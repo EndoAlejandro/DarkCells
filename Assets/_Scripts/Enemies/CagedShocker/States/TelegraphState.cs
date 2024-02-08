@@ -34,7 +34,7 @@ namespace DarkHavoc.Enemies.CagedShocker.States
         public void OnEnter()
         {
             _fxManager ??= ServiceLocator.GetService<FxManager>();
-            _fxManager.GetFx(_hitbox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph,
+            _fxManager.PlayFx(_hitbox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph,
                 _enemy.transform.position + Vector3.up * _heightOffset);
             _timer = _hitbox.TelegraphTime;
         }

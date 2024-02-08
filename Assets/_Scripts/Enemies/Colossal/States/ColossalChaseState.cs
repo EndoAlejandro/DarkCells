@@ -60,7 +60,7 @@ namespace DarkHavoc.Enemies.Colossal.States
             _boomerangCdTimer -= Time.deltaTime;
         }
 
-        public void FixedTick()
+        public async void FixedTick()
         {
             SetDirection();
 
@@ -71,8 +71,8 @@ namespace DarkHavoc.Enemies.Colossal.States
             BuffAvailable = _colossal.BuffHitBox.IsPlayerInRange();
 
             if (_changingDirection) return;
-            if (_direction < 0 && !_colossal.FacingLeft) ModifyFacingDirection(true);
-            else if (_direction > 0 && _colossal.FacingLeft) ModifyFacingDirection(false);
+            if (_direction < 0 && !_colossal.FacingLeft) await ModifyFacingDirection(true);
+            else if (_direction > 0 && _colossal.FacingLeft) await ModifyFacingDirection(false);
         }
 
         private void SetDirection()
@@ -111,7 +111,7 @@ namespace DarkHavoc.Enemies.Colossal.States
                 await Task.Delay(TimeSpan.FromSeconds(_turnAwait), _cts.Token);
                 _colossal.SetFacingLeft(facingLeft);
             }
-            catch (Exception e)
+            catch (Exception _)
             {
                 // Ignore.
             }

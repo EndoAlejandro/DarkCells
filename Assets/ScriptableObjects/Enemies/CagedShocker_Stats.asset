@@ -25,7 +25,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1417
-  footPositionOffset: {x: 0.15, y: 0.35}
+  footPositionOffset: {x: 0.2, y: 0}
   groundOffset: 0.35
   groundCheckDistance: 0.05
   wallDetection:
@@ -46,6 +46,7 @@ MonoBehaviour:
   scapeDistance: 10
   comboTime: 1
   restTime: 3
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
   firstAttackAction:
     time: 0
     force: 0

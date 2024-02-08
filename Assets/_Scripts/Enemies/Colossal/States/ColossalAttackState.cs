@@ -37,7 +37,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         {
             FxType fxType = hitBox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph;
             ServiceLocator.GetService<FxManager>()
-                .GetFx(fxType, colossal.transform.position + Vector3.up * 3.75f, 1.25f);
+                .PlayFx(fxType, colossal.transform.position + Vector3.up * 3.75f, 1.25f);
             
             _timer = _duration;
         }

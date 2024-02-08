@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a624429f41f4434a6705c91af13ab1c, type: 3}
-  m_Name: OrbMage_Stats
+  m_Name: Archer_Stats
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 5
   idleTime: 1
   acceleration: 10
   patrolSpeed: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1417
-  footPositionOffset: {x: 0, y: 0}
+  footPositionOffset: {x: 0.2, y: 0}
   groundOffset: 0
   groundCheckDistance: 0.1
   wallDetection:
@@ -46,7 +46,7 @@ MonoBehaviour:
   scapeDistance: 20
   comboTime: 1
   restTime: 3
-  buffColor: {r: 0, g: 1, b: 1, a: 1}
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
   firstAttackAction:
     time: 0
     force: 0

@@ -57,7 +57,7 @@ namespace DarkHavoc.Enemies.Colossal.States
 
             // Extra smoke fx - visual only.
             Vector2 position = new Vector2(hitBox.transform.position.x, colossal.transform.position.y);
-            ServiceLocator.GetService<FxManager>().GetFx(FxType.ColossalMelee, position);
+            ServiceLocator.GetService<FxManager>().PlayFx(FxType.ColossalMelee, position);
         }
     }
 

@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ColossalMelee
+  m_Name: ColossalMelee_AC
   m_Controller: {fileID: 9100000, guid: 95a9cb2d8fedfd045ab15351ad070171, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: a13c6a990f1750644ad9a75a569dcfdb, type: 2}

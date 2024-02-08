@@ -60,7 +60,7 @@ namespace DarkHavoc.Enemies.SharedStates
             _wallResult = EntityVision.CheckWallCollision(_collider, _enemy.Stats.WallDetection,
                 _enemy.FacingLeft);
 
-            if (!_wallResult.FacingWall) _enemy.Move(CanWalk ? _targetDirection : 0);
+            if (!_wallResult.FacingWall || _enemy.LedgeInFront) _enemy.Move(CanWalk ? _targetDirection : 0);
             else _enemy.Move(0);
         }
 
@@ -70,6 +70,10 @@ namespace DarkHavoc.Enemies.SharedStates
             _player = _enemy.Player;
         }
 
-        public void OnExit() => _player = null;
+        public void OnExit()
+        {
+            _player = null;
+            _enemy.ResetVelocity();
+        }
     }
 }
