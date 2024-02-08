@@ -102,6 +102,19 @@ namespace DarkHavoc.Enemies
                 Stats.Gravity * Time.fixedDeltaTime);
         }
 
+        public void ResetVelocity()
+        {
+            rigidbody.velocity = Vector2.zero;
+            targetVelocity = Vector2.zero;
+        }
+
+        public void Jump(bool lightJump = false)
+        {
+            if (!Grounded) return;
+            float scale = lightJump ? .5f : 1f;
+            targetVelocity.y = Stats.JumpForce * scale;
+        }
+        
         private void ApplyVelocity() => rigidbody.velocity = targetVelocity;
 
         public void SeekPlayer()
@@ -141,6 +154,7 @@ namespace DarkHavoc.Enemies
         public virtual DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
             if (!IsAlive) return DamageResult.Killed;
+            if (IsBuffActive) return DamageResult.Blocked;
 
             if (damageDealer.transform.TryGetComponent(out Player player)) Player = player;
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
@@ -158,6 +172,7 @@ namespace DarkHavoc.Enemies
         }
 
         public float GetNormalizedHorizontal() => Mathf.Abs(rigidbody.velocity.x) / Stats.MaxSpeed;
+        public float GetNormalizedVertical() => rigidbody.velocity.y;
 
         public void ActivateBuff(float buffDuration)
         {

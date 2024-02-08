@@ -1,6 +1,7 @@
 ﻿using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.PlayerComponents.States
 {

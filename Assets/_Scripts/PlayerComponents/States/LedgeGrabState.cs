@@ -44,10 +44,14 @@ namespace DarkHavoc.PlayerComponents.States
         {
             Ended = false;
             _player.LedgeGrab(true);
+            _player.OnDamageTaken += PlayerOnDamageTaken;
         }
+
+        private void PlayerOnDamageTaken() => Ended = true;
 
         public void OnExit()
         {
+            _player.OnDamageTaken -= PlayerOnDamageTaken;
             _player.LedgeGrab(false);
         }
     }

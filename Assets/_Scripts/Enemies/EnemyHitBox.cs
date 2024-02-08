@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
@@ -15,32 +14,31 @@ namespace DarkHavoc.Enemies
 
         [SerializeField] private float cooldown = 1f;
         [SerializeField] private float telegraphTime = 1f;
+
         [SerializeField] private bool debug;
 
         private Collider2D _collider;
-        private Player _player;
-        private IEntity _entity;
-        private IDoDamage _doDamage;
+        protected Player player;
+        protected Enemy enemy;
         private EnemyAnimation _animation;
-        private Collider2D[] _results;
+        protected Collider2D[] results;
 
-        private bool _isSphere;
+        protected bool isCircle;
         private bool _onCooldown;
         private int _offsetDirection;
 
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
-            _entity = GetComponentInParent<IEntity>();
-            _doDamage = GetComponentInParent<IDoDamage>();
-            _results = new Collider2D[50];
-            _isSphere = _collider is CircleCollider2D;
+            enemy = GetComponentInParent<Enemy>();
+            results = new Collider2D[50];
+            isCircle = _collider is CircleCollider2D;
         }
 
         private void Start()
         {
             _offsetDirection = transform.localPosition.x >= 0 ? 1 : -1;
-            _entity.OnXFlipped += IEntityOnXFlipped;
+            enemy.OnXFlipped += IEntityOnXFlipped;
         }
 
         private void IEntityOnXFlipped(bool facingLeft)
@@ -51,29 +49,29 @@ namespace DarkHavoc.Enemies
             _collider.transform.localPosition = localPosition;
         }
 
-        private void OverlapHitBox()
+        protected virtual void OverlapHitBox()
         {
-            var size = _isSphere ? OverlapCircle() : OverlapBox();
+            var size = isCircle ? OverlapCircle() : OverlapBox();
 
             for (int i = 0; i < size; i++)
             {
-                if (!_results[i].TryGetComponent(out Player player)) continue;
-                _player = player;
+                if (!results[i].TryGetComponent(out Player player)) continue;
+                this.player = player;
                 return;
             }
 
-            _player = null;
+            player = null;
         }
 
-        private int OverlapBox()
+        protected int OverlapBox()
         {
             Bounds bounds = _collider.bounds;
-            return Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0f, _results,
+            return Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0f, results,
                 Constants.PlayerLayer);
         }
 
-        private int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_collider.bounds.center,
-            ((CircleCollider2D)_collider).radius, _results, Constants.PlayerLayer);
+        protected int OverlapCircle() => Physics2D.OverlapCircleNonAlloc(_collider.bounds.center,
+            ((CircleCollider2D)_collider).radius, results, Constants.PlayerLayer);
 
         public void SetUnstoppable(bool value) => IsUnstoppable = value;
 
@@ -82,14 +80,14 @@ namespace DarkHavoc.Enemies
         /// </summary>
         /// <param name="isUnstoppable"></param>
         /// <returns>Returns true if successfully do damage.</returns>
-        public DamageResult TryToAttack(bool isUnstoppable = false)
+        public virtual DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
             OverlapHitBox();
-            
+
             DamageResult result = DamageResult.Failed;
-            if (_player) result = _player.TakeDamage(_doDamage, isUnstoppable: isUnstoppable);
-            
+            if (player) result = player.TakeDamage(enemy, isUnstoppable: isUnstoppable);
+
             StartCoroutine(CooldownAsync());
             return result;
         }
@@ -98,27 +96,27 @@ namespace DarkHavoc.Enemies
         {
             if (_onCooldown) return false;
             OverlapHitBox();
-            return _player;
+            return player;
         }
 
-        private IEnumerator CooldownAsync()
+        protected IEnumerator CooldownAsync()
         {
             _onCooldown = true;
             yield return new WaitForSeconds(cooldown);
             _onCooldown = false;
         }
 
-        private void OnDestroy() => _entity.OnXFlipped -= IEntityOnXFlipped;
+        private void OnDestroy() => enemy.OnXFlipped -= IEntityOnXFlipped;
 
         private void OnDrawGizmos()
         {
             if (!debug) return;
 
             _collider = GetComponent<Collider2D>();
-            _isSphere = _collider is CircleCollider2D;
+            isCircle = _collider is CircleCollider2D;
 
             Gizmos.color = Color.red;
-            if (_isSphere)
+            if (isCircle)
             {
                 Gizmos.DrawWireSphere(_collider.bounds.center, ((CircleCollider2D)_collider).radius);
             }

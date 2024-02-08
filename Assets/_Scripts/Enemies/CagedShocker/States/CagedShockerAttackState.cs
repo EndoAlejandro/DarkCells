@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using DarkHavoc.StateMachineComponents;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.CagedShocker.States
 {

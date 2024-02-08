@@ -1,6 +1,7 @@
 ﻿using DarkHavoc.Senses;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.SharedStates
 {
@@ -10,43 +11,43 @@ namespace DarkHavoc.Enemies.SharedStates
         public AnimationState AnimationState => AnimationState.Ground;
         public bool CanTransitionToSelf => false;
 
-        private readonly Assassin.Assassin _assassin;
+        private readonly Enemy _enemy;
         private readonly Collider2D _collider;
         private readonly EntityPathfinding _pathfinding;
 
         private WallResult _wallResult;
         private int _horizontalDirection;
 
-        public ChasePathState(Assassin.Assassin assassin, Collider2D collider, EntityPathfinding pathfinding,
+        public ChasePathState(Enemy enemy, Collider2D collider, EntityPathfinding pathfinding,
             EnemyHitBox firstHitBox = null, EnemyHitBox secondHitBox = null, EnemyHitBox thirdHitBox = null) : base(
             firstHitBox, secondHitBox, thirdHitBox)
         {
-            _assassin = assassin;
+            _enemy = enemy;
             _collider = collider;
             _pathfinding = pathfinding;
         }
 
         public void Tick()
         {
-            if (_horizontalDirection < 0 && !_assassin.FacingLeft) _assassin.SetFacingLeft(true);
-            else if (_horizontalDirection > 0 && _assassin.FacingLeft) _assassin.SetFacingLeft(false);
+            if (_horizontalDirection < 0 && !_enemy.FacingLeft) _enemy.SetFacingLeft(true);
+            else if (_horizontalDirection > 0 && _enemy.FacingLeft) _enemy.SetFacingLeft(false);
 
             HitBoxCheck();
         }
 
         private bool HeightJump() => _pathfinding.Direction.y > .5f;
         private bool JumpFirstCase() => _wallResult.FacingWall && HeightJump();
-        private bool JumpSecondCase() => _assassin.LedgeInFront;
+        private bool JumpSecondCase() => _enemy.LedgeInFront;
 
         public void FixedTick()
         {
             _wallResult = EntityVision.CheckWallCollision
-                (_collider, _assassin.Stats.WallDetection, _assassin.FacingLeft);
+                (_collider, _enemy.Stats.WallDetection, _enemy.FacingLeft);
 
             if ((JumpFirstCase() || JumpSecondCase())
-                && !_wallResult.TopCheck && _assassin.Grounded)
+                && !_wallResult.TopCheck && _enemy.Grounded)
             {
-                _assassin.Jump(_pathfinding.Direction.y <= -.5f);
+                _enemy.Jump(_pathfinding.Direction.y <= -.5f);
             }
 
             PathfindingMovement();
@@ -56,16 +57,16 @@ namespace DarkHavoc.Enemies.SharedStates
         {
             _horizontalDirection = (int)Mathf.Sign(_pathfinding.Direction.x);
 
-            if (Mathf.Abs(_pathfinding.Direction.x) > _assassin.Stats.StoppingDistance &&
-                !_wallResult.MidCheck && !_assassin.LedgeInFront)
-                _assassin.Move(_horizontalDirection);
+            if (Mathf.Abs(_pathfinding.Direction.x) > _enemy.Stats.StoppingDistance &&
+                !_wallResult.MidCheck && !_enemy.LedgeInFront)
+                _enemy.Move(_horizontalDirection);
             else
-                _assassin.Move(0);
+                _enemy.Move(0);
         }
 
         public void OnEnter()
         {
-            if (_assassin.Player != null) _pathfinding.StartFindPath(_assassin.Player.transform);
+            if (_enemy.Player != null) _pathfinding.StartFindPath(_enemy.Player.transform);
         }
 
         public void OnExit()

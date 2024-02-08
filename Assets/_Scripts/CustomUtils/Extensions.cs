@@ -24,9 +24,6 @@ namespace DarkHavoc.CustomUtils
             {
                 var r = Random.Range(i, count);
                 (ts[i], ts[r]) = (ts[r], ts[i]);
-                /*var tmp = ts[i];
-                ts[i] = ts[r];
-                ts[r] = tmp;*/
             }
         }
     }

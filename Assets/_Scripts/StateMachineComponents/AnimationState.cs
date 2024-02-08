@@ -1,4 +1,4 @@
-﻿namespace DarkHavoc
+﻿namespace DarkHavoc.StateMachineComponents
 {
     public enum AnimationState
     {
@@ -11,7 +11,6 @@
         Parry,
         Crouch,
         ParryAttack,
-        Death,
         LedgeGrab,
         WallSlide,
         SitUp,
@@ -21,6 +20,7 @@
         RangedAttack,
         MeleeAttack,
         BuffAttack,
-        BoomerangAttack
+        BoomerangAttack,
+        Death,
     }
 }

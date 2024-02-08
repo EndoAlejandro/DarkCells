@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a624429f41f4434a6705c91af13ab1c, type: 3}
   m_Name: OrbMage_Stats
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 500
   idleTime: 1
   acceleration: 10
   patrolSpeed: 2
@@ -46,6 +46,7 @@ MonoBehaviour:
   scapeDistance: 20
   comboTime: 1
   restTime: 3
+  buffColor: {r: 0, g: 1, b: 1, a: 1}
   firstAttackAction:
     time: 0
     force: 0

@@ -6,31 +6,33 @@ namespace DarkHavoc.Enemies.SharedStates
     public class EnemyAttackState : IState
     {
         public override string ToString() => "Attack";
-        public virtual AnimationState AnimationState => AnimationState.LightAttack;
+        public virtual AnimationState AnimationState { get; }
         public bool CanTransitionToSelf => false;
         public bool Blocked { get; private set; }
         public bool Ended { get; private set; }
 
-        private readonly Enemy _enemy;
-        private readonly EnemyHitBox _hitbox;
+        protected readonly Enemy enemy;
+        protected readonly EnemyHitBox hitbox;
         private readonly EnemyAnimation _animation;
-        private readonly bool _isUnstoppable;
+        protected readonly bool isUnstoppable;
 
-        public EnemyAttackState(Enemy enemy, EnemyHitBox hitbox, EnemyAnimation animation, bool isUnstoppable = false)
+        public EnemyAttackState(Enemy enemy, EnemyHitBox hitbox, EnemyAnimation animation, bool isUnstoppable = false,
+            AnimationState animationState = AnimationState.LightAttack)
         {
-            _enemy = enemy;
-            _hitbox = hitbox;
+            this.enemy = enemy;
+            this.hitbox = hitbox;
             _animation = animation;
-            _isUnstoppable = isUnstoppable;
+            this.isUnstoppable = isUnstoppable;
+            AnimationState = animationState;
 
-            _hitbox.SetUnstoppable(_isUnstoppable);
+            this.hitbox.SetUnstoppable(this.isUnstoppable);
         }
 
         public void Tick()
         {
         }
 
-        public virtual void FixedTick() => _enemy.Move(0);
+        public virtual void FixedTick() => enemy.Move(0);
 
         public virtual void OnEnter()
         {
@@ -44,7 +46,7 @@ namespace DarkHavoc.Enemies.SharedStates
 
         protected virtual void AnimationOnAttackPerformed()
         {
-            var result = _hitbox.TryToAttack(_isUnstoppable);
+            var result = hitbox.TryToAttack(isUnstoppable);
             if (result == DamageResult.Blocked) Blocked = true;
         }
 

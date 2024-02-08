@@ -23,13 +23,13 @@ namespace Calcatz.MeshPathfinding
             foreach (Node node in nodesArray) nodes.Add(node);
         }
 
-        public Node FindNode(Vector3 _position)
+        public Node FindNode(Vector3 position)
         {
             int waypointIndex = 0;
-            float distance = Vector3.Distance(_position, nodes[0].transform.position);
+            float distance = Vector3.Distance(position, nodes[0].transform.position);
             for (int i = 0; i < nodes.Count; i++)
             {
-                float newDistance = Vector3.Distance(_position, nodes[i].transform.position);
+                float newDistance = Vector3.Distance(position, nodes[i].transform.position);
 
                 if (newDistance < distance)
                 {
@@ -64,7 +64,7 @@ namespace Calcatz.MeshPathfinding
         #region Unity editor
 
 #if UNITY_EDITOR
-        [MenuItem("GameObject/Mesh Pathfinding/Create Waypoints", false, 0)]
+        [MenuItem("GameObject/Mesh Pathfinding/Create Waypoints", false, 10)]
         public static Waypoints CreateWaypoints()
         {
             GameObject go = new GameObject("Waypoints");

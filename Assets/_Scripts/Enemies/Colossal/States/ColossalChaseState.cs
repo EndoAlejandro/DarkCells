@@ -6,6 +6,7 @@ using DarkHavoc.CustomUtils;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.Colossal.States
 {

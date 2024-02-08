@@ -17,7 +17,8 @@ namespace DarkHavoc.UI
 
         private void Start()
         {
-            _maxHealth = _entity.Health;
+            _maxHealth = _entity.MaxHealth;
+            _health = _entity.Health;
             healthBar.fillAmount = 1f;
             _entity.OnDamageTaken += EntityOnDamageTaken;
         }

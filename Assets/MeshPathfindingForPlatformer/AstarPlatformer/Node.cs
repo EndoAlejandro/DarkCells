@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace Calcatz.MeshPathfinding {
     public class Node : MonoBehaviour {
 
 #if UNITY_EDITOR
-        [MenuItem("GameObject/Mesh Pathfinding/Create Node", false, 0)]
+        [MenuItem("GameObject/Mesh Pathfinding/Create Node", false, 10)]
         private static Node CreateNode() {
             Waypoints waypoints = null;
             Node originNode = null;

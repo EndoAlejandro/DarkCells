@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies
 {
@@ -25,6 +27,8 @@ namespace DarkHavoc.Enemies
         private IEntity _entity;
 
         private IEnumerator _hitAnimation;
+        private float _hitThreshold;
+        private float _timer;
 
         protected virtual void Awake()
         {
@@ -69,26 +73,21 @@ namespace DarkHavoc.Enemies
         private void EnemyOnDamageTaken()
         {
             if (_hitAnimation != null) StopCoroutine(_hitAnimation);
-            _hitAnimation = HitAnimationAsync();
-            StartCoroutine(_hitAnimation);
+            _timer = 0f;
         }
 
-        private IEnumerator HitAnimationAsync()
+        private void LateUpdate()
         {
             renderer.GetPropertyBlock(materialPb);
-
-            float timer = 0f;
-            while (timer < Constants.HitAnimationDuration)
+            if (_timer < Constants.HitAnimationDuration)
             {
-                timer += Time.deltaTime;
-                float hitThreshold = 1 - (timer / Constants.HitAnimationDuration);
-                materialPb.SetFloat(HitValue, hitThreshold);
-                renderer.SetPropertyBlock(materialPb);
-                yield return null;
+                _timer += Time.deltaTime;
+                _hitThreshold = 1 - (_timer / Constants.HitAnimationDuration);
+                materialPb.SetFloat(HitValue, _hitThreshold);
             }
+            else
+                materialPb.SetFloat(HitValue, 0f);
 
-            yield return null;
-            materialPb.SetFloat(HitValue, 0f);
             renderer.SetPropertyBlock(materialPb);
         }
     }

@@ -3,6 +3,7 @@ using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using DarkHavoc.UI;
 using UnityEngine;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies
 {
