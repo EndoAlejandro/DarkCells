@@ -12,10 +12,10 @@ namespace DarkHavoc.Enemies
         public Node NextNode => HasPath ? pathResult[0] : null;
         private bool HasPath => pathResult is { Length: > 0 };
 
-        public void StartFindPath(Transform target)
+        public void StartFindPath(Transform target, float unitHeight = 1f)
         {
             if (HasPath) return;
-            StartFindPath(target, 1f, true);
+            StartFindPath(target, unitHeight, true);
         }
     }
 }

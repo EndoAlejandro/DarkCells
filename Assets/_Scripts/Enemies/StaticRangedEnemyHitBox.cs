@@ -29,7 +29,7 @@ namespace DarkHavoc.Enemies
             _target = target;
             return TryToAttack(isUnstoppable);
         }
-        
+
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
@@ -39,8 +39,7 @@ namespace DarkHavoc.Enemies
             if (enemy.Player)
             {
                 result = DamageResult.Success;
-                var staticRangedAttack =
-                    Instantiate(attackPrefab, _target, Quaternion.identity);
+                var staticRangedAttack = Instantiate(attackPrefab, _target, Quaternion.identity);
                 staticRangedAttack.Setup(enemy);
             }
             else

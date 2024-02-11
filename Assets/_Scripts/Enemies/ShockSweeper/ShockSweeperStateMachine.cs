@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.ShockSweeper
         {
             var idle = new IdleState(_shockSweeper);
             var patrol = new SideToSidePatrolState(_shockSweeper, _collider);
-            var chase = new ChasePathState(_shockSweeper, _collider, _pathfinding,
+            var chase = new PathChaseState(_shockSweeper, _collider, _pathfinding,
                 _shockSweeper.HitBox, _shockSweeper.HeavyHitBox, _shockSweeper.StaticRangedHitBox);
             var airChase = new AirChaseState(_shockSweeper, _collider, _pathfinding);
 

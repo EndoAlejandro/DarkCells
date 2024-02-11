@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +70,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,7 +147,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: VFX for Bomb _0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 707
+        width: 116
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.10526316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d80e7142d7acfa94aaec2648aa61b610
+      internalID: 902233660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 116
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.10526316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1824117dff48a84aa86499e4ad06468
+      internalID: 1540694581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 553
+        width: 116
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0952381}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6824a10b93f034b97a35ed3b586ceb
+      internalID: 1768489510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 476
+        width: 116
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09090909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6246e115009d5944bf76aeee8af86fb
+      internalID: 608527721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 399
+        width: 116
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.074074075}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac709b20a5016843965e2575dda52ea
+      internalID: 442309041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 322
+        width: 116
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.071428575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064030a5adae35b4ca6463068ec47d5d
+      internalID: 1486499374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 245
+        width: 116
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.071428575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55e5154fbcaec04c8fc962f23c49ced
+      internalID: -71299736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 116
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92091bc97561baa448ceef0117d3b01d
+      internalID: 2059679671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 91
+        width: 116
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f5586093adf6345863a282d46d6603
+      internalID: -1901489711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Bomb _9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 116
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10babb0c8d0f9374e9fd4277e31cbe7e
+      internalID: 74622909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_00
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 986
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f3e231682928f4e8bf7210bcb3bcba
+      internalID: 1408942123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_01
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 905
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5d0fb92c5cc8b41bf7a91be4616187
+      internalID: -1272609254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_02
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 798
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc51415ba863b194ab4d9b7eab41d4f1
+      internalID: 91019705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +431,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bomb_00: -1853586031
+      Bomb_01: -1272609254
+      Bomb_02: 91019705
+      VFX for Bomb _0: 902233660
+      VFX for Bomb _1: 1540694581
+      VFX for Bomb _11: 436146488
+      VFX for Bomb _12: -599160223
+      VFX for Bomb _2: 1768489510
+      VFX for Bomb _3: 608527721
+      VFX for Bomb _4: 442309041
+      VFX for Bomb _5: 1486499374
+      VFX for Bomb _6: -71299736
+      VFX for Bomb _7: 2059679671
+      VFX for Bomb _8: -1901489711
+      VFX for Bomb _9: 74622909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

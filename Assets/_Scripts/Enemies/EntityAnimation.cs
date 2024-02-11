@@ -47,16 +47,16 @@ namespace DarkHavoc.Enemies
 
         protected virtual void OnEnable()
         {
-            _takeDamage.OnDamageTaken += EnemyOnDamageTaken;
-            _entity.OnXFlipped += EnemyOnXFlipped;
-            _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
+            if (_takeDamage != null) _takeDamage.OnDamageTaken += EnemyOnDamageTaken;
+            if (_entity != null) _entity.OnXFlipped += EnemyOnXFlipped;
+            if (_stateMachine != null) _stateMachine.OnEntityStateChanged += StateMachineOnEntityStateChanged;
         }
 
         protected virtual void OnDisable()
         {
-            _takeDamage.OnDamageTaken -= EnemyOnDamageTaken;
-            _entity.OnXFlipped -= EnemyOnXFlipped;
-            _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
+            if (_takeDamage != null) _takeDamage.OnDamageTaken -= EnemyOnDamageTaken;
+            if (_entity != null) _entity.OnXFlipped -= EnemyOnXFlipped;
+            if (_stateMachine != null) _stateMachine.OnEntityStateChanged -= StateMachineOnEntityStateChanged;
         }
 
         protected virtual void EnemyOnXFlipped(bool facingLeft) => renderer.flipX = facingLeft;

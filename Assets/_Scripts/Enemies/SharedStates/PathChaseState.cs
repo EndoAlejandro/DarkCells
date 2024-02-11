@@ -5,7 +5,7 @@ using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.Enemies.SharedStates
 {
-    public class ChasePathState : MultiHitboxState, IState
+    public class PathChaseState : MultiHitboxState, IState
     {
         public override string ToString() => "Chase Path";
         public AnimationState AnimationState => AnimationState.Ground;
@@ -18,7 +18,7 @@ namespace DarkHavoc.Enemies.SharedStates
         private WallResult _wallResult;
         private int _horizontalDirection;
 
-        public ChasePathState(Enemy enemy, Collider2D collider, EntityPathfinding pathfinding,
+        public PathChaseState(Enemy enemy, Collider2D collider, EntityPathfinding pathfinding,
             EnemyHitBox firstHitBox = null, EnemyHitBox secondHitBox = null, EnemyHitBox thirdHitBox = null) : base(
             firstHitBox, secondHitBox, thirdHitBox)
         {

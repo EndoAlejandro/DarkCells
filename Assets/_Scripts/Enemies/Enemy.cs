@@ -31,10 +31,11 @@ namespace DarkHavoc.Enemies
         public abstract float Damage { get; }
         public EnemyHitBox HitBox => hitbox;
 
-        [SerializeField] protected EnemyStats stats;
+        [SerializeField] private EnemyStats stats;
         [SerializeField] private Transform midPoint;
         [SerializeField] private EnemyHitBox hitbox;
         [SerializeField] private bool radialVision;
+        [SerializeField] private bool canFly;
         [SerializeField] protected bool debug;
 
         protected new Collider2D collider;
@@ -96,7 +97,7 @@ namespace DarkHavoc.Enemies
             }
         }
 
-        private void CustomGravity()
+        protected virtual void CustomGravity()
         {
             targetVelocity.y = Mathf.MoveTowards(targetVelocity.y, -Stats.MaxFallSpeed,
                 Stats.Gravity * Time.fixedDeltaTime);
@@ -114,8 +115,8 @@ namespace DarkHavoc.Enemies
             float scale = lightJump ? .5f : 1f;
             targetVelocity.y = Stats.JumpForce * scale;
         }
-        
-        private void ApplyVelocity() => rigidbody.velocity = targetVelocity;
+
+        protected virtual void ApplyVelocity() => rigidbody.velocity = targetVelocity;
 
         public void SeekPlayer()
         {
