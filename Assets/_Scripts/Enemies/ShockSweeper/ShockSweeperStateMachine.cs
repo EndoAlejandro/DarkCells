@@ -18,8 +18,8 @@ namespace DarkHavoc.Enemies.ShockSweeper
         {
             _shockSweeper = GetComponent<ShockSweeper>();
             _collider = GetComponent<Collider2D>();
-            _animation = GetComponentInChildren<EnemyAnimation>();
             _pathfinding = GetComponent<EntityPathfinding>();
+            _animation = GetComponentInChildren<EnemyAnimation>();
         }
 
         protected override void StateMachine()

@@ -149,7 +149,8 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 4a3c2d545fd55634d9b8515de615c78d, type: 2}
   midPoint: {fileID: 8464702556535418479}
   hitbox: {fileID: 7414088272974878946}
-  radialVision: 0
+  radialVision: 1
+  canFly: 0
   debug: 1
   heavyHitBox: {fileID: 5136163446518405317}
   staticRangedHitBox: {fileID: 2130605064627224211}
@@ -284,9 +285,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3261980469887577785}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba67eb1dce14d4c93fac7ea64e2810a, type: 3}
+  m_Script: {fileID: 11500000, guid: 590a0a585afa43f08e33096b943964d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 1
 --- !u!212 &5293675066874623625
 SpriteRenderer:
   m_ObjectHideFlags: 0

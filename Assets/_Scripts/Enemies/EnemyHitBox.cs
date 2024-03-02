@@ -19,7 +19,8 @@ namespace DarkHavoc.Enemies
 
         private Collider2D _collider;
         protected Player player;
-        protected Enemy enemy;
+        protected IDoDamage _doDamage;
+        protected IEnemy _entity;
         private EnemyAnimation _animation;
         protected Collider2D[] results;
 
@@ -30,7 +31,8 @@ namespace DarkHavoc.Enemies
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
-            enemy = GetComponentInParent<Enemy>();
+            _doDamage = GetComponentInParent<IDoDamage>();
+            _entity = GetComponentInParent<IEnemy>();
             results = new Collider2D[50];
             isCircle = _collider is CircleCollider2D;
         }
@@ -38,7 +40,7 @@ namespace DarkHavoc.Enemies
         private void Start()
         {
             _offsetDirection = transform.localPosition.x >= 0 ? 1 : -1;
-            enemy.OnXFlipped += IEntityOnXFlipped;
+            _entity.OnXFlipped += IEntityOnXFlipped;
         }
 
         private void IEntityOnXFlipped(bool facingLeft)
@@ -86,7 +88,7 @@ namespace DarkHavoc.Enemies
             OverlapHitBox();
 
             DamageResult result = DamageResult.Failed;
-            if (player) result = player.TakeDamage(enemy, isUnstoppable: isUnstoppable);
+            if (player) result = player.TakeDamage(_doDamage, isUnstoppable: isUnstoppable);
 
             StartCoroutine(CooldownAsync());
             return result;
@@ -106,7 +108,7 @@ namespace DarkHavoc.Enemies
             _onCooldown = false;
         }
 
-        private void OnDestroy() => enemy.OnXFlipped -= IEntityOnXFlipped;
+        private void OnDestroy() => _entity.OnXFlipped -= IEntityOnXFlipped;
 
         private void OnDrawGizmos()
         {

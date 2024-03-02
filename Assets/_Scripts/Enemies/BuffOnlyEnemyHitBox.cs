@@ -9,7 +9,7 @@ namespace DarkHavoc.Enemies
 
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
-            enemy.ActivateBuff(buffDuration);
+            _entity.ActivateBuff(buffDuration);
             StartCoroutine(CooldownAsync());
             return DamageResult.Success;
         }

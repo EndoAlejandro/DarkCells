@@ -8,8 +8,10 @@ namespace DarkHavoc.Enemies
         public event Action OnAttackPerformed;
         public event Action OnAttackEnded;
         protected override float NormalizedHorizontal => enemy != null ? enemy.GetNormalizedHorizontal() : 0f;
+        protected override float NormalizedVertical => enemy != null ? enemy.GetNormalizedVertical() : 0f;
 
         protected Enemy enemy;
+
 
         protected override void Awake()
         {

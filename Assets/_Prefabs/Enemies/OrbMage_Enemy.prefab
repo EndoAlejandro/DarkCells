@@ -226,6 +226,7 @@ MonoBehaviour:
   midPoint: {fileID: 8246954448241791651}
   hitbox: {fileID: 482355112292834649}
   radialVision: 1
+  canFly: 0
   debug: 0
   buffHitBox: {fileID: 2497469636538689331}
   rangedHitBox: {fileID: 1115385752230760064}
@@ -509,7 +510,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5615938246872599720}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

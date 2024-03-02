@@ -86,7 +86,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         protected override void AnimationOnAttack()
         {
             base.AnimationOnAttack();
-            colossal.ActivateBuff();
+            colossal.ActivateBuff(0f);
         }
     }
 }

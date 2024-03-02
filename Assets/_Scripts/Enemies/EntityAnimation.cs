@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.StateMachineComponents;
@@ -12,9 +11,11 @@ namespace DarkHavoc.Enemies
     public abstract class EntityAnimation : MonoBehaviour
     {
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         protected abstract float NormalizedHorizontal { get; }
+        protected virtual float NormalizedVertical => 0f;
 
         protected Animator animator;
         protected new SpriteRenderer renderer;
@@ -30,6 +31,8 @@ namespace DarkHavoc.Enemies
         private float _hitThreshold;
         private float _timer;
 
+        [SerializeField] private bool useVerticalHash;
+
         protected virtual void Awake()
         {
             animator = GetComponent<Animator>();
@@ -42,8 +45,11 @@ namespace DarkHavoc.Enemies
             materialPb = new MaterialPropertyBlock();
         }
 
-        protected virtual void Update() =>
+        protected virtual void Update()
+        {
             animator.SetFloat(Horizontal, Mathf.Abs(NormalizedHorizontal));
+            if (useVerticalHash) animator.SetFloat(Vertical, Mathf.Abs(NormalizedVertical));
+        }
 
         protected virtual void OnEnable()
         {

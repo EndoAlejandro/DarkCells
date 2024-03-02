@@ -23,7 +23,7 @@ namespace DarkHavoc.Enemies.CagedSpider
             var idle = new IdleState(_cagedSpider);
             var chase = new ChaseSideToSideState(_cagedSpider, _collider, _cagedSpider.HitBox);
             var telegraph = new TelegraphState(_cagedSpider, _cagedSpider.HitBox, .5f);
-            var attack = new EnemyAttackState(_cagedSpider, _cagedSpider.HitBox, _animation);
+            var attack = new EnemyAttackState(_cagedSpider, _cagedSpider.HitBox, _animation, true);
             var death = new EnemyDeathState(_cagedSpider);
 
             stateMachine.SetState(idle);

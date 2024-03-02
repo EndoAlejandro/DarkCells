@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies.Colossal
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Colossal : MonoBehaviour, IDoDamage, ITakeDamage, IEntity
+    public class Colossal : MonoBehaviour, IDoDamage, ITakeDamage, IEnemy
     {
         public static event Action<ITakeDamage> OnSpawned;
         public event Action<bool> OnBuffStateChanged;
@@ -31,6 +32,7 @@ namespace DarkHavoc.Enemies.Colossal
         public bool RightFoot { get; private set; }
         public bool CanBuff { get; private set; }
         public bool IsBuffActive { get; private set; }
+        public Player Player { get; private set; }
         public Transform MidPoint => midPoint;
 
         [SerializeField] private ColossalStats stats;
@@ -77,10 +79,13 @@ namespace DarkHavoc.Enemies.Colossal
 
         private void Update()
         {
-            if (transform.position.y != _initialHeight) transform.position = transform.position.With(y: _initialHeight);
+            if (transform.position.y != _initialHeight)
+            {
+                transform.position = transform.position.With(y: _initialHeight);
+            }
         }
 
-        public void ActivateBuff()
+        public void ActivateBuff(float buffDuration)
         {
             CanBuff = false;
             SetBuffState(true);

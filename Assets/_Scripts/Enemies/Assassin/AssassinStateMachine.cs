@@ -1,9 +1,6 @@
-using Calcatz.MeshPathfinding;
 using DarkHavoc.Enemies.Assassin.States;
 using DarkHavoc.Enemies.CagedShocker.States;
-using DarkHavoc.Enemies.CagedSpider;
 using DarkHavoc.Enemies.SharedStates;
-using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 
@@ -11,20 +8,17 @@ namespace DarkHavoc.Enemies.Assassin
 {
     public class AssassinStateMachine : FiniteStateBehaviour
     {
-        // For testing only, delete later.
-        [SerializeField] private Player player;
-
         private Assassin _assassin;
-        private AssassinAnimation _animation;
         private Collider2D _collider;
         private EntityPathfinding _pathfinding;
+        private EnemyAnimation _animation;
 
         protected override void References()
         {
             _assassin = GetComponent<Assassin>();
-            _animation = GetComponentInChildren<AssassinAnimation>();
             _collider = GetComponent<Collider2D>();
             _pathfinding = GetComponent<EntityPathfinding>();
+            _animation = GetComponentInChildren<EnemyAnimation>();
         }
 
         protected override void StateMachine()

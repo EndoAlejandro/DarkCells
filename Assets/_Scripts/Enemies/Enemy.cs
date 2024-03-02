@@ -9,7 +9,7 @@ namespace DarkHavoc.Enemies
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public abstract class Enemy : MonoBehaviour, IDoDamage, ITakeDamage, IEntity
+    public abstract class Enemy : MonoBehaviour, IDoDamage, ITakeDamage, IEnemy
     {
         public event Action OnDamageTaken;
         public event Action OnDeath;

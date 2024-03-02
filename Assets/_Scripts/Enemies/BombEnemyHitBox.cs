@@ -13,15 +13,15 @@ namespace DarkHavoc.Enemies
             SetUnstoppable(isUnstoppable);
 
             DamageResult result = DamageResult.Failed;
-            if (enemy.Player)
+            if (_entity.Player)
             {
                 result = DamageResult.Success;
-                var bombAttack = Instantiate(bombRangedAttackPrefab, enemy.transform.position, Quaternion.identity);
+                var bombAttack = Instantiate(bombRangedAttackPrefab, _doDamage.transform.position, Quaternion.identity);
                 bombAttack.Setup(() =>
                 {
                     var bombExplosion = Instantiate(bombExplosionPrefab, bombAttack.transform.position,
                         Quaternion.identity);
-                    bombExplosion.Setup(enemy);
+                    bombExplosion.Setup(_doDamage);
                 });
             }
             else
