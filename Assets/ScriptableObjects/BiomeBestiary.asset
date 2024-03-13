@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bestiary:
   - {fileID: 1655716649516658903, guid: 51e966a069fe40c478fef9239b745996, type: 3}
+  - {fileID: 5337469757369897764, guid: 0b6d3a6e2b08ce946b7f0e509a9c5902, type: 3}
+  - {fileID: 873384564281538242, guid: c44cc3d22cb9cdc47bc970bfad52afa3, type: 3}
+  - {fileID: 5573498989548456722, guid: 2de12d7f2ad83cb4a9500e5c76c9558c, type: 3}
+  - {fileID: 5806040870700616021, guid: b01f45924d89575488b857e4f2d1090b, type: 3}
+  - {fileID: 6099347449364330074, guid: 9eb91495e0aec3c4088c95fd58545835, type: 3}
+  - {fileID: 12160636945788261, guid: 05ed60a81e3734b47845a891bda7b234, type: 3}
+  - {fileID: 4765560360985648690, guid: ebeb1ef6f63e1924e8957a028e9cd34e, type: 3}

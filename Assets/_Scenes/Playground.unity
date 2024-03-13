@@ -12926,7 +12926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &888923314
 Rigidbody2D:
   serializedVersion: 4
@@ -14066,7 +14066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1659832836269655447, guid: 5f709de65e6465b4b848ffeb33425621, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9110069391151854230, guid: 5f709de65e6465b4b848ffeb33425621, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14111,7 +14111,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2483881874770265734, guid: 5f709de65e6465b4b848ffeb33425621, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5f709de65e6465b4b848ffeb33425621, type: 3}
 --- !u!1 &2071789402
 GameObject:
@@ -14580,10 +14583,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7095128536865550817, guid: b01f45924d89575488b857e4f2d1090b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b01f45924d89575488b857e4f2d1090b, type: 3}
 --- !u!19719996 &3268348054700949286
 TilemapCollider2D:
