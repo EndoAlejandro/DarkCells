@@ -36,11 +36,11 @@ namespace DarkHavoc.Enemies
             /*OverlapHitBox();*/
 
             DamageResult result = DamageResult.Failed;
-            if (_entity.Player)
+            if (entity.Player)
             {
                 result = DamageResult.Success;
                 var staticRangedAttack = Instantiate(attackPrefab, _target, Quaternion.identity);
-                staticRangedAttack.Setup(_doDamage);
+                staticRangedAttack.Setup(doDamage);
             }
             else
             {

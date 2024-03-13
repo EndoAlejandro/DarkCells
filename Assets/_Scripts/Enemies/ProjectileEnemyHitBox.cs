@@ -3,25 +3,25 @@ using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
-    public class BombEnemyHitBox : EnemyHitBox
+    public class ProjectileEnemyHitBox : EnemyHitBox
     {
-        [SerializeField] private BombRangedAttack bombRangedAttackPrefab;
-        [SerializeField] private StaticRangedAttack bombExplosionPrefab;
+        [SerializeField] private ProjectileAttack projectileAttackPrefab;
+        [SerializeField] private StaticRangedAttack projectileExplosionPrefab;
 
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
 
             DamageResult result = DamageResult.Failed;
-            if (_entity.Player)
+            if (entity.Player)
             {
                 result = DamageResult.Success;
-                var bombAttack = Instantiate(bombRangedAttackPrefab, _doDamage.transform.position, Quaternion.identity);
-                bombAttack.Setup(() =>
+                var projectileAttack = Instantiate(projectileAttackPrefab, entity.MidPoint.position, Quaternion.identity);
+                projectileAttack.Setup(entity,() =>
                 {
-                    var bombExplosion = Instantiate(bombExplosionPrefab, bombAttack.transform.position,
+                    var projectileExplosion = Instantiate(projectileExplosionPrefab, projectileAttack.transform.position,
                         Quaternion.identity);
-                    bombExplosion.Setup(_doDamage);
+                    projectileExplosion.Setup(doDamage);
                 });
             }
             else

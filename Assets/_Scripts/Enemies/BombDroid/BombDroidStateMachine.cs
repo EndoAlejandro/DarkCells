@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.BombDroid
             var idle = new IdleState(_bombDroid);
             var chase = new FlyChaseState(_bombDroid, _collider, _pathfinding, _bombDroid.HitBox);
             var telegraph = new TelegraphState(_bombDroid, _bombDroid.HitBox, .5f);
-            var attack = new EnemyBombAttackState(_bombDroid, _bombDroid.HitBox as BombEnemyHitBox, _animation, true);
+            var attack = new EnemyBombAttackState(_bombDroid, _bombDroid.HitBox as ProjectileEnemyHitBox, _animation, true);
             var death = new EnemyDeathState(_bombDroid);
 
             stateMachine.SetState(idle);

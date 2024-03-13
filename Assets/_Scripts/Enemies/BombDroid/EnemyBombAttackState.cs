@@ -7,7 +7,7 @@ namespace DarkHavoc.Enemies.BombDroid
     {
         private readonly BombDroid _bombDroid;
 
-        public EnemyBombAttackState(BombDroid bombDroid, BombEnemyHitBox hitbox, EnemyAnimation animation,
+        public EnemyBombAttackState(BombDroid bombDroid, ProjectileEnemyHitBox hitbox, EnemyAnimation animation,
             bool isUnstoppable = false, AnimationState animationState = AnimationState.LightAttack) : base(bombDroid,
             hitbox, animation, isUnstoppable, animationState)
         {

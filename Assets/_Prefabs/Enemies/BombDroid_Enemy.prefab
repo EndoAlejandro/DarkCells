@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590a0a585afa43f08e33096b943964d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 0
 --- !u!212 &8770220982500155587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -243,8 +244,8 @@ MonoBehaviour:
   cooldown: 2
   telegraphTime: 0.1
   debug: 1
-  bombRangedAttackPrefab: {fileID: 1226354071041678894, guid: fa7d451078e4dde48a182c0a9c27376a, type: 3}
-  bombExplosionPrefab: {fileID: 1030978350924323907, guid: 7f924430003bfb24096df8674f9a8fbb, type: 3}
+  projectileAttackPrefab: {fileID: 1226354071041678894, guid: fa7d451078e4dde48a182c0a9c27376a, type: 3}
+  projectileExplosionPrefab: {fileID: 1030978350924323907, guid: 7f924430003bfb24096df8674f9a8fbb, type: 3}
 --- !u!1 &8887952789849768221
 GameObject:
   m_ObjectHideFlags: 0
