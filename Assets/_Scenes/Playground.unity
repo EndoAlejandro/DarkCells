@@ -14218,6 +14218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Summoner_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2459357265972912879, guid: 00ba7880421a4104fb9c18460b2cc25f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6197471698420726633, guid: 00ba7880421a4104fb9c18460b2cc25f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21801,5 +21805,5 @@ SceneRoots:
   - {fileID: 2653812153270740219}
   - {fileID: 2266311316547319686}
   - {fileID: 7594512036165744540}
-  - {fileID: 267939847}
   - {fileID: 2582926281127069458}
+  - {fileID: 267939847}
