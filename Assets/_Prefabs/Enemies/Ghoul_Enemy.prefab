@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31bda0c53604359bc1c49832e3342d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 4a3c2d545fd55634d9b8515de615c78d, type: 2}
+  stats: {fileID: 11400000, guid: 876755efaf5b2694690b0fc2894b28f4, type: 2}
   midPoint: {fileID: 3025551817395403375}
   hitbox: {fileID: 1861273203693068194}
   radialVision: 1
@@ -372,6 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b1ce0cd8e44f3804a2a626a37a7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
-  telegraphTime: 1
+  cooldown: 2
+  telegraphTime: 0.5
   debug: 1

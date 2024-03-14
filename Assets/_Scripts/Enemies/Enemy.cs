@@ -29,11 +29,11 @@ namespace DarkHavoc.Enemies
         public bool Grounded => LeftFoot || RightFoot;
         public bool LedgeInFront => FacingLeft ? !LeftFoot && RightFoot : !RightFoot && LeftFoot;
         public abstract float Damage { get; }
-        public EnemyHitBox HitBox => hitbox;
+        public virtual EnemyHitBox HitBox => hitbox;
 
         [SerializeField] private EnemyStats stats;
         [SerializeField] private Transform midPoint;
-        [SerializeField] private EnemyHitBox hitbox;
+        [SerializeField] protected EnemyHitBox hitbox;
         [SerializeField] private bool radialVision;
         [SerializeField] private bool canFly;
         [SerializeField] protected bool debug;

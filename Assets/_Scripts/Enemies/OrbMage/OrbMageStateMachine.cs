@@ -32,7 +32,7 @@ namespace DarkHavoc.Enemies.OrbMage
             var buffAttack = new EnemyAttackState(_orbMage, _orbMage.BuffHitBox, _animation,
                 false, AnimationState.BuffAttack);
 
-            var rangedAttack = new EnemyStaticRangedAttackState(_orbMage, _orbMage.RangedHitBox,
+            var rangedAttack = new RangedSummonAttackState(_orbMage, _orbMage.RangedHitBox,
                 _animation, true);
 
             var death = new EnemyDeathState(_orbMage);

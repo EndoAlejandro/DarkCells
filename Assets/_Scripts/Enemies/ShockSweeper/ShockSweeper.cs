@@ -6,9 +6,9 @@ namespace DarkHavoc.Enemies.ShockSweeper
     {
         public override float Damage => 1f;
         public EnemyHitBox HeavyHitBox => heavyHitBox;
-        public StaticRangedEnemyHitBox StaticRangedHitBox => staticRangedHitBox;
+        public SummonAttackEnemyHitBox StaticRangedHitBox => summonRangedHitBox;
 
         [SerializeField] private EnemyHitBox heavyHitBox;
-        [SerializeField] private StaticRangedEnemyHitBox staticRangedHitBox;
+        [SerializeField] private SummonAttackEnemyHitBox summonRangedHitBox;
     }
 }

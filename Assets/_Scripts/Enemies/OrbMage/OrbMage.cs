@@ -6,9 +6,9 @@ namespace DarkHavoc.Enemies.OrbMage
     {
         public override float Damage => 1f;
         public BuffOnlyEnemyHitBox BuffHitBox => buffHitBox;
-        public StaticRangedEnemyHitBox RangedHitBox => rangedHitBox;
+        public SummonAttackEnemyHitBox RangedHitBox => rangedHitBox;
         
         [SerializeField] private BuffOnlyEnemyHitBox buffHitBox;
-        [SerializeField] private StaticRangedEnemyHitBox rangedHitBox;
+        [SerializeField] private SummonAttackEnemyHitBox rangedHitBox;
     }
 }

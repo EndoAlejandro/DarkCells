@@ -1,12 +1,16 @@
-﻿using DarkHavoc.EntitiesInterfaces;
+﻿using System;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DarkHavoc.Enemies
 {
-    public class StaticRangedEnemyHitBox : EnemyHitBox
+    public class SummonEnemyHitBox : EnemyHitBox
     {
-        [SerializeField] private StaticRangedAttack attackPrefab;
+        [SerializeField] private Enemy summonPrefab;
+        [SerializeField] private float spawnRange = 2f;
+
         private Vector2 _target;
 
         protected override void OverlapHitBox()
@@ -24,12 +28,23 @@ namespace DarkHavoc.Enemies
             player = null;
         }
 
-        public DamageResult TryToAttack(Vector2 target, bool isUnstoppable = false)
+        public void TryToAttack(Vector2 target, bool isUnstoppable = false)
         {
-            _target = target;
-            return TryToAttack(isUnstoppable);
+            target.x += Random.Range(-spawnRange / 2, spawnRange / 2);
+
+            RaycastHit2D result = new RaycastHit2D();
+            for (int i = 0; i < 10; i++)
+            {
+                result = Physics2D.Raycast(target, Vector2.down, 15f, LayerMask.NameToLayer("Terrain"));
+                if (result.point != Vector2.zero) break;
+            }
+
+            _target = result.point == Vector2.zero ? target : result.point;
+
+            TryToAttack(isUnstoppable);
         }
 
+        [Obsolete]
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
@@ -38,9 +53,9 @@ namespace DarkHavoc.Enemies
             DamageResult result = DamageResult.Failed;
             if (entity.Player)
             {
+                // TODO: Spawn in the flour in a random range.
                 result = DamageResult.Success;
-                var staticRangedAttack = Instantiate(attackPrefab, _target, Quaternion.identity);
-                staticRangedAttack.Setup(doDamage);
+                Instantiate(summonPrefab, _target, Quaternion.identity);
             }
             else
             {

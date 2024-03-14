@@ -6,7 +6,7 @@ namespace DarkHavoc.Enemies
     public class ProjectileEnemyHitBox : EnemyHitBox
     {
         [SerializeField] private ProjectileAttack projectileAttackPrefab;
-        [SerializeField] private StaticRangedAttack projectileExplosionPrefab;
+        [SerializeField] private RangedSummonAttack projectileExplosionPrefab;
 
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
-    public class StaticRangedAttack : MonoBehaviour
+    public class RangedSummonAttack : MonoBehaviour
     {
         private Collider2D _collider;
 

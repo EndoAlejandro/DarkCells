@@ -38,7 +38,7 @@ namespace DarkHavoc.Enemies.ShockSweeper
                 _animation, isUnstoppable: false);
             var heavyAttack = new EnemyAttackState(_shockSweeper, _shockSweeper.HeavyHitBox,
                 _animation, isUnstoppable: true, AnimationState.HeavyAttack);
-            var rangedAttack = new EnemyStaticRangedAttackState(_shockSweeper, _shockSweeper.StaticRangedHitBox,
+            var rangedAttack = new RangedSummonAttackState(_shockSweeper, _shockSweeper.StaticRangedHitBox,
                 _animation, isUnstoppable: true);
 
             var stun = new StunState(_shockSweeper, _shockSweeper.Stats.StunTime);
