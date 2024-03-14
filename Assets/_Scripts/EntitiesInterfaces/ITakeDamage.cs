@@ -14,7 +14,7 @@ namespace DarkHavoc.EntitiesInterfaces
     public interface ITakeDamage : IMidPoint
     {
         event Action OnDamageTaken;
-        event Action OnDeath;
+        event Action<ITakeDamage> OnDeath;
         Transform transform { get; }
         float Health { get; }
         float MaxHealth { get; }

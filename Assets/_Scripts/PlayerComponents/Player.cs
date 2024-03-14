@@ -38,7 +38,7 @@ namespace DarkHavoc.PlayerComponents
         public event Action<bool> OnLedgeGrabChanged;
         public event Action<bool> OnWallSlideChanged;
         public event Action OnDamageTaken;
-        public event Action OnDeath;
+        public event Action<ITakeDamage> OnDeath;
 
         // Buffered Actions
         public bool HasBufferedJump => _jumpBufferedAction is { IsAvailable: true };
@@ -322,7 +322,7 @@ namespace DarkHavoc.PlayerComponents
 
         public void Death()
         {
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(this);
             PlayerContext = null;
             Debug.Log("Player Dead.");
         }

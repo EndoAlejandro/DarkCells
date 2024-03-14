@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DarkHavoc.Enemies;
+using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.Interactable;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -30,7 +31,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             yield return ServiceLocator.GetService<GameManager>().CreatePlayerAsync(playerSpawnPoint.position);
         }
 
-        private void BosOnDeath() => exitDoor.ActivateAnimation();
+        private void BosOnDeath(ITakeDamage takeDamage) => exitDoor.ActivateAnimation();
 
         private void OnDestroy() => boss.OnDeath -= BosOnDeath;
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
@@ -10,8 +11,15 @@ namespace DarkHavoc.Enemies
     {
         [SerializeField] private Enemy summonPrefab;
         [SerializeField] private float spawnRange = 2f;
+        [SerializeField] private int maxSimultaneousSpawn = 3;
 
+        private List<ITakeDamage> _spawnedEnemies;
         private Vector2 _target;
+
+        private void OnEnable() => _spawnedEnemies = new List<ITakeDamage>();
+
+        public override bool IsPlayerInRange() =>
+            _spawnedEnemies.Count < maxSimultaneousSpawn && base.IsPlayerInRange();
 
         protected override void OverlapHitBox()
         {
@@ -48,14 +56,14 @@ namespace DarkHavoc.Enemies
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
-            /*OverlapHitBox();*/
 
             DamageResult result = DamageResult.Failed;
             if (entity.Player)
             {
-                // TODO: Spawn in the flour in a random range.
                 result = DamageResult.Success;
-                Instantiate(summonPrefab, _target, Quaternion.identity);
+                var summon = Instantiate(summonPrefab, _target, Quaternion.identity);
+                summon.OnDeath += SummonOnDeath;
+                _spawnedEnemies.Add(summon);
             }
             else
             {
@@ -64,6 +72,12 @@ namespace DarkHavoc.Enemies
 
             StartCoroutine(CooldownAsync());
             return result;
+        }
+
+        private void SummonOnDeath(ITakeDamage takeDamage)
+        {
+            takeDamage.OnDeath -= SummonOnDeath;
+            _spawnedEnemies.Remove(takeDamage);
         }
     }
 }

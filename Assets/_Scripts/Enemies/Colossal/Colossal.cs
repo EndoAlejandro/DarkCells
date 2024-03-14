@@ -19,7 +19,7 @@ namespace DarkHavoc.Enemies.Colossal
         public EnemyHitBox MeleeHitBox => meleeHitBox;
         public EnemyHitBox BuffHitBox => buffHitBox;
         public event Action OnDamageTaken;
-        public event Action OnDeath;
+        public event Action<ITakeDamage> OnDeath;
         public event Action<bool> OnXFlipped;
         public float Health { get; protected set; } = 1;
         public float MaxHealth { get; protected set; }
@@ -154,7 +154,7 @@ namespace DarkHavoc.Enemies.Colossal
         {
             _collider.enabled = false;
             _rigidbody.simulated = false;
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(this);
         }
 
         public float GetNormalizedHorizontal() => Mathf.Clamp(_rigidbody.velocity.magnitude, 0f, 1f);

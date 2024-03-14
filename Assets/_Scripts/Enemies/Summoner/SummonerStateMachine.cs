@@ -24,7 +24,6 @@ namespace DarkHavoc.Enemies.Summoner
             var patrol = new SideToSidePatrolState(_summoner, _collider);
             var chase = new ChaseSideToSideState(_summoner, _collider, _summoner.HitBox);
 
-            var rangedTelegraph = new TelegraphState(_summoner, _summoner.HitBox, 1f);
             var rangedAttack = new RangedSummonState(_summoner, _summoner.HitBox, _animation, true);
 
             var death = new EnemyDeathState(_summoner);
@@ -36,7 +35,6 @@ namespace DarkHavoc.Enemies.Summoner
             stateMachine.AddTransition(patrol, chase, () => _summoner.Player);
 
             stateMachine.AddTransition(chase, rangedAttack, () => chase.FirstHitBoxAvailable);
-            stateMachine.AddTransition(rangedTelegraph, rangedAttack, () => rangedTelegraph.Ended);
             stateMachine.AddTransition(rangedAttack, idle, () => rangedAttack.Ended);
 
             stateMachine.AddAnyTransition(death, () => !_summoner.IsAlive);

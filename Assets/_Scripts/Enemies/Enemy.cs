@@ -12,7 +12,7 @@ namespace DarkHavoc.Enemies
     public abstract class Enemy : MonoBehaviour, IDoDamage, ITakeDamage, IEnemy
     {
         public event Action OnDamageTaken;
-        public event Action OnDeath;
+        public event Action<ITakeDamage> OnDeath;
         public event Action<bool> OnXFlipped;
         public event Action<bool> OnBuffStateChanged;
         public bool CanBuff { get; private set; }
@@ -169,7 +169,7 @@ namespace DarkHavoc.Enemies
         {
             collider.enabled = false;
             rigidbody.simulated = false;
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(this);
         }
 
         public float GetNormalizedHorizontal() => Mathf.Abs(rigidbody.velocity.x) / Stats.MaxSpeed;

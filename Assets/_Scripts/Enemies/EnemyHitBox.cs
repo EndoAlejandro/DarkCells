@@ -95,7 +95,7 @@ namespace DarkHavoc.Enemies
             return result;
         }
 
-        public bool IsPlayerInRange()
+        public virtual bool IsPlayerInRange()
         {
             if (_onCooldown) return false;
             OverlapHitBox();

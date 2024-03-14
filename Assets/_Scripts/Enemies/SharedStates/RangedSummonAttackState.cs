@@ -21,7 +21,8 @@ namespace DarkHavoc.Enemies.SharedStates
             base.OnEnter();
             _target = enemy.Player.transform.position + Vector3.up;
             _vfx ??= ServiceLocator.GetService<FxManager>();
-            _vfx.PlayFx(isUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph, _target);
+            _vfx.PlayFx(isUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph,
+                enemy.transform.position + Vector3.up);
         }
 
 

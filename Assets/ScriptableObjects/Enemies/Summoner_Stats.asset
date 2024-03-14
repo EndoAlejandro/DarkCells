@@ -19,7 +19,7 @@ MonoBehaviour:
   maxSpeed: 4
   gravity: 30
   maxFallSpeed: 5
-  stoppingDistance: 0.1
+  stoppingDistance: 3
   stunTime: 3
   jumpForce: 10
   groundLayerMask:
