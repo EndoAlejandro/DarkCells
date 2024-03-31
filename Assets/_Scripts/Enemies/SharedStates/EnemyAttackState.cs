@@ -13,7 +13,7 @@ namespace DarkHavoc.Enemies.SharedStates
 
         protected readonly Enemy enemy;
         protected readonly EnemyHitBox hitbox;
-        private readonly EnemyAnimation _animation;
+        protected readonly EnemyAnimation animation;
         protected readonly bool isUnstoppable;
 
         public EnemyAttackState(Enemy enemy, EnemyHitBox hitbox, EnemyAnimation animation, bool isUnstoppable = false,
@@ -21,7 +21,7 @@ namespace DarkHavoc.Enemies.SharedStates
         {
             this.enemy = enemy;
             this.hitbox = hitbox;
-            _animation = animation;
+            this.animation = animation;
             this.isUnstoppable = isUnstoppable;
             AnimationState = animationState;
 
@@ -38,8 +38,8 @@ namespace DarkHavoc.Enemies.SharedStates
         {
             Ended = false;
             Blocked = false;
-            _animation.OnAttackPerformed += AnimationOnAttackPerformed;
-            _animation.OnAttackEnded += AnimationOnAttackEnded;
+            animation.OnAttackPerformed += AnimationOnAttackPerformed;
+            animation.OnAttackEnded += AnimationOnAttackEnded;
         }
 
         protected virtual void AnimationOnAttackEnded() => Ended = true;
@@ -52,8 +52,8 @@ namespace DarkHavoc.Enemies.SharedStates
 
         public virtual void OnExit()
         {
-            _animation.OnAttackEnded -= AnimationOnAttackEnded;
-            _animation.OnAttackPerformed -= AnimationOnAttackPerformed;
+            animation.OnAttackEnded -= AnimationOnAttackEnded;
+            animation.OnAttackPerformed -= AnimationOnAttackPerformed;
         }
     }
 }

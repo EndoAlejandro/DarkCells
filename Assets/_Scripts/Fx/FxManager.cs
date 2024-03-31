@@ -12,6 +12,15 @@ namespace DarkHavoc.Fx
         DangerousTelegraph,
         ColossalMelee,
         ArcherAttack,
+
+        //
+        DualSlicer1,
+        DualSlicer2,
+        DualSlicer3,
+
+        //
+        HeavySlicer1,
+        HeavySlicer2,
     }
 
     public class FxManager : Service<FxManager>
@@ -20,6 +29,17 @@ namespace DarkHavoc.Fx
         [SerializeField] private AnimatedPoolAfterSecond dangerousTelegraphAttackPrefab;
         [SerializeField] private AnimatedPoolAfterSecond colossalMeleeExplosion;
         [SerializeField] private AnimatedPoolAfterSecond archerAttack;
+
+        [Header("Dual Slicer")]
+        [SerializeField] private AnimatedPoolAfterSecond dualSlicerAttack1;
+
+        [SerializeField] private AnimatedPoolAfterSecond dualSlicerAttack2;
+        [SerializeField] private AnimatedPoolAfterSecond dualSlicerAttack3;
+
+        [Header("Heavy Slicer")]
+        [SerializeField] private AnimatedPoolAfterSecond heavySlicerAttack1;
+
+        [SerializeField] private AnimatedPoolAfterSecond heavySlicerAttack2;
 
         private Dictionary<FxType, PooledMonoBehaviour> _fxDictionary;
 
@@ -32,6 +52,11 @@ namespace DarkHavoc.Fx
                 { FxType.DangerousTelegraph, dangerousTelegraphAttackPrefab },
                 { FxType.ColossalMelee, colossalMeleeExplosion },
                 { FxType.ArcherAttack, archerAttack },
+                { FxType.DualSlicer1, dualSlicerAttack1 },
+                { FxType.DualSlicer2, dualSlicerAttack2 },
+                { FxType.DualSlicer3, dualSlicerAttack3 },
+                { FxType.HeavySlicer1, heavySlicerAttack1 },
+                { FxType.HeavySlicer2, heavySlicerAttack2 },
             };
         }
 

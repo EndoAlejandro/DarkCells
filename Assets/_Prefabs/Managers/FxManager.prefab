@@ -48,3 +48,8 @@ MonoBehaviour:
   dangerousTelegraphAttackPrefab: {fileID: 5600386458909092640, guid: 929e1a88b2f8c66458da4dd02902fb5b, type: 3}
   colossalMeleeExplosion: {fileID: 2366007055084804826, guid: 88e0c67c776ff934e9cec01ee26cdaa9, type: 3}
   archerAttack: {fileID: 7256155686450004504, guid: 06adcaa36c54edf42971c118bf69e896, type: 3}
+  dualSlicerAttack1: {fileID: 622381295034965536, guid: 97abcf85bc9ddda4d9846057a4cb053c, type: 3}
+  dualSlicerAttack2: {fileID: 8462370281747194710, guid: baedf6cee666e1f4a92709ad6ca09414, type: 3}
+  dualSlicerAttack3: {fileID: 2791982713692474864, guid: 54a80d6d54245aa48a7adb61bdbaba52, type: 3}
+  heavySlicerAttack1: {fileID: 967317221951761930, guid: 80a8470273b09b34691bd53a4fcf40da, type: 3}
+  heavySlicerAttack2: {fileID: 534331143397582552, guid: 021d51a3028be0d44bb125178c359057, type: 3}

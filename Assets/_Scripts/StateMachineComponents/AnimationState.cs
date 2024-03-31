@@ -21,6 +21,7 @@
         MeleeAttack,
         BuffAttack,
         BoomerangAttack,
+        JumpAttack,
         Death,
     }
 }

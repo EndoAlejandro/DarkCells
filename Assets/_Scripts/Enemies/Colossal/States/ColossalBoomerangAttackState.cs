@@ -31,7 +31,7 @@ namespace DarkHavoc.Enemies.Colossal.States
         public void OnEnter()
         {
             Ended = false;
-            _animation.OnBoomerangAttack += AnimationOnBoomerangAttack;
+            _animation.OnAttackPerformed += AnimationOnBoomerangAttack;
         }
 
         private void AnimationOnBoomerangAttack()
@@ -47,7 +47,7 @@ namespace DarkHavoc.Enemies.Colossal.States
 
         public void OnExit()
         {
-            _animation.OnBoomerangAttack -= AnimationOnBoomerangAttack;
+            _animation.OnAttackPerformed -= AnimationOnBoomerangAttack;
             if (_boomerangArms != null) _boomerangArms.OnDestroyed -= BoomerangArmsOnDestroyed;
         }
     }

@@ -1,31 +1,29 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DarkHavoc.Enemies.Colossal
 {
-    public class ColossalAnimation : EntityAnimation
+    public class ColossalAnimation : BossAnimation
     {
         private static readonly int TurnAround = Animator.StringToHash("TurnAround");
         private static readonly int ShowOutline = Shader.PropertyToID("_ShowOutline");
         private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
-        
-        private Colossal _colossal;
 
-        protected override void Awake()
+        protected override void OnEnable()
         {
-            base.Awake();
-            _colossal = GetComponentInParent<Colossal>();
+            base.OnEnable();
+            boss.OnBuffStateChanged += BossOnBuffStateChanged;
         }
 
-        private void Start()
+        protected override void OnDisable()
         {
-            _colossal.OnBuffStateChanged += ColossalOnBuffStateChanged;
+            base.OnDisable();
+            boss.OnBuffStateChanged -= BossOnBuffStateChanged;
         }
 
-        private void ColossalOnBuffStateChanged(bool state)
+        private void BossOnBuffStateChanged(bool state)
         {
             renderer.GetPropertyBlock(materialPb);
-            materialPb.SetColor(OutlineColor,_colossal.Stats.BuffOutlineColor);
+            materialPb.SetColor(OutlineColor,boss.Stats.BuffOutlineColor);
             materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
             renderer.SetPropertyBlock(materialPb);
         }
@@ -35,23 +33,5 @@ namespace DarkHavoc.Enemies.Colossal
             base.EnemyOnXFlipped(facingLeft);
             animator.SetTrigger(TurnAround);
         }
-
-        protected override float NormalizedHorizontal => _colossal.GetNormalizedHorizontal();
-
-        #region Animation Methods
-
-        public event Action OnRangedAttack;
-        private void PerformRangedAttack() => OnRangedAttack?.Invoke();
-
-        public event Action OnMeleeAttack;
-        private void PerformMeleeAttack() => OnMeleeAttack?.Invoke();
-
-        public event Action OnBoomerangAttack;
-        private void PerformBoomerangAttack() => OnBoomerangAttack?.Invoke();
-
-        public event Action OnBuffAttack;
-        private void PerformBuffAttack() => OnBuffAttack?.Invoke();
-
-        #endregion
     }
 }
