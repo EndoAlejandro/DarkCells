@@ -12,12 +12,12 @@ namespace DarkHavoc.Enemies.SharedStates
         public override string ToString() => AnimationState.ToString();
         public AnimationState AnimationState { get; protected set; }
         public bool CanTransitionToSelf => false;
-        public virtual bool Ended { get; private set; }
+        public virtual bool Ended { get; protected set; }
 
         protected readonly Boss boss;
         protected readonly BossAnimation animation;
         protected readonly EnemyHitBox hitBox;
-        private readonly float _offset;
+        protected readonly float offset;
 
         private readonly float _duration;
         private Action _animationOnAttack;
@@ -29,7 +29,7 @@ namespace DarkHavoc.Enemies.SharedStates
             this.animation = animation;
             this.hitBox = hitBox;
             AnimationState = animationState;
-            _offset = offset;
+            this.offset = offset;
         }
 
         public virtual void Tick()
@@ -47,10 +47,10 @@ namespace DarkHavoc.Enemies.SharedStates
 
             FxType fxType = hitBox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph;
             ServiceLocator.GetService<FxManager>()
-                .PlayFx(fxType, boss.transform.position + Vector3.up * _offset, 1.25f);
+                .PlayFx(fxType, boss.transform.position + Vector3.up * offset, 1.25f);
         }
 
-        private void AnimationOnAttackEnded() => Ended = true;
+        protected void AnimationOnAttackEnded() => Ended = true;
         protected virtual void AnimationOnAttackPerformed() => hitBox.TryToAttack(boss.IsBuffActive);
 
         public virtual void OnExit()

@@ -18,8 +18,6 @@ namespace DarkHavoc.Enemies.TarnishedWidow
 
         protected override void StateMachine()
         {
-            var initialDelay = new AnimationOnlyState(5f, AnimationState.None);
-            var awake = new AnimationOnlyState(1.1f, AnimationState.Awake);
             var idle = new BossIdle(_tarnishedWidow);
             var chase = new TarnishedWidowChaseState(_tarnishedWidow, 3.5f);
             var death = new BossDeathState(_tarnishedWidow);
@@ -36,23 +34,21 @@ namespace DarkHavoc.Enemies.TarnishedWidow
             var jumpDown = new TarnishedWidowJumpDownAttackState(_tarnishedWidow, _animation,
                 _tarnishedWidow.JumpHitBox, 2f);
 
-            stateMachine.SetState(initialDelay);
+            stateMachine.SetState(idle);
 
-            stateMachine.AddTransition(initialDelay, awake, () => initialDelay.Ended);
-            stateMachine.AddTransition(awake, idle, () => awake.Ended);
             stateMachine.AddTransition(idle, chase, () => idle.Ended);
 
             stateMachine.AddTransition(chase, jumpUp, () => _tarnishedWidow.CanBuff);
             stateMachine.AddTransition(jumpUp, jumpDown, () => jumpUp.Ended);
-            stateMachine.AddTransition(jumpDown, idle, () => jumpDown.Ended);
 
-            /*stateMachine.AddTransition(chase, buffAttack, () => chase.BuffAvailable);
+            stateMachine.AddTransition(chase, buffAttack, () => chase.BuffAvailable);
             stateMachine.AddTransition(chase, meleeAttack, () => chase.MeleeAvailable);
-            stateMachine.AddTransition(chase, rangedAttack, () => chase.Ended && chase.RangedAvailable);*/
+            stateMachine.AddTransition(chase, rangedAttack, () => chase.Ended && chase.RangedAvailable);
 
             stateMachine.AddTransition(buffAttack, idle, () => buffAttack.Ended);
             stateMachine.AddTransition(meleeAttack, idle, () => meleeAttack.Ended);
             stateMachine.AddTransition(rangedAttack, idle, () => rangedAttack.Ended);
+            stateMachine.AddTransition(jumpDown, idle, () => jumpDown.Ended);
 
             stateMachine.AddAnyTransition(death, () => !_tarnishedWidow.IsAlive);
         }

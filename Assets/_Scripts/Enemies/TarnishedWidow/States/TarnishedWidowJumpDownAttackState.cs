@@ -20,7 +20,11 @@ namespace DarkHavoc.Enemies.TarnishedWidow.States
 
         public override void OnEnter()
         {
-            base.OnEnter();
+            Ended = false;
+
+            animation.OnAttackPerformed += AnimationOnAttackPerformed;
+            animation.OnAttackEnded += AnimationOnAttackEnded;
+
             ((TarnishedWidow)boss).JumpUp();
             _timer = _duration;
         }
@@ -40,12 +44,12 @@ namespace DarkHavoc.Enemies.TarnishedWidow.States
 
         public override void OnEnter()
         {
-            base.OnEnter();
             _player ??= ServiceLocator.GetService<GameManager>().Player;
             var result = Physics2D.Raycast(_player.transform.position, Vector2.down,
                 50, LayerMask.NameToLayer("Terrain/Ground"));
             _point = result ? result.point : _player.transform.position;
             ((TarnishedWidow)boss).Teleport(_point);
+            base.OnEnter();
         }
 
         protected override void AnimationOnAttackPerformed()

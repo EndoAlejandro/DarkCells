@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497e873c72e84deaa68220da8fe93ac3, type: 3}
   m_Name: TarnishedWidow_Stats
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   idleTime: 1
   acceleration: 10
   patrolSpeed: 1
-  maxSpeed: 5
-  buffDuration: 30
-  breakpointAmount: 4
+  maxSpeed: 3
+  buffDuration: 7
+  breakpointAmount: 5
   buffOutlineColor: {r: 1, g: 0, b: 0, a: 1}
