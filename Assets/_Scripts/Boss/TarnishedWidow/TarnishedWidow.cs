@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.Enemies;
+using UnityEngine;
 
-namespace DarkHavoc.Enemies.TarnishedWidow
+namespace DarkHavoc.Boss.TarnishedWidow
 {
     public class TarnishedWidow : Boss
     {

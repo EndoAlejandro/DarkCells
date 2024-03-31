@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Boss.Colossal
 {
     public class ColossalAnimation : BossAnimation
     {

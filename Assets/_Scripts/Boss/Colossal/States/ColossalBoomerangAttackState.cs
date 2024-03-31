@@ -2,7 +2,7 @@
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.Colossal.States
+namespace DarkHavoc.Boss.Colossal.States
 {
     public class ColossalBoomerangAttackState : IState
     {

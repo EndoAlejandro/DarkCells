@@ -1,7 +1,8 @@
 using DarkHavoc.CustomUtils;
+using DarkHavoc.Enemies;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Boss.Colossal
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]

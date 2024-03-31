@@ -1,9 +1,9 @@
-﻿using DarkHavoc.Enemies.Colossal.States;
+﻿using DarkHavoc.Boss.SharedStates;
+using DarkHavoc.Boss.TarnishedWidow.States;
 using DarkHavoc.Enemies.SharedStates;
-using DarkHavoc.Enemies.TarnishedWidow.States;
 using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.Enemies.TarnishedWidow
+namespace DarkHavoc.Boss.TarnishedWidow
 {
     public class TarnishedWidowStateMachine : FiniteStateBehaviour
     {

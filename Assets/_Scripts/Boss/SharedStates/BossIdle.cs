@@ -4,7 +4,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.SharedStates
+namespace DarkHavoc.Boss.SharedStates
 {
     public class BossIdle : IState
     {
@@ -13,14 +13,14 @@ namespace DarkHavoc.Enemies.SharedStates
         public bool CanTransitionToSelf => false;
         public bool Ended => _timer <= 0f;
         
-        private readonly Boss _boss;
+        private readonly DarkHavoc.Boss.Boss _boss;
         private readonly float _duration;
 
         private Player _player;
         private float _timer;
         private bool _firstTime;
 
-        public BossIdle(Boss boss)
+        public BossIdle(DarkHavoc.Boss.Boss boss)
         {
             _boss = boss;
             _duration = _boss.Stats.IdleTime;

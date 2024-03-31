@@ -1,6 +1,7 @@
 ﻿using System;
+using DarkHavoc.Enemies;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Boss
 {
     public class BossAnimation : EntityAnimation
     {

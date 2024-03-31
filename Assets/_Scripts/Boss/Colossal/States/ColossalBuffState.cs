@@ -1,7 +1,8 @@
-﻿using DarkHavoc.Enemies.SharedStates;
+﻿using DarkHavoc.Boss.SharedStates;
+using DarkHavoc.Enemies;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.Colossal.States
+namespace DarkHavoc.Boss.Colossal.States
 {
     public class ColossalBuffState : BossAttackState
     {

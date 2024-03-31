@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.Enemies;
+using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.Fx;
 using DarkHavoc.ServiceLocatorComponents;
+using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.SharedStates
+namespace DarkHavoc.Boss.SharedStates
 {
     public class BossMeleeAttackState : BossAttackState
     {
-        public BossMeleeAttackState(Boss boss, BossAnimation animation, EnemyHitBox hitBox, float offset) :
+        public BossMeleeAttackState(DarkHavoc.Boss.Boss boss, BossAnimation animation, EnemyHitBox hitBox, float offset) :
             base(boss, animation, hitBox, AnimationState.MeleeAttack, offset)
         {
         }

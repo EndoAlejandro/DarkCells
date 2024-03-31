@@ -1,7 +1,7 @@
-﻿using DarkHavoc.Enemies.SharedStates;
+﻿using DarkHavoc.Boss.SharedStates;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal.States
+namespace DarkHavoc.Boss.Colossal.States
 {
     public class ColossalChaseState : BossChaseState
     {

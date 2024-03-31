@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.Enemies;
+using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Boss
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Boss/BossStats", fileName = "BossStats", order = 0)]
     public class BossStats : BaseStats

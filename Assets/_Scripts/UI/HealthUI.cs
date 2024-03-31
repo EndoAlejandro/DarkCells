@@ -1,4 +1,4 @@
-﻿using DarkHavoc.Enemies.Colossal;
+﻿using DarkHavoc.Boss.Colossal;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;

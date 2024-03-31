@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections;
-using DarkHavoc.CustomUtils;
-using DarkHavoc.Enemies.Colossal;
+using DarkHavoc.Boss.Colossal;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies
+namespace DarkHavoc.Boss
 {
     public abstract class Boss : MonoBehaviour, IDoDamage, ITakeDamage, IEnemy
     {

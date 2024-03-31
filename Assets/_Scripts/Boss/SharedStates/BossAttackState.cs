@@ -1,11 +1,12 @@
 ﻿using System;
+using DarkHavoc.Enemies;
 using DarkHavoc.Fx;
 using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.SharedStates
+namespace DarkHavoc.Boss.SharedStates
 {
     public class BossAttackState : IState
     {
@@ -14,7 +15,7 @@ namespace DarkHavoc.Enemies.SharedStates
         public bool CanTransitionToSelf => false;
         public virtual bool Ended { get; protected set; }
 
-        protected readonly Boss boss;
+        protected readonly DarkHavoc.Boss.Boss boss;
         protected readonly BossAnimation animation;
         protected readonly EnemyHitBox hitBox;
         protected readonly float offset;
@@ -22,7 +23,7 @@ namespace DarkHavoc.Enemies.SharedStates
         private readonly float _duration;
         private Action _animationOnAttack;
 
-        public BossAttackState(Boss boss, BossAnimation animation, EnemyHitBox hitBox,
+        public BossAttackState(DarkHavoc.Boss.Boss boss, BossAnimation animation, EnemyHitBox hitBox,
             AnimationState animationState, float offset)
         {
             this.boss = boss;

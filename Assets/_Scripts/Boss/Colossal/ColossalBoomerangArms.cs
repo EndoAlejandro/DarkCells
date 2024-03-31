@@ -2,7 +2,7 @@ using System;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Boss.Colossal
 {
     public class ColossalBoomerangArms : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace DarkHavoc.Enemies.Colossal
 
         private SpriteRenderer _renderer;
         private Rigidbody2D _rigidbody;
-        private Colossal _colossal;
+        private DarkHavoc.Boss.Colossal.Colossal _colossal;
 
         private Vector3 _direction;
         private Vector3 _initialPosition;
@@ -23,7 +23,7 @@ namespace DarkHavoc.Enemies.Colossal
         private bool _returning;
         private float _travelDistance;
 
-        public void Setup(Colossal colossal, float travelDistance)
+        public void Setup(DarkHavoc.Boss.Colossal.Colossal colossal, float travelDistance)
         {
             _colossal = colossal;
             _renderer ??= GetComponentInChildren<SpriteRenderer>();

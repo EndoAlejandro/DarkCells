@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DarkHavoc.Enemies.TarnishedWidow
+namespace DarkHavoc.Boss.TarnishedWidow
 {
     public class TarnishedWidowAnimation : BossAnimation
     {

@@ -1,21 +1,20 @@
-﻿using DarkHavoc.Enemies.CagedShocker.States;
-using DarkHavoc.Enemies.Colossal.States;
+﻿using DarkHavoc.Boss.Colossal.States;
+using DarkHavoc.Boss.SharedStates;
 using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.PlayerComponents;
-using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.Enemies.Colossal
+namespace DarkHavoc.Boss.Colossal
 {
     public class ColossalStateMachine : FiniteStateBehaviour
     {
-        private Colossal _colossal;
+        private DarkHavoc.Boss.Colossal.Colossal _colossal;
         private ColossalAnimation _animation;
         private Player _player;
 
         protected override void References()
         {
-            _colossal = GetComponent<Colossal>();
+            _colossal = GetComponent<DarkHavoc.Boss.Colossal.Colossal>();
             _animation = GetComponentInChildren<ColossalAnimation>();
         }
 

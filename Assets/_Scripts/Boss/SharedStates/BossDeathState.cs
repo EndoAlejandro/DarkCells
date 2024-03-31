@@ -1,6 +1,6 @@
 ﻿using DarkHavoc.StateMachineComponents;
 
-namespace DarkHavoc.Enemies.SharedStates
+namespace DarkHavoc.Boss.SharedStates
 {
     public class BossDeathState : IState
     {
@@ -8,9 +8,9 @@ namespace DarkHavoc.Enemies.SharedStates
         public AnimationState AnimationState => AnimationState.Death;
         public bool CanTransitionToSelf => false;
         
-        private readonly Boss _boss;
+        private readonly DarkHavoc.Boss.Boss _boss;
 
-        public BossDeathState(Boss boss) => _boss = boss;
+        public BossDeathState(DarkHavoc.Boss.Boss boss) => _boss = boss;
 
         public void Tick()
         {

@@ -7,7 +7,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.SharedStates
+namespace DarkHavoc.Boss.SharedStates
 {
     public abstract class BossChaseState : IState
     {
@@ -16,7 +16,7 @@ namespace DarkHavoc.Enemies.SharedStates
         public bool CanTransitionToSelf => true;
         public bool Ended => _timer <= 0f;
 
-        protected readonly Boss boss;
+        protected readonly DarkHavoc.Boss.Boss boss;
         protected readonly float _stoppingDistance;
         protected readonly float _chaseTime;
 
@@ -32,7 +32,7 @@ namespace DarkHavoc.Enemies.SharedStates
         
         protected bool Stop => _distance <= _stoppingDistance;
 
-        protected BossChaseState(Boss boss, float stoppingDistance)
+        protected BossChaseState(DarkHavoc.Boss.Boss boss, float stoppingDistance)
         {
             this.boss = boss;
             _stoppingDistance = stoppingDistance;
