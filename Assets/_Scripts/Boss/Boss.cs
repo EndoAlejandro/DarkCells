@@ -70,6 +70,8 @@ namespace DarkHavoc.Boss
             StartCoroutine(BuffDeactivateAsync());
         }
 
+        public void ForceBuffDeactivation() => SetBuffState(false);
+
         private IEnumerator BuffDeactivateAsync()
         {
             yield return new WaitForSeconds(Stats.BuffDuration);

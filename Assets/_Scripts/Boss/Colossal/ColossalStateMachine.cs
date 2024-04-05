@@ -8,13 +8,13 @@ namespace DarkHavoc.Boss.Colossal
 {
     public class ColossalStateMachine : FiniteStateBehaviour
     {
-        private DarkHavoc.Boss.Colossal.Colossal _colossal;
+        private Colossal _colossal;
         private ColossalAnimation _animation;
         private Player _player;
 
         protected override void References()
         {
-            _colossal = GetComponent<DarkHavoc.Boss.Colossal.Colossal>();
+            _colossal = GetComponent<Colossal>();
             _animation = GetComponentInChildren<ColossalAnimation>();
         }
 

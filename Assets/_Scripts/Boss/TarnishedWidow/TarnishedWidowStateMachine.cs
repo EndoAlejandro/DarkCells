@@ -1,6 +1,5 @@
 ﻿using DarkHavoc.Boss.SharedStates;
 using DarkHavoc.Boss.TarnishedWidow.States;
-using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.StateMachineComponents;
 
 namespace DarkHavoc.Boss.TarnishedWidow

@@ -15,13 +15,16 @@ namespace DarkHavoc.Enemies.SharedStates
         private readonly float _duration;
 
         private float _timer;
-        private readonly Action _callback;
+        private readonly Action _onExitCallback;
+        private readonly Action _onEnterCallback;
 
-        public AnimationOnlyState(float duration, AnimationState animationState, Action callback = null)
+        public AnimationOnlyState(float duration, AnimationState animationState, Action onExitCallback = null,
+            Action onEnterCallback = null)
         {
             _duration = duration;
             AnimationState = animationState;
-            _callback = callback;
+            _onExitCallback = onExitCallback;
+            _onEnterCallback = onEnterCallback;
         }
 
         public void Tick() => _timer -= Time.deltaTime;
@@ -30,12 +33,16 @@ namespace DarkHavoc.Enemies.SharedStates
         {
         }
 
-        public void OnEnter() => _timer = _duration;
+        public void OnEnter()
+        {
+            _timer = _duration;
+            _onEnterCallback?.Invoke();
+        }
 
         public void OnExit()
         {
             _timer = _duration;
-            _callback?.Invoke();
+            _onExitCallback?.Invoke();
         }
     }
 }

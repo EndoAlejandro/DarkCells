@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies
         protected IDoDamage doDamage;
 
         protected bool isCircle;
-        private bool _onCooldown;
+        protected bool onCooldown;
         private int _offsetDirection;
 
         protected virtual void Awake()
@@ -97,16 +97,16 @@ namespace DarkHavoc.Enemies
 
         public virtual bool IsPlayerInRange()
         {
-            if (_onCooldown) return false;
+            if (onCooldown) return false;
             OverlapHitBox();
             return player;
         }
 
         protected IEnumerator CooldownAsync()
         {
-            _onCooldown = true;
+            onCooldown = true;
             yield return new WaitForSeconds(cooldown);
-            _onCooldown = false;
+            onCooldown = false;
         }
 
         private void OnDestroy() => entity.OnXFlipped -= IEntityOnXFlipped;

@@ -4,7 +4,7 @@ using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
-namespace DarkHavoc.Enemies.CagedShocker.States
+namespace DarkHavoc.Enemies.SharedStates
 {
     public class TelegraphState : IState
     {

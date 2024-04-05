@@ -42,15 +42,16 @@ namespace DarkHavoc.Senses
 
             // Top Check.
             Vector2 origin = new Vector2(horizontal, collider.bounds.max.y + wallDetection.TopOffset);
-            bool topCheck = WallRayCast(origin, direction, wallDetection, out _);
+            bool topCheck = WallRayCast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer, out _);
 
             // Center Check.
             origin.y = collider.bounds.center.y + wallDetection.MidOffset;
-            bool midCheck = WallRayCast(origin, direction, wallDetection, out _);
+            bool midCheck = WallRayCast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer, out _);
 
             // Bottom Check.
             origin.y = collider.bounds.min.y + wallDetection.BottomOffset;
-            bool bottomCheck = WallRayCast(origin, direction, wallDetection, out _);
+            bool bottomCheck = WallRayCast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer,
+                out _);
 
             return new WallResult(topCheck, midCheck, bottomCheck);
         }
@@ -68,11 +69,12 @@ namespace DarkHavoc.Senses
 
             // Top Check.
             Vector2 origin = new Vector2(horizontal, collider.bounds.max.y + wallDetection.TopOffset);
-            bool topCheck = WallRayCast(origin, direction, wallDetection, out _);
+            bool topCheck = WallRayCast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer, out _);
 
             // Center Check.
             origin.y = collider.bounds.center.y + wallDetection.MidOffset;
-            bool midCheck = WallRayCast(origin, direction, wallDetection, out RaycastHit2D hit);
+            bool midCheck = WallRayCast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer,
+                out RaycastHit2D hit);
 
             if (!topCheck && midCheck)
             {
@@ -110,10 +112,10 @@ namespace DarkHavoc.Senses
             return Vector2.zero;
         }
 
-        private static bool WallRayCast(Vector2 origin, Vector2 direction, WallDetection wallDetection,
+        public static bool WallRayCast(Vector2 origin, Vector2 direction, float distanceCheck, LayerMask wallLayer,
             out RaycastHit2D result)
         {
-            result = Physics2D.Raycast(origin, direction, wallDetection.DistanceCheck, wallDetection.WallLayer);
+            result = Physics2D.Raycast(origin, direction, distanceCheck, wallLayer);
             return result;
         }
     }

@@ -23,5 +23,6 @@
         BoomerangAttack,
         JumpAttack,
         Death,
+        Teleport
     }
 }
