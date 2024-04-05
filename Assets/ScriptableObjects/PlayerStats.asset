@@ -19,11 +19,11 @@ MonoBehaviour:
     m_Bits: 584
   groundLayers:
     serializedVersion: 2
-    m_Bits: 1409
+    m_Bits: 66945
   ceilingLayers:
     serializedVersion: 2
     m_Bits: 4480
-  maxSpeed: 6
+  maxSpeed: 4
   acceleration: 80
   groundDeceleration: 70
   airDeceleration: 30
@@ -40,7 +40,8 @@ MonoBehaviour:
       m_Bits: 257
     ledgeDetectorOffset: {x: 0.3, y: 0.03}
     ledgeDetectorRadius: 0.2
-  jumpForce: 13
+  jumpForce: 11
+  airJumpForce: 10
   groundingForce: 3
   fallAcceleration: 30
   jumpBuffer: 0.2
@@ -52,11 +53,11 @@ MonoBehaviour:
   maxWallSlideSpeed: 3
   crouchCeilingDistance: 0.25
   rollCooldown: 0.25
-  speedBonus: 3
-  speedBonusDeceleration: 2.5
+  speedBonus: 2
+  speedBonusDeceleration: 1.5
   rollAction:
     time: 0.4
-    force: 8
+    force: 6
     deceleration: 2
     impulseDirection: 0
   attackLayerMask:

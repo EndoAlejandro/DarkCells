@@ -72,7 +72,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             base.UseAction();
             _coyoteTimeAvailable = false;
             EndedJumpEarly = false;
-            targetVelocity.y = Player.Stats.JumpForce;
+            targetVelocity.y = _canAirJump ? Player.Stats.JumpForce : Player.Stats.AirJumpForce;
         }
 
         public void UseWallAction(ref Vector2 targetVelocity)

@@ -29,6 +29,7 @@ namespace DarkHavoc.PlayerComponents
         [Header("Jump")]
         [SerializeField] private float jumpForce;
 
+        [SerializeField] private float airJumpForce;
         [SerializeField] private float groundingForce;
         [SerializeField] private float fallAcceleration;
         [SerializeField] private float jumpBuffer = 0.2f;
@@ -89,6 +90,7 @@ namespace DarkHavoc.PlayerComponents
         #region Jump
 
         public float JumpForce => jumpForce;
+        public float AirJumpForce => airJumpForce;
         public float GroundingForce => groundingForce;
         public float FallAcceleration => fallAcceleration;
         public float MaxFallSpeed => maxFallSpeed;
