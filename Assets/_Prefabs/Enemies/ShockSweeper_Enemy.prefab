@@ -153,7 +153,7 @@ MonoBehaviour:
   canFly: 0
   debug: 1
   heavyHitBox: {fileID: 5136163446518405317}
-  staticRangedHitBox: {fileID: 2130605064627224211}
+  summonRangedHitBox: {fileID: 2130605064627224211}
 --- !u!114 &7382719200437885300
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,7 +66,8 @@ namespace DarkHavoc.Enemies.SharedStates
 
         public void OnEnter()
         {
-            if (_enemy.Player != null) _pathfinding.StartFindPath(_enemy.Player.transform);
+            if (_enemy.Player != null) 
+                _pathfinding.StartFindPath(_enemy.Player.transform);
         }
 
         public void OnExit()

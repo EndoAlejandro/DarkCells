@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DarkHavoc.CameraComponents
 {
-    [ExecuteInEditMode]
+    [ExecuteInEditMode][Obsolete("Do not use this class.", true)]
     public class ParallaxBackground : MonoBehaviour
     {
         [SerializeField] private ParallaxCamera parallaxCamera;
