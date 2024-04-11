@@ -1,3 +1,4 @@
+using Calcatz.MeshPathfinding;
 using DarkHavoc.CustomUtils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,8 +7,11 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
     public class GridRoomVariant : MonoBehaviour
     {
+        public Waypoints WayPoints => waypoints;
+
         [SerializeField] private Transform spawnPointsContainer;
         [SerializeField] private Transform instantiables;
+        [SerializeField] private Waypoints waypoints;
 
         private Tilemap[] _roomTileMaps;
 

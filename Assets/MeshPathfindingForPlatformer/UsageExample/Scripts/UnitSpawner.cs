@@ -1,18 +1,21 @@
 ﻿using Calcatz.MeshPathfinding;
 using UnityEngine;
 
-public class UnitSpawner : MonoBehaviour
+namespace DarkHavoc.MeshPathfindingForPlatformer.UsageExample.Scripts
 {
-    public GameObject unitPrefab;
-    public Waypoints waypoints;
-    public Transform target;
-
-    // Start is called before the first frame update
-    void Start()
+    public class UnitSpawner : MonoBehaviour
     {
-        GameObject unitGO = Instantiate(unitPrefab);
-        Pathfinding unitPathfinding = unitGO.GetComponent<Pathfinding>();
-        unitPathfinding.Waypoints = waypoints;
-        unitPathfinding.SetTarget(target);
+        public GameObject unitPrefab;
+        public MasterWayPoints waypoints;
+        public Transform target;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            GameObject unitGO = Instantiate(unitPrefab);
+            Pathfinding unitPathfinding = unitGO.GetComponent<Pathfinding>();
+            unitPathfinding.Waypoints = waypoints;
+            unitPathfinding.SetTarget(target);
+        }
     }
 }

@@ -89,6 +89,7 @@ namespace Calcatz.MeshPathfinding {
         [Tooltip("This node will be ignored in calculation if it's not traversable.")]
         public bool traversable = true;
         public List<Node> neighbours;
+        public Node SourceNode { get;  set; }
 
         private void OnDrawGizmos() {
             Gizmos.color = Color.green;

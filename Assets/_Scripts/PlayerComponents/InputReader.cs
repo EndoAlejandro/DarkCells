@@ -13,8 +13,11 @@ namespace DarkHavoc.PlayerComponents
         public bool JumpHold => _input != null && _input.Main.Jump.IsPressed();
         public bool BlockHold => _input != null && _input.Main.Block.IsPressed();
 
+        public bool GoDown => _input != null && _input.Main.Movement.ReadValue<Vector2>().y < 0 &&
+                              _input.Main.Jump.WasPerformedThisFrame();
+
         // On Input Down.
-        public bool Jump => _input != null && _input.Main.Jump.WasPerformedThisFrame();
+        public bool Jump => _input != null && _input.Main.Jump.WasPerformedThisFrame() && !GoDown;
         public bool Roll => _input != null && _input.Main.Roll.WasPerformedThisFrame();
         public bool Attack => _input != null && _input.Main.Attack.WasPerformedThisFrame();
         public bool Block => _input != null && _input.Main.Block.WasPerformedThisFrame();

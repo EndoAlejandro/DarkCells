@@ -1,4 +1,7 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using System.Collections;
+using DarkHavoc.StateMachineComponents;
+using UnityEngine;
+using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
 namespace DarkHavoc.PlayerComponents.States
 {
@@ -26,6 +29,14 @@ namespace DarkHavoc.PlayerComponents.States
             {
                 _player.Jump();
                 _player.ApplyVelocity();
+            }
+
+            if (_input.GoDown && _player.Grounded)
+            {
+                var result = _player.CheckCollisionCustomDirection(Vector2.down, _player.Stats.GrounderDistance,
+                    _player.Stats.GroundLayers);
+                if (result.transform.TryGetComponent(out PlatformEffector2D _))
+                    _player.GoDownPlatform(result.collider);
             }
         }
 

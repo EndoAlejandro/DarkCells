@@ -52,7 +52,8 @@ namespace DarkHavoc.PlayerComponents.States
             {
                 var ledgeResult =
                     EntityVision.CheckLedge(_player.Collider, _player.Stats.WallDetection, _player.FacingLeft);
-                if (!ledgeResult.IsDefault()) FacingLedge = true;
+                if (!ledgeResult.IsDefault()) 
+                    FacingLedge = true;
             }
         }
 

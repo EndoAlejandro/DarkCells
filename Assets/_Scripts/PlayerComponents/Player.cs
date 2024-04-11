@@ -254,7 +254,7 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
-        private bool CheckCollisionCustomDirection(Vector2 direction, float distance, LayerMask layers) =>
+        public RaycastHit2D CheckCollisionCustomDirection(Vector2 direction, float distance, LayerMask layers) =>
             Physics2D.CapsuleCast(Collider.bounds.center, Collider.bounds.size,
                 CapsuleDirection2D.Vertical, 0f, direction, distance, layers);
 
@@ -336,6 +336,17 @@ namespace DarkHavoc.PlayerComponents
 
             _useGravity = !value;
             OnLedgeGrabChanged?.Invoke(value);
+        }
+
+        public void GoDownPlatform(Collider2D other) =>
+            StartCoroutine(GoDownPlatformAsync(other));
+
+        private IEnumerator GoDownPlatformAsync(Collider2D other)
+        {
+            Physics2D.IgnoreCollision(Collider, other, true);
+            
+            yield return new WaitForSeconds(.25f);
+            Physics2D.IgnoreCollision(Collider, other, false);
         }
 
         public void ResetVelocity() => _targetVelocity = Vector2.zero;

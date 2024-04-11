@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Calcatz.MeshPathfinding;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -111,6 +111,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
             AddSpawnPoints(prefabGridRoomVariant, x, y);
             AddInstantiables(prefabGridRoomVariant, x, y);
+            AddWayPoints(prefabGridRoomVariant, x, y);
         }
 
         private void CopyGridRoomLayer(Tilemap source, Tilemap target, int x, int y)
@@ -146,9 +147,21 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             foreach (var instantiable in localInstantiables)
             {
                 Vector3 localPosition = instantiable.position;
-                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x, localPosition.y - roomSize.y * y,
-                    localPosition.z);
+                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x,
+                    localPosition.y - roomSize.y * y, localPosition.z);
                 Instantiables.Add(new Instantiable(instantiable, offsetPosition));
+            }
+        }
+
+        private void AddWayPoints(GridRoomVariant prefabGridRoomVariant, int x, int y)
+        {
+            Waypoints waypoints = prefabGridRoomVariant.WayPoints;
+            foreach (var node in waypoints.Nodes)
+            {
+                Vector3 localPosition = node.transform.position;
+                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x,
+                    localPosition.y - roomSize.y * y);
+                ServiceLocator.GetService<MasterWayPoints>().AddNode(node, offsetPosition);
             }
         }
 

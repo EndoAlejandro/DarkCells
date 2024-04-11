@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEditor;
 using UnityEngine;
@@ -7,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Calcatz.MeshPathfinding
 {
-    public class Waypoints : Service<Waypoints>
+    public class Waypoints : MonoBehaviour
     {
         [SerializeField] private List<Node> nodes;
         public List<Node> Nodes => nodes;
@@ -21,6 +22,12 @@ namespace Calcatz.MeshPathfinding
 
             Node[] nodesArray = GetComponentsInChildren<Node>();
             foreach (Node node in nodesArray) nodes.Add(node);
+        }
+
+        private void Start()
+        {
+            // ServiceLocator.GetService<MasterWayPoints>().AddNodes(nodes);
+            // gameObject.SetActive(false);
         }
 
         public Node FindNode(Vector3 position)

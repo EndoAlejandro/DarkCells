@@ -11,11 +11,11 @@ namespace Calcatz.MeshPathfinding
         // [Tooltip("The waypoints used to calculate the path.")]
         // public Waypoints waypoints;
 
-        private Waypoints _waypoints;
+        private MasterWayPoints _waypoints;
 
-        public Waypoints Waypoints
+        public MasterWayPoints Waypoints
         {
-            get => _waypoints ??= ServiceLocator.GetService<Waypoints>();
+            get => _waypoints ??= ServiceLocator.GetService<MasterWayPoints>();
             set => _waypoints = value;
         }
 

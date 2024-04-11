@@ -40,7 +40,7 @@ MonoBehaviour:
       m_Bits: 257
     ledgeDetectorOffset: {x: 0.3, y: 0.03}
     ledgeDetectorRadius: 0.2
-  jumpForce: 11
+  jumpForce: 12
   airJumpForce: 10
   groundingForce: 3
   fallAcceleration: 30
@@ -48,7 +48,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 1.25
   coyoteTime: 0.2
-  wallJumpForce: {x: 10, y: 13}
+  wallJumpForce: {x: 8, y: 10}
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
   crouchCeilingDistance: 0.25

@@ -12,6 +12,7 @@ namespace DarkHavoc.PlayerComponents.States
 
         private readonly Player _player;
         private readonly Rigidbody2D _rigidbody;
+        private readonly InputReader _input;
         private readonly ImpulseAction _rollAction;
 
         private float _timer;
@@ -23,6 +24,7 @@ namespace DarkHavoc.PlayerComponents.States
         {
             _player = player;
             _rigidbody = rigidbody;
+            _input = input;
             _rollAction = rollAction;
         }
 
@@ -38,6 +40,10 @@ namespace DarkHavoc.PlayerComponents.States
             }
 
             if (_timer <= 0f) Ended = true;
+
+            if (_input.Movement.x == 0) return;
+            if (Mathf.Sign(_input.Movement.x) > 0 && _player.FacingLeft) _player.SetFacingLeft(false);
+            else if (Mathf.Sign(_input.Movement.x) < 0 && !_player.FacingLeft) _player.SetFacingLeft(true);
         }
 
         public void FixedTick()
