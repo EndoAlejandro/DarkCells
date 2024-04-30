@@ -48,7 +48,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 1.25
   coyoteTime: 0.2
-  wallJumpForce: {x: 8, y: 10}
+  wallJumpForce: {x: 10, y: 11}
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
   crouchCeilingDistance: 0.25

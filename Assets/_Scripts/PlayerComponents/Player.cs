@@ -344,7 +344,6 @@ namespace DarkHavoc.PlayerComponents
         private IEnumerator GoDownPlatformAsync(Collider2D other)
         {
             Physics2D.IgnoreCollision(Collider, other, true);
-            
             yield return new WaitForSeconds(.25f);
             Physics2D.IgnoreCollision(Collider, other, false);
         }
