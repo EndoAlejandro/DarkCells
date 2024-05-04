@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DarkHavoc.Managers;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;

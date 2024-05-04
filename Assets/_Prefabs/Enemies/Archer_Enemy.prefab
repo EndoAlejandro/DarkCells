@@ -54,7 +54,8 @@ MonoBehaviour:
   midPoint: {fileID: 3765490447906544551}
   hitbox: {fileID: 7486849160110585454}
   radialVision: 1
-  debug: 1
+  canFly: 0
+  debug: 0
 --- !u!114 &5248261837269507781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590a0a585afa43f08e33096b943964d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 0
 --- !u!212 &3622150963693015730
 SpriteRenderer:
   m_ObjectHideFlags: 0

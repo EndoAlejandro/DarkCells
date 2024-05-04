@@ -19,7 +19,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         }
     }
 
-    public class GridBasedLevelGenerator : Service<GridBasedLevelGenerator>
+    [RequireComponent(typeof(MasterWayPoints))]
+    public class LevelGenerator : Service<LevelGenerator>
     {
         [SerializeField] private Vector2Int roomSize;
         [SerializeField] private Vector2Int levelSize;
@@ -31,6 +32,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private GridRoomData[,] _roomDataMatrix;
 
         private readonly Dictionary<string, Tilemap> _globalTilemaps = new();
+        private MasterWayPoints _masterWayPoints;
 
         public GridRoomData InitialRoom { get; private set; }
         public GridRoomData ExitRoom { get; private set; }
@@ -43,6 +45,9 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             base.Awake();
 
             _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y + 2];
+
+            // WayPoints
+            _masterWayPoints = GetComponent<MasterWayPoints>();
 
             // Non-Tile objects
             WorldPositionSpawnPoints = new List<Vector3>();
@@ -134,8 +139,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             foreach (var spawnPoint in localSpawnPoints)
             {
                 Vector3 localPosition = spawnPoint.position;
-                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x, localPosition.y - roomSize.y * y,
-                    localPosition.z);
+                Vector3 offsetPosition = OffsetPosition(localPosition, x, y);
                 WorldPositionSpawnPoints.Add(offsetPosition);
             }
         }
@@ -147,8 +151,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             foreach (var instantiable in localInstantiables)
             {
                 Vector3 localPosition = instantiable.position;
-                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x,
-                    localPosition.y - roomSize.y * y, localPosition.z);
+                Vector3 offsetPosition = OffsetPosition(localPosition, x, y);
                 Instantiables.Add(new Instantiable(instantiable, offsetPosition));
             }
         }
@@ -156,13 +159,23 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private void AddWayPoints(GridRoomVariant prefabGridRoomVariant, int x, int y)
         {
             Waypoints waypoints = prefabGridRoomVariant.WayPoints;
+            _masterWayPoints.CleanNodeDictionary();
+
             foreach (var node in waypoints.Nodes)
             {
                 Vector3 localPosition = node.transform.position;
-                Vector3 offsetPosition = new Vector3(localPosition.x + roomSize.x * x,
-                    localPosition.y - roomSize.y * y);
-                ServiceLocator.GetService<MasterWayPoints>().AddNode(node, offsetPosition);
+                Vector3 offsetPosition = OffsetPosition(localPosition, x, y);
+
+                _masterWayPoints?.CreateNode(node, offsetPosition);
             }
+
+            _masterWayPoints?.ConnectNodes();
+        }
+
+        private Vector3 OffsetPosition(Vector3 localPosition, int x, int y)
+        {
+            return new Vector3(localPosition.x + roomSize.x * x,
+                localPosition.y - roomSize.y * y, localPosition.z);
         }
 
         private void CalculateMainPath()

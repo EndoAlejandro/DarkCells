@@ -365,7 +365,7 @@ MonoBehaviour:
   hitbox: {fileID: 3553512823846312434}
   radialVision: 1
   canFly: 1
-  debug: 1
+  debug: 0
   flyDistance: 3
   checkGroundTime: 0.1
   groundOnlyLayerMask:

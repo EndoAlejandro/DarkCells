@@ -151,7 +151,7 @@ MonoBehaviour:
   hitbox: {fileID: 7414088272974878946}
   radialVision: 1
   canFly: 0
-  debug: 1
+  debug: 0
   heavyHitBox: {fileID: 5136163446518405317}
   summonRangedHitBox: {fileID: 2130605064627224211}
 --- !u!114 &7382719200437885300

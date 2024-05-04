@@ -1,6 +1,7 @@
 ﻿using DarkHavoc.Boss.SharedStates;
 using DarkHavoc.Enemies;
 using DarkHavoc.Enemies.SharedStates;
+using DarkHavoc.Managers;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;

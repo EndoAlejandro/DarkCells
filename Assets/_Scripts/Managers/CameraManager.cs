@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Cinemachine;
+using DarkHavoc.Managers;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 

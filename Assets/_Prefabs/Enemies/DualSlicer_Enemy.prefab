@@ -299,7 +299,7 @@ MonoBehaviour:
   hitbox: {fileID: 8737045466308654029}
   radialVision: 0
   canFly: 0
-  debug: 1
+  debug: 0
 --- !u!114 &3443397851596762064
 MonoBehaviour:
   m_ObjectHideFlags: 0

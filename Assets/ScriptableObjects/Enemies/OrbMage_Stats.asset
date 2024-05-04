@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a624429f41f4434a6705c91af13ab1c, type: 3}
   m_Name: OrbMage_Stats
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 10
   idleTime: 1
   acceleration: 10
   patrolSpeed: 2

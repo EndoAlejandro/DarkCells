@@ -878,9 +878,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4164888274092934826, guid: 6aab84027ecc3e14ab8ba80bace926c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5421745478073469054, guid: 6aab84027ecc3e14ab8ba80bace926c2, type: 3}
       propertyPath: m_Name
-      value: PlayerHealth_Canvas
+      value: HUD_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311616833819347602, guid: 6aab84027ecc3e14ab8ba80bace926c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

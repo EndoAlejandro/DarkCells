@@ -1,4 +1,5 @@
-﻿using DarkHavoc.PlayerComponents;
+﻿using DarkHavoc.Managers;
+using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 
 namespace DarkHavoc.Interactable

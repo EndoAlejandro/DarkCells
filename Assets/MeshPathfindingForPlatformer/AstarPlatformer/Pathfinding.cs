@@ -111,6 +111,12 @@ namespace Calcatz.MeshPathfinding
                             break;
                         }
 
+                        if (currentNode == null ||
+                            currentNode.nodeObject == null ||
+                            currentNode.nodeObject.neighbours == null ||
+                            currentNode.nodeObject.neighbours.Count == 0)
+                            continue;
+
                         foreach (Node neighbour in currentNode.nodeObject.neighbours)
                         {
                             Node.Data neighbourData = nodeDataDictionary[neighbour];

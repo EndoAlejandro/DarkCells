@@ -3,6 +3,7 @@ using System.Collections;
 using DarkHavoc.Enemies;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.Interactable;
+using DarkHavoc.Managers;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 

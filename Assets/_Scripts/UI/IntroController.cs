@@ -1,3 +1,4 @@
+using DarkHavoc.Managers;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.UI;

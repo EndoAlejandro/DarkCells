@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590a0a585afa43f08e33096b943964d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 0
 --- !u!212 &5848860519148713600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  telegraphTime: 1
   debug: 1
 --- !u!58 &713321785659894471
 CircleCollider2D:
@@ -286,7 +288,8 @@ MonoBehaviour:
   midPoint: {fileID: 949546078479352122}
   hitbox: {fileID: 8698211871778179446}
   radialVision: 1
-  debug: 1
+  canFly: 0
+  debug: 0
 --- !u!114 &682384671927868814
 MonoBehaviour:
   m_ObjectHideFlags: 0

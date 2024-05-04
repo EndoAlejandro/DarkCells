@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEditor;
 using UnityEngine;
@@ -26,8 +25,7 @@ namespace Calcatz.MeshPathfinding
 
         private void Start()
         {
-            // ServiceLocator.GetService<MasterWayPoints>().AddNodes(nodes);
-            // gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         public Node FindNode(Vector3 position)

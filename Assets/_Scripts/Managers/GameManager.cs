@@ -4,7 +4,7 @@ using DarkHavoc.PlayerComponents;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
-namespace DarkHavoc
+namespace DarkHavoc.Managers
 {
     public class GameManager : Service<GameManager>
     {

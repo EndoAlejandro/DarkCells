@@ -7,44 +7,44 @@ namespace Calcatz.MeshPathfinding
 {
     public class MasterWayPoints : Service<MasterWayPoints>
     {
+        private Dictionary<Node, Node> _nodePairs;
         public List<Node> Nodes { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
             Nodes = new List<Node>();
-            DebugOnly();
         }
 
-        [Obsolete]
-        private void DebugOnly()
-        {
-            var result = FindObjectsOfType<Waypoints>();
-            foreach (var waypoints in result)
-            {
-                AddNodes(waypoints.Nodes);
-            }
-        }
-
-        public void AddNode(Node node, Vector3 position = default)
+        public void CreateNode(Node sourceNode, Vector3 position = default)
         {
             var newNode = new GameObject("Node").AddComponent<Node>();
             newNode.transform.position = position;
-            newNode.neighbours = node.neighbours;
             newNode.transform.SetParent(transform);
-            Nodes.Add(node);
+            newNode.SetSourceNode(sourceNode);
+            Nodes.Add(newNode);
+            _nodePairs.Add(sourceNode, newNode);
         }
 
-        public void AddNodes(List<Node> nodes)
+        public void CleanNodeDictionary()
         {
-            foreach (var node in nodes)
+            _nodePairs ??= new Dictionary<Node, Node>();
+            _nodePairs.Clear();
+        }
+
+        public void ConnectNodes()
+        {
+            foreach (var node in Nodes)
             {
-                var newNode = new GameObject("Node").AddComponent<Node>();
-                // newNode.transform.position
-                newNode.SourceNode = node;
-                // newNode.neighbours = node.neighbours;
-                newNode.transform.SetParent(transform);
-                Nodes.Add(node);
+                if (node.SourceNode == null) continue;
+                var sourceNeighbours = node.SourceNode.neighbours;
+                foreach (var sourceNeighbour in sourceNeighbours)
+                {
+                    if (_nodePairs.TryGetValue(sourceNeighbour, out Node newNeighbour))
+                        node.AddNeighbour(newNeighbour);
+                }
+
+                node.SetSourceNode(null);
             }
         }
 

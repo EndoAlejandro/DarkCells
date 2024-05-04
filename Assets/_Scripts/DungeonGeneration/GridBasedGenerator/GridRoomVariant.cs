@@ -23,7 +23,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             return _roomTileMaps;
         }
 
-        public Transform[] GetSpawnPoints() => spawnPointsContainer.GetChildren();
-        public Transform[] GetInstantiables() => instantiables.GetChildren();
+        public Transform[] GetSpawnPoints() => spawnPointsContainer?.GetChildren();
+        public Transform[] GetInstantiables() => instantiables?.GetChildren();
     }
 }

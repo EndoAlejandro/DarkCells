@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using DarkHavoc.CustomUtils;
+using DarkHavoc.Managers;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
@@ -11,12 +11,12 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         [SerializeField] private float spawnPointOffset;
         [SerializeField] private BiomeBestiary bestiary;
 
-        private GridBasedLevelGenerator _levelGenerator;
+        private LevelGenerator _levelGenerator;
         private GameManager _gameManager;
 
         private void Start()
         {
-            _levelGenerator = ServiceLocator.GetService<GridBasedLevelGenerator>();
+            _levelGenerator = ServiceLocator.GetService<LevelGenerator>();
             _gameManager = ServiceLocator.GetService<GameManager>();
             StartCoroutine(StartLevelAsync());
         }

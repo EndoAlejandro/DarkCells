@@ -4,6 +4,7 @@ using DarkHavoc.CustomUtils;
 using DarkHavoc.CustomUtils.DebugEventButtonComponents;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
+using DarkHavoc.Managers;
 using DarkHavoc.PlayerComponents.PlayerActions;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
