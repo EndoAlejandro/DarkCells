@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fda057f2bb06488f6c006172e2db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordSlashPrefab: {fileID: 8122789681538744123, guid: 0a88250e3250d05418f8cc8372bb3050, type: 3}
   telegraphAttackPrefab: {fileID: 9143803946635656790, guid: 57cd509bddfda4b4ab212dc6a1a7f23f, type: 3}
   dangerousTelegraphAttackPrefab: {fileID: 5600386458909092640, guid: 929e1a88b2f8c66458da4dd02902fb5b, type: 3}
   colossalMeleeExplosion: {fileID: 2366007055084804826, guid: 88e0c67c776ff934e9cec01ee26cdaa9, type: 3}

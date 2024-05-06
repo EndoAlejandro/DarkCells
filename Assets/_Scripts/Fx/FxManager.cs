@@ -8,6 +8,9 @@ namespace DarkHavoc.Fx
 {
     public enum FxType
     {
+        SwordSlash,
+
+        //
         Telegraph,
         DangerousTelegraph,
         ColossalMelee,
@@ -25,7 +28,12 @@ namespace DarkHavoc.Fx
 
     public class FxManager : Service<FxManager>
     {
+        [Header("Player")]
+        [SerializeField] private AnimatedPoolAfterSecond swordSlashPrefab;
+
+        [Header("Enemies")]
         [SerializeField] private AnimatedPoolAfterSecond telegraphAttackPrefab;
+
         [SerializeField] private AnimatedPoolAfterSecond dangerousTelegraphAttackPrefab;
         [SerializeField] private AnimatedPoolAfterSecond colossalMeleeExplosion;
         [SerializeField] private AnimatedPoolAfterSecond archerAttack;
@@ -48,6 +56,7 @@ namespace DarkHavoc.Fx
             base.Awake();
             _fxDictionary = new Dictionary<FxType, PooledMonoBehaviour>
             {
+                { FxType.SwordSlash, swordSlashPrefab },
                 { FxType.Telegraph, telegraphAttackPrefab },
                 { FxType.DangerousTelegraph, dangerousTelegraphAttackPrefab },
                 { FxType.ColossalMelee, colossalMeleeExplosion },
@@ -60,12 +69,14 @@ namespace DarkHavoc.Fx
             };
         }
 
-        public void PlayFx(FxType fxType, Vector2 position, float scale = 1f, bool flipX = false)
+        public void PlayFx(FxType fxType, Vector2 position, float scale = 1f, bool flipX = false,
+            bool randomizeRotation = false)
         {
             if (!_fxDictionary.TryGetValue(fxType, out PooledMonoBehaviour result))
                 return;
 
-            var pooled = result.Get<PooledMonoBehaviour>(position, Quaternion.identity);
+            var pooled = result.Get<PooledMonoBehaviour>(position,
+                randomizeRotation ? Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)) : Quaternion.identity);
             pooled.transform.localScale = Vector3.one * scale;
             if (flipX) pooled.transform.localScale = pooled.transform.localScale.With(x: -scale);
         }

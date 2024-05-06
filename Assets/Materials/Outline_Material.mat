@@ -56,8 +56,8 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _HitValue: 0
-    - _ShowOutline: 0
-    - _Stroke: 1
+    - _ShowOutline: 1
+    - _Stroke: 0.5
     m_Colors:
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_BuildTextureStacks: []

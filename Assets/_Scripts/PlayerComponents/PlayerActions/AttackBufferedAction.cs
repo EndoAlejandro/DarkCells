@@ -1,6 +1,8 @@
 ﻿using System;
 using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.Fx;
 using DarkHavoc.ImpulseComponents;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.PlayerActions
@@ -60,7 +62,12 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
                     var lineCastSize = Physics2D.LinecastNonAlloc(Player.MidPoint.position,
                         takeDamage.MidPoint.position, _obstacleCheckResults, Player.Stats.WallDetection.WallLayer);
 
-                    if (lineCastSize == 0) Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
+                    if (lineCastSize == 0)
+                    {
+                        ServiceLocator.GetService<FxManager>().PlayFx(FxType.SwordSlash,
+                            takeDamage.transform.position + Vector3.up * .5f, randomizeRotation: true);
+                        Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
+                    }
                 }
             }
         }

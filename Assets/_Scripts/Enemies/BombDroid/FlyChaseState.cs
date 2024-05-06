@@ -51,6 +51,7 @@ namespace DarkHavoc.Enemies.BombDroid
             var downCheck = Physics2D.Raycast(_bombDroid.transform.position,
                 Vector2.down, 3f);
 
+            if(_bombDroid.Player == null) return;
             _playerDirection = _bombDroid.Player.transform.position - _bombDroid.transform.position;
             _playerVisible = _bombDroid.IsPlayerVisible(_bombDroid.Player);
             _bombDroid.SetVisibility(_playerVisible);

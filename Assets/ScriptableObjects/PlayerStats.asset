@@ -23,12 +23,12 @@ MonoBehaviour:
   ceilingLayers:
     serializedVersion: 2
     m_Bits: 4480
-  maxSpeed: 4
+  maxSpeed: 5
   acceleration: 80
   groundDeceleration: 70
   airDeceleration: 30
   grounderDistance: 0.05
-  ceilingDistance: 0.01
+  ceilingDistance: 0.05
   wallDetection:
     distanceCheck: 0.4
     topOffset: 0
