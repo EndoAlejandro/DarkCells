@@ -77,8 +77,8 @@ namespace DarkHavoc.Fx
 
             var pooled = result.Get<PooledMonoBehaviour>(position,
                 randomizeRotation ? Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)) : Quaternion.identity);
-            pooled.transform.localScale = Vector3.one * scale;
-            if (flipX) pooled.transform.localScale = pooled.transform.localScale.With(x: -scale);
+            pooled.transform.localScale = Vector3.one * 1;
+            if (flipX) pooled.transform.localScale = pooled.transform.localScale.With(x: -1);
         }
     }
 }

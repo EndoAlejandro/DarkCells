@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7a5f53f67e2c44cb3546454f410e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAnimationDuration: 0.2
 --- !u!212 &6509865483681042912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86,7 +85,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 563718115
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 6857048038630727525, guid: 59ee70ed10bb5404a8ec68f2bb6dd483, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

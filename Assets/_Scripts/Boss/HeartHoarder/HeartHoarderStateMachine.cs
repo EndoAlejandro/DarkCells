@@ -31,7 +31,7 @@ namespace DarkHavoc.Boss.HeartHoarder
             var walkAttack = new HeartHoarderWalkAttackState(_heartHoarder, _animation, _heartHoarder.WalkAttackHitBox,
                 AnimationState.LightAttack, 4f, 5f);
 
-            var telegraph = new HeartHoarderTelegraphState(_heartHoarder, _heartHoarder.MeleeAttackHitBox, 3f);
+            var telegraph = new HeartHoarderTelegraphState(_heartHoarder, _heartHoarder.MeleeAttackHitBox, 3.7f);
             var meleeAttack = new BossAttackState(_heartHoarder, _animation, _heartHoarder.MeleeAttackHitBox,
                 AnimationState.MeleeAttack, useTelegraph: false);
 
