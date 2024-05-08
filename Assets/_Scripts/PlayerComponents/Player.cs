@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
-using DarkHavoc.CustomUtils.DebugEventButtonComponents;
+using DarkHavoc.CustomUtils.DebugEventButton;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.Managers;
@@ -94,12 +94,12 @@ namespace DarkHavoc.PlayerComponents
 
         public static Context PlayerContext { get; private set; }
 
-        [Header("Development")]
+        /*[Header("Development")]
         [Button(nameof(InvokeEvents))]
         [SerializeField] private bool _;
 
         public UnityEvent events;
-        public void InvokeEvents() => events?.Invoke();
+        public void InvokeEvents() => events?.Invoke();*/
 
         private void Awake()
         {
@@ -116,9 +116,9 @@ namespace DarkHavoc.PlayerComponents
             Actions();
             OnPlayerSpawned?.Invoke(this);
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             InvokeEvents();
-#endif
+#endif*/
         }
 
         private void OnEnable() => _useGravity = true;

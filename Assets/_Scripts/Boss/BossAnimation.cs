@@ -1,11 +1,16 @@
 ﻿using System;
+using DarkHavoc.CustomUtils;
 using DarkHavoc.Enemies;
+using UnityEngine;
 
 namespace DarkHavoc.Boss
 {
     public class BossAnimation : EntityAnimation
     {
+        protected static readonly int OutlineColorID = Shader.PropertyToID("_OutlineColor");
+        
         protected override float NormalizedHorizontal => boss != null ? boss.GetNormalizedHorizontal() : 0f;
+        protected override Color OutlineColor => Constants.BossOutlineColor;
         protected Boss boss;
 
         protected override void Awake()

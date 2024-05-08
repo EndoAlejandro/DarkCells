@@ -15,6 +15,7 @@ namespace DarkHavoc.Enemies
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
 
         protected abstract float NormalizedHorizontal { get; }
+        protected abstract Color OutlineColor { get; }
         protected virtual float NormalizedVertical => 0f;
 
         protected Animator animator;

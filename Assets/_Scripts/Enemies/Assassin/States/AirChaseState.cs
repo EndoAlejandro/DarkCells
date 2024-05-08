@@ -45,7 +45,11 @@ namespace DarkHavoc.Enemies.Assassin.States
                 _enemy.Move(0);
         }
 
-        public void OnEnter() => _pathfinding.StartFindPath(_enemy.Player.transform);
+        public void OnEnter()
+        {
+            if(_enemy.Player == null) return;
+            _pathfinding.StartFindPath(_enemy.Player.transform);
+        }
 
         public void OnExit()
         {

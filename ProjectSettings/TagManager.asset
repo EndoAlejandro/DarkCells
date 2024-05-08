@@ -9,6 +9,7 @@ TagManager:
   - CameraCollider
   - Visuals
   - Hazard
+  - FrontVisuals
   layers:
   - Default
   - TransparentFX

@@ -1,10 +1,14 @@
 ﻿using System;
+using DarkHavoc.CustomUtils;
+using UnityEngine;
 
 namespace DarkHavoc.Enemies
 {
     public class EnemyAnimation : EntityAnimation
     {
+        protected static readonly int OutlineColorID = Shader.PropertyToID("_OutlineColor");
         protected override float NormalizedHorizontal => enemy != null ? enemy.GetNormalizedHorizontal() : 0f;
+        protected override Color OutlineColor => Constants.EnemyOutlineColor;
         protected override float NormalizedVertical => enemy != null ? enemy.GetNormalizedVertical() : 0f;
         protected Enemy enemy;
 

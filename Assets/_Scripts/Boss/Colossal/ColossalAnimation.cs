@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DarkHavoc.CustomUtils;
+using UnityEngine;
 
 namespace DarkHavoc.Boss.Colossal
 {
@@ -6,7 +7,6 @@ namespace DarkHavoc.Boss.Colossal
     {
         private static readonly int TurnAround = Animator.StringToHash("TurnAround");
         private static readonly int ShowOutline = Shader.PropertyToID("_ShowOutline");
-        private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
 
         protected override void OnEnable()
         {
@@ -23,8 +23,8 @@ namespace DarkHavoc.Boss.Colossal
         private void BossOnBuffStateChanged(bool state)
         {
             renderer.GetPropertyBlock(materialPb);
-            materialPb.SetColor(OutlineColor,boss.Stats.BuffOutlineColor);
-            materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
+            materialPb.SetColor(OutlineColorID, state ? boss.Stats.BuffOutlineColor : Constants.EnemyOutlineColor);
+            // materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
             renderer.SetPropertyBlock(materialPb);
         }
 

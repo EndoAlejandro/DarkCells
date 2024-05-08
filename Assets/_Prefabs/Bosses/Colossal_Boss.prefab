@@ -53,11 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6fa2f46b5ac45f941a7fac533bc581d7, type: 2}
   midPoint: {fileID: 740832731264576310}
+  breakpointAmount: 4
   boomerangArms: {fileID: 5541001286273840689, guid: e76031beffa72b04b9a0e0b521e50415, type: 3}
   rangedHitBox: {fileID: 7906998565498527373}
   meleeHitBox: {fileID: 8758008788946968195}
   buffHitBox: {fileID: 4566164278479843246}
-  breakpointAmount: 4
 --- !u!114 &8788564726032190439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 60
+  telegraphTime: 1
   debug: 0
 --- !u!1 &4697277665992047384
 GameObject:
@@ -292,7 +293,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62b9a81db447687468d67d0aa21be92f, type: 2}
+  - {fileID: 2100000, guid: c0cc25bde970bdf48b45c105c1e1fbe0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5254344b2254414906a114497a6491b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 0
 --- !u!1 &4849274198938083804
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 4
+  telegraphTime: 1
   debug: 0
 --- !u!1 &5992187333370053328
 GameObject:
@@ -694,6 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  telegraphTime: 1
   debug: 0
 --- !u!1 &7980551070217350707
 GameObject:

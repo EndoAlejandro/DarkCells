@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590a0a585afa43f08e33096b943964d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVerticalHash: 0
 --- !u!212 &6675448364193384245
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62b9a81db447687468d67d0aa21be92f, type: 2}
+  - {fileID: 2100000, guid: e4a6c428eec456d4fb00cd9c8058a4a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,6 +299,7 @@ MonoBehaviour:
   midPoint: {fileID: 5653620157062256203}
   hitbox: {fileID: 7516425092285623475}
   radialVision: 0
+  canFly: 0
   debug: 0
 --- !u!114 &6707151531430510511
 MonoBehaviour:
