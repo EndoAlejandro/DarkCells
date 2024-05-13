@@ -41,6 +41,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         {
             base.UseAction();
 
+            ServiceLocator.GetService<FxManager>().PlayFx(FxType.SwordSwing, Player.transform.position);
             _attackCount++;
 
             _comboTimer = Player.Stats.ComboTime;

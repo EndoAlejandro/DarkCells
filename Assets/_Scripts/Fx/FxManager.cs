@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DarkHavoc.CustomUtils;
 using DarkHavoc.Pooling;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -9,6 +8,8 @@ namespace DarkHavoc.Fx
     public enum FxType
     {
         SwordSlash,
+        PlayerTakeDamage,
+        SwordSwing,
 
         //
         Telegraph,
@@ -24,7 +25,6 @@ namespace DarkHavoc.Fx
         //
         HeavySlicer1,
         HeavySlicer2,
-        PlayerTakeDamage
     }
 
     public class FxManager : Service<FxManager>
