@@ -24,6 +24,7 @@ namespace DarkHavoc.Fx
         //
         HeavySlicer1,
         HeavySlicer2,
+        PlayerTakeDamage
     }
 
     public class FxManager : Service<FxManager>
@@ -49,12 +50,18 @@ namespace DarkHavoc.Fx
 
         [SerializeField] private AnimatedPoolAfterSecond heavySlicerAttack2;
 
-        private Dictionary<FxType, PooledMonoBehaviour> _fxDictionary;
+        private Dictionary<FxType, FeedbackFx> _fxDictionary;
 
         protected override void Awake()
         {
             base.Awake();
-            _fxDictionary = new Dictionary<FxType, PooledMonoBehaviour>
+            _fxDictionary = new Dictionary<FxType, FeedbackFx>();
+            var feedbacks = GetComponentsInChildren<FeedbackFx>();
+            foreach (var feedback in feedbacks)
+            {
+                _fxDictionary.TryAdd(feedback.FxType, feedback);
+            }
+            /*_fxDictionary = new Dictionary<FxType, PooledMonoBehaviour>
             {
                 { FxType.SwordSlash, swordSlashPrefab },
                 { FxType.Telegraph, telegraphAttackPrefab },
@@ -66,19 +73,20 @@ namespace DarkHavoc.Fx
                 { FxType.DualSlicer3, dualSlicerAttack3 },
                 { FxType.HeavySlicer1, heavySlicerAttack1 },
                 { FxType.HeavySlicer2, heavySlicerAttack2 },
-            };
+            };*/
         }
 
         public void PlayFx(FxType fxType, Vector2 position, float scale = 1f, bool flipX = false,
             bool randomizeRotation = false)
         {
-            if (!_fxDictionary.TryGetValue(fxType, out PooledMonoBehaviour result))
+            if (!_fxDictionary.TryGetValue(fxType, out FeedbackFx result))
                 return;
 
-            var pooled = result.Get<PooledMonoBehaviour>(position,
+            result.PlayFx(position, scale, flipX, randomizeRotation);
+            /*var pooled = result.Get<PooledMonoBehaviour>(position,
                 randomizeRotation ? Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)) : Quaternion.identity);
             pooled.transform.localScale = Vector3.one * scale;
-            if (flipX) pooled.transform.localScale = pooled.transform.localScale.With(x: -scale);
+            if (flipX) pooled.transform.localScale = pooled.transform.localScale.With(x: -scale);*/
         }
     }
 }

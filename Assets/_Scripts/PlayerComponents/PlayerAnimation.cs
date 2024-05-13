@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DarkHavoc.CustomUtils;
+using DarkHavoc.Fx;
 using DarkHavoc.PlayerComponents.States;
 using DarkHavoc.ServiceLocatorComponents;
 using DarkHavoc.StateMachineComponents;
@@ -66,6 +67,7 @@ namespace DarkHavoc.PlayerComponents
 
         private IEnumerator HitAnimation()
         {
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.PlayerTakeDamage, transform.position + Vector3.up * .5f);
             _renderer.GetPropertyBlock(_materialPb);
 
             float timer = 0f;
