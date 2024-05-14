@@ -3,6 +3,7 @@ using System.Collections;
 using DarkHavoc.CustomUtils;
 using DarkHavoc.CustomUtils.DebugEventButton;
 using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.Fx;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.Managers;
 using DarkHavoc.PlayerComponents.PlayerActions;
@@ -300,10 +301,16 @@ namespace DarkHavoc.PlayerComponents
         public DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool isUnstoppable = false)
         {
             Vector2 source = damageDealer.transform.position;
-            bool result = !isUnstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
+            bool blocked = !isUnstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
 
-            if (result) TryToStunEnemy(damageDealer);
-            if (result) return DamageResult.Blocked;
+            if (blocked)
+            {
+                TryToStunEnemy(damageDealer);
+                ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Parry, transform.position + Vector3.up,
+                    flipX: FacingLeft);
+                return DamageResult.Blocked;
+            }
+
             if (!IsAlive) return DamageResult.Killed;
 
             PlayerContext.Health -= damageDealer.Damage * damageMultiplier;

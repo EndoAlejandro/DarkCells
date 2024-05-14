@@ -4,10 +4,14 @@ using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DarkHavoc
+namespace DarkHavoc.Managers
 {
     public class TransitionManager : Service<TransitionManager>
     {
+        public static event Action OnMainMenu;
+        public static event Action<Biome> OnBiomeLoaded;
+        public static event Action<Biome> OnBossLoaded;
+
         protected override bool DonDestroyOnLoad => true;
 
         private static readonly int Out = Animator.StringToHash("Out");
@@ -29,6 +33,7 @@ namespace DarkHavoc
         private IEnumerator LoadLobbySceneAsync()
         {
             yield return SetTransitionPanel(true);
+            OnMainMenu?.Invoke();
             yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
@@ -40,6 +45,7 @@ namespace DarkHavoc
         private IEnumerator LoadBiomeSceneAsync(Biome biome)
         {
             yield return SetTransitionPanel(true);
+            OnBiomeLoaded?.Invoke(biome);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);
@@ -51,6 +57,7 @@ namespace DarkHavoc
         private IEnumerator LoadBossBiomeSceneAsync(Biome biome)
         {
             yield return SetTransitionPanel(true);
+            OnBossLoaded?.Invoke(biome);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync(biome + "Boss", LoadSceneMode.Additive);
             yield return SetTransitionPanel(false);

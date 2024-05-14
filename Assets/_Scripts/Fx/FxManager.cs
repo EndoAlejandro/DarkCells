@@ -10,6 +10,7 @@ namespace DarkHavoc.Fx
         SwordSlash,
         PlayerTakeDamage,
         SwordSwing,
+        Parry,
 
         //
         Telegraph,

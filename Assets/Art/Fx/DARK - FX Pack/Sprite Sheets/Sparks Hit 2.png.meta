@@ -147,7 +147,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Sparks Hit 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 82
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45f37021f9c7d648aa381e12eaf530a
+      internalID: -2104711118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks Hit 2_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1
+        width: 82
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df224566e325c724c93488f5c0462190
+      internalID: 133504119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks Hit 2_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 1
+        width: 82
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be8ae6f6de59c54aac93ded148b2395
+      internalID: -557921030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks Hit 2_3
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1
+        width: 82
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8823705ccb2eb48a4cb6cca94d6083
+      internalID: 145983521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks Hit 2_4
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1
+        width: 82
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972cbec65d6245044878485daef7948e
+      internalID: -1897281458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +263,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sparks Hit 2_0: -2104711118
+      Sparks Hit 2_1: 133504119
+      Sparks Hit 2_2: -557921030
+      Sparks Hit 2_3: 145983521
+      Sparks Hit 2_4: -1897281458
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
