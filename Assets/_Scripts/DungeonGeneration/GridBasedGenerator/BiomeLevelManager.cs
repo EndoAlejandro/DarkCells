@@ -37,11 +37,14 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private void SpawnEnemies()
         {
             List<Vector3> spawnPoints = _levelGenerator.WorldPositionSpawnPoints;
+            var enemiesContainer = new GameObject("EnemiesContainer").transform;
+            enemiesContainer.SetParent(transform);
 
             foreach (var spawnPoint in spawnPoints)
             {
                 int index = Random.Range(0, bestiary.Bestiary.Length);
-                Instantiate(bestiary.Bestiary[index], spawnPoint, Quaternion.identity);
+                var enemy = Instantiate(bestiary.Bestiary[index], spawnPoint, Quaternion.identity);
+                enemy.transform.SetParent(enemiesContainer);
             }
         }
 

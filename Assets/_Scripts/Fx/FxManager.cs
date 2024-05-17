@@ -30,6 +30,8 @@ namespace DarkHavoc.Fx
 
     public class FxManager : Service<FxManager>
     {
+        protected override bool DonDestroyOnLoad => true;
+
         [Header("Player")]
         [SerializeField] private AnimatedPoolAfterSecond swordSlashPrefab;
 
