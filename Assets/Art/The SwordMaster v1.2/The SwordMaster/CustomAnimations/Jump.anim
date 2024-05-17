@@ -21,32 +21,42 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 3275813658331677386, guid: 59ee70ed10bb5404a8ec68f2bb6dd483, type: 3}
-    - time: 0.09999943
-      value: {fileID: 3593094704088592737, guid: 59ee70ed10bb5404a8ec68f2bb6dd483, type: 3}
-    - time: 0.19999981
-      value: {fileID: 1558412489491250078, guid: 59ee70ed10bb5404a8ec68f2bb6dd483, type: 3}
-    - time: 0.2999998
-      value: {fileID: 1558412489491250078, guid: 59ee70ed10bb5404a8ec68f2bb6dd483, type: 3}
+      value: {fileID: 361797843, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
+    - time: 0.083333336
+      value: {fileID: 315032106, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
+    - time: 0.16666667
+      value: {fileID: 1486234021, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 100
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 361797843, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
+    - {fileID: 315032106, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
+    - {fileID: 1486234021, guid: 4adbe36c7ea44fb489f871e030ab9a6f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.3099998
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -57,7 +67,7 @@ AnimationClip:
     m_LoopBlendPositionY: 0
     m_LoopBlendPositionXZ: 0
     m_KeepOriginalOrientation: 0
-    m_KeepOriginalPositionY: 0
+    m_KeepOriginalPositionY: 1
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0

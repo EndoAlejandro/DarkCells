@@ -53,21 +53,21 @@ TagManager:
   - name: BackDecoration
     uniqueID: 1697072577
     locked: 0
+  - name: Enemy
+    uniqueID: 1245454165
+    locked: 0
   - name: Hazard
     uniqueID: 2110115899
     locked: 0
   - name: Ground
     uniqueID: 2728362553
     locked: 0
+  - name: Player
+    uniqueID: 563718115
+    locked: 0
   - name: Level
     uniqueID: 1937645561
     locked: 0
   - name: FrontDecoration
     uniqueID: 3857581211
-    locked: 0
-  - name: Enemy
-    uniqueID: 1245454165
-    locked: 0
-  - name: Player
-    uniqueID: 563718115
     locked: 0
