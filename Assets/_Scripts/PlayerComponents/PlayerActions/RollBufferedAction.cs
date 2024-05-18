@@ -1,4 +1,6 @@
 ﻿using System;
+using DarkHavoc.Fx;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.PlayerActions
@@ -30,6 +32,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             _canRoll = false;
             _cooldown = Player.Stats.RollCooldown + Player.Stats.RollAction.Time;
             Player.SetSpeedBonus(Player.Stats.SpeedBonus);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Dodge);
         }
     }
 }

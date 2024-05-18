@@ -12,6 +12,9 @@ namespace DarkHavoc.PlayerComponents
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
     {
+        public event Action OnAttackPerformed;
+        public event Action OnComboAvailable;
+
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
@@ -27,8 +30,7 @@ namespace DarkHavoc.PlayerComponents
         private IState _previousState;
         private MaterialPropertyBlock _materialPb;
 
-        public event Action OnAttackPerformed;
-        public event Action OnComboAvailable;
+        private FxManager _fxManager;
 
         private void Awake()
         {
@@ -67,7 +69,8 @@ namespace DarkHavoc.PlayerComponents
 
         private IEnumerator HitAnimation()
         {
-            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.PlayerTakeDamage, transform.position + Vector3.up * .5f);
+            ServiceLocator.GetService<FxManager>()
+                ?.PlayFx(FxType.PlayerTakeDamage, transform.position + Vector3.up * .5f);
             _renderer.GetPropertyBlock(_materialPb);
 
             float timer = 0f;
@@ -123,9 +126,6 @@ namespace DarkHavoc.PlayerComponents
             _player.SetFacingLeft(_inputReader.Movement.x < 0);
         }
 
-        private void PerformAttack() => OnAttackPerformed?.Invoke();
-        private void ComboAvailable() => OnComboAvailable?.Invoke();
-
         private void HorizontalFloat() =>
             _animator.SetFloat(Horizontal, Mathf.Abs(_player.GetNormalizedHorizontal()));
 
@@ -139,5 +139,18 @@ namespace DarkHavoc.PlayerComponents
             _animator.SetTrigger(state.AnimationState.ToString());
             _previousState = state;
         }
+
+        #region AnimationEvents
+
+        private void FootStep()
+        {
+            _fxManager ??= ServiceLocator.GetService<FxManager>();
+            _fxManager.PlayFx(FxType.FootStep, transform.position);
+        }
+
+        private void PerformAttack() => OnAttackPerformed?.Invoke();
+        private void ComboAvailable() => OnComboAvailable?.Invoke();
+
+        #endregion
     }
 }

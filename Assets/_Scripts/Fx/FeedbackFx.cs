@@ -18,7 +18,7 @@ namespace DarkHavoc.Fx
 
         private void Awake() => _feedback = GetComponent<MMF_Player>();
 
-        public void PlayFx(Vector2 position, float scale = 1f, bool flipX = false,
+        public void PlayFx(Vector2 position = default, float scale = 1f, bool flipX = false,
             bool randomizeRotation = false)
         {
             _feedback.PlayFeedbacks(position);

@@ -246,6 +246,7 @@ namespace DarkHavoc.PlayerComponents
 
             if (!Grounded && groundHit)
             {
+                ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.GroundHit);
                 Grounded = true;
                 OnGroundedChanged?.Invoke(Grounded);
             }

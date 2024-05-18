@@ -7,10 +7,14 @@ namespace DarkHavoc.Fx
 {
     public enum FxType
     {
+        FootStep,
         SwordSlash,
         PlayerTakeDamage,
         SwordSwing,
         Parry,
+        GroundHit,
+        Dodge,
+        Jump,
 
         //
         Telegraph,
@@ -77,7 +81,7 @@ namespace DarkHavoc.Fx
             };*/
         }
 
-        public void PlayFx(FxType fxType, Vector2 position, float scale = 1f, bool flipX = false,
+        public void PlayFx(FxType fxType, Vector2 position = default, float scale = 1f, bool flipX = false,
             bool randomizeRotation = false)
         {
             if (!_fxDictionary.TryGetValue(fxType, out FeedbackFx result))

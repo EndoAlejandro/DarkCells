@@ -1,4 +1,6 @@
 ﻿using System;
+using DarkHavoc.Fx;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.PlayerComponents.PlayerActions
@@ -73,6 +75,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             _coyoteTimeAvailable = false;
             EndedJumpEarly = false;
             targetVelocity.y = _canAirJump ? Player.Stats.JumpForce : Player.Stats.AirJumpForce;
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Jump, Player.transform.position);
         }
 
         public void UseWallAction(ref Vector2 targetVelocity)
@@ -83,6 +86,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             Player.SetFacingLeft(!Player.FacingLeft);
             targetVelocity = Player.Stats.WallJumpForce;
             targetVelocity.x *= Player.FacingLeft ? -1 : 1;
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Jump, Player.transform.position);
             base.UseAction();
         }
 
