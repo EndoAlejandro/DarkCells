@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DarkHavoc.Managers
 {
@@ -19,6 +17,7 @@ namespace DarkHavoc.Managers
         [SerializeField] private AudioClip theInfectionVessel;
         [SerializeField] private AudioClip theInfectionVesselBoss;
 
+        private string _currentlyPlaying = "";
         private AudioSource _audioSource;
         private Dictionary<string, AudioClip> _audioClips;
 
@@ -45,6 +44,8 @@ namespace DarkHavoc.Managers
             TransitionManager.OnMainMenu += TransitionManagerOnMainMenu;
             TransitionManager.OnBiomeLoaded += TransitionManagerOnOnBiomeLoaded;
             TransitionManager.OnBossLoaded += TransitionManagerOnBossLoaded;
+            
+            PlayMusic(lobby);
         }
 
         private void TransitionManagerOnMainMenu()
@@ -68,9 +69,11 @@ namespace DarkHavoc.Managers
 
         private void PlayMusic(AudioClip audioClip)
         {
+            if(_currentlyPlaying.Equals(audioClip.name)) return;
             _audioSource.Stop();
             _audioSource.clip = audioClip;
             _audioSource.Play();
+            _currentlyPlaying = audioClip.name;
         }
 
         protected override void OnDestroy()

@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace DarkHavoc.CustomUtils
 {
+    public static class FloatExtensions
+    {
+        public static float Map(this float value, float fromSource, float toSource, float fromTarget, float toTarget) =>
+            (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+    }
+
     public static class TransformExtensions
     {
         public static Transform[] GetChildren(this Transform original)
