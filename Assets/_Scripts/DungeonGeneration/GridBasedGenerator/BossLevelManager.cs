@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using DarkHavoc.Enemies;
+﻿using System.Collections;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.Interactable;
 using DarkHavoc.Managers;
@@ -12,7 +10,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     public class BossLevelManager : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
-        [SerializeField] private Enemy boss;
+        [SerializeField] private Boss.Boss boss;
         [SerializeField] private ExitDoorAnimation exitDoor;
         [SerializeField] private CompositeCollider2D cameraBounds;
 
@@ -20,20 +18,20 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private void Start()
         {
-            boss.OnDeath += BosOnDeath;
+            boss.OnDeath += BossOnDeath;
             StartCoroutine(StartBossAsync());
         }
 
         private IEnumerator StartBossAsync()
         {
             yield return null;
-            ServiceLocator.GetService<CameraManager>().SetCameraBounds(cameraBounds);
+            ServiceLocator.GetService<CameraManager>()?.SetCameraBounds(cameraBounds);
             yield return null;
-            yield return ServiceLocator.GetService<GameManager>().CreatePlayerAsync(playerSpawnPoint.position);
+            yield return ServiceLocator.GetService<GameManager>()?.CreatePlayerAsync(playerSpawnPoint.position);
         }
 
-        private void BosOnDeath(ITakeDamage takeDamage) => exitDoor.ActivateAnimation();
+        private void BossOnDeath(ITakeDamage takeDamage) => exitDoor.ActivateAnimation();
 
-        private void OnDestroy() => boss.OnDeath -= BosOnDeath;
+        private void OnDestroy() => boss.OnDeath -= BossOnDeath;
     }
 }

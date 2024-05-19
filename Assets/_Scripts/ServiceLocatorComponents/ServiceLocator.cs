@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DarkHavoc.ServiceLocatorComponents
 {
@@ -28,10 +29,10 @@ namespace DarkHavoc.ServiceLocatorComponents
         public static T GetService<T>() where T : class
         {
             var type = typeof(T);
-            if (!Instance._services.TryGetValue(type, out var service))
-                return null;
-
-            return (T)service;
+            if (Instance._services.TryGetValue(type, out var service)) return (T)service;
+            
+            Debug.LogError($"{type} service not found.");
+            return null;
         }
     }
 }

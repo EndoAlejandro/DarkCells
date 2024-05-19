@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using DarkHavoc.Boss.Colossal;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.PlayerComponents;
 using UnityEngine;
