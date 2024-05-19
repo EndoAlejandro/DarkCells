@@ -47,7 +47,7 @@ namespace DarkHavoc.Enemies.BombDroid
                 (_collider, _bombDroid.Stats.WallDetection, _bombDroid.FacingLeft);
 
             var topCheck = Physics2D.Raycast(_bombDroid.transform.position,
-                Vector2.up, 1f, _bombDroid.A);
+                Vector2.up, 1f, _bombDroid.GroundOnlyLayerMask);
             var downCheck = Physics2D.Raycast(_bombDroid.transform.position,
                 Vector2.down, 3f);
 

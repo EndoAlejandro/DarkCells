@@ -6,10 +6,8 @@ namespace DarkHavoc.Enemies.BombDroid
     {
         public override float Damage => 1f;
 
-        [SerializeField] private float flyDistance = 4f;
-        [SerializeField] private float checkGroundTime = 2f;
         [SerializeField] private LayerMask groundOnlyLayerMask;
-        public LayerMask A => groundOnlyLayerMask;
+        public LayerMask GroundOnlyLayerMask => groundOnlyLayerMask;
 
         public void VerticalMove(float direction)
         {

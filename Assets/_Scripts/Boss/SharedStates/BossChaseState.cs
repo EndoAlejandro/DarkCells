@@ -86,9 +86,9 @@ namespace DarkHavoc.Boss.SharedStates
                 await Task.Delay(TimeSpan.FromSeconds(_turnAwait), _cts.Token);
                 boss.SetFacingLeft(facingLeft);
             }
-            catch (Exception _)
+            catch (Exception e)
             {
-                // Ignore.
+                Debug.Log(e);
             }
 
             _changingDirection = false;

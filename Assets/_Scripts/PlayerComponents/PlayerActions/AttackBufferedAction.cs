@@ -41,7 +41,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
         {
             base.UseAction();
 
-            ServiceLocator.GetService<FxManager>().PlayFx(FxType.SwordSwing, Player.transform.position);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.SwordSwing, Player.transform.position);
             _attackCount++;
 
             _comboTimer = Player.Stats.ComboTime;
@@ -65,7 +65,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
 
                     if (lineCastSize == 0)
                     {
-                        ServiceLocator.GetService<FxManager>().PlayFx(FxType.SwordSlash,
+                        ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.SwordSlash,
                             takeDamage.transform.position + Vector3.up * .5f, randomizeRotation: true);
                         Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
                     }

@@ -27,7 +27,7 @@ namespace DarkHavoc.Boss.Colossal
             var death = new BossDeathState(_colossal);
 
             // Attacks.
-            var rangedAttack = new BossAttackState(_colossal, _animation, _colossal.RangedHitBox,
+            var rangedAttack = new ColossalRangedAttackState(_colossal, _animation, _colossal.RangedHitBox,
                 AnimationState.RangedAttack, 3.75f);
             var meleeAttack = new BossMeleeAttackState(_colossal, _animation, _colossal.MeleeHitBox, 3.75f);
             var buffAttack = new ColossalBuffState(_colossal, _animation, _colossal.BuffHitBox, 3.75f);

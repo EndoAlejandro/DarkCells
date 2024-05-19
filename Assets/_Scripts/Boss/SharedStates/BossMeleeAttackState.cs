@@ -1,5 +1,4 @@
 ﻿using DarkHavoc.Enemies;
-using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.Fx;
 using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace DarkHavoc.Boss.SharedStates
 {
     public class BossMeleeAttackState : BossAttackState
     {
-        public BossMeleeAttackState(DarkHavoc.Boss.Boss boss, BossAnimation animation, EnemyHitBox hitBox, float offset) :
+        public BossMeleeAttackState(Boss boss, BossAnimation animation, EnemyHitBox hitBox, float offset) :
             base(boss, animation, hitBox, AnimationState.MeleeAttack, offset)
         {
         }
@@ -19,7 +18,7 @@ namespace DarkHavoc.Boss.SharedStates
             base.AnimationOnAttackPerformed();
             // Extra smoke fx - visual only.
             Vector2 position = new Vector2(hitBox.transform.position.x, boss.transform.position.y);
-            ServiceLocator.GetService<FxManager>().PlayFx(FxType.ColossalMelee, position);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.ColossalMelee, position);
         }
     }
 }

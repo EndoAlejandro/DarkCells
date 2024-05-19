@@ -51,7 +51,7 @@ namespace DarkHavoc.Boss.SharedStates
             if (_useTelegraph)
             {
                 FxType fxType = hitBox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph;
-                ServiceLocator.GetService<FxManager>()
+                ServiceLocator.GetService<FxManager>()?
                     .PlayFx(fxType, boss.transform.position + Vector3.up * offset, 1.25f);
             }
         }

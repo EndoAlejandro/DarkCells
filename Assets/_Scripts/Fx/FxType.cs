@@ -2,6 +2,7 @@
 {
     public enum FxType
     {
+        // Player
         FootStep,
         SwordSlash,
         PlayerTakeDamage,
@@ -10,20 +11,22 @@
         GroundHit,
         Dodge,
         Jump,
-
-        //
+        
+        // Enemies
         Telegraph,
         DangerousTelegraph,
-        ColossalMelee,
         ArcherAttack,
-
-        //
+        
         DualSlicer1,
         DualSlicer2,
         DualSlicer3,
-
-        //
+        
         HeavySlicer1,
         HeavySlicer2,
+        
+        // Bosses
+        ColossalMelee,
+        ColossalRanged,
+        ColossalBuff,
     }
 }

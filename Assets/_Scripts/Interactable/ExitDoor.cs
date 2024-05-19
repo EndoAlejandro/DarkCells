@@ -6,6 +6,6 @@ namespace DarkHavoc.Interactable
 {
     public class ExitDoor : TriggerInteractive<Player>
     {
-        protected override void TriggerInteraction() => ServiceLocator.GetService<GameManager>().GoToNextLevel();
+        protected override void TriggerInteraction() => ServiceLocator.GetService<GameManager>()?.GoToNextLevel();
     }
 }

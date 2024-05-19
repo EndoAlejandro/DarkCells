@@ -52,7 +52,6 @@ namespace DarkHavoc.Enemies
             TryToAttack(isUnstoppable);
         }
 
-        [Obsolete]
         public override DamageResult TryToAttack(bool isUnstoppable = false)
         {
             SetUnstoppable(isUnstoppable);
