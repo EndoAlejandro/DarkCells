@@ -28,5 +28,7 @@
         ColossalMelee,
         ColossalRanged,
         ColossalBuff,
+        ColossalBoomerang,
+        ColossalTelegraph,
     }
 }

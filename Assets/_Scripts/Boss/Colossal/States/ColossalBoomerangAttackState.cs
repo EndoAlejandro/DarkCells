@@ -1,4 +1,6 @@
-﻿using DarkHavoc.StateMachineComponents;
+﻿using DarkHavoc.Fx;
+using DarkHavoc.ServiceLocatorComponents;
+using DarkHavoc.StateMachineComponents;
 using UnityEngine;
 using AnimationState = DarkHavoc.StateMachineComponents.AnimationState;
 
@@ -36,6 +38,7 @@ namespace DarkHavoc.Boss.Colossal.States
 
         private void AnimationOnBoomerangAttack()
         {
+            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.ColossalBoomerang, _colossal.transform.position);
             _boomerangArms =
                 Object.Instantiate(_colossal.BoomerangArms, _colossal.transform.position, Quaternion.identity);
             _boomerangArms.Setup(_colossal, 10f);

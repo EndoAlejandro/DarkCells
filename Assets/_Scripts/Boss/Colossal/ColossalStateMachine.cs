@@ -1,6 +1,7 @@
 ﻿using DarkHavoc.Boss.Colossal.States;
 using DarkHavoc.Boss.SharedStates;
 using DarkHavoc.Enemies.SharedStates;
+using DarkHavoc.Fx;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.StateMachineComponents;
 
@@ -26,6 +27,11 @@ namespace DarkHavoc.Boss.Colossal
             var chase = new ColossalChaseState(_colossal, 3.5f);
             var death = new BossDeathState(_colossal);
 
+            var rangedTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
+            var meleeTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
+            var buffTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
+            var boomerangTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
+            
             // Attacks.
             var rangedAttack = new ColossalRangedAttackState(_colossal, _animation, _colossal.RangedHitBox,
                 AnimationState.RangedAttack, 3.75f);
@@ -35,20 +41,34 @@ namespace DarkHavoc.Boss.Colossal
 
             stateMachine.SetState(initialDelay);
 
+            // Locomotion
             stateMachine.AddTransition(initialDelay, awake, () => initialDelay.Ended);
             stateMachine.AddTransition(awake, idle, () => awake.Ended);
             stateMachine.AddTransition(idle, chase, () => idle.Ended);
 
-            stateMachine.AddTransition(chase, boomerangAttack, () => BoomerangTransition(chase));
-            stateMachine.AddTransition(chase, buffAttack, () => _colossal.CanBuff);
-            stateMachine.AddTransition(chase, meleeAttack, () => chase.MeleeAvailable);
-            stateMachine.AddTransition(chase, rangedAttack, () => chase.Ended && chase.RangedAvailable);
+            // Boomerang Attack
+            stateMachine.AddTransition(chase, boomerangTelegraph, () => BoomerangTransition(chase));
+            stateMachine.AddTransition(boomerangTelegraph, boomerangAttack, () => boomerangTelegraph.Ended);
+            
+            // Buff Attack
+            stateMachine.AddTransition(chase, buffTelegraph, () => _colossal.CanBuff);
+            stateMachine.AddTransition(buffTelegraph, buffAttack, () => buffTelegraph.Ended);
+            
+            // Melee Attack
+            stateMachine.AddTransition(chase, meleeTelegraph, () => chase.MeleeAvailable);
+            stateMachine.AddTransition(meleeTelegraph, meleeAttack, () => meleeTelegraph.Ended);
+            
+            // Ranged Attack
+            stateMachine.AddTransition(chase, rangedTelegraph, () => chase.Ended && chase.RangedAvailable);
+            stateMachine.AddTransition(rangedTelegraph, rangedAttack, () => rangedTelegraph.Ended);
 
+            // Attacks to Idle
             stateMachine.AddTransition(boomerangAttack, idle, () => boomerangAttack.Ended);
             stateMachine.AddTransition(buffAttack, idle, () => buffAttack.Ended);
             stateMachine.AddTransition(meleeAttack, idle, () => meleeAttack.Ended);
             stateMachine.AddTransition(rangedAttack, idle, () => rangedAttack.Ended);
 
+            // Death
             stateMachine.AddAnyTransition(death, () => !_colossal.IsAlive);
         }
 
