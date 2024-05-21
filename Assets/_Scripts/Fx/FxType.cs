@@ -17,6 +17,7 @@
         Telegraph,
         DangerousTelegraph,
         DamageBlocked,
+        Death,
         ArcherAttack,
         
         DualSlicer1,
@@ -32,6 +33,7 @@
         Telegraph,
         DangerousTelegraph,
         DamageBlocked,
+        Death,
         
         ColossalMelee,
         ColossalRanged,

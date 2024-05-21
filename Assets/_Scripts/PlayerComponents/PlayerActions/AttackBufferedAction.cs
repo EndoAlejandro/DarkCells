@@ -64,7 +64,6 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
                         takeDamage.MidPoint.position, _obstacleCheckResults, Player.Stats.WallDetection.WallLayer);
 
                     if (lineCastSize != 0) continue;
-                    // ServiceLocator.GetService<FxManager>()?.PlayFx(PlayerFx.SwordSlash, takeDamage.MidPoint.position, randomizeRotation: true);
                     Player.DoDamage(takeDamage, attackImpulse.DamageMultiplier);
                 }
             }

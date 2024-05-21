@@ -182,6 +182,7 @@ namespace DarkHavoc.Enemies
         {
             collider.enabled = false;
             rigidbody.simulated = false;
+            ServiceLocator.GetService<FxManager>()?.PlayFx(EnemyFx.Death, transform.position, scale: 1.2f);
             OnDeath?.Invoke(this);
         }
 
