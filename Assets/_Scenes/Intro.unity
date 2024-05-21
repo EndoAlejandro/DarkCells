@@ -415,6 +415,18 @@ PrefabInstance:
       propertyPath: managedReferences[6873343431146471424].RangeFalloff.m_Curve.Array.data[1].weightedMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7088219794609469102, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
+      propertyPath: managedReferences[6873343240497266696].RandomSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a85f91a51e515794d8ba13deef45f515, type: 3}
+    - target: {fileID: 7088219794609469102, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
+      propertyPath: managedReferences[6873343240497266696].RandomSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ee042e72cb75fd49b888e6b788b18a9, type: 3}
+    - target: {fileID: 7088219794609469102, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
+      propertyPath: managedReferences[6873343240497266696].RandomSfx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9044a7eea472d454ebe1e5b7481b9a83, type: 3}
     - target: {fileID: 7511548128450807470, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
