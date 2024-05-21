@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.Fx;
 using DarkHavoc.PlayerComponents;
 using DarkHavoc.Senses;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Enemies
@@ -154,9 +156,20 @@ namespace DarkHavoc.Enemies
 
         public virtual DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
-            if (!IsAlive) return DamageResult.Killed;
-            if (IsBuffActive) return DamageResult.Blocked;
+            if (!IsAlive)
+            {
+                return DamageResult.Killed;
+            }
 
+            if (IsBuffActive)
+            {
+                ServiceLocator.GetService<FxManager>()
+                    ?.PlayFx(EnemyFx.DamageBlocked, MidPoint.position, flipX: FacingLeft);
+                return DamageResult.Blocked;
+            }
+
+            ServiceLocator.GetService<FxManager>()
+                ?.PlayFx(PlayerFx.SwordSlash, MidPoint.position, randomizeRotation: true);
             if (damageDealer.transform.TryGetComponent(out Player player)) Player = player;
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();

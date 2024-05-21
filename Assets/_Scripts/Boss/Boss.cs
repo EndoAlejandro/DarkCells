@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using DarkHavoc.EntitiesInterfaces;
+using DarkHavoc.Fx;
 using DarkHavoc.PlayerComponents;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Boss
@@ -14,7 +16,7 @@ namespace DarkHavoc.Boss
         public event Action<ITakeDamage> OnDeath;
         public event Action<bool> OnXFlipped;
         public BossStats Stats => stats;
-        
+
         public Transform MidPoint => midPoint;
         public Player Player { get; private set; }
         public float Health { get; protected set; } = 1;
@@ -85,9 +87,16 @@ namespace DarkHavoc.Boss
 
         public DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier, bool isUnstoppable)
         {
-            if (IsBuffActive) return DamageResult.Blocked;
             if (!IsAlive) return DamageResult.Killed;
+            if (IsBuffActive)
+            {
+                ServiceLocator.GetService<FxManager>()
+                    ?.PlayFx(BossFx.DamageBlocked, MidPoint.position, flipX: FacingLeft);
+                return DamageResult.Blocked;
+            }
 
+            ServiceLocator.GetService<FxManager>()
+                ?.PlayFx(PlayerFx.SwordSlash, MidPoint.position, randomizeRotation: true);
             Health = Mathf.Max(Health - damageDealer.Damage, 0f);
             OnDamageTaken?.Invoke();
 

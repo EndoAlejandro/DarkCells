@@ -49,6 +49,9 @@ namespace DarkHavoc.PlayerComponents
         public bool HasBufferedLedgeGrab => _ledgeGrabAction is { IsAvailable: true };
         public bool HasBufferedBlock => _blockBufferedAction is { IsAvailable: true };
 
+        // Context
+        public static Context PlayerContext { get; private set; }
+
         public bool CanPerformHeavyAttack =>
             _attackBufferedAction != null && _attackBufferedAction.CanPerformHeavyAttack();
 
@@ -92,15 +95,6 @@ namespace DarkHavoc.PlayerComponents
         private bool _useGravity;
         private bool _wallSliding;
         private float _speedBonus;
-
-        public static Context PlayerContext { get; private set; }
-
-        /*[Header("Development")]
-        [Button(nameof(InvokeEvents))]
-        [SerializeField] private bool _;
-
-        public UnityEvent events;
-        public void InvokeEvents() => events?.Invoke();*/
 
         private void Awake()
         {
@@ -246,7 +240,7 @@ namespace DarkHavoc.PlayerComponents
 
             if (!Grounded && groundHit)
             {
-                ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.GroundHit);
+                ServiceLocator.GetService<FxManager>()?.PlayFx(PlayerFx.GroundHit);
                 Grounded = true;
                 OnGroundedChanged?.Invoke(Grounded);
             }
@@ -307,7 +301,7 @@ namespace DarkHavoc.PlayerComponents
             if (blocked)
             {
                 TryToStunEnemy(damageDealer);
-                ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Parry, transform.position + Vector3.up,
+                ServiceLocator.GetService<FxManager>()?.PlayFx(PlayerFx.Parry, transform.position + Vector3.up,
                     flipX: FacingLeft);
                 return DamageResult.Blocked;
             }

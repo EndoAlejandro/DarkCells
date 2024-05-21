@@ -23,7 +23,7 @@ namespace DarkHavoc.Boss.Colossal
         private void BossOnBuffStateChanged(bool state)
         {
             renderer.GetPropertyBlock(materialPb);
-            materialPb.SetColor(OutlineColorID, state ? boss.Stats.BuffOutlineColor : Constants.EnemyOutlineColor);
+            materialPb.SetColor(OutlineColorID, state ? boss.Stats.BuffOutlineColor : Constants.BossOutlineColor);
             // materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
             renderer.SetPropertyBlock(materialPb);
         }

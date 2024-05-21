@@ -1,8 +1,7 @@
 ﻿namespace DarkHavoc.Fx
 {
-    public enum FxType
+    public enum PlayerFx
     {
-        // Player
         FootStep,
         SwordSlash,
         PlayerTakeDamage,
@@ -10,11 +9,14 @@
         Parry,
         GroundHit,
         Dodge,
-        Jump,
-        
-        // Enemies
+        Jump,   
+    }
+
+    public enum EnemyFx
+    {
         Telegraph,
         DangerousTelegraph,
+        DamageBlocked,
         ArcherAttack,
         
         DualSlicer1,
@@ -23,8 +25,14 @@
         
         HeavySlicer1,
         HeavySlicer2,
+    }
+
+    public enum BossFx
+    {
+        Telegraph,
+        DangerousTelegraph,
+        DamageBlocked,
         
-        // Bosses
         ColossalMelee,
         ColossalRanged,
         ColossalBuff,

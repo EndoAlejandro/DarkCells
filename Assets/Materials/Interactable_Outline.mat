@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Outline
+  m_Name: Interactable_Outline
   m_Shader: {fileID: -6465566751694194690, guid: 24383608eb6809e40b012b7fe616d082, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,5 +59,5 @@ Material:
     - _ShowOutline: 1
     - _Stroke: 1
     m_Colors:
-    - _OutlineColor: {r: 0.49411762, g: 0.7490196, b: 0.77647066, a: 0.5019608}
+    - _OutlineColor: {r: 0.8862745, g: 0.9764706, b: 0.98039216, a: 1}
   m_BuildTextureStacks: []

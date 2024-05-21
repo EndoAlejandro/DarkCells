@@ -70,7 +70,7 @@ namespace DarkHavoc.PlayerComponents
         private IEnumerator HitAnimation()
         {
             ServiceLocator.GetService<FxManager>()
-                ?.PlayFx(FxType.PlayerTakeDamage, transform.position + Vector3.up * .5f);
+                ?.PlayFx(PlayerFx.PlayerTakeDamage, transform.position + Vector3.up * .5f);
             _renderer.GetPropertyBlock(_materialPb);
 
             float timer = 0f;
@@ -145,7 +145,7 @@ namespace DarkHavoc.PlayerComponents
         private void FootStep()
         {
             _fxManager ??= ServiceLocator.GetService<FxManager>();
-            _fxManager.PlayFx(FxType.FootStep, transform.position);
+            _fxManager.PlayFx(PlayerFx.FootStep, transform.position);
         }
 
         private void PerformAttack() => OnAttackPerformed?.Invoke();

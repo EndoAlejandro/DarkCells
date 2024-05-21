@@ -18,7 +18,7 @@ namespace DarkHavoc.Boss.SharedStates
             base.AnimationOnAttackPerformed();
             // Extra smoke fx - visual only.
             Vector2 position = new Vector2(hitBox.transform.position.x, boss.transform.position.y);
-            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.ColossalMelee, position);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(BossFx.ColossalMelee, position);
         }
     }
 }

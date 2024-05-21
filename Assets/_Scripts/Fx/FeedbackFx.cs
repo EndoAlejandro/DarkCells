@@ -7,11 +7,8 @@ using Random = UnityEngine.Random;
 namespace DarkHavoc.Fx
 {
     [RequireComponent(typeof(MMF_Player))]
-    public class FeedbackFx : MonoBehaviour
+    public abstract class FeedbackFx : MonoBehaviour
     {
-        public FxType FxType => fxType;
-
-        [SerializeField] private FxType fxType;
         [SerializeField] private AnimatedPoolAfterSecond prefabFx;
 
         private MMF_Player _feedback;
@@ -23,7 +20,7 @@ namespace DarkHavoc.Fx
         {
             _feedback.PlayFeedbacks(position);
             if (!prefabFx) return;
-            
+
             var rotation = randomizeRotation ? Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)) : Quaternion.identity;
             var pooled = prefabFx.Get<PooledMonoBehaviour>(position, rotation);
             pooled.transform.localScale = Vector3.one * scale;

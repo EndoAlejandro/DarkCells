@@ -20,7 +20,7 @@ namespace DarkHavoc.Enemies.Archer.States
             base.AnimationOnAttackPerformed();
             _vfx ??= ServiceLocator.GetService<FxManager>();
             if (_vfx == null) return;
-            _vfx.PlayFx(FxType.ArcherAttack, enemy.transform.position, flipX: enemy.FacingLeft);
+            _vfx.PlayFx(EnemyFx.ArcherAttack, enemy.transform.position, flipX: enemy.FacingLeft);
         }
     }
 }

@@ -15,32 +15,7 @@ namespace DarkHavoc.Boss.Colossal.States
         protected override void AnimationOnAttackPerformed()
         {
             base.AnimationOnAttackPerformed();
-            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.ColossalRanged, boss.transform.position);
-        }
-    }
-
-    public class ColossalTelegraph : IState
-    {
-        public AnimationState AnimationState { get; }
-        public bool CanTransitionToSelf { get; }
-        public void Tick()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FixedTick()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnEnter()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnExit()
-        {
-            throw new System.NotImplementedException();
+            ServiceLocator.GetService<FxManager>()?.PlayFx(BossFx.ColossalRanged, boss.transform.position);
         }
     }
 }

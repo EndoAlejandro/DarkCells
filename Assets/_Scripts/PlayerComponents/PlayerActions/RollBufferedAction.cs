@@ -32,7 +32,7 @@ namespace DarkHavoc.PlayerComponents.PlayerActions
             _canRoll = false;
             _cooldown = Player.Stats.RollCooldown + Player.Stats.RollAction.Time;
             Player.SetSpeedBonus(Player.Stats.SpeedBonus);
-            ServiceLocator.GetService<FxManager>()?.PlayFx(FxType.Dodge);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(PlayerFx.Dodge);
         }
     }
 }

@@ -14,12 +14,12 @@ namespace DarkHavoc.Boss.SharedStates
         public bool Ended => _timer <= 0f;
 
         private readonly Boss _boss;
-        private readonly FxType _fxType;
+        private readonly BossFx _fxType;
         private readonly float _duration;
 
         private float _timer;
 
-        public BossTelegraphState(Boss boss, FxType fxType, float duration)
+        public BossTelegraphState(Boss boss, BossFx fxType, float duration)
         {
             _boss = boss;
             _fxType = fxType;
@@ -35,7 +35,7 @@ namespace DarkHavoc.Boss.SharedStates
         public void OnEnter()
         {
             _timer = _duration;
-            ServiceLocator.GetService<FxManager>()?.PlayFx(_fxType, _boss.transform.position);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(_fxType, _boss.MidPoint.position);
         }
 
         public void OnExit() => _timer = _duration;

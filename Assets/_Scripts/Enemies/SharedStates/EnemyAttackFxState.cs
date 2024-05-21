@@ -6,12 +6,12 @@ namespace DarkHavoc.Enemies.SharedStates
 {
     public class EnemyAttackFxState : EnemyAttackState
     {
-        private readonly FxType[] _fxs;
+        private readonly EnemyFx[] _fxs;
         private FxManager _fxManager;
         private int _fxIndex;
 
         public EnemyAttackFxState(Enemy enemy, EnemyHitBox hitbox, EnemyAnimation animation,
-            FxType[] fxs, bool isUnstoppable = false,
+            EnemyFx[] fxs, bool isUnstoppable = false,
             AnimationState animationState = AnimationState.LightAttack) : base(enemy, hitbox, animation, isUnstoppable,
             animationState) => _fxs = fxs;
 

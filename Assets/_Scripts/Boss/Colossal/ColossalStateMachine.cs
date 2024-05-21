@@ -27,10 +27,10 @@ namespace DarkHavoc.Boss.Colossal
             var chase = new ColossalChaseState(_colossal, 3.5f);
             var death = new BossDeathState(_colossal);
 
-            var rangedTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
-            var meleeTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
-            var buffTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
-            var boomerangTelegraph = new BossTelegraphState(_colossal, FxType.ColossalTelegraph, .5f);
+            var rangedTelegraph = new BossTelegraphState(_colossal, BossFx.ColossalTelegraph, .5f);
+            var meleeTelegraph = new BossTelegraphState(_colossal, BossFx.ColossalTelegraph, .5f);
+            var buffTelegraph = new BossTelegraphState(_colossal, BossFx.ColossalTelegraph, .5f);
+            var boomerangTelegraph = new BossTelegraphState(_colossal, BossFx.ColossalTelegraph, .5f);
             
             // Attacks.
             var rangedAttack = new ColossalRangedAttackState(_colossal, _animation, _colossal.RangedHitBox,

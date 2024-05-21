@@ -35,7 +35,7 @@ namespace DarkHavoc.Boss.HeartHoarder.States
         public void OnEnter()
         {
             _timer = _heartHoarder.Stats.TelegraphTime;
-            FxType fxType = _hitBox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph;
+            BossFx fxType = _hitBox.IsUnstoppable ? BossFx.DangerousTelegraph : BossFx.Telegraph;
             ServiceLocator.GetService<FxManager>()?
                 .PlayFx(fxType, _heartHoarder.transform.position + Vector3.up * _offset, 1.25f);
         }

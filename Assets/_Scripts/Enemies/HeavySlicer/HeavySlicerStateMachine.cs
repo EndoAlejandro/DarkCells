@@ -26,7 +26,7 @@ namespace DarkHavoc.Enemies.HeavySlicer
             var chase = new ChaseSideToSideState(_heavySlicer, _collider, _heavySlicer.HitBox);
             var telegraph = new TelegraphState(_heavySlicer, _heavySlicer.HitBox, 1.5f);
             var attack = new EnemyAttackFxState(_heavySlicer, _heavySlicer.HitBox, _animation, new[]
-                { FxType.HeavySlicer1, FxType.HeavySlicer2 }, true);
+                { EnemyFx.HeavySlicer1, EnemyFx.HeavySlicer2 }, true);
             var death = new EnemyDeathState(_heavySlicer);
 
             stateMachine.SetState(idle);

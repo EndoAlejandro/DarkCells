@@ -48,11 +48,12 @@ namespace DarkHavoc.Boss.SharedStates
             animation.OnAttackPerformed += AnimationOnAttackPerformed;
             animation.OnAttackEnded += AnimationOnAttackEnded;
 
+            // TODO: Move all telegraph to its own state.
             if (_useTelegraph)
             {
-                FxType fxType = hitBox.IsUnstoppable ? FxType.DangerousTelegraph : FxType.Telegraph;
+                /*BossFx fxType = hitBox.IsUnstoppable ? BossFx.DangerousTelegraph : BossFx.Telegraph;
                 ServiceLocator.GetService<FxManager>()?
-                    .PlayFx(fxType, boss.transform.position + Vector3.up * offset, 1.25f);
+                    .PlayFx(fxType, boss.transform.position + Vector3.up * offset, 1.25f);*/
             }
         }
 
