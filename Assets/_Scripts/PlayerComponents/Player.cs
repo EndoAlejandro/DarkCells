@@ -1,15 +1,13 @@
 using System;
 using System.Collections;
+using UnityEngine;
 using DarkHavoc.CustomUtils;
-using DarkHavoc.CustomUtils.DebugEventButton;
 using DarkHavoc.EntitiesInterfaces;
 using DarkHavoc.Fx;
 using DarkHavoc.ImpulseComponents;
 using DarkHavoc.Managers;
 using DarkHavoc.PlayerComponents.PlayerActions;
 using DarkHavoc.ServiceLocatorComponents;
-using UnityEngine;
-using UnityEngine.Events;
 
 namespace DarkHavoc.PlayerComponents
 {
@@ -67,7 +65,6 @@ namespace DarkHavoc.PlayerComponents
         public bool IsAlive => PlayerContext?.IsAlive ?? false;
 
         [SerializeField] private PlayerStats stats;
-
         [SerializeField] private Transform attackOffset;
         [SerializeField] private Transform midPoint;
 
@@ -89,12 +86,14 @@ namespace DarkHavoc.PlayerComponents
 
         private IEnumerator _currentImpulse;
         private IEnumerator _stopMovement;
+        private IEnumerator _speedBonusAsync;
         private Vector2 _extraForce;
 
         private float _impulseTimer;
+        private float _remainingSpeedBonus;
         private bool _useGravity;
         private bool _wallSliding;
-        private float _speedBonus;
+        private bool _isImmune;
 
         private void Awake()
         {
@@ -141,8 +140,7 @@ namespace DarkHavoc.PlayerComponents
             if (!IsAlive) return;
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
 
-            if (_speedBonus > 0f)
-                _speedBonus = Mathf.Max(_speedBonus - (Time.deltaTime * Stats.SpeedBonusDeceleration), 0f);
+
             ActionsTick();
         }
 
@@ -221,7 +219,8 @@ namespace DarkHavoc.PlayerComponents
             }
             else
             {
-                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x, input * (stats.MaxSpeed + _speedBonus),
+                _targetVelocity.x = Mathf.MoveTowards(_targetVelocity.x,
+                    input * (stats.MaxSpeed + _remainingSpeedBonus),
                     stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -268,7 +267,31 @@ namespace DarkHavoc.PlayerComponents
             OnXFlipped?.Invoke(FacingLeft);
         }
 
-        public void SetSpeedBonus(float speedBonus) => _speedBonus = speedBonus;
+        public void SetSpeedBonus(float speedBonus)
+        {
+            _remainingSpeedBonus = speedBonus;
+            if (_speedBonusAsync != null)
+            {
+                StopCoroutine(_speedBonusAsync);
+            }
+
+            _speedBonusAsync = SpeedBonusAsync();
+            StartCoroutine(_speedBonusAsync);
+        }
+
+        private IEnumerator SpeedBonusAsync()
+        {
+            while (_remainingSpeedBonus > 0f)
+            {
+                if (_remainingSpeedBonus > 1f)
+                    ServiceLocator.GetService<FxManager>()?.PlayFx(PlayerFx.Dodge, transform.position);
+                _remainingSpeedBonus =
+                    Mathf.Max(_remainingSpeedBonus - (Stats.DodgeTickTime * Stats.SpeedBonusDeceleration), 0f);
+                yield return new WaitForSeconds(Stats.DodgeTickTime);
+            }
+
+            _remainingSpeedBonus = 0f;
+        }
 
         public float GetNormalizedHorizontal() =>
             Mathf.Abs(_rigidbody.velocity.x) / (stats == null ? 1 : stats.MaxSpeed);
@@ -290,11 +313,13 @@ namespace DarkHavoc.PlayerComponents
             }
         }
 
-        public void DoDamage(ITakeDamage takeDamage, float damageMultiplier, bool unstoppable = false) =>
+        public void DoDamage(
+            ITakeDamage takeDamage, float damageMultiplier, bool unstoppable = false) =>
             takeDamage.TakeDamage(this, damageMultiplier, unstoppable);
 
         public DamageResult TakeDamage(IDoDamage damageDealer, float damageMultiplier = 1f, bool isUnstoppable = false)
         {
+            if (_isImmune) return DamageResult.Failed;
             Vector2 source = damageDealer.transform.position;
             bool blocked = !isUnstoppable && (TryToBlockDamage?.Invoke(source) ?? false);
 
@@ -314,7 +339,15 @@ namespace DarkHavoc.PlayerComponents
             AddImpulse(Stats.TakeDamageAction, direction);
 
             OnDamageTaken?.Invoke();
+            StartCoroutine(ImmunityAsync());
             return DamageResult.Success;
+        }
+
+        private IEnumerator ImmunityAsync()
+        {
+            _isImmune = true;
+            yield return new WaitForSeconds(Stats.ImmunityTime);
+            _isImmune = false;
         }
 
         private void TryToStunEnemy(IDoDamage damageDealer)
@@ -341,8 +374,9 @@ namespace DarkHavoc.PlayerComponents
             OnLedgeGrabChanged?.Invoke(value);
         }
 
-        public void GoDownPlatform(Collider2D other) =>
-            StartCoroutine(GoDownPlatformAsync(other));
+        public void GoDownPlatform(Collider2D other) => StartCoroutine(GoDownPlatformAsync(other));
+        public void ResetVelocity() => _targetVelocity = Vector2.zero;
+        public void EnableMovement() => _gameManager.EnableMainInput();
 
         private IEnumerator GoDownPlatformAsync(Collider2D other)
         {
@@ -351,7 +385,6 @@ namespace DarkHavoc.PlayerComponents
             Physics2D.IgnoreCollision(Collider, other, false);
         }
 
-        public void ResetVelocity() => _targetVelocity = Vector2.zero;
 
         public void SetWallSliding(bool value)
         {
@@ -360,8 +393,6 @@ namespace DarkHavoc.PlayerComponents
         }
 
         private void OnDestroy() => OnPlayerDeSpawned?.Invoke(this);
-
-        public void EnableMovement() => _gameManager.EnableMainInput();
 
         private void OnDrawGizmos()
         {

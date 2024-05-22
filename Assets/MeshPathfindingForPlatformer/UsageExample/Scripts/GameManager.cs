@@ -7,11 +7,7 @@ namespace Calcatz.Example {
     public class GameManager : MonoBehaviour {
 
         private static GameManager instance;
-        public static GameManager Instance {
-            get {
-                return instance;
-            }
-        }
+        public static GameManager Instance => instance;
 
         public List<PlatformerCharacter> characters = new List<PlatformerCharacter>();
 

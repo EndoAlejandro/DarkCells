@@ -10,6 +10,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private int maxHealth = 10;
 
         [SerializeField] private float takeDamageTime;
+        [SerializeField] private float immunityTime = 1f;
 
         [Header("Movement")]
         [SerializeField] private LayerMask layer;
@@ -49,6 +50,7 @@ namespace DarkHavoc.PlayerComponents
         [SerializeField] private float rollCooldown;
         [SerializeField] private float speedBonus;
         [SerializeField] private float speedBonusDeceleration;
+        [SerializeField] private float dodgeTickTime = 1f;
         [SerializeField] private ImpulseAction rollAction;
 
         [Header("Attack")]
@@ -69,6 +71,7 @@ namespace DarkHavoc.PlayerComponents
 
         public int MaxHealth => maxHealth;
         public float TakeDamageTime => takeDamageTime;
+        public float ImmunityTime => immunityTime;
 
         #endregion
 
@@ -114,6 +117,7 @@ namespace DarkHavoc.PlayerComponents
         public float RollCooldown => rollCooldown;
         public float SpeedBonus => speedBonus;
         public float SpeedBonusDeceleration => speedBonusDeceleration;
+        public float DodgeTickTime => dodgeTickTime;
         public ImpulseAction RollAction => rollAction;
 
         #endregion

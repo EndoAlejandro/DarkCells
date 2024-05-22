@@ -12,12 +12,15 @@ namespace DarkHavoc.PlayerComponents
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
     {
+        public static Sprite Sprite => _instance?._renderer?.sprite;
         public event Action OnAttackPerformed;
         public event Action OnComboAvailable;
 
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int HitValue = Shader.PropertyToID("_HitValue");
+
+        private static PlayerAnimation _instance;
 
         private Animator _animator;
         private SpriteRenderer _renderer;
@@ -34,6 +37,14 @@ namespace DarkHavoc.PlayerComponents
 
         private void Awake()
         {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            
             _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
 

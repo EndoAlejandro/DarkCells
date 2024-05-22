@@ -7,7 +7,7 @@ namespace DarkHavoc.Pooling
         private static readonly int Animate = Animator.StringToHash("Animate");
         private Animator _animator;
 
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
             _animator ??= GetComponent<Animator>();
             if (_animator == null) return;
