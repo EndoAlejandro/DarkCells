@@ -65,7 +65,7 @@ MonoBehaviour:
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 4224
-  damage: 1
+  damage: 100
   movementReduction: 0.5
   lightAttackBuffer: 0.15
   comboTime: 0.5
