@@ -22,6 +22,11 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
     [RequireComponent(typeof(MasterWayPoints))]
     public class LevelGenerator : Service<LevelGenerator>
     {
+        public GridRoomData InitialRoom { get; private set; }
+        public GridRoomData ExitRoom { get; private set; }
+        public List<Vector3> WorldPositionSpawnPoints { get; private set; }
+        public List<Instantiable> Instantiables { get; private set; }
+
         [SerializeField] private Vector2Int roomSize;
         [SerializeField] private Vector2Int levelSize;
 
@@ -34,17 +39,11 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private readonly Dictionary<string, Tilemap> _globalTilemaps = new();
         private MasterWayPoints _masterWayPoints;
 
-        public GridRoomData InitialRoom { get; private set; }
-        public GridRoomData ExitRoom { get; private set; }
-
-        public List<Vector3> WorldPositionSpawnPoints { get; private set; }
-        public List<Instantiable> Instantiables { get; private set; }
-
         protected override void Awake()
         {
             base.Awake();
 
-            _roomDataMatrix = new GridRoomData[levelSize.x, levelSize.y + 2];
+            _roomDataMatrix = new GridRoomData[levelSize.x + 2, levelSize.y + 2];
 
             // WayPoints
             _masterWayPoints = GetComponent<MasterWayPoints>();
@@ -83,8 +82,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             for (int i = 0; i < _roomDataMatrix.GetLength(0); i++)
             for (int j = 0; j < _roomDataMatrix.GetLength(1); j++)
             {
-                var dataRoom = _roomDataMatrix[i, j];
-                if (dataRoom == null) continue;
+                var dataRoom = _roomDataMatrix[i, j] ?? new GridRoomData(new Vector2Int(i, j));
 
                 GridRoomVariant selectedPrefabGridRoomVariant = SelectPrefabGridRoom(dataRoom);
                 CopyGridRoomLayers(selectedPrefabGridRoomVariant, i, j);
@@ -110,8 +108,8 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             var tileLayers = prefabGridRoomVariant.GetTileLayers();
             foreach (var tilemap in tileLayers)
             {
-                if (!_globalTilemaps.ContainsKey(tilemap.tag)) continue;
-                CopyGridRoomLayer(tilemap, _globalTilemaps[tilemap.tag], x, y);
+                if (!_globalTilemaps.TryGetValue(tilemap.tag, out var globalTilemap)) continue;
+                CopyGridRoomLayer(tilemap, globalTilemap, x, y);
             }
 
             AddSpawnPoints(prefabGridRoomVariant, x, y);
@@ -180,7 +178,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private void CalculateMainPath()
         {
-            var initialX = Random.Range(0, _roomDataMatrix.GetLength(0));
+            var initialX = Random.Range(1, _roomDataMatrix.GetLength(0) - 1);
             SetInitialRoom(initialX);
 
             var nextRoom = new GridRoomData(new Vector2Int(initialX, 1));
@@ -233,7 +231,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 
         private void CalculateSecondaryPath()
         {
-            for (int i = 0; i < _roomDataMatrix.GetLength(0); i++)
+            for (int i = 1; i < _roomDataMatrix.GetLength(0) - 1; i++)
             for (int j = 1; j < _roomDataMatrix.GetLength(1) - 1; j++)
             {
                 var currentPosition = _roomDataMatrix[i, j];
@@ -266,11 +264,11 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
         private Vector2Int GetNextDirection(GridRoomData sourceRoom)
         {
             bool rightCheck = sourceRoom.Directions.y == 0 &&
-                              sourceRoom.Position.x < _roomDataMatrix.GetLength(0) - 1;
+                              sourceRoom.Position.x < _roomDataMatrix.GetLength(0) - 2;
             bool bottomCheck = sourceRoom.Directions.x == 0 &&
                                sourceRoom.Position.y < _roomDataMatrix.GetLength(1) - 2;
             bool leftCheck = sourceRoom.Directions.w == 0 &&
-                             sourceRoom.Position.x > 0;
+                             sourceRoom.Position.x > 1;
 
             if (rightCheck & !bottomCheck & !leftCheck) return Vector2Int.right;
             if (!rightCheck & !bottomCheck & leftCheck) return Vector2Int.left;
