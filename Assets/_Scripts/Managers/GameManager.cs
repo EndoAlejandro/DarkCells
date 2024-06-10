@@ -64,7 +64,7 @@ namespace DarkHavoc.Managers
             LoadBiomeScene();
         }
 
-        public void GoToNextBiome()
+        private void GoToNextBiome()
         {
             _biomeIndex++;
 

@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1097820260782414158, guid: c5509de8329c0874389c70cbcb1aca36, type: 3}
   biomeDataLevels:
+  - biome: 1
+    steps: 1
   - biome: 0
     steps: 1
-  - biome: 1
-    steps: 2
   - biome: 2
     steps: 2

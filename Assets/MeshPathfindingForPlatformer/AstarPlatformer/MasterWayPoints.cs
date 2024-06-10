@@ -38,6 +38,8 @@ namespace Calcatz.MeshPathfinding
             {
                 if (node.SourceNode == null) continue;
                 var sourceNeighbours = node.SourceNode.neighbours;
+                if (sourceNeighbours is { Count: 0 }) continue;
+                
                 foreach (var sourceNeighbour in sourceNeighbours)
                 {
                     if (_nodePairs.TryGetValue(sourceNeighbour, out Node newNeighbour))

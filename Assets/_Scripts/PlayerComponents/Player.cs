@@ -107,12 +107,12 @@ namespace DarkHavoc.PlayerComponents
             _inputReader = ServiceLocator.GetService<InputReader>();
             _gameManager = ServiceLocator.GetService<GameManager>();
 
+#if UNITY_EDITOR
+            _inputReader.EnableMainInput();
+#endif
+
             Actions();
             OnPlayerSpawned?.Invoke(this);
-
-/*#if UNITY_EDITOR
-            InvokeEvents();
-#endif*/
         }
 
         private void OnEnable() => _useGravity = true;
@@ -139,7 +139,6 @@ namespace DarkHavoc.PlayerComponents
         {
             if (!IsAlive) return;
             if (_impulseTimer > 0f) _impulseTimer -= Time.deltaTime;
-
 
             ActionsTick();
         }

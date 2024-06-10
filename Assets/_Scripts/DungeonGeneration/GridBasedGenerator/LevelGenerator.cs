@@ -7,18 +7,6 @@ using Random = UnityEngine.Random;
 
 namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
 {
-    public struct Instantiable
-    {
-        public Transform Prefab { get; }
-        public Vector3 WorldPosition { get; }
-
-        public Instantiable(Transform prefab, Vector3 worldPosition)
-        {
-            Prefab = prefab;
-            WorldPosition = worldPosition;
-        }
-    }
-
     [RequireComponent(typeof(MasterWayPoints))]
     public class LevelGenerator : Service<LevelGenerator>
     {
@@ -167,7 +155,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
                 _masterWayPoints?.CreateNode(node, offsetPosition);
             }
 
-            _masterWayPoints?.ConnectNodes();
+            //_masterWayPoints?.ConnectNodes();
         }
 
         private Vector3 OffsetPosition(Vector3 localPosition, int x, int y)
