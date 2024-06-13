@@ -13,7 +13,7 @@ namespace DarkHavoc.Enemies.OrbMage
         {
             renderer.GetPropertyBlock(materialPb);
             materialPb.SetColor(OutlineColorID, state ? enemy.Stats.BuffColor : Constants.EnemyOutlineColor);
-            // materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
+            materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
             // materialPb.SetFloat(ShowOutline, 1f);
             renderer.SetPropertyBlock(materialPb);
         }

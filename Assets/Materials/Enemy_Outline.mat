@@ -56,7 +56,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _HitValue: 0
-    - _ShowOutline: 1
+    - _ShowOutline: 0
     - _Stroke: 1
     m_Colors:
     - _OutlineColor: {r: 0.49411762, g: 0.7490196, b: 0.77647066, a: 0.5019608}

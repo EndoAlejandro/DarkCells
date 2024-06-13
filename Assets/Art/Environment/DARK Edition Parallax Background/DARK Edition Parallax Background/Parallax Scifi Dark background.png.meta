@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 04
+      name: Parallax Scifi Dark background_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d79785714d8d45248817da1a02a2c701
-      internalID: 722920077
+      spriteID: 4b10b1ba8e0a04142a4db4feaeffd504
+      internalID: 1764696588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 03
+      name: Parallax Scifi Dark background_1
       rect:
         serializedVersion: 2
         x: 0
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c1253feea2b58048ac6c8eba600a538
-      internalID: 2126674981
+      spriteID: cc27af74b8b3ff740aaab1591cae534d
+      internalID: 225311758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02
+      name: Parallax Scifi Dark background_2
       rect:
         serializedVersion: 2
         x: 0
@@ -179,14 +192,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d4f1cbe0eba9974899bf90b8c434322
-      internalID: 1034154473
+      spriteID: 8f2a3a02dbb00cd46a0a6cd212bf5404
+      internalID: 1565764026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01
+      name: Parallax Scifi Dark background_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 314
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfe850caf6ebf7e44a7e4081f1a6537f
+      internalID: 948741616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Parallax Scifi Dark background_4
       rect:
         serializedVersion: 2
         x: 0
@@ -200,18 +234,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33d23d3758f23ad4086821b6eee8fc60
-      internalID: 2005866252
+      spriteID: ace978745fb307d45922f147d1435d77
+      internalID: -913461541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 00
+      name: Parallax Scifi Dark background_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 100
         width: 314
         height: 100
       alignment: 0
@@ -221,8 +255,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87fb1001f921972488d249827f87a048
-      internalID: 637166784
+      spriteID: 0d51789bed8e58f47a2fc56a64d9c7a8
+      internalID: 340316549
       vertices: []
       indices: 
       edges: []
@@ -238,13 +272,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      00: 637166784
-      01: 2005866252
-      02: 1034154473
-      03: 2126674981
-      04: 722920077
+      Parallax Scifi Dark background_0: 1764696588
+      Parallax Scifi Dark background_1: 225311758
+      Parallax Scifi Dark background_2: 1565764026
       Parallax Scifi Dark background_3: 948741616
+      Parallax Scifi Dark background_4: -913461541
       Parallax Scifi Dark background_5: 340316549
+      Parallax Scifi Dark background_6: -1138098758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

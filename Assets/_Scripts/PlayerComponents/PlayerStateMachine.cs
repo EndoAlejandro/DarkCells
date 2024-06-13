@@ -28,7 +28,7 @@ namespace DarkHavoc.PlayerComponents
         {
             // Grounded States
             var ground = new GroundState(_player, _input);
-            var roll = new RollState(_player, _rigidbody, _input, _player.Stats.RollAction);
+            var roll = new RollState(_player, _input, _player.Stats.RollAction);
             var death = new DeathState(_player, _rigidbody);
 
             // Air States

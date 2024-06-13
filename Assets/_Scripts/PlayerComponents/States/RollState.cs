@@ -11,7 +11,6 @@ namespace DarkHavoc.PlayerComponents.States
         public AnimationState AnimationState => AnimationState.Roll;
 
         private readonly Player _player;
-        private readonly Rigidbody2D _rigidbody;
         private readonly InputReader _input;
         private readonly ImpulseAction _rollAction;
 
@@ -20,10 +19,9 @@ namespace DarkHavoc.PlayerComponents.States
         public bool Ended { get; private set; }
         public bool CanTransitionToSelf => false;
 
-        public RollState(Player player, Rigidbody2D rigidbody, InputReader input, ImpulseAction rollAction)
+        public RollState(Player player, InputReader input, ImpulseAction rollAction)
         {
             _player = player;
-            _rigidbody = rigidbody;
             _input = input;
             _rollAction = rollAction;
         }
@@ -46,10 +44,7 @@ namespace DarkHavoc.PlayerComponents.States
             else if (Mathf.Sign(_input.Movement.x) < 0 && !_player.FacingLeft) _player.SetFacingLeft(true);
         }
 
-        public void FixedTick()
-        {
-            _player.AddImpulse(_rollAction);
-        }
+        public void FixedTick() => _player.AddImpulse(_rollAction);
 
         public void OnEnter()
         {

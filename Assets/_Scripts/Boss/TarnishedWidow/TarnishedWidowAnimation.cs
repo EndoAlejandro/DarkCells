@@ -23,7 +23,7 @@ namespace DarkHavoc.Boss.TarnishedWidow
         {
             renderer.GetPropertyBlock(materialPb);
             materialPb.SetColor(OutlineColorID, state ? boss.Stats.BuffOutlineColor : Constants.EnemyOutlineColor);
-            // materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
+            materialPb.SetFloat(ShowOutline, state ? 1f : 0f);
             renderer.SetPropertyBlock(materialPb);
         }
     }
