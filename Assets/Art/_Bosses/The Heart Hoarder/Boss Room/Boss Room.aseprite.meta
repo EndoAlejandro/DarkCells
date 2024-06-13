@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -71,9 +71,9 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -83,9 +83,9 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638538610189490954
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Boss Room
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.7502601, y: 0.016447369}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 480
-      height: 270
+      width: 961
+      height: 304
     spriteID: 790e04a8c795fb44b82c96d2a7271b1f
     spriteBone: []
     spriteOutline: []
@@ -142,23 +142,168 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1305874818
-    name: Boss Room
-    layerFlags: 0
+    guid: 1666753961
+    name: 1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Boss Room
+    - name: 1
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 480
-        height: 270
-      spriteId: 790e04a8c795fb44b82c96d2a7271b1f
+        x: -480
+        y: -5
+        width: 960
+        height: 275
+      spriteId: c8414ef522e1a4d4b8ec55728df135d1
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  - layerIndex: 1
+    guid: 1666755153
+    name: 2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 2
+      frameIndex: 0
+      cellRect:
+        x: -480
+        y: 0
+        width: 960
+        height: 137
+      spriteId: b686a8459bc561743b65a18d741d10de
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 2
+    guid: 1666754753
+    name: 3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 3
+      frameIndex: 0
+      cellRect:
+        x: -481
+        y: 0
+        width: 961
+        height: 270
+      spriteId: a5687264c72edd64d945ea3a5f4ec808
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 3
+    guid: 1666752769
+    name: 4
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 4
+      frameIndex: 0
+      cellRect:
+        x: -480
+        y: 0
+        width: 960
+        height: 299
+      spriteId: 6c01f49a520fe0e45ac3a3905eee89e9
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 4
+    guid: 1666752369
+    name: 5
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 5
+      frameIndex: 0
+      cellRect:
+        x: -480
+        y: 0
+        width: 960
+        height: 270
+      spriteId: 21410ab4ff374a64e99d0679af9b0a32
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 9
+    guid: 1666753557
+    name: 6
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: 6
+      frameIndex: 0
+      cellRect:
+        x: -480
+        y: 0
+        width: 960
+        height: 270
+      spriteId: eecdb2b740e6b9747b26faed93c2fce6
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 480, y: 270}
