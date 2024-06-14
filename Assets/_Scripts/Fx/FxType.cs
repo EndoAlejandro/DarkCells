@@ -40,5 +40,6 @@
         ColossalBuff,
         ColossalBoomerang,
         ColossalTelegraph,
+        ExitDoor,
     }
 }

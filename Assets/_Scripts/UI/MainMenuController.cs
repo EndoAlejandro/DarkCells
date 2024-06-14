@@ -55,8 +55,6 @@ namespace DarkHavoc.UI
         {
         }
 
-        private void ExitButtonPressed()
-        {
-        }
+        private void ExitButtonPressed() => Application.Quit();
     }
 }

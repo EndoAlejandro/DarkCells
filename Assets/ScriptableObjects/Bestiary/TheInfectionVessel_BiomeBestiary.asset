@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59f2d8b695b464798dd1ab2ab7c37f8, type: 3}
+  m_Name: TheInfectionVessel_BiomeBestiary
+  m_EditorClassIdentifier: 
+  bestiary:
+  - {fileID: 5337469757369897764, guid: 0b6d3a6e2b08ce946b7f0e509a9c5902, type: 3}
+  - {fileID: 6099347449364330074, guid: 9eb91495e0aec3c4088c95fd58545835, type: 3}
+  - {fileID: 9200963964372461995, guid: 57743e36dfd62904db4e8f7a6ba597ae, type: 3}
+  - {fileID: 6900685518947760270, guid: 47f15779bfff76d46b91e5f0419e4c1c, type: 3}
+  - {fileID: 4765560360985648690, guid: ebeb1ef6f63e1924e8957a028e9cd34e, type: 3}
+  - {fileID: 873384564281538242, guid: c44cc3d22cb9cdc47bc970bfad52afa3, type: 3}
+  - {fileID: 5806040870700616021, guid: b01f45924d89575488b857e4f2d1090b, type: 3}
+  - {fileID: 1288741017142005051, guid: 89676c8fca495bf4c9820e170c8dd314, type: 3}
+  - {fileID: 433907875500081383, guid: a48e9c7d5ae5e154cb5185f41eae9c05, type: 3}
+  - {fileID: 4056678312989239954, guid: 00ba7880421a4104fb9c18460b2cc25f, type: 3}

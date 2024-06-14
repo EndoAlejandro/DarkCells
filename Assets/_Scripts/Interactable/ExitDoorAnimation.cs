@@ -1,3 +1,5 @@
+using DarkHavoc.Fx;
+using DarkHavoc.ServiceLocatorComponents;
 using UnityEngine;
 
 namespace DarkHavoc.Interactable
@@ -8,6 +10,10 @@ namespace DarkHavoc.Interactable
         private static readonly int Activate = Animator.StringToHash("Activate");
         private Animator _animator;
         private void Awake() => _animator = GetComponent<Animator>();
-        public void ActivateAnimation() => _animator.SetTrigger(Activate);
+        public void ActivateAnimation()
+        {
+            _animator.SetTrigger(Activate);
+            ServiceLocator.GetService<FxManager>()?.PlayFx(BossFx.ExitDoor, transform.position);
+        }
     }
 }

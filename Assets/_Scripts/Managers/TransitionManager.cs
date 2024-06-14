@@ -45,9 +45,9 @@ namespace DarkHavoc.Managers
         private IEnumerator LoadBiomeSceneAsync(Biome biome)
         {
             yield return SetTransitionPanel(true);
-            OnBiomeLoaded?.Invoke(biome);
             yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
+            OnBiomeLoaded?.Invoke(biome);
             yield return SetTransitionPanel(false);
         }
 

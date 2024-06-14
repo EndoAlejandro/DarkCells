@@ -41,7 +41,7 @@ namespace DarkHavoc.DungeonGeneration.GridBasedGenerator
             foreach (var spawnPoint in spawnPoints)
             {
                 int index = Random.Range(0, bestiary.Bestiary.Length);
-                Instantiate(bestiary.Bestiary[index], spawnPoint, Quaternion.identity);
+                Instantiate(bestiary.Bestiary[index], spawnPoint, Quaternion.identity, transform);
             }
         }
 

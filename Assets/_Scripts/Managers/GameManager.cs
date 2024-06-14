@@ -81,16 +81,15 @@ namespace DarkHavoc.Managers
 
             switch (_currentStep)
             {
-                case >0:
-                LoadBiomeScene();
+                case > 0:
+                    LoadBiomeScene();
                     break;
                 case 0:
-                LoadBossBiomeScene();
+                    LoadBossBiomeScene();
                     break;
-                case <0 :
+                case < 0:
                     GoToNextBiome();
                     break;
-                    
             }
         }
 
