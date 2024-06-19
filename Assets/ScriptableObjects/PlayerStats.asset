@@ -12,16 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e37ec38e35f4edab3f4370c9fac8910, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 100
   takeDamageTime: 5
+  immunityTime: 1
   layer:
     serializedVersion: 2
     m_Bits: 584
-  maxSpeed: 6
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 66945
+  ceilingLayers:
+    serializedVersion: 2
+    m_Bits: 4480
+  maxSpeed: 5
   acceleration: 80
   groundDeceleration: 70
   airDeceleration: 30
   grounderDistance: 0.05
+  ceilingDistance: 0.05
   wallDetection:
     distanceCheck: 0.4
     topOffset: 0
@@ -34,57 +42,56 @@ MonoBehaviour:
     ledgeDetectorOffset: {x: 0.3, y: 0.03}
     ledgeDetectorRadius: 0.2
   jumpForce: 12
+  airJumpForce: 10
   groundingForce: 3
   fallAcceleration: 30
   jumpBuffer: 0.2
   maxFallSpeed: 10
   jumpEndEarlyGravityModifier: 1.25
   coyoteTime: 0.2
-  wallJumpForce: 10
-  wallJumpImpulse:
-    time: 0.3
-    force: 12
-    deceleration: 20
-    direction: 1
+  wallJumpForce: {x: 10, y: 11}
   wallSlideAcceleration: 50
   maxWallSlideSpeed: 3
-  ceilingDistance: 0.3
+  crouchCeilingDistance: 0.25
   rollCooldown: 0.25
+  speedBonus: 2
+  speedBonusDeceleration: 1.5
+  dodgeTickTime: 0.1
   rollAction:
     time: 0.4
-    force: 8
+    force: 6
     deceleration: 2
-    direction: 0
+    impulseDirection: 0
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 620
+    m_Bits: 4224
   damage: 1
   movementReduction: 0.5
   lightAttackBuffer: 0.15
   comboTime: 0.5
-  heavyAttackTime: 0.5
+  heavyAttackTime: 0.47
   blockTime: 0.5
   lightAttackAction:
     time: 0.5
     force: 1
     deceleration: 5
-    direction: 0
+    impulseDirection: 0
     damageMultiplier: 0
     cooldownTime: 0
   heavyAttackAction:
     time: 0.5
     force: 2
     deceleration: 5
-    direction: 0
+    impulseDirection: 0
     damageMultiplier: 2
     cooldownTime: 0.5
   parryAction:
     time: 0.7
     force: 3
     deceleration: 5
-    direction: 1
+    impulseDirection: 1
   takeDamageAction:
     time: 0.5
     force: 7
     deceleration: 20
-    direction: 1
+    impulseDirection: 1

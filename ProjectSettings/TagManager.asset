@@ -8,6 +8,8 @@ TagManager:
   - OneWay
   - CameraCollider
   - Visuals
+  - Hazard
+  - FrontVisuals
   layers:
   - Default
   - TransparentFX
@@ -17,15 +19,15 @@ TagManager:
   - UI
   - PlayerRoll
   - Enemy
-  - Ground
+  - Terrain/Ground
   - IgnoreAll
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Terrain/OneWay
+  - Hazard
+  - Boss
+  - IgnorePlayer
+  - IgnoreEnemy
+  - TerrainOnly
+  - Terrain/Ice
   - 
   - 
   - 
@@ -42,21 +44,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1542315609
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Enemy
-    uniqueID: 1245454165
     locked: 0
   - name: BackDecoration
     uniqueID: 1697072577
     locked: 0
-  - name: Player
-    uniqueID: 563718115
+  - name: Hazard
+    uniqueID: 2110115899
     locked: 0
-  - name: Level
-    uniqueID: 1937645561
+  - name: Ground
+    uniqueID: 2728362553
     locked: 0
   - name: FrontDecoration
     uniqueID: 3857581211
+    locked: 0
+  - name: Player
+    uniqueID: 563718115
+    locked: 0
+  - name: Enemy
+    uniqueID: 1245454165
+    locked: 0
+  - name: Level
+    uniqueID: 1937645561
     locked: 0

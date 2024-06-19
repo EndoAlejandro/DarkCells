@@ -1,0 +1,104 @@
+﻿using System;
+using System.Collections;
+using DarkHavoc.ServiceLocatorComponents;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace DarkHavoc.Managers
+{
+    public class TransitionManager : Service<TransitionManager>
+    {
+        public static event Action OnMainMenu;
+        public static event Action<Biome> OnBiomeLoaded;
+        public static event Action<Biome> OnBossLoaded;
+
+        protected override bool DonDestroyOnLoad => true;
+
+        private static readonly int Out = Animator.StringToHash("Out");
+        private static readonly int In = Animator.StringToHash("In");
+        private static readonly int Show = Animator.StringToHash("Show");
+        private static readonly int Hide = Animator.StringToHash("Hide");
+
+        private bool _transitionInProgress;
+        private Animator _animator;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _animator = GetComponent<Animator>();
+        }
+
+        public void LoadLobbyScene() => StartCoroutine(LoadLobbySceneAsync());
+
+        private IEnumerator LoadLobbySceneAsync()
+        {
+            yield return SetTransitionPanel(true);
+            OnMainMenu?.Invoke();
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync("Lobby", LoadSceneMode.Additive);
+            yield return SetTransitionPanel(false);
+        }
+
+        public void LoadBiomeScene(Biome biome) =>
+            StartCoroutine(LoadBiomeSceneAsync(biome));
+
+        private IEnumerator LoadBiomeSceneAsync(Biome biome)
+        {
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync(biome.ToString(), LoadSceneMode.Additive);
+            OnBiomeLoaded?.Invoke(biome);
+            yield return SetTransitionPanel(false);
+        }
+
+        public void LoadBossBiomeScene(Biome biome) =>
+            StartCoroutine(LoadBossBiomeSceneAsync(biome));
+
+        private IEnumerator LoadBossBiomeSceneAsync(Biome biome)
+        {
+            yield return SetTransitionPanel(true);
+            OnBossLoaded?.Invoke(biome);
+            yield return SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync(biome + "Boss", LoadSceneMode.Additive);
+            yield return SetTransitionPanel(false);
+        }
+
+        public void LoadGameOverScene() => StartCoroutine(LoadFinalSceneAsync());
+
+        private IEnumerator LoadFinalSceneAsync()
+        {
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Single);
+            yield return SetTransitionPanel(false);
+        }
+
+        private IEnumerator SetTransitionPanel(bool state)
+        {
+            yield return new WaitUntil(() => _transitionInProgress != state);
+            ResetTriggers();
+            yield return null;
+            _animator.SetTrigger(state ? In : Out);
+            yield return new WaitForSeconds(1f);
+            _transitionInProgress = state;
+        }
+
+        public IEnumerator SetMenuPanel(bool state, Action callback = null)
+        {
+            yield return new WaitUntil(() => _transitionInProgress != state);
+            ResetTriggers();
+            yield return null;
+            _animator.SetTrigger(state ? Show : Hide);
+            yield return new WaitForSeconds(.25f);
+            callback?.Invoke();
+            _transitionInProgress = state;
+        }
+
+        private void ResetTriggers()
+        {
+            _animator.ResetTrigger(Out);
+            _animator.ResetTrigger(In);
+            _animator.ResetTrigger(Show);
+            _animator.ResetTrigger(Hide);
+        }
+    }
+}

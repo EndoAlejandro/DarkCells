@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/_Scenes/Intro.unity
     guid: 9cbf2e9a01293cb4a9f0d51b4ca0d1ae
   - enabled: 1
-    path: Assets/_Scenes/MainMenu.unity
-    guid: 32c53f4d7bdb538419f7d975aeddbea8
-  - enabled: 1
     path: Assets/_Scenes/Lobby.unity
     guid: 9fd83145826fbbd44bd26e7919aa0322
+  - enabled: 1
+    path: Assets/_Scenes/MainMenu.unity
+    guid: 32c53f4d7bdb538419f7d975aeddbea8
   - enabled: 1
     path: Assets/_Scenes/HUD.unity
     guid: 19d4a0c0944e1a64d997f3a267df7ede
@@ -21,13 +21,25 @@ EditorBuildSettings:
     path: Assets/_Scenes/CorruptedAbyss.unity
     guid: 955073449b35c094c88f94f9e88cb001
   - enabled: 1
+    path: Assets/_Scenes/CorruptedAbyssBoss.unity
+    guid: 5f50b5fc7b46dd142be9a8b1f5457836
+  - enabled: 1
     path: Assets/_Scenes/ForgottenCatacombs.unity
     guid: c2021c5ba1d2fc84f932e70b8a0c876b
+  - enabled: 1
+    path: Assets/_Scenes/ForgottenCatacombsBoss.unity
+    guid: 763121243fbef5846b3044b9d4723e9a
   - enabled: 1
     path: Assets/_Scenes/TheInfectionVessel.unity
     guid: d0cfe10c60523214394bcb0c0afff422
   - enabled: 1
+    path: Assets/_Scenes/TheInfectionVesselBoss.unity
+    guid: 9d653ab2009cc3345b4f37d9b6ea8e9a
+  - enabled: 1
     path: Assets/_Scenes/TransitionScreen.unity
     guid: 2843c910f50c43348a1515c2a657c60d
+  - enabled: 1
+    path: Assets/_Scenes/GameOver.unity
+    guid: b5ff3d3c9c744c04781c75ebb9f12f1a
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 422c7208d09daa948bae571d02441c67, type: 2}

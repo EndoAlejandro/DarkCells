@@ -1,0 +1,1928 @@
+fileFormatVersion: 2
+guid: 57f0019731bede54daa28ca4f456de00
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: The Circle_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 364
+      width: 35
+      height: 36
+    spriteID: 3f35a937fbad69f47ab2abf5be6b5bef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 319}
+  - name: The Circle_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 408
+      width: 35
+      height: 36
+    spriteID: 104b03c87fa170e4886442898dfd2ced
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 363}
+  - name: The Circle_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 452
+      width: 35
+      height: 36
+    spriteID: 4991a3203460dfd40831f401bdf8d0ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 407}
+  - name: The Circle_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 4
+      width: 35
+      height: 36
+    spriteID: 400c3f7686992e844960bf8a1bafe1a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: -41}
+  - name: The Circle_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 48
+      width: 35
+      height: 36
+    spriteID: 8b7e298bedddfdc46b3836927a9a2a8f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 3}
+  - name: The Circle_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 92
+      width: 35
+      height: 36
+    spriteID: 1b2e352eb6f57d94fba61f0f2cfc6d37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 47}
+  - name: The Circle_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 136
+      width: 35
+      height: 36
+    spriteID: 71a97b12ac6849a42bd795dfecc51736
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 91}
+  - name: The Circle_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 35
+      height: 37
+    spriteID: 30402810fcdafcd4291d969992d2f715
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: -40}
+  - name: The Circle_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 49
+      width: 35
+      height: 37
+    spriteID: 9a2a49b020b44c146833a834b3bccf4b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 5}
+  - name: The Circle_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 180
+      width: 35
+      height: 36
+    spriteID: a64615e80dfb47648942959ca811063e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 136}
+  - name: The Circle_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 224
+      width: 35
+      height: 36
+    spriteID: b2b77db2e1e28644d960d93413a25edb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 180}
+  - name: The Circle_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 268
+      width: 35
+      height: 36
+    spriteID: 47ae64d658f083741bead46bd34710ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 224}
+  - name: The Circle_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 312
+      width: 35
+      height: 36
+    spriteID: 5cd25a2099cbe8b499920a6d64039334
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 268}
+  - name: The Circle_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 356
+      width: 35
+      height: 36
+    spriteID: 0ce9b1099f5a4e64b8ed26d65b5b3859
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 312}
+  - name: The Circle_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 400
+      width: 35
+      height: 36
+    spriteID: 388e96ad0818b92418088ffc87b60efb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 356}
+  - name: The Circle_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 444
+      width: 35
+      height: 36
+    spriteID: 672d8981129950243b40f904dda387ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -1, y: 400}
+  - name: The Circle_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 4
+      width: 35
+      height: 36
+    spriteID: 3d76ddbac3c1d204a8242f1a84757231
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: -40}
+  - name: The Circle_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 48
+      width: 35
+      height: 36
+    spriteID: b0009d035b8dd444ebf9e8f7d3064cea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 4}
+  - name: The Circle_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 92
+      width: 35
+      height: 36
+    spriteID: 1921169890120994f8e67ea966063c17
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 48}
+  - name: The Circle_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 136
+      width: 35
+      height: 36
+    spriteID: 352c46a7c2dd08040a55c7afdb020ce4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 92}
+  - name: The Circle_Frame_20
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 180
+      width: 35
+      height: 36
+    spriteID: 7eec8360b43608b43bf6567f1db9f933
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 136}
+  - name: The Circle_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 224
+      width: 35
+      height: 36
+    spriteID: 253fd32556a30d04fa018794c56e3a59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 180}
+  - name: The Circle_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 268
+      width: 35
+      height: 36
+    spriteID: 8e03a4c239abf244cb26fcaa0f4eb9cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 224}
+  - name: The Circle_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 94
+      width: 35
+      height: 37
+    spriteID: c884f95c6190d48428ca7fe0a5c68401
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 50}
+  - name: The Circle_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 139
+      width: 35
+      height: 37
+    spriteID: 85095f0bf23a87148bad747799c6b411
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 95}
+  - name: The Circle_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 312
+      width: 35
+      height: 36
+    spriteID: fd592637fd4dec04a80c403e3e1c7fcb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 267}
+  - name: The Circle_Frame_26
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 356
+      width: 35
+      height: 36
+    spriteID: 532f11d557554634186dc1ed10288d42
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 311}
+  - name: The Circle_Frame_27
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 400
+      width: 35
+      height: 36
+    spriteID: 2c292fd2816c2514385cc3e25aa48343
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 355}
+  - name: The Circle_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 444
+      width: 35
+      height: 36
+    spriteID: a4df8d167a0e10f4f9f4f5b0d411a674
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 399}
+  - name: The Circle_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 4
+      width: 35
+      height: 36
+    spriteID: 04ead7677a17ecb4aaea6b11e4fea5f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: -41}
+  - name: The Circle_Frame_30
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 48
+      width: 35
+      height: 36
+    spriteID: 1043a80cefb17034eaac111fce47a0ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 3}
+  - name: The Circle_Frame_31
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 92
+      width: 35
+      height: 36
+    spriteID: 697de12c67fc9874cbe2af6a3956efe0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 47}
+  - name: The Circle_Frame_32
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 136
+      width: 35
+      height: 36
+    spriteID: b6a3895862aedb44ea23ed8ce7c621c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 91}
+  - name: The Circle_Frame_33
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 180
+      width: 35
+      height: 36
+    spriteID: f25a0432b361ce74888677e4e74b1b68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 135}
+  - name: The Circle_Frame_34
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 224
+      width: 35
+      height: 36
+    spriteID: 4c35f7208699faf428890e471ff70345
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 179}
+  - name: The Circle_Frame_35
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 268
+      width: 35
+      height: 36
+    spriteID: 91a1016d87c4f034da54b35fd91969c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 223}
+  - name: The Circle_Frame_36
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 312
+      width: 35
+      height: 36
+    spriteID: c361ef3d3cea1584eb8cd706af1392c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 267}
+  - name: The Circle_Frame_37
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 356
+      width: 35
+      height: 36
+    spriteID: 51deb839ac1b4344f8b6ed28db1e8424
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 311}
+  - name: The Circle_Frame_38
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 400
+      width: 35
+      height: 36
+    spriteID: fb45c49ea9f9b894b942f2c9942fa4da
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 355}
+  - name: The Circle_Frame_39
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 184
+      width: 35
+      height: 37
+    spriteID: 1d01309006db48742b0c2a487ed0cc91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 140}
+  - name: The Circle_Frame_40
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 229
+      width: 35
+      height: 37
+    spriteID: 17a8568a15f267348ad82269cc1fa6b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 185}
+  - name: The Circle_Frame_41
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 444
+      width: 35
+      height: 36
+    spriteID: 7398b802edc63c34d9e789e2d20816a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 85, y: 400}
+  - name: The Circle_Frame_42
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 4
+      width: 35
+      height: 36
+    spriteID: 26e5a25d4f7130a42a29a25a3196cb39
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: -40}
+  - name: The Circle_Frame_43
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 48
+      width: 35
+      height: 36
+    spriteID: 528dc91cf433bcf4a89b5e955e3f6a40
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 4}
+  - name: The Circle_Frame_44
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 92
+      width: 35
+      height: 36
+    spriteID: 18c08270e7b8af6489a1a0a32db8cd56
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 48}
+  - name: The Circle_Frame_45
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 136
+      width: 35
+      height: 36
+    spriteID: 91e773439cc2fd1459313bbdd5868115
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 92}
+  - name: The Circle_Frame_46
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 180
+      width: 35
+      height: 36
+    spriteID: bfdd9ff806c9463409e082039b077015
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 136}
+  - name: The Circle_Frame_47
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 224
+      width: 35
+      height: 36
+    spriteID: 031d5d54462c47e4c9caf48157e2eead
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 180}
+  - name: The Circle_Frame_48
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 268
+      width: 35
+      height: 36
+    spriteID: 0561017e4d0e6604581bc51bf2808bba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 224}
+  - name: The Circle_Frame_49
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 312
+      width: 35
+      height: 36
+    spriteID: c2bcbdb37f5db3041989deb6140c2bd5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 268}
+  - name: The Circle_Frame_50
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 356
+      width: 35
+      height: 36
+    spriteID: 2a6516aa0b25c2a40a5319466d11524d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 312}
+  - name: The Circle_Frame_51
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 400
+      width: 35
+      height: 36
+    spriteID: fc4f388483f3593488039c3a28189cd6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 356}
+  - name: The Circle_Frame_52
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 176
+      y: 444
+      width: 35
+      height: 36
+    spriteID: 532d379fedd7119448f8d1b00837e012
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 400}
+  - name: The Circle_Frame_53
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 4
+      width: 35
+      height: 36
+    spriteID: ff6bf2f484e80514d995ba953bc7d129
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: -40}
+  - name: The Circle_Frame_54
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 48
+      width: 35
+      height: 36
+    spriteID: ef19c4c9ab551ed4fa6f8a3e7ce296be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 4}
+  - name: The Circle_Frame_55
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 274
+      width: 35
+      height: 37
+    spriteID: 34888f55efa6f9a4bb0288d61aeed26d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 230}
+  - name: The Circle_Frame_56
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 319
+      width: 35
+      height: 37
+    spriteID: dec0922e710c3cd439069ba8bdcc080d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -44, y: 275}
+  - name: The Circle_Frame_57
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 92
+      width: 35
+      height: 36
+    spriteID: 5cb5e87d2433fbf44a4a153f61722044
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 47}
+  - name: The Circle_Frame_58
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 136
+      width: 35
+      height: 36
+    spriteID: 52ffc565214dd5f4f8f5406f7cadd471
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 91}
+  - name: The Circle_Frame_59
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 180
+      width: 35
+      height: 36
+    spriteID: 9f603f6358bb4734ab2c3eb480847a87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 135}
+  - name: The Circle_Frame_60
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 224
+      width: 35
+      height: 36
+    spriteID: 8497c95dbfb434d458bdfa84c800fd87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 179}
+  - name: The Circle_Frame_61
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 268
+      width: 35
+      height: 36
+    spriteID: b52ccde0620afff489bf623ed2a75c59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 223}
+  - name: The Circle_Frame_62
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 312
+      width: 35
+      height: 36
+    spriteID: c51223efe5a248647adddf854fd83b0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 267}
+  - name: The Circle_Frame_63
+    originalName: 
+    pivot: {x: 0.5, y: -0.027777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 356
+      width: 35
+      height: 36
+    spriteID: a79c13de57955d84c9546227ce6a3136
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 171, y: 311}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1388959561
+    name: The Circle
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: The Circle_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 3f35a937fbad69f47ab2abf5be6b5bef
+    - name: The Circle_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 104b03c87fa170e4886442898dfd2ced
+    - name: The Circle_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 4991a3203460dfd40831f401bdf8d0ca
+    - name: The Circle_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 400c3f7686992e844960bf8a1bafe1a4
+    - name: The Circle_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 8b7e298bedddfdc46b3836927a9a2a8f
+    - name: The Circle_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 1b2e352eb6f57d94fba61f0f2cfc6d37
+    - name: The Circle_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 71a97b12ac6849a42bd795dfecc51736
+    - name: The Circle_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 30402810fcdafcd4291d969992d2f715
+    - name: The Circle_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 9a2a49b020b44c146833a834b3bccf4b
+    - name: The Circle_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: a64615e80dfb47648942959ca811063e
+    - name: The Circle_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: b2b77db2e1e28644d960d93413a25edb
+    - name: The Circle_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 47ae64d658f083741bead46bd34710ac
+    - name: The Circle_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 5cd25a2099cbe8b499920a6d64039334
+    - name: The Circle_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 0ce9b1099f5a4e64b8ed26d65b5b3859
+    - name: The Circle_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 388e96ad0818b92418088ffc87b60efb
+    - name: The Circle_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 672d8981129950243b40f904dda387ef
+    - name: The Circle_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 3d76ddbac3c1d204a8242f1a84757231
+    - name: The Circle_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: b0009d035b8dd444ebf9e8f7d3064cea
+    - name: The Circle_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 1921169890120994f8e67ea966063c17
+    - name: The Circle_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 352c46a7c2dd08040a55c7afdb020ce4
+    - name: The Circle_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 7eec8360b43608b43bf6567f1db9f933
+    - name: The Circle_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 253fd32556a30d04fa018794c56e3a59
+    - name: The Circle_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 8e03a4c239abf244cb26fcaa0f4eb9cd
+    - name: The Circle_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: c884f95c6190d48428ca7fe0a5c68401
+    - name: The Circle_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 85095f0bf23a87148bad747799c6b411
+    - name: The Circle_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: fd592637fd4dec04a80c403e3e1c7fcb
+    - name: The Circle_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 532f11d557554634186dc1ed10288d42
+    - name: The Circle_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 2c292fd2816c2514385cc3e25aa48343
+    - name: The Circle_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: a4df8d167a0e10f4f9f4f5b0d411a674
+    - name: The Circle_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 04ead7677a17ecb4aaea6b11e4fea5f0
+    - name: The Circle_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 1043a80cefb17034eaac111fce47a0ef
+    - name: The Circle_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 697de12c67fc9874cbe2af6a3956efe0
+    - name: The Circle_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: b6a3895862aedb44ea23ed8ce7c621c4
+    - name: The Circle_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: f25a0432b361ce74888677e4e74b1b68
+    - name: The Circle_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 4c35f7208699faf428890e471ff70345
+    - name: The Circle_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 91a1016d87c4f034da54b35fd91969c9
+    - name: The Circle_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: c361ef3d3cea1584eb8cd706af1392c3
+    - name: The Circle_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 51deb839ac1b4344f8b6ed28db1e8424
+    - name: The Circle_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: fb45c49ea9f9b894b942f2c9942fa4da
+    - name: The Circle_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 1d01309006db48742b0c2a487ed0cc91
+    - name: The Circle_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 17a8568a15f267348ad82269cc1fa6b9
+    - name: The Circle_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 7398b802edc63c34d9e789e2d20816a1
+    - name: The Circle_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 26e5a25d4f7130a42a29a25a3196cb39
+    - name: The Circle_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 528dc91cf433bcf4a89b5e955e3f6a40
+    - name: The Circle_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 18c08270e7b8af6489a1a0a32db8cd56
+    - name: The Circle_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 91e773439cc2fd1459313bbdd5868115
+    - name: The Circle_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: bfdd9ff806c9463409e082039b077015
+    - name: The Circle_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 031d5d54462c47e4c9caf48157e2eead
+    - name: The Circle_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 0561017e4d0e6604581bc51bf2808bba
+    - name: The Circle_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: c2bcbdb37f5db3041989deb6140c2bd5
+    - name: The Circle_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 2a6516aa0b25c2a40a5319466d11524d
+    - name: The Circle_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: fc4f388483f3593488039c3a28189cd6
+    - name: The Circle_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 532d379fedd7119448f8d1b00837e012
+    - name: The Circle_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: ff6bf2f484e80514d995ba953bc7d129
+    - name: The Circle_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: ef19c4c9ab551ed4fa6f8a3e7ce296be
+    - name: The Circle_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 34888f55efa6f9a4bb0288d61aeed26d
+    - name: The Circle_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: dec0922e710c3cd439069ba8bdcc080d
+    - name: The Circle_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 5cb5e87d2433fbf44a4a153f61722044
+    - name: The Circle_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 52ffc565214dd5f4f8f5406f7cadd471
+    - name: The Circle_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 9f603f6358bb4734ab2c3eb480847a87
+    - name: The Circle_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: 8497c95dbfb434d458bdfa84c800fd87
+    - name: The Circle_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: b52ccde0620afff489bf623ed2a75c59
+    - name: The Circle_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: c51223efe5a248647adddf854fd83b0f
+    - name: The Circle_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: -48
+        y: -44
+        width: 128
+        height: 128
+      spriteId: a79c13de57955d84c9546227ce6a3136
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 35, y: 37}

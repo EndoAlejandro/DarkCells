@@ -1,0 +1,1312 @@
+fileFormatVersion: 2
+guid: c821be7a09363214083abc38d2d62c91
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: MASTER File - Dual Slicer_Frame_0
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 194
+      height: 192
+    spriteID: 1aec43823f5641c479c8ec89d6e83b65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: MASTER File - Dual Slicer_Frame_9
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 204
+      width: 194
+      height: 192
+    spriteID: 60b426fbe5f45e1478689f44469a50c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 204}
+  - name: MASTER File - Dual Slicer_Frame_10
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 404
+      width: 194
+      height: 192
+    spriteID: 0d77bd2c517c5704698b8954edf666f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 404}
+  - name: MASTER File - Dual Slicer_Frame_11
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 604
+      width: 194
+      height: 192
+    spriteID: fcddce9e16aba89499a76f19fe4f8136
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 604}
+  - name: MASTER File - Dual Slicer_Frame_12
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 804
+      width: 194
+      height: 192
+    spriteID: b734546f3ec232c4d9b1ce0f1f7edc5c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 804}
+  - name: MASTER File - Dual Slicer_Frame_13
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1004
+      width: 194
+      height: 192
+    spriteID: 45eb8aee051e5e64d89ac0f3d36bb33b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1004}
+  - name: MASTER File - Dual Slicer_Frame_14
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1204
+      width: 194
+      height: 192
+    spriteID: 7f1118ef263f24f4f9169e3b2e98f91c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1204}
+  - name: MASTER File - Dual Slicer_Frame_15
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1404
+      width: 194
+      height: 192
+    spriteID: 63df6109a46be96459c6d110e29b441c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1404}
+  - name: MASTER File - Dual Slicer_Frame_16
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1604
+      width: 194
+      height: 192
+    spriteID: a93fdb1c8a06ac44796b6116203317f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1604}
+  - name: MASTER File - Dual Slicer_Frame_21
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1804
+      width: 194
+      height: 192
+    spriteID: e09af4de313461c42bb5b7c20ce6ac34
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1804}
+  - name: MASTER File - Dual Slicer_Frame_22
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 4
+      width: 194
+      height: 192
+    spriteID: 2ffe7acc0f1ab4f4684296d0b2d6c2f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 4}
+  - name: MASTER File - Dual Slicer_Frame_28
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 204
+      width: 194
+      height: 192
+    spriteID: 5e5de34683173d6499f337292a4ff537
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 204}
+  - name: MASTER File - Dual Slicer_Frame_29
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 404
+      width: 194
+      height: 192
+    spriteID: 553867df23e5f124db9faeb271e847e3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 404}
+  - name: MASTER File - Dual Slicer_Frame_30
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 604
+      width: 194
+      height: 192
+    spriteID: 199e0719fb99cf14fb2f4a47e88c1bf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 604}
+  - name: MASTER File - Dual Slicer_Frame_31
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 804
+      width: 194
+      height: 192
+    spriteID: 0fa422185d290544dac4841dabd67c0b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 804}
+  - name: MASTER File - Dual Slicer_Frame_32
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 1004
+      width: 194
+      height: 192
+    spriteID: a2f36e5f41382bc4b8171a36b9c682b3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 1004}
+  - name: MASTER File - Dual Slicer_Frame_33
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 1204
+      width: 194
+      height: 192
+    spriteID: 8501ff0339e39e04585c26ceb02a60f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 1204}
+  - name: MASTER File - Dual Slicer_Frame_34
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 1404
+      width: 194
+      height: 192
+    spriteID: 2cb4780962936d54db4ef256519857a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 1404}
+  - name: MASTER File - Dual Slicer_Frame_35
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 1604
+      width: 194
+      height: 192
+    spriteID: c40a20ecfc99aa14bbf02d0e3deb25c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 1604}
+  - name: MASTER File - Dual Slicer_Frame_36
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 206
+      y: 1804
+      width: 194
+      height: 192
+    spriteID: a7f8b7732b0cb6243b3e0ec12fbdbb1d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 206, y: 1804}
+  - name: MASTER File - Dual Slicer_Frame_37
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 4
+      width: 194
+      height: 192
+    spriteID: 6cf6cbbd375b6164da98bc624cdc97cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 4}
+  - name: MASTER File - Dual Slicer_Frame_38
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 204
+      width: 194
+      height: 192
+    spriteID: 69829bc767efc1d438dc17a6b0309f9b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 204}
+  - name: MASTER File - Dual Slicer_Frame_39
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 404
+      width: 194
+      height: 192
+    spriteID: e7bc8b79c85505a4eabc2bb40599c806
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 404}
+  - name: MASTER File - Dual Slicer_Frame_40
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 604
+      width: 194
+      height: 192
+    spriteID: 8fe549c45cba1a6498c3a3c82b45628b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 604}
+  - name: MASTER File - Dual Slicer_Frame_41
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 804
+      width: 194
+      height: 192
+    spriteID: d749b494f4130044c920058f5ec054d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 804}
+  - name: MASTER File - Dual Slicer_Frame_1
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 1004
+      width: 194
+      height: 192
+    spriteID: 2bb1ac871d9721e40997686a83730526
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 1004}
+  - name: MASTER File - Dual Slicer_Frame_2
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 1204
+      width: 194
+      height: 192
+    spriteID: c1f20f593c6c7a24d8193a99e22c77c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 1204}
+  - name: MASTER File - Dual Slicer_Frame_3
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 1404
+      width: 194
+      height: 192
+    spriteID: 1746505675b505748ae1605f89549f87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 1404}
+  - name: MASTER File - Dual Slicer_Frame_4
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 1604
+      width: 194
+      height: 192
+    spriteID: d1e97e5315c3d7447af858c70fc1c351
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 1604}
+  - name: MASTER File - Dual Slicer_Frame_5
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 408
+      y: 1804
+      width: 194
+      height: 192
+    spriteID: 384f1f168986a5c4fbef49def9b4c853
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 408, y: 1804}
+  - name: MASTER File - Dual Slicer_Frame_6
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 4
+      width: 194
+      height: 192
+    spriteID: 0dbb18621457b544f8c2f471732479d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 4}
+  - name: MASTER File - Dual Slicer_Frame_7
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 204
+      width: 194
+      height: 192
+    spriteID: 350c42ff1d4384f40b19331bf835037a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 204}
+  - name: MASTER File - Dual Slicer_Frame_8
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 404
+      width: 194
+      height: 192
+    spriteID: 8585c45f4bc9fbf44878ec992089170e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 404}
+  - name: MASTER File - Dual Slicer_Frame_17
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 604
+      width: 194
+      height: 192
+    spriteID: d422505cc7ffc5643ab5484645f200a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 604}
+  - name: MASTER File - Dual Slicer_Frame_18
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 804
+      width: 194
+      height: 192
+    spriteID: a5d02ce83d2131f4ea2d1d065e984a0b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 804}
+  - name: MASTER File - Dual Slicer_Frame_19
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1004
+      width: 194
+      height: 192
+    spriteID: b7ea3e73ebedf1d4288ea47be4724f6b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1004}
+  - name: MASTER File - Dual Slicer_Frame_20
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1204
+      width: 194
+      height: 192
+    spriteID: 7816344f85c2659459005a60196e23db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1204}
+  - name: MASTER File - Dual Slicer_Frame_23
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1404
+      width: 194
+      height: 192
+    spriteID: 5faffe30b77e00d4d96e2a9ed438f51c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1404}
+  - name: MASTER File - Dual Slicer_Frame_24
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1604
+      width: 194
+      height: 192
+    spriteID: 24d2ca14d7c3f594d9e902643bd62239
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1604}
+  - name: MASTER File - Dual Slicer_Frame_25
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 610
+      y: 1804
+      width: 194
+      height: 192
+    spriteID: 92aebffb016f96d48a70f50df3540059
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 610, y: 1804}
+  - name: MASTER File - Dual Slicer_Frame_26
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 812
+      y: 4
+      width: 194
+      height: 192
+    spriteID: a0654f8debb449d49a7bdc1fc651984e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 812, y: 4}
+  - name: MASTER File - Dual Slicer_Frame_27
+    originalName: 
+    pivot: {x: 0.49484536, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 812
+      y: 204
+      width: 194
+      height: 192
+    spriteID: 2eeaff10e4361cb45a804701e2b5634b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 812, y: 204}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1272768855
+    name: MASTER File - Dual Slicer
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: MASTER File - Dual Slicer_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 1aec43823f5641c479c8ec89d6e83b65
+    - name: MASTER File - Dual Slicer_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 60b426fbe5f45e1478689f44469a50c7
+    - name: MASTER File - Dual Slicer_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 0d77bd2c517c5704698b8954edf666f1
+    - name: MASTER File - Dual Slicer_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: fcddce9e16aba89499a76f19fe4f8136
+    - name: MASTER File - Dual Slicer_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: b734546f3ec232c4d9b1ce0f1f7edc5c
+    - name: MASTER File - Dual Slicer_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 45eb8aee051e5e64d89ac0f3d36bb33b
+    - name: MASTER File - Dual Slicer_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 7f1118ef263f24f4f9169e3b2e98f91c
+    - name: MASTER File - Dual Slicer_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 63df6109a46be96459c6d110e29b441c
+    - name: MASTER File - Dual Slicer_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: a93fdb1c8a06ac44796b6116203317f2
+    - name: MASTER File - Dual Slicer_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: e09af4de313461c42bb5b7c20ce6ac34
+    - name: MASTER File - Dual Slicer_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 2ffe7acc0f1ab4f4684296d0b2d6c2f7
+    - name: MASTER File - Dual Slicer_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 5e5de34683173d6499f337292a4ff537
+    - name: MASTER File - Dual Slicer_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 553867df23e5f124db9faeb271e847e3
+    - name: MASTER File - Dual Slicer_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 199e0719fb99cf14fb2f4a47e88c1bf0
+    - name: MASTER File - Dual Slicer_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 0fa422185d290544dac4841dabd67c0b
+    - name: MASTER File - Dual Slicer_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: a2f36e5f41382bc4b8171a36b9c682b3
+    - name: MASTER File - Dual Slicer_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 8501ff0339e39e04585c26ceb02a60f0
+    - name: MASTER File - Dual Slicer_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 2cb4780962936d54db4ef256519857a6
+    - name: MASTER File - Dual Slicer_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: c40a20ecfc99aa14bbf02d0e3deb25c3
+    - name: MASTER File - Dual Slicer_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: a7f8b7732b0cb6243b3e0ec12fbdbb1d
+    - name: MASTER File - Dual Slicer_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 6cf6cbbd375b6164da98bc624cdc97cf
+    - name: MASTER File - Dual Slicer_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 69829bc767efc1d438dc17a6b0309f9b
+    - name: MASTER File - Dual Slicer_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: e7bc8b79c85505a4eabc2bb40599c806
+    - name: MASTER File - Dual Slicer_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 8fe549c45cba1a6498c3a3c82b45628b
+    - name: MASTER File - Dual Slicer_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: d749b494f4130044c920058f5ec054d6
+    - name: MASTER File - Dual Slicer_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 2bb1ac871d9721e40997686a83730526
+    - name: MASTER File - Dual Slicer_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: c1f20f593c6c7a24d8193a99e22c77c1
+    - name: MASTER File - Dual Slicer_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 1746505675b505748ae1605f89549f87
+    - name: MASTER File - Dual Slicer_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: d1e97e5315c3d7447af858c70fc1c351
+    - name: MASTER File - Dual Slicer_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 384f1f168986a5c4fbef49def9b4c853
+    - name: MASTER File - Dual Slicer_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 0dbb18621457b544f8c2f471732479d7
+    - name: MASTER File - Dual Slicer_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 350c42ff1d4384f40b19331bf835037a
+    - name: MASTER File - Dual Slicer_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 8585c45f4bc9fbf44878ec992089170e
+    - name: MASTER File - Dual Slicer_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: d422505cc7ffc5643ab5484645f200a4
+    - name: MASTER File - Dual Slicer_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: a5d02ce83d2131f4ea2d1d065e984a0b
+    - name: MASTER File - Dual Slicer_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: b7ea3e73ebedf1d4288ea47be4724f6b
+    - name: MASTER File - Dual Slicer_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 7816344f85c2659459005a60196e23db
+    - name: MASTER File - Dual Slicer_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 5faffe30b77e00d4d96e2a9ed438f51c
+    - name: MASTER File - Dual Slicer_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 24d2ca14d7c3f594d9e902643bd62239
+    - name: MASTER File - Dual Slicer_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 92aebffb016f96d48a70f50df3540059
+    - name: MASTER File - Dual Slicer_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: a0654f8debb449d49a7bdc1fc651984e
+    - name: MASTER File - Dual Slicer_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 0
+        y: 0
+        width: 194
+        height: 192
+      spriteId: 2eeaff10e4361cb45a804701e2b5634b
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 192, y: 192}

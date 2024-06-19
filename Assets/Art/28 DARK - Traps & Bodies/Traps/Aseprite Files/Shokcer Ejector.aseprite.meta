@@ -1,0 +1,1032 @@
+fileFormatVersion: 2
+guid: d9c088183a7bfb346bdf7a49a0db9003
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Shokcer Ejector_Frame_9
+    originalName: 
+    pivot: {x: 0.5714286, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 44
+      width: 7
+      height: 6
+    spriteID: 909227acdc228fd4fb29fbee5e2d3f32
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 44}
+  - name: Shokcer Ejector_Frame_10
+    originalName: 
+    pivot: {x: 0.625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 28
+      width: 8
+      height: 8
+    spriteID: 23c9e6ac61b489b4e977104ee71127cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 28}
+  - name: Shokcer Ejector_Frame_11
+    originalName: 
+    pivot: {x: 0.6666667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 203
+      width: 9
+      height: 9
+    spriteID: 038a4feebedd3c44bb87223bde222a8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 203}
+  - name: Shokcer Ejector_Frame_13
+    originalName: 
+    pivot: {x: 0.6666667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 225
+      width: 9
+      height: 10
+    spriteID: aa20b33ff9760c143aab6fe2185f331a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 225}
+  - name: Shokcer Ejector_Frame_14
+    originalName: 
+    pivot: {x: 0.90909094, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 129
+      width: 33
+      height: 11
+    spriteID: f7a265ddd79867247a281f818d493a50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 129}
+  - name: Shokcer Ejector_Frame_15
+    originalName: 
+    pivot: {x: 0.90909094, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 48
+      width: 33
+      height: 13
+    spriteID: 80be4540f6bf17b4f829c8b2dc4a1d29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 48}
+  - name: Shokcer Ejector_Frame_16
+    originalName: 
+    pivot: {x: 0.8857143, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 91
+      width: 35
+      height: 11
+    spriteID: f53ccdd6aec962f47b8b4814c0403cbc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 91}
+  - name: Shokcer Ejector_Frame_17
+    originalName: 
+    pivot: {x: 0.8333334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 69
+      width: 30
+      height: 14
+    spriteID: bbb5b17cd2a64ab44b8f128afd9e344c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 69}
+  - name: Shokcer Ejector_Frame_18
+    originalName: 
+    pivot: {x: 0.8378379, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 37
+      height: 15
+    spriteID: 28406063294c649439566346aa0a27c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Shokcer Ejector_Frame_19
+    originalName: 
+    pivot: {x: 0.7741935, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 186
+      width: 31
+      height: 9
+    spriteID: bd24586d2516bf743abe08532e047a65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 186}
+  - name: Shokcer Ejector_Frame_20
+    originalName: 
+    pivot: {x: 0.53333336, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 4
+      width: 15
+      height: 16
+    spriteID: 95134cdf59a42634d839e3e0c237766a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 4}
+  - name: Shokcer Ejector_Frame_21
+    originalName: 
+    pivot: {x: 0.09090909, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 33
+      height: 10
+    spriteID: 8096dae255609cc42ba868ac7234cc27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
+  - name: Shokcer Ejector_Frame_22
+    originalName: 
+    pivot: {x: 0.0882353, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 246
+      width: 34
+      height: 5
+    spriteID: ed386898c589b7d44a2ce5b597b3e11a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 246}
+  - name: Shokcer Ejector_Frame_23
+    originalName: 
+    pivot: {x: 0.0882353, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 110
+      width: 34
+      height: 11
+    spriteID: 2846cfe88a2bc87419e4e3520a1cbfbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 110}
+  - name: Shokcer Ejector_Frame_24
+    originalName: 
+    pivot: {x: 0.125, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 166
+      width: 24
+      height: 12
+    spriteID: c1dbcd2258a46a04fbce2757135f4ed7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 166}
+  - name: Shokcer Ejector_Frame_25
+    originalName: 
+    pivot: {x: 0.0882353, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 27
+      width: 34
+      height: 13
+    spriteID: 7d323ff8c7508374b96ed51cd6899a12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 27}
+  - name: Shokcer Ejector_Frame_26
+    originalName: 
+    pivot: {x: 0.15789473, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 225
+      width: 19
+      height: 13
+    spriteID: 1524be91130046d46884c4b07c05c3b3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 225}
+  - name: Shokcer Ejector_Frame_27
+    originalName: 
+    pivot: {x: 0.15789473, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 203
+      width: 19
+      height: 14
+    spriteID: 5a06e91a1ca83eb4ea1fc9477cbde47b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 203}
+  - name: Shokcer Ejector_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 187
+      width: 6
+      height: 1
+    spriteID: a0cf042a1441b33428879880b1b53562
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 187}
+  - name: Shokcer Ejector_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 196
+      width: 6
+      height: 1
+    spriteID: 562eed94f787fa244ad44e60d3466e72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 196}
+  - name: Shokcer Ejector_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 205
+      width: 6
+      height: 1
+    spriteID: 3880c7132183b604cacc0bd8de197eae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 205}
+  - name: Shokcer Ejector_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 176
+      width: 6
+      height: 3
+    spriteID: 5c97f5660574ca84c94c85d0a7b67896
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 176}
+  - name: Shokcer Ejector_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 72
+      width: 6
+      height: 5
+    spriteID: 408249bff1ef79f428d04e732424057f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 72}
+  - name: Shokcer Ejector_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 85
+      width: 6
+      height: 5
+    spriteID: 5f1ae689882aca04394dae5b88d8a56f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 85}
+  - name: Shokcer Ejector_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 98
+      width: 6
+      height: 5
+    spriteID: fd70e4b3ede58494d954c6f4e03cda53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 98}
+  - name: Shokcer Ejector_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 111
+      width: 6
+      height: 5
+    spriteID: a1a22c06f508c6f4ca6dfdc8399a8054
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 111}
+  - name: Shokcer Ejector_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 124
+      width: 6
+      height: 5
+    spriteID: c52f994817fa1734ab1acd2681456042
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 124}
+  - name: Shokcer Ejector_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 137
+      width: 6
+      height: 5
+    spriteID: c6635af90284a084482d63174e1e641f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 137}
+  - name: Shokcer Ejector_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 150
+      width: 6
+      height: 5
+    spriteID: e988eb2377d53ed48810081c4835843e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 150}
+  - name: Shokcer Ejector_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 163
+      width: 6
+      height: 5
+    spriteID: a30a33128e1b3c24bbe13694bbf026c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 163}
+  - name: Shokcer Ejector_Frame_30
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 58
+      width: 6
+      height: 6
+    spriteID: 4a2d78d874dfa9b4285e87e605f88325
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 58}
+  - name: Shokcer Ejector_Frame_31
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 214
+      width: 6
+      height: 1
+    spriteID: 49099eda90ab82e4fbc3f991fdfdf511
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 214}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -885326213
+    name: Shokcer Ejector
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Shokcer Ejector_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 28
+        y: 0
+        width: 7
+        height: 6
+      spriteId: 909227acdc228fd4fb29fbee5e2d3f32
+    - name: Shokcer Ejector_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 27
+        y: 0
+        width: 8
+        height: 8
+      spriteId: 23c9e6ac61b489b4e977104ee71127cb
+    - name: Shokcer Ejector_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 26
+        y: 0
+        width: 9
+        height: 9
+      spriteId: 038a4feebedd3c44bb87223bde222a8a
+    - name: Shokcer Ejector_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 26
+        y: 0
+        width: 9
+        height: 10
+      spriteId: aa20b33ff9760c143aab6fe2185f331a
+    - name: Shokcer Ejector_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 2
+        y: 0
+        width: 33
+        height: 11
+      spriteId: f7a265ddd79867247a281f818d493a50
+    - name: Shokcer Ejector_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 2
+        y: 0
+        width: 33
+        height: 13
+      spriteId: 80be4540f6bf17b4f829c8b2dc4a1d29
+    - name: Shokcer Ejector_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 1
+        y: 0
+        width: 35
+        height: 11
+      spriteId: f53ccdd6aec962f47b8b4814c0403cbc
+    - name: Shokcer Ejector_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 7
+        y: 0
+        width: 30
+        height: 14
+      spriteId: bbb5b17cd2a64ab44b8f128afd9e344c
+    - name: Shokcer Ejector_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 1
+        y: 0
+        width: 37
+        height: 15
+      spriteId: 28406063294c649439566346aa0a27c8
+    - name: Shokcer Ejector_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 8
+        y: 0
+        width: 31
+        height: 9
+      spriteId: bd24586d2516bf743abe08532e047a65
+    - name: Shokcer Ejector_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 24
+        y: 0
+        width: 15
+        height: 16
+      spriteId: 95134cdf59a42634d839e3e0c237766a
+    - name: Shokcer Ejector_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 29
+        y: 0
+        width: 33
+        height: 10
+      spriteId: 8096dae255609cc42ba868ac7234cc27
+    - name: Shokcer Ejector_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 29
+        y: 0
+        width: 34
+        height: 5
+      spriteId: ed386898c589b7d44a2ce5b597b3e11a
+    - name: Shokcer Ejector_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 29
+        y: 0
+        width: 34
+        height: 11
+      spriteId: 2846cfe88a2bc87419e4e3520a1cbfbb
+    - name: Shokcer Ejector_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 29
+        y: 0
+        width: 24
+        height: 12
+      spriteId: c1dbcd2258a46a04fbce2757135f4ed7
+    - name: Shokcer Ejector_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 29
+        y: 0
+        width: 34
+        height: 13
+      spriteId: 7d323ff8c7508374b96ed51cd6899a12
+    - name: Shokcer Ejector_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 29
+        y: 0
+        width: 19
+        height: 13
+      spriteId: 1524be91130046d46884c4b07c05c3b3
+    - name: Shokcer Ejector_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 29
+        y: 0
+        width: 19
+        height: 14
+      spriteId: 5a06e91a1ca83eb4ea1fc9477cbde47b
+    - name: Shokcer Ejector_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 1
+      spriteId: a0cf042a1441b33428879880b1b53562
+    - name: Shokcer Ejector_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 1
+      spriteId: 562eed94f787fa244ad44e60d3466e72
+    - name: Shokcer Ejector_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 1
+      spriteId: 3880c7132183b604cacc0bd8de197eae
+    - name: Shokcer Ejector_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 3
+      spriteId: 5c97f5660574ca84c94c85d0a7b67896
+    - name: Shokcer Ejector_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: 408249bff1ef79f428d04e732424057f
+    - name: Shokcer Ejector_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: 5f1ae689882aca04394dae5b88d8a56f
+    - name: Shokcer Ejector_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: fd70e4b3ede58494d954c6f4e03cda53
+    - name: Shokcer Ejector_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: a1a22c06f508c6f4ca6dfdc8399a8054
+    - name: Shokcer Ejector_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: c52f994817fa1734ab1acd2681456042
+    - name: Shokcer Ejector_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: c6635af90284a084482d63174e1e641f
+    - name: Shokcer Ejector_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: e988eb2377d53ed48810081c4835843e
+    - name: Shokcer Ejector_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 5
+      spriteId: a30a33128e1b3c24bbe13694bbf026c5
+    - name: Shokcer Ejector_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 6
+      spriteId: 4a2d78d874dfa9b4285e87e605f88325
+    - name: Shokcer Ejector_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 29
+        y: 0
+        width: 6
+        height: 1
+      spriteId: 49099eda90ab82e4fbc3f991fdfdf511
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 16}
