@@ -93,13 +93,17 @@ namespace DarkHavoc.Managers
             }
         }
 
+        public void GoToGameOver() =>
+            _transitionManager.LoadGameOverScene();
+
         private void LoadBiomeScene() =>
             _transitionManager.LoadBiomeScene(_currentBiome);
 
         private void LoadBossBiomeScene() =>
             _transitionManager.LoadBossBiomeScene(_currentBiome);
 
-        public void SetPauseInput(bool state) => _inputReader.SetPauseEnable(state);
+        public void SetPauseInput(bool state) =>
+            _inputReader.SetPauseEnable(state);
 
         public void EnableMainInput()
         {
@@ -107,7 +111,7 @@ namespace DarkHavoc.Managers
             OnSetInputEnabled?.Invoke(true);
         }
 
-        public void DisableMainInput()
+        private void DisableMainInput()
         {
             _inputReader.DisableMainInput();
             OnSetInputEnabled?.Invoke(false);
@@ -129,18 +133,18 @@ namespace DarkHavoc.Managers
             OnGamePauseChanged?.Invoke(false);
         }
 
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
-            Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
-        }
-
         public IEnumerator CreatePlayerAsync(Vector3 playerSpawnPoint)
         {
             Instantiate(PlayerPrefab, playerSpawnPoint, Quaternion.identity);
             yield return null;
             EnableMainInput();
+        }
+        
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Player.OnPlayerSpawned -= PlayerOnPlayerSpawned;
+            Player.OnPlayerDeSpawned -= PlayerOnPlayerDeSpawned;
         }
     }
 }

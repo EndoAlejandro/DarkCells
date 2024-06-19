@@ -38,5 +38,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TransitionScreen.unity
     guid: 2843c910f50c43348a1515c2a657c60d
+  - enabled: 1
+    path: Assets/_Scenes/GameOver.unity
+    guid: b5ff3d3c9c744c04781c75ebb9f12f1a
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 422c7208d09daa948bae571d02441c67, type: 2}

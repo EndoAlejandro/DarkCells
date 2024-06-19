@@ -63,7 +63,16 @@ namespace DarkHavoc.Managers
             yield return SetTransitionPanel(false);
         }
 
-        public IEnumerator SetTransitionPanel(bool state)
+        public void LoadGameOverScene() => StartCoroutine(LoadFinalSceneAsync());
+
+        private IEnumerator LoadFinalSceneAsync()
+        {
+            yield return SetTransitionPanel(true);
+            yield return SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Single);
+            yield return SetTransitionPanel(false);
+        }
+
+        private IEnumerator SetTransitionPanel(bool state)
         {
             yield return new WaitUntil(() => _transitionInProgress != state);
             ResetTriggers();
