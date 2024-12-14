@@ -495,6 +495,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68a1e8e13fe18a0468e60ac22077ad5e, type: 3}
+--- !u!19719996 &1519971844 stripped
+TilemapCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5172850522744981625, guid: aa4dde18b7e5c3c489ef4f034672e2d8, type: 3}
+  m_PrefabInstance: {fileID: 6880997808142202030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1608427134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,10 +571,6 @@ PrefabInstance:
     - target: {fileID: 2036413934369342764, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
       propertyPath: m_Name
       value: FxManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135688800698416150, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
-      propertyPath: managedReferences[6873343240497266694].Active
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7511548128450807470, guid: 775d897b2a3418d4c89306184989ab3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,10 +668,14 @@ PrefabInstance:
     - target: {fileID: 982741556076222573, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1519971844}
     - target: {fileID: 6304963951302229087, guid: 1be458d3d41726348bd804921061c399, type: 3}
       propertyPath: m_Name
       value: '[CAMERA MANAGER]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404369723621378161, guid: 1be458d3d41726348bd804921061c399, type: 3}
+      propertyPath: m_YDamping
+      value: 0.0189834
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

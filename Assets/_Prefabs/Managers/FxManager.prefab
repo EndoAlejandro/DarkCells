@@ -5626,7 +5626,7 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6873343240497266694
+  - rid: 5903975338962321408
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   StopFeedbacksOnDisable: 0
@@ -5634,7 +5634,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6873343240497266694
+    - rid: 5903975338962321408
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
         Active: 1
@@ -6081,7 +6081,7 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           m_ImpulseDuration: 6
-          m_ImpulseType: 2
+          m_ImpulseType: 0
           m_DissipationRate: 0.07
           m_RawSignal: {fileID: 11400000, guid: 12b5ede874e698048b6aed355a6066e1, type: 2}
           m_AmplitudeGain: 1
@@ -6145,9 +6145,9 @@ MonoBehaviour:
           m_ImpactRadius: 100
           m_DirectionMode: 0
           m_DissipationMode: 2
-          m_DissipationDistance: 50
-          m_PropagationSpeed: 343
-        Velocity: {x: 0.5, y: 0.1, z: 0}
+          m_DissipationDistance: 10.54
+          m_PropagationSpeed: 30.6
+        Velocity: {x: 0, y: 0.1, z: 0}
         ClearImpulseOnStop: 0
 --- !u!82 &7029815052158839096
 AudioSource:
@@ -6985,7 +6985,7 @@ MonoBehaviour:
     - rid: 6873343240497266694
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
-        Active: 0
+        Active: 1
         UniqueID: -1740626461
         Label: Cinemachine Impulse
         ChannelMode: 0
