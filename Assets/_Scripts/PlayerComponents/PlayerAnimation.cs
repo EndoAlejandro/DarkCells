@@ -44,7 +44,7 @@ namespace DarkHavoc.PlayerComponents
             }
 
             _instance = this;
-            
+
             _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
 
@@ -133,8 +133,8 @@ namespace DarkHavoc.PlayerComponents
 
         private void FlipCheck()
         {
-            if (_inputReader.Movement.x == 0) return;
-            _player.SetFacingLeft(_inputReader.Movement.x < 0);
+            if (_inputReader?.Movement.x == 0) return;
+            _player.SetFacingLeft(_inputReader?.Movement.x < 0);
         }
 
         private void HorizontalFloat() =>
@@ -145,6 +145,7 @@ namespace DarkHavoc.PlayerComponents
 
         private void PlayerStateMachineOnEntityStateChanged(IState state)
         {
+            FlipCheck();
             if (_previousState != null) _animator.ResetTrigger(_previousState.AnimationState.ToString());
 
             _animator.SetTrigger(state.AnimationState.ToString());

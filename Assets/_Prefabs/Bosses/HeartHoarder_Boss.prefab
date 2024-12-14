@@ -1408,7 +1408,7 @@ MonoBehaviour:
   wallDetectionDistance: 2
   wallLayerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 34048
 --- !u!114 &7791262970509971083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,7 +1982,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1245454165
-  m_SortingLayer: 2
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -230418894, guid: 77e662867bfb9d44798358ccb959677a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

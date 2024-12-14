@@ -51,4 +51,4 @@ MonoBehaviour:
   - biome: 0
     steps: 1
   - biome: 2
-    steps: 1
+    steps: 2

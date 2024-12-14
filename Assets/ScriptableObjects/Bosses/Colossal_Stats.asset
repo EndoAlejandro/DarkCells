@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497e873c72e84deaa68220da8fe93ac3, type: 3}
   m_Name: Colossal_Stats
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 75
   idleTime: 1
   acceleration: 10
   patrolSpeed: 1
   maxSpeed: 5
-  buffDuration: 30
-  breakpointAmount: 4
+  buffDuration: 20
   buffOutlineColor: {r: 0.8862746, g: 0.97647065, b: 0.9803922, a: 1}
   telegraphTime: 1

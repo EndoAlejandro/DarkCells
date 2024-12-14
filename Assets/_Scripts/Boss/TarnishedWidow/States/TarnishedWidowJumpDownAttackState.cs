@@ -1,4 +1,5 @@
 ﻿using DarkHavoc.Boss.SharedStates;
+using DarkHavoc.CustomUtils;
 using DarkHavoc.Enemies;
 using DarkHavoc.Enemies.SharedStates;
 using DarkHavoc.Managers;
@@ -14,7 +15,8 @@ namespace DarkHavoc.Boss.TarnishedWidow.States
         private readonly float _duration;
         private float _timer;
 
-        public TarnishedWidowJumpUpAttackState(DarkHavoc.Boss.TarnishedWidow.TarnishedWidow tarnishedWidow, BossAnimation animation,
+        public TarnishedWidowJumpUpAttackState(TarnishedWidow tarnishedWidow,
+            BossAnimation animation,
             EnemyHitBox hitBox, float offset) : base(tarnishedWidow,
             animation, hitBox, AnimationState.JumpAttack, offset) =>
             _duration = tarnishedWidow.JumpHitBox.TelegraphTime;
@@ -28,7 +30,7 @@ namespace DarkHavoc.Boss.TarnishedWidow.States
             animation.OnAttackPerformed += AnimationOnAttackPerformed;
             animation.OnAttackEnded += AnimationOnAttackEnded;
 
-            ((DarkHavoc.Boss.TarnishedWidow.TarnishedWidow)boss).JumpUp();
+            ((TarnishedWidow)boss).JumpUp();
             _timer = _duration;
         }
     }
@@ -38,7 +40,7 @@ namespace DarkHavoc.Boss.TarnishedWidow.States
         private Player _player;
         private Vector3 _point;
 
-        public TarnishedWidowJumpDownAttackState(DarkHavoc.Boss.TarnishedWidow.TarnishedWidow tarnishedWidow, BossAnimation animation,
+        public TarnishedWidowJumpDownAttackState(TarnishedWidow tarnishedWidow, BossAnimation animation,
             EnemyHitBox hitBox, float offset) : base(tarnishedWidow,
             animation, hitBox, AnimationState.JumpAttack, offset)
         {
@@ -48,17 +50,18 @@ namespace DarkHavoc.Boss.TarnishedWidow.States
         public override void OnEnter()
         {
             _player ??= ServiceLocator.GetService<GameManager>().Player;
-            var result = Physics2D.Raycast(_player.transform.position, Vector2.down,
-                50, LayerMask.NameToLayer("Terrain/Ground"));
-            _point = result ? result.point : _player.transform.position;
-            ((DarkHavoc.Boss.TarnishedWidow.TarnishedWidow)boss).Teleport(_point);
+            var newPosition = boss.transform.position.With(x: _player.transform.position.x);
+            /*var result = Physics2D.Raycast(boss.transform.position, Vector2.down,
+                50, ((TarnishedWidow)boss).GroundMask);*/
+            _point = /*result ? result.point :*/ newPosition;
+            ((TarnishedWidow)boss).Teleport(newPosition);
             base.OnEnter();
         }
 
         protected override void AnimationOnAttackPerformed()
         {
             base.AnimationOnAttackPerformed();
-            ((DarkHavoc.Boss.TarnishedWidow.TarnishedWidow)boss).JumpDown();
+            ((TarnishedWidow)boss).JumpDown();
         }
 
         public override void OnExit()

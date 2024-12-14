@@ -9,10 +9,15 @@ namespace DarkHavoc.Boss.TarnishedWidow
         [SerializeField] private EnemyHitBox rangedHitBox;
         [SerializeField] private EnemyHitBox buffHitBox;
         [SerializeField] private EnemyHitBox jumpHitBox;
+
+        [Space]
+        [SerializeField] private LayerMask groundMask;
+
         public EnemyHitBox MeleeHitBox => meleeHitBox;
         public EnemyHitBox RangedHitBox => rangedHitBox;
         public EnemyHitBox BuffHitBox => buffHitBox;
         public EnemyHitBox JumpHitBox => jumpHitBox;
+        public LayerMask GroundMask => groundMask;
 
         public void JumpUp()
         {

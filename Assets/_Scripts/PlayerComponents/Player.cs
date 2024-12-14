@@ -107,9 +107,9 @@ namespace DarkHavoc.PlayerComponents
             _inputReader = ServiceLocator.GetService<InputReader>();
             _gameManager = ServiceLocator.GetService<GameManager>();
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             _inputReader.EnableMainInput();
-#endif
+#endif*/
 
             Actions();
             OnPlayerSpawned?.Invoke(this);
